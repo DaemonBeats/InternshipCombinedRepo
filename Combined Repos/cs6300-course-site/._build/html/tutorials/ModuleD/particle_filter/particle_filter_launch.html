@@ -1,0 +1,457 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Understanding the Launch File &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial 8 - Pure Pursuit" href="../pure_pursuit/index.html" />
+    <link rel="prev" title="Tuning the Particle Filter (localize.yaml)" href="particle_filter_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 7 - Particle Filter Localization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="particle_filter.html">Particle Filter Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_code.html">Understanding the Particle Filter Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_config.html">Tuning the Particle Filter (localize.yaml)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Understanding the Launch File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-happens-when-you-launch">What Happens When You Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#loading-the-config">Loading the Config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-arguments">Launch Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-1-particle-filter">Node 1: Particle Filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-2-map-server">Node 2: Map Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-3-lifecycle-manager">Node 3: Lifecycle Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-order">Launch Order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-complete-flow">The Complete Flow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 7 - Particle Filter Localization</a> &raquo;</li>
+        
+      <li>Understanding the Launch File</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleD/particle_filter/particle_filter_launch.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="understanding-the-launch-file">
+<span id="doc-tutorials-particle-filter-launch"></span><h1>Understanding the Launch File<a class="headerlink" href="#understanding-the-launch-file" title="Permalink to this headline">¶</a></h1>
+<p>When you run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">particle_filter</span> <span class="pre">localize_launch.py</span></code>, three nodes start behind the scenes. This page walks through <code class="docutils literal notranslate"><span class="pre">localize_launch.py</span></code> to explain what each piece does.</p>
+<div class="section" id="what-happens-when-you-launch">
+<h2>What Happens When You Launch<a class="headerlink" href="#what-happens-when-you-launch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch particle_filter localize_launch.py
+</pre></div>
+</div>
+<p>This single command starts:</p>
+<ol class="arabic simple">
+<li><p><strong>Lifecycle Manager</strong> — brings the map server through its startup sequence</p></li>
+<li><p><strong>Map Server</strong> — loads your saved <code class="docutils literal notranslate"><span class="pre">.pgm</span></code> map and publishes it on <code class="docutils literal notranslate"><span class="pre">/map</span></code></p></li>
+<li><p><strong>Particle Filter</strong> — subscribes to <code class="docutils literal notranslate"><span class="pre">/scan</span></code> and <code class="docutils literal notranslate"><span class="pre">/vesc/odom</span></code>, publishes localized pose</p></li>
+</ol>
+<p>These three nodes work together: the lifecycle manager activates the map server, which provides the map that the particle filter uses for ray casting.</p>
+<a class="reference internal image-reference" href="../../../_images/launch_nodes.svg"><img alt="Launch file architecture showing three nodes, their relationships, and external connections" class="align-center" src="../../../_images/launch_nodes.svg" width="100%" /></a>
+</div>
+<div class="section" id="loading-the-config">
+<h2>Loading the Config<a class="headerlink" href="#loading-the-config" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">localize_config</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;config&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;localize.yaml&#39;</span>
+<span class="p">)</span>
+<span class="n">localize_config_dict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">localize_config</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
+<span class="n">map_name</span> <span class="o">=</span> <span class="n">localize_config_dict</span><span class="p">[</span><span class="s1">&#39;map_server&#39;</span><span class="p">][</span><span class="s1">&#39;ros__parameters&#39;</span><span class="p">][</span><span class="s1">&#39;map&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The launch file reads <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code> at launch time (not runtime) to extract the map name. This is a common ROS 2 pattern — reading the YAML config during launch so the map server and particle filter can both use the same map without duplicating the setting.</p>
+<p><code class="docutils literal notranslate"><span class="pre">get_package_share_directory('particle_filter')</span></code> resolves to the installed package location (inside <code class="docutils literal notranslate"><span class="pre">install/</span></code>), not the source directory. This is why you must run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> after changing config files.</p>
+</div>
+<div class="section" id="launch-arguments">
+<h2>Launch Arguments<a class="headerlink" href="#launch-arguments" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">localize_la</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+    <span class="s1">&#39;localize_config&#39;</span><span class="p">,</span>
+    <span class="n">default_value</span><span class="o">=</span><span class="n">localize_config</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Localization configs&#39;</span><span class="p">)</span>
+<span class="n">map_name_la</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+    <span class="s1">&#39;map_name&#39;</span><span class="p">,</span>
+    <span class="n">default_value</span><span class="o">=</span><span class="n">map_name</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Map name (without extension) in particle_filter/maps/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Two arguments are declared with defaults from the config file:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">localize_config</span></code> — path to the full YAML config (rarely overridden)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map_name</span></code> — the map name without extension, read from <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code></p></li>
+</ul>
+<p>You can override the map name at launch time:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch particle_filter localize_launch.py map_name:<span class="o">=</span>hallway_map
+</pre></div>
+</div>
+</div>
+<div class="section" id="node-1-particle-filter">
+<h2>Node 1: Particle Filter<a class="headerlink" href="#node-1-particle-filter" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pf_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">,</span>
+    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;localize_config&#39;</span><span class="p">)]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This launches the particle filter node (the <code class="docutils literal notranslate"><span class="pre">particle_filter.py</span></code> code reviewed in the previous page). It receives all its parameters — <code class="docutils literal notranslate"><span class="pre">max_particles</span></code>, <code class="docutils literal notranslate"><span class="pre">range_method</span></code>, <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code>, etc. — from <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code> via <code class="docutils literal notranslate"><span class="pre">LaunchConfiguration('localize_config')</span></code>.</p>
+</div>
+<div class="section" id="node-2-map-server">
+<h2>Node 2: Map Server<a class="headerlink" href="#node-2-map-server" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">map_server_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_map_server&#39;</span><span class="p">,</span>
+    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;map_server&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;map_server&#39;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;yaml_filename&#39;</span><span class="p">:</span> <span class="n">PathJoinSubstitution</span><span class="p">(</span>
+                     <span class="p">[</span><span class="n">FindPackageShare</span><span class="p">(</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">),</span> <span class="s1">&#39;maps&#39;</span><span class="p">,</span>
+                      <span class="p">[</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;map_name&#39;</span><span class="p">),</span> <span class="s1">&#39;.yaml&#39;</span><span class="p">]])},</span>
+                <span class="p">{</span><span class="s1">&#39;topic&#39;</span><span class="p">:</span> <span class="s1">&#39;map&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;frame_id&#39;</span><span class="p">:</span> <span class="s1">&#39;map&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;output&#39;</span><span class="p">:</span> <span class="s1">&#39;screen&#39;</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The map server is a Nav2 node that loads an occupancy grid map from a <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> + <code class="docutils literal notranslate"><span class="pre">.pgm</span></code> file pair and publishes it on the <code class="docutils literal notranslate"><span class="pre">/map</span></code> topic. Key details:</p>
+<ul class="simple">
+<li><p><strong>yaml_filename</strong> — built dynamically from <code class="docutils literal notranslate"><span class="pre">map_name</span></code>. If <code class="docutils literal notranslate"><span class="pre">map_name</span></code> is <code class="docutils literal notranslate"><span class="pre">lab_map_clean</span></code>, it resolves to <code class="docutils literal notranslate"><span class="pre">.../particle_filter/maps/lab_map_clean.yaml</span></code></p></li>
+<li><p><strong>PathJoinSubstitution</strong> — a ROS 2 launch utility that joins path segments and resolves <code class="docutils literal notranslate"><span class="pre">LaunchConfiguration</span></code> values at launch time</p></li>
+<li><p><strong>FindPackageShare</strong> — finds the installed package’s <code class="docutils literal notranslate"><span class="pre">share/</span></code> directory (not <code class="docutils literal notranslate"><span class="pre">src/</span></code>)</p></li>
+<li><p><strong>frame_id: map</strong> — the map is published in the <code class="docutils literal notranslate"><span class="pre">map</span></code> coordinate frame</p></li>
+<li><p><strong>use_sim_time: True</strong> — this is a legacy setting from simulation; on real hardware it has no practical effect since the particle filter uses wall-clock time</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The map server is a <strong>lifecycle node</strong> — it does not start publishing immediately. It must be transitioned through <code class="docutils literal notranslate"><span class="pre">configure</span></code> → <code class="docutils literal notranslate"><span class="pre">activate</span></code> states before it serves the map. That is what the lifecycle manager does.</p>
+</div>
+</div>
+<div class="section" id="node-3-lifecycle-manager">
+<h2>Node 3: Lifecycle Manager<a class="headerlink" href="#node-3-lifecycle-manager" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nav_lifecycle_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+    <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_lifecycle_manager&#39;</span><span class="p">,</span>
+    <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;lifecycle_manager&#39;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lifecycle_manager_localization&#39;</span><span class="p">,</span>
+    <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;autostart&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                <span class="p">{</span><span class="s1">&#39;node_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;map_server&#39;</span><span class="p">]}]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The lifecycle manager watches the map server and automatically transitions it through its startup states:</p>
+<ol class="arabic simple">
+<li><p><strong>Unconfigured</strong> → <code class="docutils literal notranslate"><span class="pre">configure</span></code> → <strong>Inactive</strong> — loads the map file into memory</p></li>
+<li><p><strong>Inactive</strong> → <code class="docutils literal notranslate"><span class="pre">activate</span></code> → <strong>Active</strong> — starts publishing on <code class="docutils literal notranslate"><span class="pre">/map</span></code></p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">autostart:</span> <span class="pre">True</span></code> means this happens automatically at launch. Without the lifecycle manager, you would need to manually call the state transitions via service calls.</p>
+<p><code class="docutils literal notranslate"><span class="pre">node_names:</span> <span class="pre">['map_server']</span></code> tells the lifecycle manager which nodes to manage. Only the map server needs lifecycle management here — the particle filter is a regular node that starts immediately.</p>
+</div>
+<div class="section" id="launch-order">
+<h2>Launch Order<a class="headerlink" href="#launch-order" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">nav_lifecycle_node</span><span class="p">)</span>
+<span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">map_server_node</span><span class="p">)</span>
+<span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">pf_node</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The nodes are added in this order:</p>
+<ol class="arabic simple">
+<li><p><strong>Lifecycle manager first</strong> — so it is ready to manage the map server as soon as it appears</p></li>
+<li><p><strong>Map server second</strong> — the lifecycle manager detects it and transitions it to active</p></li>
+<li><p><strong>Particle filter last</strong> — it calls the <code class="docutils literal notranslate"><span class="pre">/map_server/map</span></code> service to fetch the map, so the map server must be active first</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The particle filter’s <code class="docutils literal notranslate"><span class="pre">get_omap()</span></code> method waits in a loop for the map service to become available (<code class="docutils literal notranslate"><span class="pre">wait_for_service</span></code>), so even if the map server takes a moment to activate, the particle filter will wait patiently.</p>
+</div>
+</div>
+<div class="section" id="the-complete-flow">
+<h2>The Complete Flow<a class="headerlink" href="#the-complete-flow" title="Permalink to this headline">¶</a></h2>
+<p>When you run <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">particle_filter</span> <span class="pre">localize_launch.py</span></code>:</p>
+<ol class="arabic simple">
+<li><p>Launch reads <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code> to get the map name and config path</p></li>
+<li><p>Lifecycle manager starts and waits for the map server</p></li>
+<li><p>Map server starts, lifecycle manager transitions it to active, map is published on <code class="docutils literal notranslate"><span class="pre">/map</span></code></p></li>
+<li><p>Particle filter starts, calls <code class="docutils literal notranslate"><span class="pre">/map_server/map</span></code> to fetch the occupancy grid</p></li>
+<li><p>Particle filter loads the map into RangeLibc for GPU ray casting</p></li>
+<li><p>Particle filter waits for LiDAR (<code class="docutils literal notranslate"><span class="pre">/scan</span></code>) and odometry (<code class="docutils literal notranslate"><span class="pre">/vesc/odom</span></code>) messages</p></li>
+<li><p>You set the initial pose via RViz2’s 2D Pose Estimate</p></li>
+<li><p>The filter begins localizing — publishing pose on <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> and TF on <code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../pure_pursuit/index.html" class="btn btn-neutral float-right" title="Tutorial 8 - Pure Pursuit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="particle_filter_config.html" class="btn btn-neutral float-left" title="Tuning the Particle Filter (localize.yaml)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

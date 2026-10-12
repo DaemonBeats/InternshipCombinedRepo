@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Speed Adjustment Using PID Control for TTC &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial 3 - Wall Following" href="../../ModuleB/wall_following/index.html" />
+    <link rel="prev" title="Quality of Service (QoS) in ROS 2" href="qos.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 2 - Automatic Emergency Braking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">AEB Theory of Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html">LaserScan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html">AEB Scan Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html">AEB Drive Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Speed Adjustment Using PID Control for TTC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-use-pid-control-for-speed-adjustment">1️⃣ Why Use PID Control for Speed Adjustment?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-control-formula-for-speed-adjustment">2️⃣ PID Control Formula for Speed Adjustment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-the-derivative-term-helps">3️⃣ How the Derivative Term Helps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-pid-based-speed-control">4️⃣ Example: PID-Based Speed Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#considerations-tuning">5️⃣ Considerations &amp; Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">6️⃣ Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 2 - Automatic Emergency Braking</a> &raquo;</li>
+        
+      <li>Speed Adjustment Using PID Control for TTC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/PID.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="speed-adjustment-using-pid-control-for-ttc">
+<span id="doc-tutorials-aeb-pid"></span><h1>Speed Adjustment Using PID Control for TTC<a class="headerlink" href="#speed-adjustment-using-pid-control-for-ttc" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In <strong>autonomous driving and Advanced Driver Assistance Systems (ADAS)</strong>, <strong>Time-to-Collision (TTC)</strong> is used to adjust vehicle speed dynamically. Instead of braking abruptly when TTC drops below a threshold, a <strong>Proportional-Integral-Derivative (PID) controller</strong> can <strong>smoothly adjust speed</strong> based on how TTC changes over time.</p>
+<p>This approach provides <strong>gradual deceleration and acceleration</strong>, improving both safety and driving comfort.</p>
+</div>
+<div class="section" id="why-use-pid-control-for-speed-adjustment">
+<h2>1️⃣ Why Use PID Control for Speed Adjustment?<a class="headerlink" href="#why-use-pid-control-for-speed-adjustment" title="Permalink to this headline">¶</a></h2>
+<p>A fixed TTC threshold (e.g., reducing speed when <strong>TTC &lt; 1.0s</strong>) may cause:</p>
+<ul class="simple">
+<li><p><strong>Harsh speed reductions</strong>, leading to inefficient driving.</p></li>
+<li><p><strong>Oscillations</strong>, where speed fluctuates between slowing down and speeding up.</p></li>
+<li><p><strong>Overcorrections</strong>, making the vehicle feel unstable.</p></li>
+</ul>
+<p>A <strong>PID controller</strong> allows:</p>
+<p>✅ <strong>Gradual speed adjustments</strong> based on TTC deviation.</p>
+<p>✅ <strong>Predictive control</strong>, slowing down in advance if TTC is decreasing rapidly.</p>
+<p>✅ <strong>Smoother driving</strong>, eliminating unnecessary fluctuations in speed.</p>
+</div>
+<div class="section" id="pid-control-formula-for-speed-adjustment">
+<h2>2️⃣ PID Control Formula for Speed Adjustment<a class="headerlink" href="#pid-control-formula-for-speed-adjustment" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>error</strong> is defined as the difference between desired and actual TTC:</p>
+<div class="math notranslate nohighlight">
+\[e(t) = TTC_{\text{desired}} - TTC_{\text{actual}}\]</div>
+<p>The <strong>speed adjustment</strong> output is calculated using:</p>
+<div class="math notranslate nohighlight">
+\[V_{\text{adjustment}} = K_p e(t) + K_i \int e(t) dt + K_d \frac{de(t)}{dt}\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V_{\text{adjustment}}\)</span> = Speed adjustment (positive = accelerate, negative = decelerate).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_p\)</span> = Proportional gain (reacts to the TTC error).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_i\)</span> = Integral gain (corrects long-term speed errors).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_d\)</span> = Derivative gain (predicts sudden changes in TTC).</p></li>
+<li><p><span class="math notranslate nohighlight">\(e(t)\)</span> = TTC error.</p></li>
+</ul>
+</div>
+<div class="section" id="how-the-derivative-term-helps">
+<h2>3️⃣ How the Derivative Term Helps<a class="headerlink" href="#how-the-derivative-term-helps" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>derivative term</strong> predicts future risks by monitoring the <strong>rate of change of TTC</strong>.</p>
+<p><strong>If TTC is dropping rapidly</strong> → Reduce speed <strong>aggressively</strong> to prevent a collision.</p>
+<p><strong>If TTC is stable</strong> → Hold current speed <strong>(avoid unnecessary slowing)</strong>.</p>
+<p><strong>If TTC is increasing</strong> → Smoothly <strong>increase speed</strong> to improve efficiency.</p>
+<p>Example:</p>
+<ul class="simple">
+<li><p><strong>Obstacle detected at a distance</strong> → <strong>Slowly reduce speed</strong> (TTC decreases gradually).</p></li>
+<li><p><strong>Sudden obstacle appears</strong> → <strong>Rapid speed reduction</strong> (TTC drops sharply).</p></li>
+<li><p><strong>Obstacle moves away</strong> → <strong>Smooth acceleration</strong> to return to normal speed.</p></li>
+</ul>
+</div>
+<div class="section" id="example-pid-based-speed-control">
+<h2>4️⃣ Example: PID-Based Speed Control<a class="headerlink" href="#example-pid-based-speed-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scenario-adjusting-speed-based-on-ttc">
+<h3>Scenario: Adjusting Speed Based on TTC<a class="headerlink" href="#scenario-adjusting-speed-based-on-ttc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Desired TTC</strong> = <strong>2.0s</strong></p></li>
+<li><p><strong>Actual TTC</strong> = <strong>1.0s</strong></p></li>
+<li><p><strong>Proportional Gain</strong> = <span class="math notranslate nohighlight">\(K_p\)</span> = 0.5</p></li>
+<li><p><strong>Integral Gain</strong> = <span class="math notranslate nohighlight">\(K_i\)</span> = 0.1</p></li>
+<li><p><strong>Derivative Gain</strong> = <span class="math notranslate nohighlight">\(K_d\)</span> = 0.4</p></li>
+<li><p><strong>TTC is dropping at</strong> 0.3s per second</p></li>
+</ul>
+<p><strong>Step 1: Compute the Error</strong></p>
+<div class="math notranslate nohighlight">
+\[e(t) = 2.0 - 1.0 = 1.0\]</div>
+<p><strong>Step 2: Compute Speed Adjustment</strong></p>
+<div class="math notranslate nohighlight">
+\[V_{\text{adjustment}} = (0.5 \times 1.0) + (0.1 \times \int 1.0 dt) + (0.4 \times 0.3)\]</div>
+<p>If the accumulated <strong>integral error</strong> over time is <strong>2.0</strong>, then:</p>
+<div class="math notranslate nohighlight">
+\[V_{\text{adjustment}} = (0.5 \times 1.0) + (0.1 \times 2.0) + (0.4 \times 0.3)\]</div>
+<p>Thus, the vehicle will <strong>reduce speed smoothly by 0.82 m/s</strong>, instead of braking immediately.</p>
+</div>
+</div>
+<div class="section" id="considerations-tuning">
+<h2>5️⃣ Considerations &amp; Tuning<a class="headerlink" href="#considerations-tuning" title="Permalink to this headline">¶</a></h2>
+<p>🛠 <strong>Tuning Kd Carefully</strong></p>
+<ul class="simple">
+<li><p><strong>Kd too high</strong> → Reacts too aggressively to minor TTC changes (unstable speed control).</p></li>
+<li><p><strong>Kd too low</strong> → Delayed reaction to sudden changes (slower response).</p></li>
+</ul>
+<p>🚗 <strong>Tuning Strategy</strong></p>
+<ol class="arabic simple">
+<li><p>Start with <strong>P-control only</strong> to see basic responsiveness.</p></li>
+<li><p>Add <strong>I-control</strong> to <strong>correct steady-state speed errors</strong>.</p></li>
+<li><p>Introduce <strong>D-control</strong> to <strong>anticipate sudden obstacles and prevent overcorrections</strong>.</p></li>
+</ol>
+</div>
+<div class="section" id="summary">
+<h2>6️⃣ Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>✅ <strong>PID-based TTC speed control prevents abrupt slowdowns</strong>.</p>
+<p>✅ <strong>The derivative term predicts risk before it happens</strong>.</p>
+<p>✅ <strong>Results in smoother, more efficient speed adjustments</strong>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../ModuleB/wall_following/index.html" class="btn btn-neutral float-right" title="Tutorial 3 - Wall Following" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="qos.html" class="btn btn-neutral float-left" title="Quality of Service (QoS) in ROS 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

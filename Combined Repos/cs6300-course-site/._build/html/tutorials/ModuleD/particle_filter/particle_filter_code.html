@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Understanding the Particle Filter Code &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tuning the Particle Filter (localize.yaml)" href="particle_filter_config.html" />
+    <link rel="prev" title="Particle Filter Localization" href="particle_filter.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 7 - Particle Filter Localization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="particle_filter.html">Particle Filter Localization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Understanding the Particle Filter Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-big-picture">The Big Picture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motion-model">Motion Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-model">Sensor Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-mcl-loop">The MCL Loop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-trigger">Update Trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tf-and-odometry-output">TF and Odometry Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map-and-rangelibc">Map and RangeLibc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lidar-downsampling">LiDAR Downsampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-takeaways">Key Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_config.html">Tuning the Particle Filter (localize.yaml)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_launch.html">Understanding the Launch File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 7 - Particle Filter Localization</a> &raquo;</li>
+        
+      <li>Understanding the Particle Filter Code</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleD/particle_filter/particle_filter_code.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="understanding-the-particle-filter-code">
+<span id="doc-tutorials-particle-filter-code"></span><h1>Understanding the Particle Filter Code<a class="headerlink" href="#understanding-the-particle-filter-code" title="Permalink to this headline">¶</a></h1>
+<p>This page walks through the key sections of <code class="docutils literal notranslate"><span class="pre">particle_filter.py</span></code> — the standalone Monte Carlo Localization node used on the F1TENTH RoboRacer. The goal is to understand <em>what</em> each piece does and <em>why</em>, so you can reason about the filter’s behavior when tuning or debugging.</p>
+<div class="section" id="the-big-picture">
+<h2>The Big Picture<a class="headerlink" href="#the-big-picture" title="Permalink to this headline">¶</a></h2>
+<p>The particle filter answers one question: <strong>“Where am I on this map?”</strong> It does this by maintaining thousands of guesses (particles) about the car’s pose and refining them every time new sensor data arrives.</p>
+<p>Each update cycle follows four steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Resample</strong> — duplicate good particles, discard bad ones</p></li>
+<li><p><strong>Predict</strong> — move every particle according to odometry (with noise)</p></li>
+<li><p><strong>Weight</strong> — score each particle by comparing its simulated LiDAR to the real scan</p></li>
+<li><p><strong>Normalize</strong> — divide weights by their sum so they form a proper probability distribution</p></li>
+</ol>
+<p>After each cycle, the filter computes the weighted average of all particles and publishes the best estimated pose.</p>
+<p>This is the <code class="docutils literal notranslate"><span class="pre">MCL()</span></code> method at the heart of the node.</p>
+<p>The diagram below shows how the code is organized — what runs once at startup versus what runs every cycle, and how the methods connect to each other:</p>
+<a class="reference internal image-reference" href="../../../_images/code_architecture.svg"><img alt="Code architecture showing startup vs runtime methods and their connections" class="align-center" src="../../../_images/code_architecture.svg" width="100%" /></a>
+<p>The next diagram expands on the simplified cycle from the previous page, showing the full data flow including inputs, outputs, and where RangeLibc fits in.</p>
+<a class="reference internal image-reference" href="../../../_images/mcl_overview.svg"><img alt="Monte Carlo Localization overview diagram showing inputs, the 4-step MCL cycle, and outputs" class="align-center" src="../../../_images/mcl_overview.svg" width="100%" /></a>
+<div class="section" id="outputs">
+<h3>Outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h3>
+<p>The particle filter publishes four outputs. The first two are <strong>data outputs</strong> used by other nodes (pure pursuit, waypoint logger). The last two are <strong>visualization outputs</strong> for RViz2.</p>
+<dl class="simple">
+<dt><strong>Localized Pose</strong> — <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> (Odometry)</dt><dd><p>The filter’s best estimate of where the car is on the map.
+This is what your pure pursuit node or waypoint logger subscribes to.
+Includes position (x, y), heading, speed, and a covariance matrix
+indicating confidence.</p>
+</dd>
+<dt><strong>TF Transform</strong> — <code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code> (TF)</dt><dd><p>Tells ROS the car’s position on the map by publishing a transform
+directly from <code class="docutils literal notranslate"><span class="pre">map</span></code> to <code class="docutils literal notranslate"><span class="pre">laser</span></code>. This is a shortcut — a standard
+ROS TF tree would go <code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">odom</span></code> → <code class="docutils literal notranslate"><span class="pre">base_link</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code>,
+but this particle filter skips the intermediate frames and connects
+<code class="docutils literal notranslate"><span class="pre">map</span></code> to <code class="docutils literal notranslate"><span class="pre">laser</span></code> directly. This works because the particle filter
+already accounts for the full pose. Without this transform, the map
+and LiDAR scans would not align in RViz2.</p>
+</dd>
+<dt><strong>Particle Cloud</strong> — <code class="docutils literal notranslate"><span class="pre">/pf/viz/particles</span></code> (PoseArray)</dt><dd><p>The current set of particle hypotheses, displayed as arrows in RViz2.
+A tight cluster means the filter is confident. A spread-out cloud means
+it is still searching. Useful for diagnosing localization issues.</p>
+</dd>
+<dt><strong>Best Pose</strong> — <code class="docutils literal notranslate"><span class="pre">/pf/viz/inferred_pose</span></code> (PoseStamped)</dt><dd><p>A single arrow in RViz2 showing the weighted average pose. This is the
+same value published on <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> but as a simpler message type
+for easy visualization.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">particles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each particle is a 3-element array: <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">theta]</span></code>. Weights start equal — every particle is equally likely. <code class="docutils literal notranslate"><span class="pre">MAX_PARTICLES</span></code> (default 4000) controls the tradeoff between accuracy and CPU cost.</p>
+<p>When you click <strong>2D Pose Estimate</strong> in RViz2, <code class="docutils literal notranslate"><span class="pre">initialize_particles_pose()</span></code> is called:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">Utils</span><span class="o">.</span><span class="n">quaternion_to_angle</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This scatters particles in a Gaussian cloud around where you clicked. The <code class="docutils literal notranslate"><span class="pre">scale</span></code> values (0.5 m for position, 0.4 rad for heading) control how spread out the initial guess is.</p>
+</div>
+<div class="section" id="motion-model">
+<h2>Motion Model<a class="headerlink" href="#motion-model" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">motion_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">proposal_dist</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+    <span class="n">cosines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">proposal_dist</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">sines</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">proposal_dist</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">local_deltas</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">cosines</span><span class="o">*</span><span class="n">action</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">sines</span><span class="o">*</span><span class="n">action</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">local_deltas</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sines</span><span class="o">*</span><span class="n">action</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">cosines</span><span class="o">*</span><span class="n">action</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">local_deltas</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">action</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="n">proposal_dist</span><span class="p">[:,:]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_deltas</span>
+    <span class="n">proposal_dist</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MOTION_DISPERSION_X</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+    <span class="n">proposal_dist</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MOTION_DISPERSION_Y</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+    <span class="n">proposal_dist</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MOTION_DISPERSION_THETA</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>What it does:</strong> Takes the odometry delta (how much the car moved since the last update) and applies it to every particle. The rotation into each particle’s frame is critical — <code class="docutils literal notranslate"><span class="pre">action</span></code> is in the car’s local frame, but each particle has a different heading.</p>
+<p><strong>Why the noise?</strong> Odometry is never perfect — wheels slip, encoders have error. Adding Gaussian noise spreads the particles slightly so they explore nearby poses. <code class="docutils literal notranslate"><span class="pre">MOTION_DISPERSION_THETA</span></code> is the most important tuning knob here — if the filter diverges at speed, increase it.</p>
+<p><strong>Why vectorized?</strong> This operates on all 4000 particles at once using NumPy. Doing it in a Python <code class="docutils literal notranslate"><span class="pre">for</span></code> loop would be ~1000x slower.</p>
+</div>
+<div class="section" id="sensor-model">
+<h2>Sensor Model<a class="headerlink" href="#sensor-model" title="Permalink to this headline">¶</a></h2>
+<p>The sensor model answers: <em>“How well does this particle’s position explain the actual LiDAR scan?”</em></p>
+<div class="section" id="precomputed-lookup-table">
+<h3>Precomputed Lookup Table<a class="headerlink" href="#precomputed-lookup-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">precompute_sensor_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">table_width</span><span class="p">):</span>      <span class="c1"># d = expected (computed) range</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">table_width</span><span class="p">):</span>  <span class="c1"># r = observed (measured) range</span>
+            <span class="n">prob</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span>
+
+            <span class="c1"># Gaussian: measurement matches expected range</span>
+            <span class="n">prob</span> <span class="o">+=</span> <span class="n">z_hit</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">z</span><span class="o">*</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">sigma_hit</span><span class="o">*</span><span class="n">sigma_hit</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma_hit</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span>
+
+            <span class="c1"># Short reading (obstacle between car and wall)</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="n">d</span><span class="p">:</span>
+                <span class="n">prob</span> <span class="o">+=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">z_short</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">-</span> <span class="n">r</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+            <span class="c1"># Max range (LiDAR returned max — no return)</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_RANGE_PX</span><span class="p">):</span>
+                <span class="n">prob</span> <span class="o">+=</span> <span class="n">z_max</span>
+
+            <span class="c1"># Random measurement (noise)</span>
+            <span class="k">if</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_RANGE_PX</span><span class="p">):</span>
+                <span class="n">prob</span> <span class="o">+=</span> <span class="n">z_rand</span> <span class="o">*</span> <span class="mf">1.0</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_RANGE_PX</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This builds a table <em>before</em> the filter starts running. For every possible (expected range, observed range) pair, it precomputes the probability. This avoids expensive math during the real-time loop.</p>
+<p>The four probability components model real LiDAR behavior:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>What It Models</p></th>
+<th class="head"><p>Weight Parameter</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_hit</span></code></p></td>
+<td><p>Measurement matches expected range (Gaussian)</p></td>
+<td><p>How much to trust accurate readings</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z_short</span></code></p></td>
+<td><p>Something blocked the beam early (person, box)</p></td>
+<td><p>How much to expect short readings</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_max</span></code></p></td>
+<td><p>LiDAR returned max range (no return signal)</p></td>
+<td><p>How much to expect max-range readings</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z_rand</span></code></p></td>
+<td><p>Random noise / multipath reflections</p></td>
+<td><p>Background noise level</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="runtime-evaluation">
+<h3>Runtime Evaluation<a class="headerlink" href="#runtime-evaluation" title="Permalink to this headline">¶</a></h3>
+<p>At runtime, the sensor model uses <strong>RangeLibc</strong> to simulate what each particle <em>would</em> see, then compares that to what the LiDAR <em>actually</em> saw:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate LiDAR from each particle&#39;s position</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">range_method</span><span class="o">.</span><span class="n">calc_range_repeat_angles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">queries</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsampled_angles</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+
+<span class="c1"># Score: how well does simulated scan match real scan?</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">range_method</span><span class="o">.</span><span class="n">eval_sensor_model</span><span class="p">(</span><span class="n">obs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ranges</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="n">num_rays</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">)</span>
+
+<span class="c1"># Squash factor — prevents any single particle from dominating</span>
+<span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">INV_SQUASH_FACTOR</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <strong>squash factor</strong> is important: without it, one particle could get a weight millions of times larger than others, causing the filter to collapse onto a single hypothesis. The squash factor (raising weights to a power &lt; 1) flattens the distribution to keep diversity.</p>
+</div>
+</div>
+<div class="section" id="the-mcl-loop">
+<h2>The MCL Loop<a class="headerlink" href="#the-mcl-loop" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MCL</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+    <span class="c1"># 1. Resample: draw particles proportional to their weights</span>
+    <span class="n">proposal_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">particle_indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_PARTICLES</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">proposal_distribution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">[</span><span class="n">proposal_indices</span><span class="p">,:]</span>
+
+    <span class="c1"># 2. Predict: apply motion model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">motion_model</span><span class="p">(</span><span class="n">proposal_distribution</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+    <span class="c1"># 3. Weight: apply sensor model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">sensor_model</span><span class="p">(</span><span class="n">proposal_distribution</span><span class="p">,</span> <span class="n">o</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="c1"># 4. Normalize: weights must sum to 1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">particles</span> <span class="o">=</span> <span class="n">proposal_distribution</span>
+</pre></div>
+</div>
+<p>This is the complete algorithm in four lines of real work:</p>
+<ol class="arabic simple">
+<li><p><strong>Resample</strong> — <code class="docutils literal notranslate"><span class="pre">np.random.choice</span></code> with <code class="docutils literal notranslate"><span class="pre">p=self.weights</span></code> picks particles proportional to their weight. Good particles get duplicated; bad ones disappear.</p></li>
+<li><p><strong>Predict</strong> — the motion model moves each particle and adds noise.</p></li>
+<li><p><strong>Weight</strong> — the sensor model scores each particle against the real LiDAR scan.</p></li>
+<li><p><strong>Normalize</strong> — divide all weights by their sum so they form a proper probability distribution.</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">expected_pose()</span></code> method then computes the weighted average:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">expected_pose</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is a dot product — each particle’s (x, y, theta) multiplied by its weight and summed. The result is the best single pose estimate.</p>
+</div>
+<div class="section" id="update-trigger">
+<h2>Update Trigger<a class="headerlink" href="#update-trigger" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">odomCB</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="c1"># ... compute local delta from odometry ...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The filter runs on every <strong>odometry</strong> message (not every LiDAR message). Odometry arrives slower than LiDAR, and each update needs both odometry and LiDAR data. The <code class="docutils literal notranslate"><span class="pre">update()</span></code> method checks that all three data sources are initialized before running MCL:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">lidar_initialized</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">odom_initialized</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_initialized</span><span class="p">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tf-and-odometry-output">
+<h2>TF and Odometry Output<a class="headerlink" href="#tf-and-odometry-output" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">publish_tf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pose</span><span class="p">,</span> <span class="n">stamp</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">TransformStamped</span><span class="p">()</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;/map&#39;</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">child_frame_id</span> <span class="o">=</span> <span class="s1">&#39;/laser&#39;</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">pose</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">t</span><span class="o">.</span><span class="n">transform</span><span class="o">.</span><span class="n">translation</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The particle filter publishes a TF transform directly from <code class="docutils literal notranslate"><span class="pre">map</span></code> to <code class="docutils literal notranslate"><span class="pre">laser</span></code>, skipping the usual <code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">odom</span></code> → <code class="docutils literal notranslate"><span class="pre">base_link</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code> chain. This works because the particle filter computes the car’s full pose on the map — there is no need for the intermediate frames. It also publishes the pose as an <code class="docutils literal notranslate"><span class="pre">Odometry</span></code> message on <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> — this is what your pure pursuit node subscribes to.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nav2’s AMCL takes the standard approach and publishes <code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">odom</span></code>, relying on the existing <code class="docutils literal notranslate"><span class="pre">odom</span></code> → <code class="docutils literal notranslate"><span class="pre">base_link</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code> chain from the robot’s odometry. This is one reason you cannot run both AMCL and the standalone particle filter at the same time — they both try to define the <code class="docutils literal notranslate"><span class="pre">map</span></code> frame, causing a TF conflict.</p>
+</div>
+<p>The odometry message includes the <strong>covariance</strong> computed from the particle distribution:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cov_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">particles</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">aweights</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">odom</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">covariance</span><span class="p">[:</span><span class="n">cov_mat</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cov_mat</span>
+</pre></div>
+</div>
+<p>This tells downstream nodes how confident the filter is. A tight particle cloud = low covariance = high confidence.</p>
+</div>
+<div class="section" id="map-and-rangelibc">
+<h2>Map and RangeLibc<a class="headerlink" href="#map-and-rangelibc" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_omap</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Fetch map from map_server</span>
+    <span class="n">oMap</span> <span class="o">=</span> <span class="n">range_libc</span><span class="o">.</span><span class="n">PyOMap</span><span class="p">(</span><span class="n">map_msg</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">MAX_RANGE_PX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MAX_RANGE_METERS</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">map_info</span><span class="o">.</span><span class="n">resolution</span><span class="p">)</span>
+
+    <span class="c1"># Initialize ray casting engine</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">WHICH_RM</span> <span class="o">==</span> <span class="s1">&#39;rmgpu&#39;</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">range_method</span> <span class="o">=</span> <span class="n">range_libc</span><span class="o">.</span><span class="n">PyRayMarchingGPU</span><span class="p">(</span><span class="n">oMap</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAX_RANGE_PX</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The map is fetched from <code class="docutils literal notranslate"><span class="pre">map_server</span></code> via a service call, then loaded into RangeLibc. RangeLibc is a compiled C++/CUDA library that performs fast ray casting — simulating thousands of LiDAR scans per update cycle. On the Jetson Orin with <code class="docutils literal notranslate"><span class="pre">rmgpu</span></code>, this runs on the GPU for maximum speed.</p>
+</div>
+<div class="section" id="lidar-downsampling">
+<h2>LiDAR Downsampling<a class="headerlink" href="#lidar-downsampling" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">downsampled_angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">laser_angles</span><span class="p">[</span><span class="mi">0</span><span class="p">::</span><span class="bp">self</span><span class="o">.</span><span class="n">ANGLE_STEP</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">ANGLE_STEP</span></code> parameter (default 18) takes every 18th LiDAR ray instead of all ~1080. This dramatically reduces computation while retaining enough angular coverage for accurate localization. Increasing <code class="docutils literal notranslate"><span class="pre">ANGLE_STEP</span></code> makes the filter faster but less precise.</p>
+</div>
+<div class="section" id="key-takeaways">
+<h2>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The particle filter is <strong>embarrassingly parallel</strong> — every particle is independent, which is why NumPy vectorization and GPU ray casting provide massive speedups.</p></li>
+<li><p>The <strong>motion model adds noise</strong> on purpose — this is how the filter explores the space and recovers from errors.</p></li>
+<li><p>The <strong>sensor model is precomputed</strong> as a lookup table — runtime evaluation is just table indexing, not probability math.</p></li>
+<li><p>The <strong>squash factor</strong> prevents particle collapse — without it, the filter would quickly converge to a single point and lose the ability to self-correct.</p></li>
+<li><p>The filter publishes <code class="docutils literal notranslate"><span class="pre">map</span></code> to <code class="docutils literal notranslate"><span class="pre">laser</span></code> TF and <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> — these are what your nodes use for localization.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="particle_filter_config.html" class="btn btn-neutral float-right" title="Tuning the Particle Filter (localize.yaml)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="particle_filter.html" class="btn btn-neutral float-left" title="Particle Filter Localization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AEB Scan Example &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AEB Drive Example" href="drive.html" />
+    <link rel="prev" title="AEB Package Creation" href="aeb_package.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 2 - Automatic Emergency Braking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">AEB Theory of Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html">LaserScan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AEB Scan Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-safety-node-py-identifies-front-readings-from-lidar">🚀 How safety_node.py Identifies Front Readings from LiDAR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html">AEB Drive Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 2 - Automatic Emergency Braking</a> &raquo;</li>
+        
+      <li>AEB Scan Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/scan_example.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aeb-scan-example">
+<span id="doc-tutorials-aeb-scan-example"></span><h1>AEB Scan Example<a class="headerlink" href="#aeb-scan-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-safety-node-py-identifies-front-readings-from-lidar">
+<h2>🚀 How safety_node.py Identifies Front Readings from LiDAR<a class="headerlink" href="#how-safety-node-py-identifies-front-readings-from-lidar" title="Permalink to this headline">¶</a></h2>
+<p>The safety node uses LiDAR data to detect obstacles and stop the car if necessary. However, if an obstacle is on the side (e.g., a wall), we don’t want the car to stop unnecessarily.</p>
+<div class="section" id="problem-before-fix">
+<h3>🔹 Problem Before Fix<a class="headerlink" href="#problem-before-fix" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The car stopped for any obstacle, even if it was on the side</p></li>
+<li><p>Example: A wall on the right triggered braking, even though the front was clear</p></li>
+</ul>
+</div>
+<div class="section" id="fix-filter-only-front-readings">
+<h3>✅ Fix: Filter Only Front Readings<a class="headerlink" href="#fix-filter-only-front-readings" title="Permalink to this headline">¶</a></h3>
+<p>To ensure only front-facing obstacles are considered, we modify the <code class="docutils literal notranslate"><span class="pre">scan_callback()</span></code> function.</p>
+</div>
+<div class="section" id="understanding-lidar-data">
+<h3>1️⃣ Understanding LiDAR Data<a class="headerlink" href="#understanding-lidar-data" title="Permalink to this headline">¶</a></h3>
+<p>The LiDAR sensor provides:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> → A list of distances measured at different angles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_min</span></code> → The starting angle of the scan (e.g., -135°)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_max</span></code> → The ending angle of the scan (e.g., +135°)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_increment</span></code> → The angle gap between two measurements</p></li>
+</ul>
+<p><strong>Example Angle Mapping:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>(-135°)    (-90°)    (0° Front)    (+90°)    (+135°)
+   |----------|----------|----------|----------|
+Left Side  Left Front  Forward  Right Front  Right Side
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The center of the car is at <strong>0°</strong></p></li>
+<li><p>The leftmost reading is at <code class="docutils literal notranslate"><span class="pre">angle_min</span></code> (e.g., -135°)</p></li>
+<li><p>The rightmost reading is at <code class="docutils literal notranslate"><span class="pre">angle_max</span></code> (e.g., +135°)</p></li>
+<li><p>Angles near <strong>0°</strong> correspond to objects directly in front of the car</p></li>
+</ul>
+</div>
+<div class="section" id="extracting-front-readings">
+<h3>2️⃣ Extracting Front Readings<a class="headerlink" href="#extracting-front-readings" title="Permalink to this headline">¶</a></h3>
+<p>The following Python code ensures we only analyze front obstacles (±20° from center):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ✅ Compute angles for each LiDAR measurement</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">scan_msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">scan_msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">scan_msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
+
+<span class="c1"># ✅ Define the front-facing region (e.g., ±20° from center)</span>
+<span class="n">front_angle_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># Convert 20° to radians</span>
+
+<span class="c1"># ✅ Identify indices where angles are within the front range</span>
+<span class="n">front_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">front_angle_range</span><span class="p">)</span>
+
+<span class="c1"># ✅ Extract front readings based on selected indices</span>
+<span class="n">front_ranges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scan_msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">)[</span><span class="n">front_indices</span><span class="p">]</span>
+<span class="n">front_angles</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">front_indices</span><span class="p">]</span>
+<span class="n">front_cos_angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">front_angles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="explanation-of-code">
+<h3>📌 Explanation of Code<a class="headerlink" href="#explanation-of-code" title="Permalink to this headline">¶</a></h3>
+<p><strong>1️⃣ Compute Angles for Each Measurement</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ranges</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This generates an array of angles corresponding to each LiDAR distance.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>angles = [-135°, -120°, -105°, ..., 0°, ..., +105°, +120°, +135°]
+</pre></div>
+</div>
+<p><strong>2️⃣ Select Only the Front Angles (±20°)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>np.deg2rad(20) → Converts 20 degrees to radians (0.349 rad)
+np.abs(angles) &lt; front_angle_range → Finds all angles between -20° and +20°
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Front Angles: [-15°, -10°, -5°, 0°, +5°, +10°, +15°]
+</pre></div>
+</div>
+<p><strong>3️⃣ Extract Corresponding LiDAR Readings</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">front_ranges</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="n">front_indices</span><span class="p">]</span>  <span class="c1"># Keeps only distances in the front zone</span>
+<span class="n">front_angles</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">front_indices</span><span class="p">]</span>  <span class="c1"># Keeps only angles in the front zone</span>
+</pre></div>
+</div>
+<p>Now we ignore obstacles on the sides! 🎯</p>
+</div>
+<div class="section" id="why-this-fix-works">
+<h3>3️⃣ Why This Fix Works<a class="headerlink" href="#why-this-fix-works" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>🚗 Before Fix</p></th>
+<th class="head"><p>✅ After Fix</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Car stops for any obstacle</p></td>
+<td><p>Car stops only for obstacles in front</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wall on the right triggers braking</p></td>
+<td><p>Car ignores side walls</p></td>
+</tr>
+<tr class="row-even"><td><p>Driving next to a wall = false stops</p></td>
+<td><p>Car moves smoothly near side obstacles</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="summary">
+<h3>4️⃣ Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>What It Does</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1️⃣ Compute angles</p></td>
+<td><p>Maps each LiDAR reading to its corresponding angle</p></td>
+</tr>
+<tr class="row-odd"><td><p>2️⃣ Filter front angles</p></td>
+<td><p>Keeps only readings within -20° to +20°</p></td>
+</tr>
+<tr class="row-even"><td><p>3️⃣ Extract front distances</p></td>
+<td><p>Only analyzes obstacles directly in front</p></td>
+</tr>
+<tr class="row-odd"><td><p>4️⃣ Compute TTC</p></td>
+<td><p>Uses these front readings for safety decisions</p></td>
+</tr>
+<tr class="row-even"><td><p>5️⃣ Stop only if necessary</p></td>
+<td><p>The car won’t brake for side walls anymore</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="full-code-example">
+<h3>5️⃣ Full Code Example<a class="headerlink" href="#full-code-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># ✅ ROS 2 message headers</span>
+<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>
+<span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
+
+
+<span class="k">class</span> <span class="nc">SafetyNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A minimal ROS 2 node to **debug raw LiDAR scan data** and verify TTC calculations.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;safety_node&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Initialize vehicle speed</span>
+
+        <span class="c1"># ✅ Subscribers: Listening for speed &amp; LiDAR data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">LaserScan</span><span class="p">,</span> <span class="s2">&quot;/scan&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;✅ Raw LiDAR Debugging Node Started!&quot;</span><span class="p">)</span>
+
+
+    <span class="k">def</span> <span class="nf">scan_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scan_msg</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Processes LiDAR data and logs raw front-facing scan readings.&quot;&quot;&quot;</span>
+
+        <span class="c1"># ✅ Compute angles for each LiDAR measurement</span>
+        <span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">scan_msg</span><span class="o">.</span><span class="n">angle_min</span><span class="p">,</span> <span class="n">scan_msg</span><span class="o">.</span><span class="n">angle_max</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">scan_msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">))</span>
+
+        <span class="c1"># ✅ Define the front-facing region (e.g., ±20° from center)</span>
+        <span class="n">front_angle_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>  <span class="c1"># Convert 20° to radians</span>
+        <span class="n">front_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">angles</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">front_angle_range</span><span class="p">)</span>
+
+        <span class="c1"># ✅ Extract front readings</span>
+        <span class="n">front_ranges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">scan_msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">)[</span><span class="n">front_indices</span><span class="p">]</span>
+        <span class="n">front_angles</span> <span class="o">=</span> <span class="n">angles</span><span class="p">[</span><span class="n">front_indices</span><span class="p">]</span>
+
+        <span class="c1"># ✅ Print raw LiDAR scan data (first 10 values for readability)</span>
+        <span class="c1"># self.get_logger().info(f&quot;📡 Raw Front Scan Angles (deg): {np.rad2deg(front_angles[:10])}&quot;)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;📏 Raw Front Scan Ranges (m): </span><span class="si">{</span><span class="n">front_ranges</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># ✅ Check for invalid values</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">front_ranges</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">front_ranges</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;⚠️ No valid front LiDAR readings! (All inf values)&quot;</span><span class="p">)</span>
+
+        <span class="c1"># ✅ Find the **closest** detected object in the front region</span>
+        <span class="n">min_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">front_ranges</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">front_ranges</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🎯 Closest Object in Front: </span><span class="si">{</span><span class="n">min_range</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> meters&quot;</span><span class="p">)</span>
+
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">safety_node</span> <span class="o">=</span> <span class="n">SafetyNode</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">safety_node</span><span class="p">)</span>
+    <span class="n">safety_node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="drive.html" class="btn btn-neutral float-right" title="AEB Drive Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="aeb_package.html" class="btn btn-neutral float-left" title="AEB Package Creation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

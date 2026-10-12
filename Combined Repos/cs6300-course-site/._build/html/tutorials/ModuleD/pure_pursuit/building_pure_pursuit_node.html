@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building the Pure Pursuit Node &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Running Pure Pursuit" href="pure_pursuit_node.html" />
+    <link rel="prev" title="Recording Waypoints" href="waypoint_recording.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 8 - Pure Pursuit</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building_waypoint_logger.html">Building the Waypoint Logger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="waypoint_recording.html">Recording Waypoints</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building the Pure Pursuit Node</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-pure-pursuit-works">How Pure Pursuit Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-the-config-file">Step 1 — Create the Config File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-create-the-launch-file">Step 2 — Create the Launch File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-update-setup-py">Step 3 — Update setup.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-write-the-node">Step 4 — Write the Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-build-and-test">Step 5 — Build and Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-the-math">Understanding the Math</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-concepts-recap">Key Concepts Recap</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pure_pursuit_node.html">Running Pure Pursuit</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 8 - Pure Pursuit</a> &raquo;</li>
+        
+      <li>Building the Pure Pursuit Node</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleD/pure_pursuit/building_pure_pursuit_node.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-the-pure-pursuit-node">
+<span id="doc-tutorials-building-pure-pursuit-node"></span><h1>Building the Pure Pursuit Node<a class="headerlink" href="#building-the-pure-pursuit-node" title="Permalink to this headline">¶</a></h1>
+<p>With waypoints recorded, the next step is to build the node that reads them and drives the car autonomously. This tutorial walks through the Pure Pursuit algorithm and the ROS 2 infrastructure around it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial covers the concepts behind the code. For the graded assignment with deliverables, see <strong>Lab 6b - Pure Pursuit</strong> in the Weber Assignments.</p>
+</div>
+<div class="section" id="how-pure-pursuit-works">
+<h2>How Pure Pursuit Works<a class="headerlink" href="#how-pure-pursuit-works" title="Permalink to this headline">¶</a></h2>
+<p>Pure Pursuit is a geometric path tracking algorithm. The idea is simple: pick a point on the path some distance ahead of the car (the <strong>lookahead point</strong>), then steer along a circular arc to reach it.</p>
+<p>On each update cycle:</p>
+<ol class="arabic simple">
+<li><p>Read the car’s current pose from the particle filter</p></li>
+<li><p>Find the <strong>closest waypoint</strong> to the car</p></li>
+<li><p>Search forward along the path to find the first waypoint at least <code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code> away — this is the <strong>lookahead point</strong></p></li>
+<li><p>Transform the lookahead point into the car’s local frame</p></li>
+<li><p>Compute the steering angle using the Pure Pursuit formula</p></li>
+<li><p>Publish a drive command</p></li>
+</ol>
+<p>The <strong>lookahead distance</strong> is the key tuning parameter. A shorter lookahead tracks the path more tightly but can cause oscillation. A longer lookahead produces smoother driving but cuts corners.</p>
+</div>
+<div class="section" id="step-1-create-the-config-file">
+<h2>Step 1 — Create the Config File<a class="headerlink" href="#step-1-create-the-config-file" title="Permalink to this headline">¶</a></h2>
+<p>ROS 2 parameters let you change behavior without editing code. Create <code class="docutils literal notranslate"><span class="pre">~/f1tenth_ws/src/pure_pursuit/config/pure_pursuit.yaml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pure_pursuit_node</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">lookahead_distance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.5</span>
+    <span class="nt">speed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+    <span class="nt">waypoint_file</span><span class="p">:</span> <span class="s">&quot;waypoints.csv&quot;</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The top-level key <code class="docutils literal notranslate"><span class="pre">pure_pursuit_node:</span></code> must match the node name in <strong>three</strong> places:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">super().__init__('pure_pursuit_node')</span></code> in your Python class</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name='pure_pursuit_node'</span></code> in the launch file</p></li>
+<li><p>The YAML key shown above</p></li>
+</ol>
+<p>If any of these don’t match, ROS 2 silently ignores the parameters and uses defaults.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code></p></td>
+<td><p>How far ahead on the path to steer toward (meters). Start at 1.5 and tune from there.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">speed</span></code></p></td>
+<td><p>Forward drive speed in m/s. Start low (0.5) for safety.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">waypoint_file</span></code></p></td>
+<td><p>Name of the CSV file in the <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="step-2-create-the-launch-file">
+<h2>Step 2 — Create the Launch File<a class="headerlink" href="#step-2-create-the-launch-file" title="Permalink to this headline">¶</a></h2>
+<p>A launch file lets you start the node with its config in one command. Create <code class="docutils literal notranslate"><span class="pre">~/f1tenth_ws/src/pure_pursuit/launch/pure_pursuit_launch.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;pure_pursuit&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;config&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pure_pursuit.yaml&#39;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+        <span class="n">Node</span><span class="p">(</span>
+            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;pure_pursuit&#39;</span><span class="p">,</span>
+            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;pure_pursuit_node&#39;</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;pure_pursuit_node&#39;</span><span class="p">,</span>
+            <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">config</span><span class="p">],</span>
+            <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span>
+        <span class="p">)</span>
+    <span class="p">])</span>
+</pre></div>
+</div>
+<p>Key points:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_package_share_directory()</span></code> finds the installed config path (inside <code class="docutils literal notranslate"><span class="pre">install/</span></code>, not <code class="docutils literal notranslate"><span class="pre">src/</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameters=[config]</span></code> loads the YAML file as node parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output='screen'</span></code> sends log output to the terminal</p></li>
+</ul>
+</div>
+<div class="section" id="step-3-update-setup-py">
+<h2>Step 3 — Update setup.py<a class="headerlink" href="#step-3-update-setup-py" title="Permalink to this headline">¶</a></h2>
+<p>Tell the build system to install the config, launch, and map files. Add these to the <code class="docutils literal notranslate"><span class="pre">data_files</span></code> list in <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;config/*.yaml&#39;</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;launch&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;launch/*.py&#39;</span><span class="p">)),</span>
+<span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;maps&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;maps/*.csv&#39;</span><span class="p">)),</span>
+</pre></div>
+</div>
+<p>Also add the Pure Pursuit node entry point alongside the existing waypoint logger:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;waypoint_logger = pure_pursuit.waypoint_logger:main&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pure_pursuit_node = pure_pursuit.pure_pursuit_node:main&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-write-the-node">
+<h2>Step 4 — Write the Node<a class="headerlink" href="#step-4-write-the-node" title="Permalink to this headline">¶</a></h2>
+<p>Create <code class="docutils literal notranslate"><span class="pre">~/f1tenth_ws/src/pure_pursuit/pure_pursuit/pure_pursuit_node.py</span></code>. The node has several components:</p>
+<div class="section" id="loading-parameters">
+<h3>Loading Parameters<a class="headerlink" href="#loading-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Declare and read parameters from the config file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;lookahead_distance&#39;</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;speed&#39;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;waypoint_file&#39;</span><span class="p">,</span> <span class="s1">&#39;waypoints.csv&#39;</span><span class="p">)</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">lookahead</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;lookahead_distance&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;speed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="loading-waypoints-from-csv">
+<h3>Loading Waypoints from CSV<a class="headerlink" href="#loading-waypoints-from-csv" title="Permalink to this headline">¶</a></h3>
+<p>Read the waypoint file at startup and store the poses as a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">waypoints</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">waypoints</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+                          <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="nb">float</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">])))</span>
+</pre></div>
+</div>
+<p>Each row contains <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y,</span> <span class="pre">orientation_z,</span> <span class="pre">orientation_w)</span></code> — the same four values your waypoint logger recorded.</p>
+</div>
+<div class="section" id="subscriber-and-publisher">
+<h3>Subscriber and Publisher<a class="headerlink" href="#subscriber-and-publisher" title="Permalink to this headline">¶</a></h3>
+<p>The node subscribes to the particle filter for the car’s position and publishes drive commands:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDriveStamped</span>
+
+<span class="c1"># Subscriber: car&#39;s current pose</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">Odometry</span><span class="p">,</span> <span class="s1">&#39;/pf/pose/odom&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pose_callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Publisher: drive commands</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">drive_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="s1">&#39;/drive&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-pure-pursuit-algorithm">
+<h3>The Pure Pursuit Algorithm<a class="headerlink" href="#the-pure-pursuit-algorithm" title="Permalink to this headline">¶</a></h3>
+<p>Inside the callback, implement the algorithm in four stages:</p>
+<p><strong>1. Find the closest waypoint</strong></p>
+<p>Compute the Euclidean distance from the car to every waypoint and find the nearest one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># Car&#39;s current position</span>
+<span class="n">cx</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+<span class="n">cy</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+
+<span class="c1"># Find closest waypoint index</span>
+<span class="n">min_dist</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+<span class="n">closest_idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">wx</span><span class="p">,</span> <span class="n">wy</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">wx</span> <span class="o">-</span> <span class="n">cx</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">wy</span> <span class="o">-</span> <span class="n">cy</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">min_dist</span><span class="p">:</span>
+        <span class="n">min_dist</span> <span class="o">=</span> <span class="n">dist</span>
+        <span class="n">closest_idx</span> <span class="o">=</span> <span class="n">i</span>
+</pre></div>
+</div>
+<p><strong>2. Find the lookahead point</strong></p>
+<p>Starting from the closest waypoint, search forward along the path until you find a waypoint at least <code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code> away:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lookahead_point</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">closest_idx</span> <span class="o">+</span> <span class="n">i</span><span class="p">)</span> <span class="o">%</span> <span class="n">n</span>       <span class="c1"># wrap around the path</span>
+    <span class="n">wx</span><span class="p">,</span> <span class="n">wy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">waypoints</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">wx</span> <span class="o">-</span> <span class="n">cx</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">wy</span> <span class="o">-</span> <span class="n">cy</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lookahead</span><span class="p">:</span>
+        <span class="n">lookahead_point</span> <span class="o">=</span> <span class="p">(</span><span class="n">wx</span><span class="p">,</span> <span class="n">wy</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>The modulo <code class="docutils literal notranslate"><span class="pre">%</span> <span class="pre">n</span></code> wraps the search back to the beginning of the waypoint list, allowing the car to drive continuous laps.</p>
+<p><strong>3. Transform to the car’s local frame</strong></p>
+<p>The car needs to know if the lookahead point is to its <strong>left</strong> or <strong>right</strong>. Transform from the map frame to the car’s frame:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get car&#39;s heading from quaternion</span>
+<span class="n">qz</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span>
+<span class="n">qw</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span>
+<span class="n">heading</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">qz</span><span class="p">,</span> <span class="n">qw</span><span class="p">)</span>
+
+<span class="c1"># Translate</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">lookahead_point</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">cx</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">lookahead_point</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">cy</span>
+
+<span class="c1"># Rotate into car&#39;s local frame</span>
+<span class="n">local_x</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">heading</span><span class="p">)</span> <span class="o">-</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">heading</span><span class="p">)</span>
+<span class="n">local_y</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="n">heading</span><span class="p">)</span> <span class="o">+</span> <span class="n">dy</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="n">heading</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>After this transform:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">local_x</span></code> is how far ahead the point is</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">local_y</span></code> is the lateral offset (positive = left, negative = right)</p></li>
+</ul>
+<p><strong>4. Compute steering angle and publish</strong></p>
+<p>The Pure Pursuit formula computes the curvature of the arc that connects the car to the lookahead point:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>steering_angle = 2 * y / L^2
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">L</span></code> is the distance to the lookahead point and <code class="docutils literal notranslate"><span class="pre">y</span></code> is the lateral offset in the car’s frame:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">local_x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">local_y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">steering_angle</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">local_y</span> <span class="o">/</span> <span class="p">(</span><span class="n">L</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Publish the drive command</span>
+<span class="n">drive_msg</span> <span class="o">=</span> <span class="n">AckermannDriveStamped</span><span class="p">()</span>
+<span class="n">drive_msg</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">steering_angle</span> <span class="o">=</span> <span class="n">steering_angle</span>
+<span class="n">drive_msg</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">speed</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">drive_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">drive_msg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This formula comes from the geometry of a circular arc. When <code class="docutils literal notranslate"><span class="pre">local_y</span></code> is zero (the lookahead point is straight ahead), the steering angle is zero. When the point is to the left, the car steers left, and vice versa.</p>
+</div>
+</div>
+<div class="section" id="step-5-build-and-test">
+<h2>Step 5 — Build and Test<a class="headerlink" href="#step-5-build-and-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select pure_pursuit
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+<p>Verify the launch file works:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch pure_pursuit pure_pursuit_launch.py
+</pre></div>
+</div>
+<p>If the node starts without errors (it will wait for <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> messages), the build is correct. See <a class="reference internal" href="pure_pursuit_node.html#doc-tutorials-pure-pursuit-node"><span class="std std-ref">Running Pure Pursuit</span></a> for full instructions on running it with the particle filter on the robot.</p>
+</div>
+<div class="section" id="understanding-the-math">
+<h2>Understanding the Math<a class="headerlink" href="#understanding-the-math" title="Permalink to this headline">¶</a></h2>
+<p>The Pure Pursuit steering formula <code class="docutils literal notranslate"><span class="pre">2y</span> <span class="pre">/</span> <span class="pre">L^2</span></code> is derived from the geometry of a circular arc connecting the car’s rear axle to the lookahead point.</p>
+<p>Given a circle of radius <code class="docutils literal notranslate"><span class="pre">R</span></code> passing through the origin (car) and the lookahead point at distance <code class="docutils literal notranslate"><span class="pre">L</span></code> with lateral offset <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>curvature = 1/R = 2y / L^2
+</pre></div>
+</div>
+<p>The steering angle is then proportional to this curvature. The Ackermann steering model converts curvature to a wheel angle, but for a simple implementation the curvature value works directly as the steering command.</p>
+<p><strong>Intuition:</strong></p>
+<ul class="simple">
+<li><p>Far lookahead (large <code class="docutils literal notranslate"><span class="pre">L</span></code>) + small <code class="docutils literal notranslate"><span class="pre">y</span></code> = gentle steering = smooth driving</p></li>
+<li><p>Close lookahead (small <code class="docutils literal notranslate"><span class="pre">L</span></code>) + large <code class="docutils literal notranslate"><span class="pre">y</span></code> = aggressive steering = tight tracking</p></li>
+</ul>
+<p>This is why <code class="docutils literal notranslate"><span class="pre">lookahead_distance</span></code> is the primary tuning knob.</p>
+</div>
+<div class="section" id="key-concepts-recap">
+<h2>Key Concepts Recap<a class="headerlink" href="#key-concepts-recap" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>What You Learned</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ROS 2 Parameters</p></td>
+<td><p>Declaring, loading from YAML, and using runtime parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>Launch Files</p></td>
+<td><p>Starting nodes with config files using <code class="docutils literal notranslate"><span class="pre">launch_ros</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">setup.py</span></code> data files</p></td>
+<td><p>Installing config, launch, and data files with the package</p></td>
+</tr>
+<tr class="row-odd"><td><p>Pure Pursuit Algorithm</p></td>
+<td><p>Closest waypoint search, lookahead point, coordinate transforms, steering formula</p></td>
+</tr>
+<tr class="row-even"><td><p>Coordinate Transforms</p></td>
+<td><p>Converting map-frame points to the car’s local frame using rotation</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code></p></td>
+<td><p>Publishing steering angle and speed commands to <code class="docutils literal notranslate"><span class="pre">/drive</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pure_pursuit_node.html" class="btn btn-neutral float-right" title="Running Pure Pursuit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="waypoint_recording.html" class="btn btn-neutral float-left" title="Recording Waypoints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

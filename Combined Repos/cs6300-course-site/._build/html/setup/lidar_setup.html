@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lidar Setup &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="RoboRacer Driver Stack" href="roboracer_stack.html" />
+    <link rel="prev" title="VESC setup" href="vesc_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lidar Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-network-connection">1️⃣ Create a New Network Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verify-the-connection">2️⃣ Verify the Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activate-the-connection">3️⃣ Activate the Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verify-the-network-configuration">4️⃣ Verify the Network Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-the-connection">5️⃣ Test the Connection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-an-alias-for-quick-lidar-ping">6️⃣ Create an Alias for Quick Lidar Ping</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Lidar Setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/setup/lidar_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lidar-setup">
+<span id="doc-lidar-setup"></span><h1>Lidar Setup<a class="headerlink" href="#lidar-setup" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#create-a-new-network-connection" id="id1">1️⃣ Create a New Network Connection</a></p></li>
+<li><p><a class="reference internal" href="#verify-the-connection" id="id2">2️⃣ Verify the Connection</a></p></li>
+<li><p><a class="reference internal" href="#activate-the-connection" id="id3">3️⃣ Activate the Connection</a></p></li>
+<li><p><a class="reference internal" href="#verify-the-network-configuration" id="id4">4️⃣ Verify the Network Configuration</a></p></li>
+<li><p><a class="reference internal" href="#test-the-connection" id="id5">5️⃣ Test the Connection</a></p></li>
+<li><p><a class="reference internal" href="#create-an-alias-for-quick-lidar-ping" id="id6">6️⃣ Create an Alias for Quick Lidar Ping</a></p></li>
+</ul>
+</div>
+<div class="section" id="create-a-new-network-connection">
+<h2><a class="toc-backref" href="#id1">1️⃣ Create a New Network Connection</a><a class="headerlink" href="#create-a-new-network-connection" title="Permalink to this headline">¶</a></h2>
+<p>Run the following command to create a connection named <code class="docutils literal notranslate"><span class="pre">Hokuyo</span></code> for the <code class="docutils literal notranslate"><span class="pre">enP8p1s0</span></code> interface:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo nmcli connection add <span class="nb">type</span> ethernet con-name Hokuyo ifname enP8p1s0 ipv4.addresses <span class="m">192</span>.168.0.15/24 ipv4.gateway <span class="m">192</span>.168.0.10 ipv4.method manual
+</pre></div>
+</div>
+<p>This sets:</p>
+<ul class="simple">
+<li><p><strong>IP address</strong>: <code class="docutils literal notranslate"><span class="pre">192.168.0.15</span></code></p></li>
+<li><p><strong>Subnet mask</strong>: <code class="docutils literal notranslate"><span class="pre">/24</span></code> (equivalent to <code class="docutils literal notranslate"><span class="pre">255.255.255.0</span></code>)</p></li>
+<li><p><strong>Gateway</strong>: <code class="docutils literal notranslate"><span class="pre">192.168.0.10</span></code></p></li>
+<li><p><strong>Manual IP configuration</strong> (not DHCP)</p></li>
+</ul>
+</div>
+<div class="section" id="verify-the-connection">
+<h2><a class="toc-backref" href="#id2">2️⃣ Verify the Connection</a><a class="headerlink" href="#verify-the-connection" title="Permalink to this headline">¶</a></h2>
+<p>List all available connections to confirm the <code class="docutils literal notranslate"><span class="pre">Hokuyo</span></code> connection was created:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nmcli connection show
+</pre></div>
+</div>
+<p>You should see an entry for <code class="docutils literal notranslate"><span class="pre">Hokuyo</span></code>.</p>
+</div>
+<div class="section" id="activate-the-connection">
+<h2><a class="toc-backref" href="#id3">3️⃣ Activate the Connection</a><a class="headerlink" href="#activate-the-connection" title="Permalink to this headline">¶</a></h2>
+<p>Activate the newly created <code class="docutils literal notranslate"><span class="pre">Hokuyo</span></code> connection:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo nmcli connection up Hokuyo
+</pre></div>
+</div>
+<p>This enables the configuration for the <code class="docutils literal notranslate"><span class="pre">enP8p1s0</span></code> interface.</p>
+</div>
+<div class="section" id="verify-the-network-configuration">
+<h2><a class="toc-backref" href="#id4">4️⃣ Verify the Network Configuration</a><a class="headerlink" href="#verify-the-network-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Check that the <code class="docutils literal notranslate"><span class="pre">enP8p1s0</span></code> interface has the correct settings:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ip addr show enP8p1s0
+</pre></div>
+</div>
+<p>You should see the IP address <code class="docutils literal notranslate"><span class="pre">192.168.0.15</span></code> assigned to the interface.</p>
+</div>
+<div class="section" id="test-the-connection">
+<h2><a class="toc-backref" href="#id5">5️⃣ Test the Connection</a><a class="headerlink" href="#test-the-connection" title="Permalink to this headline">¶</a></h2>
+<p>Ping the Hokuyo LiDAR at <code class="docutils literal notranslate"><span class="pre">192.168.0.10</span></code> to confirm connectivity:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ping <span class="m">192</span>.168.0.10
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-an-alias-for-quick-lidar-ping">
+<h2><a class="toc-backref" href="#id6">6️⃣ Create an Alias for Quick Lidar Ping</a><a class="headerlink" href="#create-an-alias-for-quick-lidar-ping" title="Permalink to this headline">¶</a></h2>
+<p>Add the following alias to your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> for a quick shortcut to ping the LiDAR:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span> <span class="nv">lidar</span><span class="o">=</span><span class="s2">&quot;ping 192.168.0.10&quot;</span>
+</pre></div>
+</div>
+<p>Then reload your shell configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/.bashrc
+</pre></div>
+</div>
+<p>Now you can test the LiDAR connection anytime by simply typing <code class="docutils literal notranslate"><span class="pre">lidar</span></code> in the terminal.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="roboracer_stack.html" class="btn btn-neutral float-right" title="RoboRacer Driver Stack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="vesc_setup.html" class="btn btn-neutral float-left" title="VESC setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

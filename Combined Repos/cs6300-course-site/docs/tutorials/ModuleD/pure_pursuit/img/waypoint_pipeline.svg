@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" font-family="Segoe UI, Arial, sans-serif">
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Layer 1: All node boxes -->
+
+  <!-- Particle Filter (top-left) -->
+  <rect x="20" y="20" width="220" height="90" rx="10" fill="#4A90D9" stroke="#2C5F8A" stroke-width="2"/>
+  <text x="130" y="48" text-anchor="middle" fill="white" font-size="15" font-weight="bold">Particle Filter</text>
+  <text x="130" y="70" text-anchor="middle" fill="#D4E6F9" font-size="12">publishes nav_msgs/Odometry</text>
+  <text x="130" y="90" text-anchor="middle" fill="#D4E6F9" font-size="12">on /pf/pose/odom</text>
+
+  <!-- Waypoint Logger (top-right) -->
+  <rect x="360" y="20" width="220" height="90" rx="10" fill="#5CB85C" stroke="#3D8B3D" stroke-width="2"/>
+  <text x="470" y="48" text-anchor="middle" fill="white" font-size="15" font-weight="bold">Waypoint Logger</text>
+  <text x="470" y="70" text-anchor="middle" fill="#D4F0D4" font-size="12">waypoint_logger.py</text>
+  <text x="470" y="90" text-anchor="middle" fill="#D4F0D4" font-size="12">subscriber node</text>
+
+  <!-- waypoints.csv (bottom-right) -->
+  <rect x="360" y="260" width="220" height="90" rx="10" fill="#F0AD4E" stroke="#C78D3E" stroke-width="2"/>
+  <text x="470" y="290" text-anchor="middle" fill="white" font-size="15" font-weight="bold">waypoints.csv</text>
+  <text x="470" y="312" text-anchor="middle" fill="#FDE8C8" font-size="12">x, y, z, w per row</text>
+  <text x="470" y="332" text-anchor="middle" fill="#FDE8C8" font-size="12">offline data file</text>
+
+  <!-- Pure Pursuit (bottom-left) -->
+  <rect x="20" y="260" width="220" height="90" rx="10" fill="#D9534F" stroke="#A94442" stroke-width="2"/>
+  <text x="130" y="288" text-anchor="middle" fill="white" font-size="15" font-weight="bold">Pure Pursuit</text>
+  <text x="130" y="310" text-anchor="middle" fill="#F2DEDE" font-size="12">publishes AckermannDriveStamped</text>
+  <text x="130" y="330" text-anchor="middle" fill="#F2DEDE" font-size="12">on /drive</text>
+
+  <!-- Layer 2: All arrows and labels (drawn on top) -->
+
+  <!-- Arrow 1: Particle Filter to Waypoint Logger -->
+  <line x1="240" y1="65" x2="358" y2="65" stroke="#666" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="254" y="35" width="92" height="24" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="300" y="52" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">subscribes</text>
+
+  <!-- Arrow 2: Waypoint Logger down to CSV -->
+  <line x1="470" y1="110" x2="470" y2="258" stroke="#666" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="480" y="170" width="82" height="24" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="521" y="187" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">writes CSV</text>
+
+  <!-- Arrow 3: CSV to Pure Pursuit -->
+  <line x1="360" y1="305" x2="242" y2="305" stroke="#666" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="258" y="278" width="82" height="24" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="299" y="295" text-anchor="middle" fill="#555" font-size="11" font-weight="bold">reads CSV</text>
+</svg>

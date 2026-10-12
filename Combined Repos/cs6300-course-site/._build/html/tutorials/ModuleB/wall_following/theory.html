@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Wall Following Theory &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Create Wall Following Package" href="wall_follow_package.html" />
+    <link rel="prev" title="Tutorial 3 - Wall Following" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 3 - Wall Following</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wall Following Theory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#i-learning-goals">I. Learning Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ii-review-of-pid-in-the-time-domain">II. Review of PID in the Time Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iii-wall-following">III. Wall Following</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-wall-following-algorithm">Summary: Wall Following Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wall_follow_package.html">Create Wall Following Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pid_steering.html">Steering Adjustment Using PID</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 3 - Wall Following</a> &raquo;</li>
+        
+      <li>Wall Following Theory</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleB/wall_following/theory.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="wall-following-theory">
+<span id="doc-tutorials-wall-following-theory"></span><h1>Wall Following Theory<a class="headerlink" href="#wall-following-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="i-learning-goals">
+<h2>I. Learning Goals<a class="headerlink" href="#i-learning-goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>PID Controllers</p></li>
+<li><p>Driving the car autonomously via Wall Following</p></li>
+</ul>
+</div>
+<div class="section" id="ii-review-of-pid-in-the-time-domain">
+<h2>II. Review of PID in the Time Domain<a class="headerlink" href="#ii-review-of-pid-in-the-time-domain" title="Permalink to this headline">¶</a></h2>
+<p>A PID controller is a way to maintain certain parameters of a system around a specified set point. PID controllers are used in a variety of applications requiring closed-loop control, such as in the VESC speed controller on your car.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For a detailed explanation of PID steering control implementation, see <a class="reference internal" href="pid_steering.html#doc-tutorials-wall-follow-pid-steering"><span class="std std-ref">Steering Adjustment Using PID</span></a>.</p>
+</div>
+<p>The general equation for a PID controller in the time domain, as discussed in lecture, is as follows:</p>
+<div class="math notranslate nohighlight">
+\[u(t) = K_{p}e(t) + K_{i}\int_{0}^{t}e(t')\,dt' + K_{d}\frac{d}{dt}e(t)\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span>, and <span class="math notranslate nohighlight">\(K_d\)</span> are constants that determine how much weight each of the three components (proportional, integral, derivative) contribute to the control output <span class="math notranslate nohighlight">\(u(t)\)</span>. <span class="math notranslate nohighlight">\(u(t)\)</span> in our case is the steering angle we want the car to drive at. The error term <span class="math notranslate nohighlight">\(e(t)\)</span> is the difference between the set point and the parameter we want to maintain around that set point.</p>
+</div>
+<div class="section" id="iii-wall-following">
+<h2>III. Wall Following<a class="headerlink" href="#iii-wall-following" title="Permalink to this headline">¶</a></h2>
+<p>In the context of our car, the desired distance to the wall should be our set point for our controller, which means our error is the difference between the desired and actual distance to the wall. This raises an important question: how do we measure the distance to the wall, and at what point in time? One option would simply be to consider the distance to the right wall at the current time t (let’s call it <span class="math notranslate nohighlight">\(D_t\)</span>). Let’s consider a generic orientation of the car with respect to the right wall and suppose the angle between the car’s x-axis and the axis in the direction along the wall is denoted by <strong>α</strong>. We will obtain two laser scans (distances) to the wall: one 90 degrees to the right of the car’s x-axis (beam b in the figure), and one (beam a) at an angle <strong>Θ</strong> (0 &lt; Θ ≤ 70 degrees) to the first beam. Suppose these two laser scans return distances a and b, respectively.</p>
+<a class="reference internal image-reference" href="../../../_images/wall_following_lab_figure_1.png"><img alt="Distance and orientation of the car relative to the wall" class="align-center" src="../../../_images/wall_following_lab_figure_1.png" style="width: 60%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Figure 1: Distance and orientation of the car relative to the wall</em></p>
+<p>Using the two distances a and b from the laser scan, the angle <strong>Θ</strong> between the laser scans, and some trigonometry, we can express <strong>α</strong> as</p>
+<div class="math notranslate nohighlight">
+\[\alpha = \arctan\left(\frac{a\cos(\theta) - b}{a\sin(\theta)}\right)\]</div>
+<p>We can then express <span class="math notranslate nohighlight">\(D_t\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[D_t = b\cos(\alpha)\]</div>
+<p>to get the current distance between the car and the right wall. What’s our error term <span class="math notranslate nohighlight">\(e(t)\)</span>, then? It’s simply the difference between the desired distance and actual distance! For example, if our desired distance is 1 meter from the wall, then <span class="math notranslate nohighlight">\(e(t)\)</span> becomes <span class="math notranslate nohighlight">\(1 - D_t\)</span>.</p>
+<p>However, we have a problem on our hands. Remember that this is a race: your car will be traveling at a high speed and therefore will have a non-instantaneous response to whatever speed and servo control you give to it. If we simply use the current distance to the wall, we might end up turning too late, and the car may crash. Therefore, we must look to the future and project the car ahead by a certain lookahead distance (let’s call it L). Our new distance <span class="math notranslate nohighlight">\(D_{t+1}\)</span> will then be</p>
+<div class="math notranslate nohighlight">
+\[D_{t+1} = D_t + L\sin(\alpha)\]</div>
+<a class="reference internal image-reference" href="../../../_images/wall_following_lab_figure_2.png"><img alt="Finding the future distance from the car to the wall" class="align-center" src="../../../_images/wall_following_lab_figure_2.png" style="width: 60%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Figure 2: Finding the future distance from the car to the wall</em></p>
+<p>We’re almost there. Our control algorithm gives us a steering angle for the VESC, but we would also like to slow the car down around corners for safety. We can compute the speed in a step-like fashion based on the steering angle, or equivalently the calculated error, so that as the angle exceeds progressively larger amounts, the speed is cut in discrete increments. For this lab, a good starting point for the speed control algorithm is:</p>
+<ul class="simple">
+<li><p>If the steering angle is between 0 degrees and 10 degrees, the car should drive at 1.5 meters per second.</p></li>
+<li><p>If the steering angle is between 10 degrees and 20 degrees, the speed should be 1.0 meters per second.</p></li>
+<li><p>Otherwise, the speed should be 0.5 meters per second.</p></li>
+</ul>
+</div>
+<div class="section" id="summary-wall-following-algorithm">
+<h2>Summary: Wall Following Algorithm<a class="headerlink" href="#summary-wall-following-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>So, in summary, here’s what we need to do:</p>
+<ol class="arabic simple">
+<li><p><strong>Obtain two laser scans</strong> (distances) a and b.</p></li>
+<li><p><strong>Use the distances</strong> a and b to calculate the angle α between the car’s x-axis and the right wall.</p></li>
+<li><p><strong>Use α</strong> to find the current distance <span class="math notranslate nohighlight">\(D_t\)</span> to the car, and then α and <span class="math notranslate nohighlight">\(D_t\)</span> to find the estimated future distance <span class="math notranslate nohighlight">\(D_{t+1}\)</span> to the wall.</p></li>
+<li><p><strong>Run</strong> <span class="math notranslate nohighlight">\(D_{t+1}\)</span> <strong>through the PID algorithm</strong> described above to get a steering angle.</p></li>
+<li><p><strong>Use the steering angle</strong> you computed in the previous step to compute a safe driving speed.</p></li>
+<li><p><strong>Publish</strong> the steering angle and driving speed to the <code class="docutils literal notranslate"><span class="pre">/drive</span></code> topic in simulation.</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wall_follow_package.html" class="btn btn-neutral float-right" title="Create Wall Following Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial 3 - Wall Following" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

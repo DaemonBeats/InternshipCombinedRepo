@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>INSTALL - Realsense D435i &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SETUP - OpenCV" href="opencv.html" />
+    <link rel="prev" title="NoMachine" href="nomachine.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomachine.html">NoMachine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">INSTALL - Realsense D435i</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jetson-orin-kernel-builder">1. Jetson Orin Kernel Builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-kernel-and-module-sources">Getting Kernel and Module Sources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editing-the-kernel-configuration">Editing the Kernel Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-kernel-image">Building the Kernel Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-kernel-modules">Building the Kernel Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-a-new-modules">Installing a New Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-the-kernel-image">Installing the Kernel Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jetpack-6-orin-kernel-builder-video-walkthrough">JetPack 6 Orin Kernel Builder Video Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-the-modules">Build the Modules:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-librealsense">Install librealsense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-resources">Other Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>INSTALL - Realsense D435i</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/setup/info_realsense_d435i.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="install-realsense-d435i">
+<span id="doc-info-realsense-d435i"></span><h1>INSTALL - Realsense D435i<a class="headerlink" href="#install-realsense-d435i" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="jetson-orin-kernel-builder">
+<h2>1. Jetson Orin Kernel Builder<a class="headerlink" href="#jetson-orin-kernel-builder" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/jetsonhacks/jetson-orin-kernel-builder">jetson-orin-kernel-builder</a></p>
+<p>Tools to build the Linux kernel and modules on board the Jetson AGX Orin, Orin Nano, or Orin NX. This tool is designed for beginning to intermediate users. Be sure to read the entire document in the repository before proceeding.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/jetsonhacks/jetson-orin-kernel-builder.git
+<span class="nb">cd</span> jetson-orin-kernel-builder
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-kernel-and-module-sources">
+<h2>Getting Kernel and Module Sources<a class="headerlink" href="#getting-kernel-and-module-sources" title="Permalink to this headline">¶</a></h2>
+<p>Run the following from the repository root to fetch the kernel and module sources:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/get_kernel_sources.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="editing-the-kernel-configuration">
+<h2>Editing the Kernel Configuration<a class="headerlink" href="#editing-the-kernel-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Edit the kernel-builder configuration using the provided GUI script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/edit_config_gui.sh
+</pre></div>
+</div>
+<p>You can use the GUI to set device and kernel options:</p>
+<a class="reference internal image-reference" href="../_images/kernel_config_gui.png"><img alt="Kernel configuration GUI" class="align-center" src="../_images/kernel_config_gui.png" style="width: 600px;" /></a>
+<p>Searching for the CH341 Driver</p>
+<p>Use <strong>Ctrl+F</strong> to search for <strong>CH341</strong>.</p>
+<a class="reference internal image-reference" href="../_images/search_ch341.png"><img alt="Search for CH341" class="align-center" src="../_images/search_ch341.png" style="width: 480px;" /></a>
+<p>Next, click the letter <strong>N</strong> to change it to <strong>M</strong> for the <em>CH341 Single Port Driver</em> so it is built as a module.</p>
+<a class="reference internal image-reference" href="../_images/ch341_to_module.png"><img alt="Set CH341 to Module (M)" class="align-center" src="../_images/ch341_to_module.png" style="width: 480px;" /></a>
+<p>Use <strong>Ctrl+F</strong> to search for <strong>HID_SENSOR_HUB</strong>.</p>
+<a class="reference internal image-reference" href="../_images/hid_sensor_hub_to_m.png"><img alt="Search for HID_SENSOR_HUB" class="align-center" src="../_images/hid_sensor_hub_to_m.png" style="width: 600px;" /></a>
+<p>Next, click the letter <strong>N</strong> to change it to <strong>M</strong> for the <em>HID Sensors framework support</em> so it is built as a module.</p>
+<p>Use <strong>Ctrl+F</strong> to search for <strong>ACCEL_3D</strong>.</p>
+<a class="reference internal image-reference" href="../_images/accel_3d_to_m.png"><img alt="Search for HID_SENSOR_HUB" class="align-center" src="../_images/accel_3d_to_m.png" style="width: 600px;" /></a>
+<p>Next, click the letter <strong>N</strong> to change it to <strong>M</strong> for the <em>HID Accelerometers 3D</em> so it is built as a module.</p>
+<p>Use <strong>Ctrl+F</strong> to search for <strong>GYRO_3D</strong>.</p>
+<a class="reference internal image-reference" href="../_images/gyro_3d_to_m.png"><img alt="Search for HID_SENSOR_HUB" class="align-center" src="../_images/gyro_3d_to_m.png" style="width: 600px;" /></a>
+<p>Next, click the letter <strong>N</strong> to change it to <strong>M</strong> for the <em>HID Gyroscope 3D</em> so it is built as a module.</p>
+<p>When finished, save and quit the configuration editor to apply the change.</p>
+</div>
+<div class="section" id="building-the-kernel-image">
+<h2>Building the Kernel Image<a class="headerlink" href="#building-the-kernel-image" title="Permalink to this headline">¶</a></h2>
+<p>Run the kernel build and module installation scripts from the repository.
+This step may take up to <strong>30 minutes</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/make_kernel.sh
+</pre></div>
+</div>
+<p>Copy the path to the generated kernel image. You will need it later</p>
+<a class="reference internal image-reference" href="../_images/path_to_image.png"><img alt="Kernel build output path" class="align-center" src="../_images/path_to_image.png" style="width: 600px;" /></a>
+<p>Next, you will edit the build_info.txt file</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gedit build_info.txt
+</pre></div>
+</div>
+<p>Edit the document to include the path to the kernel image you copied earlier.</p>
+<a class="reference internal image-reference" href="../_images/gedit_build_info.png"><img alt="Kernel build output path" class="align-center" src="../_images/gedit_build_info.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="building-the-kernel-modules">
+<h2>Building the Kernel Modules<a class="headerlink" href="#building-the-kernel-modules" title="Permalink to this headline">¶</a></h2>
+<p>Build the kernel modules using the provided script.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/make_kernel_modules.sh
+</pre></div>
+</div>
+<p>When prompted Do you want to install the modules? Type <strong>N</strong> and press Enter.</p>
+</div>
+<div class="section" id="installing-a-new-modules">
+<h2>Installing a New Modules<a class="headerlink" href="#installing-a-new-modules" title="Permalink to this headline">¶</a></h2>
+<p>Run this script to get Module information.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/module_info.sh -s CH34
+</pre></div>
+</div>
+<p>Look for the module name <strong>ch341</strong> and see if it is in the right location:</p>
+<a class="reference internal image-reference" href="../_images/CH341_module_name.png"><img alt="Kernel build output path" class="align-center" src="../_images/CH341_module_name.png" style="width: 600px;" /></a>
+<p>Using the module location make sure it is in there:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls /usr/src/kernel/kernel-jammy-src/drivers/usb/serial/ch341.ko
+</pre></div>
+</div>
+<p>Output should be something like this:</p>
+<a class="reference internal image-reference" href="../_images/ch341_module_ko_found.png"><img alt="Kernel build output path" class="align-center" src="../_images/ch341_module_ko_found.png" style="width: 600px;" /></a>
+<p>More detailed information about the module by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/module_info.sh CONFIG_USB_SERIAL_CH341
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/ch341_module_deep.png"><img alt="Kernel build output path" class="align-center" src="../_images/ch341_module_deep.png" style="width: 600px;" /></a>
+<p>Copy the ch341 module to the current directory: (Make sure to use the correct path you found when you located the module earlier)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /usr/src/kernel/kernel-jammy-src/drivers/usb/serial/ch341.ko .
+</pre></div>
+</div>
+<p>Create an install module script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/install_module_author.sh ch341 drivers/usb/serial
+</pre></div>
+</div>
+<p>Use the script to install the module (type ‘y’ when prompted):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./install_module_ch341.sh
+</pre></div>
+</div>
+<p>Output should be something like this:</p>
+<a class="reference internal image-reference" href="../_images/install_output.png"><img alt="Kernel build output path" class="align-center" src="../_images/install_output.png" style="width: 600px;" /></a>
+<p>verify the module is installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsmod <span class="p">|</span> grep ch341
+</pre></div>
+</div>
+<p>Output should be something like this:</p>
+<a class="reference internal image-reference" href="../_images/verify_install.png"><img alt="Kernel build output path" class="align-center" src="../_images/verify_install.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="installing-the-kernel-image">
+<h2>Installing the Kernel Image<a class="headerlink" href="#installing-the-kernel-image" title="Permalink to this headline">¶</a></h2>
+<p>Run the following script to install the kernel image:</p>
+<p>Make a backup of your current kernel image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /boot/extlinux/
+sudo cp extlinux.conf extlinux.conf.original
+</pre></div>
+</div>
+<p>Edit the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo gedit extlinux.conf
+</pre></div>
+</div>
+<p>Make a backup copy of the Image (use a new terminal window):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /boot
+sudo cp Image Image.backup
+</pre></div>
+</div>
+<p>Go back to the extlinux.conf file and unccomment the Label Backup lines:</p>
+<p>Pre-Edit</p>
+<a class="reference internal image-reference" href="../_images/config_pre_edit.png"><img alt="Kernel build output path" class="align-center" src="../_images/config_pre_edit.png" style="width: 600px;" /></a>
+<p>Post-Edit</p>
+<a class="reference internal image-reference" href="../_images/config_post_edit.png"><img alt="Kernel build output path" class="align-center" src="../_images/config_post_edit.png" style="width: 600px;" /></a>
+<p>Copy line 10 and replace line 29 like the image below :</p>
+<a class="reference internal image-reference" href="../_images/config_append_change.png"><img alt="Kernel build output path" class="align-center" src="../_images/config_append_change.png" style="width: 600px;" /></a>
+<p>When complete Save and close the file</p>
+<p>Go back to jetson-orin-kernel-builder directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/jetson-orin-kernel-builder
+</pre></div>
+</div>
+<p>Copy the kernel image:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo cp /usr/src/kernel/kernel-jammy-src/arch/arm64/boot/Image /boot/Image
+</pre></div>
+</div>
+<p>Reboot your Jetson:</p>
+</div>
+<div class="section" id="jetpack-6-orin-kernel-builder-video-walkthrough">
+<h2>JetPack 6 Orin Kernel Builder Video Walkthrough<a class="headerlink" href="#jetpack-6-orin-kernel-builder-video-walkthrough" title="Permalink to this headline">¶</a></h2>
+<p>This process applies to <strong>JetPack 6</strong>. A supporting walkthrough video is available on YouTube.</p>
+<div class="video-container">
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/7P6I2jeJNYo"
+            title="Jetson Orin Kernel Builder — YouTube"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+    </iframe>
+</div><ol class="arabic" start="2">
+<li><p>Jetson Orin helper: JetsonHacks <a class="reference external" href="https://github.com/jetsonhacks/jetson-orin-librealsense">jetson-orin-librealsense</a></p>
+<p>Clone the JetsonHacks helper repository and follow its README for Jetson-specific build and install instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/jetsonhacks/jetson-orin-librealsense.git
+<span class="nb">cd</span> jetson-orin-librealsense/build
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Run this patch</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./patch-for-realsense.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-modules">
+<h2>Build the Modules:<a class="headerlink" href="#build-the-modules" title="Permalink to this headline">¶</a></h2>
+<p>Switch over to the kernel building directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/jetson-orin-kernel-builder/
+</pre></div>
+</div>
+<p>Run the script to install the modules:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/make_kernel_modules.sh
+</pre></div>
+</div>
+<p>When prompted Do you want to install the modules? Type <strong>N</strong> and press Enter.</p>
+<p>Complete a checksum:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/jetson-orin-librealsense/
+sha256sum -c install-modules.tar.gz.sha256
+</pre></div>
+</div>
+<p>The checksum should look something like this:</p>
+<a class="reference internal image-reference" href="../_images/checksum.png"><img alt="Kernel build output path" class="align-center" src="../_images/checksum.png" style="width: 600px;" /></a>
+<p>Expand and install modules directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tar -xzf install-modules.tar.gz
+<span class="nb">cd</span> install-modules
+</pre></div>
+</div>
+<p>Run the install script :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ./install-realsense-modules.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-librealsense">
+<h2>Install librealsense<a class="headerlink" href="#install-librealsense" title="Permalink to this headline">¶</a></h2>
+<p>Register the Intel RealSense public key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE <span class="o">||</span> sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key F6E65AC044F831AC80A06380C8B3A55A6F3EFCDE
+</pre></div>
+</div>
+<p>Add the server to the list of repositories:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository <span class="s2">&quot;deb https://librealsense.intel.com/Debian/apt-repo </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> main&quot;</span> -u
+</pre></div>
+</div>
+<p>Install the RealSense SDK 2.0:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install librealsense2-utils
+sudo apt-get install librealsense2-dev
+</pre></div>
+</div>
+<p>With the installation complete, reconnect the RealSense device:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>realsense-viewer
+</pre></div>
+</div>
+<p>Update the camera firmware to the latest version:</p>
+<a class="reference internal image-reference" href="../_images/update_firmware.png"><img alt="Kernel build output path" class="align-center" src="../_images/update_firmware.png" style="width: 600px;" /></a>
+</div>
+<div class="section" id="other-resources">
+<h2>Other Resources<a class="headerlink" href="#other-resources" title="Permalink to this headline">¶</a></h2>
+<p>Installing Intel RealSense SDK 2.0: <a class="reference external" href="https://jetsonhacks.com/2025/03/20/jetson-orin-realsense-in-5-minutes/">Jetson Hacks install Intel RealSense</a></p>
+<p>Product page: <a class="reference external" href="https://www.realsenseai.com/products/depth-camera-d435i/">Intel RealSense D435i</a></p>
+<p>Getting started: <a class="reference external" href="https://dev.realsenseai.com/docs/docs-get-started">RealSense developer docs</a></p>
+<div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/FpMCJsg_KmE?si=qhhzguxsaBv_YG6D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="opencv.html" class="btn btn-neutral float-right" title="SETUP - OpenCV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nomachine.html" class="btn btn-neutral float-left" title="NoMachine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

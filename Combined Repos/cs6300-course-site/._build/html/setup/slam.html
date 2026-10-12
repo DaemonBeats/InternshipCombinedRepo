@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SETUP - SLAM &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SETUP - Nav2" href="nav2.html" />
+    <link rel="prev" title="SETUP - Realsense ROS" href="realsense_ros.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SETUP - SLAM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-slam-toolbox">Install SLAM Toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-pip-required-for-rosdep">Install pip (Required for rosdep)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-particle-filter-localization">Install Particle Filter (Localization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-range-libc">Install range_libc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fix-cuda-range-libc-build-error">Fix: CUDA / range_libc Build Error</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-script">1️⃣ Create the Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-it-executable">2️⃣ Make It Executable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-script">3️⃣ Run the Script</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>SETUP - SLAM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/setup/slam.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setup-slam">
+<span id="doc-setup-slam"></span><h1>SETUP - SLAM<a class="headerlink" href="#setup-slam" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-slam-toolbox">
+<h2>Install SLAM Toolbox<a class="headerlink" href="#install-slam-toolbox" title="Permalink to this headline">¶</a></h2>
+<p>1️⃣ <strong>Install the SLAM Toolbox package</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<span class="go">sudo apt install ros-humble-slam-toolbox</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get an apt lock error mentioning <code class="docutils literal notranslate"><span class="pre">packagekitd</span></code>, stop it and try again:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl stop packagekit</span>
+<span class="go">sudo systemctl disable packagekit</span>
+<span class="go">sudo apt update</span>
+<span class="go">sudo apt install -y ros-humble-slam-toolbox</span>
+</pre></div>
+</div>
+</div>
+<p>2️⃣ <strong>Add an alias to your `~/.bashrc` to launch SLAM Toolbox</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Modify the path below for the specific robot you are using.
+This example is for <code class="docutils literal notranslate"><span class="pre">f1-wsu-4</span></code>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">alias slam=&#39;ros2 launch slam_toolbox online_async_launch.py slam_params_file:=/home/f1-wsu-4/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/f1tenth_online_async.yaml&#39;</span>
+</pre></div>
+</div>
+<p>After editing <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">source ~/.bashrc</span>
+</pre></div>
+</div>
+<p>Open a new terminal to verify the alias works.</p>
+</div>
+<div class="section" id="install-pip-required-for-rosdep">
+<h2>Install pip (Required for rosdep)<a class="headerlink" href="#install-pip-required-for-rosdep" title="Permalink to this headline">¶</a></h2>
+<p>Some dependencies require <code class="docutils literal notranslate"><span class="pre">pip</span></code> to be installed.</p>
+<p>1️⃣ Install pip</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<span class="go">sudo apt install -y python3-pip</span>
+</pre></div>
+</div>
+<p>2️⃣ Verify pip installation</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip3 --version</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-particle-filter-localization">
+<h2>Install Particle Filter (Localization)<a class="headerlink" href="#install-particle-filter-localization" title="Permalink to this headline">¶</a></h2>
+<p>1️⃣ <strong>Clone the particle_filter package</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/f1tenth_ws/src</span>
+<span class="go">git clone https://github.com/f1tenth/particle_filter.git</span>
+</pre></div>
+</div>
+<p>2️⃣ <strong>Install workspace dependencies</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/f1tenth_ws</span>
+<span class="go">rosdep install -r --from-paths src --ignore-src --rosdistro humble -y</span>
+</pre></div>
+</div>
+<p>3️⃣ <strong>Rebuild the workspace</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/f1tenth_ws</span>
+<span class="go">colcon build</span>
+<span class="go">source install/setup.bash</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-range-libc">
+<h2>Install range_libc<a class="headerlink" href="#install-range-libc" title="Permalink to this headline">¶</a></h2>
+<p>1️⃣ <strong>Clone the repository</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd ~/f1tenth_ws/src</span>
+<span class="go">git clone https://github.com/f1tenth/range_libc.git</span>
+</pre></div>
+</div>
+<p>2️⃣ <strong>Install Cython (required)</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo python3 -m pip install Cython</span>
+</pre></div>
+</div>
+<p>3️⃣ <strong>Install range_libc with CUDA support</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd range_libc/pywrapper</span>
+<span class="go">sudo WITH_CUDA=ON python3 setup.py install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fix-cuda-range-libc-build-error">
+<h2>Fix: CUDA / range_libc Build Error<a class="headerlink" href="#fix-cuda-range-libc-build-error" title="Permalink to this headline">¶</a></h2>
+<p>If you encounter a CUDA compilation error when building <code class="docutils literal notranslate"><span class="pre">range_libc</span></code> on a Jetson Orin, use the following fix script.</p>
+<div class="section" id="create-the-script">
+<h3>1️⃣ Create the Script<a class="headerlink" href="#create-the-script" title="Permalink to this headline">¶</a></h3>
+<p>Create the file <code class="docutils literal notranslate"><span class="pre">~/f1tenth_ws/src/range_libc/fix_range_libc.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nano ~/f1tenth_ws/src/range_libc/fix_range_libc.sh
+</pre></div>
+</div>
+<p>Paste in the following script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1"># Fix and build range_libc with CUDA for Jetson Orin (sm_87)</span>
+<span class="c1"># Run from: ~/f1tenth_ws/src/range_libc/pywrapper/</span>
+
+<span class="nb">set</span> -e
+
+<span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&quot;setup.py&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;ERROR: Run this script from range_libc/pywrapper/&quot;</span>
+    <span class="nb">echo</span> <span class="s2">&quot;  cd ~/f1tenth_ws/src/range_libc/pywrapper &amp;&amp; bash fix_range_libc.sh&quot;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Patching setup.py...&quot;</span>
+
+<span class="c1"># 1. Remove -march=native (nvcc doesn&#39;t support it)</span>
+sed -i <span class="s1">&#39;s/&quot;-march=native&quot;, //&#39;</span> setup.py
+
+<span class="c1"># 2. Remove bogus gcc-8 flags (gcc-8 is not installed on these systems)</span>
+sed -i <span class="s1">&#39;/gcc-8\|g++-8/d&#39;</span> setup.py
+
+<span class="c1"># 3. Update CUDA arch from sm_62 (TX2) to sm_87 (Orin NX / Orin Nano)</span>
+sed -i <span class="s1">&#39;s/-arch=sm_62/-arch=sm_87/&#39;</span> setup.py
+
+<span class="c1"># 4. Fix _compile so non-.cu files are explicitly routed to gcc (not nvcc)</span>
+python3 - <span class="s">&lt;&lt;&#39;PYEOF&#39;</span>
+<span class="s">with open(&#39;setup.py&#39;, &#39;r&#39;) as f:</span>
+<span class="s">    content = f.read()</span>
+
+<span class="s">old = (</span>
+<span class="s">    &quot;        else:\n&quot;</span>
+<span class="s">    &quot;            postargs = extra_postargs[&#39;gcc&#39;]\n&quot;</span>
+<span class="s">    &quot;        # postargs = extra_postargs#[&#39;gcc&#39;]\n&quot;</span>
+<span class="s">    &quot;\n&quot;</span>
+<span class="s">    &quot;        super(obj, src, ext, cc_args, postargs, pp_opts)\n&quot;</span>
+<span class="s">    &quot;        # reset the default compiler_so, which we might have changed for cuda\n&quot;</span>
+<span class="s">    &quot;        self.compiler_so = default_compiler_so&quot;</span>
+<span class="s">)</span>
+<span class="s">new = (</span>
+<span class="s">    &quot;        else:\n&quot;</span>
+<span class="s">    &quot;            # explicitly reset to gcc for all non-.cu files\n&quot;</span>
+<span class="s">    &quot;            self.set_executable(&#39;compiler_so&#39;, default_compiler_so)\n&quot;</span>
+<span class="s">    &quot;            postargs = extra_postargs[&#39;gcc&#39;]\n&quot;</span>
+<span class="s">    &quot;\n&quot;</span>
+<span class="s">    &quot;        super(obj, src, ext, cc_args, postargs, pp_opts)\n&quot;</span>
+<span class="s">    &quot;        # reset the default compiler_so, which we might have changed for cuda\n&quot;</span>
+<span class="s">    &quot;        self.set_executable(&#39;compiler_so&#39;, default_compiler_so)&quot;</span>
+<span class="s">)</span>
+
+<span class="s">if old in content:</span>
+<span class="s">    content = content.replace(old, new)</span>
+<span class="s">    with open(&#39;setup.py&#39;, &#39;w&#39;) as f:</span>
+<span class="s">        f.write(content)</span>
+<span class="s">    print(&quot;  [OK] Fixed _compile compiler routing&quot;)</span>
+<span class="s">elif &quot;set_executable(&#39;compiler_so&#39;, default_compiler_so)&quot; in content:</span>
+<span class="s">    print(&quot;  [SKIP] _compile routing already fixed&quot;)</span>
+<span class="s">else:</span>
+<span class="s">    print(&quot;  [WARN] Could not match _compile pattern - check setup.py manually&quot;)</span>
+<span class="s">PYEOF</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Building with CUDA (this takes a minute)...&quot;</span>
+sudo rm -rf build/
+sudo env <span class="nv">WITH_CUDA</span><span class="o">=</span>ON python3 setup.py install
+
+<span class="nb">echo</span> <span class="s2">&quot;Done! range_libc installed with CUDA support.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-it-executable">
+<h3>2️⃣ Make It Executable<a class="headerlink" href="#make-it-executable" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod +x ~/f1tenth_ws/src/range_libc/fix_range_libc.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-script">
+<h3>3️⃣ Run the Script<a class="headerlink" href="#run-the-script" title="Permalink to this headline">¶</a></h3>
+<p>Navigate to the <code class="docutils literal notranslate"><span class="pre">pywrapper</span></code> directory first, then run the script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws/src/range_libc/pywrapper
+bash ../fix_range_libc.sh
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script must be run from inside the <code class="docutils literal notranslate"><span class="pre">pywrapper/</span></code> directory — it checks for <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> in the current folder and will exit with an error if not found.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nav2.html" class="btn btn-neutral float-right" title="SETUP - Nav2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="realsense_ros.html" class="btn btn-neutral float-left" title="SETUP - Realsense ROS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

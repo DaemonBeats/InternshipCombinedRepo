@@ -1,0 +1,523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Preprocessing LiDAR Data &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Obstacle Masking: Creating a Safety Bubble" href="obstacle_masking.html" />
+    <link rel="prev" title="Create Gap Following Package" href="gap_follow_package.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 4 - Follow the Gap</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">Follow the Gap Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_follow_package.html">Create Gap Following Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Preprocessing LiDAR Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-preprocess">Why Preprocess?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#detailed-implementation">Detailed Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-smoothing">(Optional) Smoothing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="obstacle_masking.html">Obstacle Masking: Creating a Safety Bubble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_detection.html">Gap Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_best_point.html">Finding the Best Point: Naive Selection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="find_best_point_disparity.html">Finding the Best Point: Disparity Selection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 4 - Follow the Gap</a> &raquo;</li>
+        
+      <li>Preprocessing LiDAR Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleB/gap_following/gap_preprocess_lidar.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="preprocessing-lidar-data">
+<span id="doc-tutorials-gap-preprocess-lidar"></span><h1>Preprocessing LiDAR Data<a class="headerlink" href="#preprocessing-lidar-data" title="Permalink to this headline">¶</a></h1>
+<p>This page describes the implementation of the <code class="docutils literal notranslate"><span class="pre">preprocess_lidar</span></code> function, which is essential for preparing LiDAR sensor data before further analysis, such as gap detection.</p>
+<div class="section" id="why-preprocess">
+<h2>Why Preprocess?<a class="headerlink" href="#why-preprocess" title="Permalink to this headline">¶</a></h2>
+<p>LiDAR sensors often produce data that include noisy or invalid values such as:</p>
+<ul class="simple">
+<li><p><strong>Infinite values (inf)</strong>: Indicate measurements beyond the sensor’s maximum range.</p></li>
+<li><p><strong>Not-a-Number values (NaN)</strong>: Result from failed sensor measurements.</p></li>
+<li><p><strong>Extreme values</strong>: Measurements that are too close or too far, beyond practical use.</p></li>
+</ul>
+<p>Preprocessing ensures the reliability and accuracy of your navigation algorithms.</p>
+</div>
+<div class="section" id="detailed-implementation">
+<h2>Detailed Implementation<a class="headerlink" href="#detailed-implementation" title="Permalink to this headline">¶</a></h2>
+<p>Below is the Python implementation of the LiDAR preprocessing function, broken down with detailed comments for clarity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">preprocess_lidar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">min_range</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">max_range</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Preprocess the LiDAR scan array. Preprocessing steps may include:</span>
+
+<span class="sd">            1. Clipping maximum range values</span>
+<span class="sd">            2. Handling NaN or inf values</span>
+<span class="sd">            3. (Optional) Smoothing (e.g., moving average)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            ranges (list): Raw LiDAR distance readings</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.array: Cleaned and processed LiDAR distances</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Convert incoming ranges list to a numpy array for efficient processing</span>
+        <span class="n">processed_ranges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+        <span class="c1"># 1. Clip values that are too far ( &gt; 10 meters) to maximum distance</span>
+        <span class="c1">#    Clip values that are too close( &lt; .05 meters) to min distance</span>
+        <span class="n">processed_ranges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">processed_ranges</span><span class="p">,</span> <span class="n">min_range</span><span class="p">,</span> <span class="n">max_range</span><span class="p">)</span>
+
+        <span class="c1"># 2. Replace NaN values (failed sensor measurements) with MAX_RANGE</span>
+        <span class="n">processed_ranges</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">processed_ranges</span><span class="p">)]</span> <span class="o">=</span> <span class="n">max_range</span>
+
+        <span class="c1"># 2. Replace infinite values (measurements beyond sensor range) with MAX_RANGE</span>
+        <span class="n">processed_ranges</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">processed_ranges</span><span class="p">)]</span> <span class="o">=</span> <span class="n">max_range</span>
+
+        <span class="c1"># Optional TODO: 3. Apply smoothing (e.g., moving average) if desired</span>
+
+        <span class="c1"># Return the cleaned and processed LiDAR range data</span>
+        <span class="k">return</span> <span class="n">processed_ranges</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>This function should be called every time new LiDAR data is received, typically at the start of your scan callback function.</p>
+<p>Example usage in the <code class="docutils literal notranslate"><span class="pre">scan_callback</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scan_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">processed_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_lidar</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+    <span class="c1"># Continue with gap detection logic...</span>
+</pre></div>
+</div>
+<p><strong>Example: Changing NaN and inf to 10m</strong></p>
+<a class="reference internal image-reference" href="../../../_images/preprocessed_data.png"><img alt="Preprocessed Data" class="align-center" src="../../../_images/preprocessed_data.png" style="width: 60%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Proper preprocessing enhances your gap-following algorithm’s reliability by ensuring it operates on clean, valid data.</p>
+</div>
+<div class="section" id="optional-smoothing">
+<h2>(Optional) Smoothing<a class="headerlink" href="#optional-smoothing" title="Permalink to this headline">¶</a></h2>
+<p>In addition to cleaning NaN and infinite values, another important preprocessing step is <strong>smoothing</strong>.
+Smoothing helps to eliminate small noisy spikes in LiDAR data while preserving the important obstacle structures.</p>
+<div class="section" id="why-apply-smoothing">
+<h3>Why Apply Smoothing?<a class="headerlink" href="#why-apply-smoothing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Real-world LiDAR sensors introduce small random noise into distance measurements.</p></li>
+<li><p>Smoothing <strong>removes small, isolated errors</strong> and <strong>makes obstacle shapes cleaner</strong>.</p></li>
+<li><p>Helps <strong>gap-finding algorithms</strong> perform more reliably.</p></li>
+</ul>
+</div>
+<div class="section" id="moving-average-smoothing-simple-concept">
+<h3>Moving Average Smoothing (Simple Concept)<a class="headerlink" href="#moving-average-smoothing-simple-concept" title="Permalink to this headline">¶</a></h3>
+<p>We replace each LiDAR distance with the <strong>average of itself and its neighbors</strong>.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example</p></th>
+<th class="head"><p>Moving Average (Window = 3)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">2.0,</span> <span class="pre">100.0,</span> <span class="pre">2.0,</span> <span class="pre">1.0]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1.0,</span> <span class="pre">34.3,</span> <span class="pre">34.7,</span> <span class="pre">34.3,</span> <span class="pre">1.0]</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Notice how the 100.0 spike gets blended smoothly!</p>
+</div>
+<div class="section" id="python-code-smoothing-with-convolution">
+<h3>Python Code: Smoothing with Convolution<a class="headerlink" href="#python-code-smoothing-with-convolution" title="Permalink to this headline">¶</a></h3>
+<p>The most efficient way to apply moving average smoothing is using <strong>np.convolve</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">def</span> <span class="nf">smooth_lidar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Apply moving average smoothing to LiDAR scan data using convolution.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ranges (np.array): Raw or preprocessed LiDAR ranges</span>
+<span class="sd">        window_size (int): Size of the smoothing window (must be odd)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.array: Smoothed LiDAR ranges</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">window_size</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ranges</span>  <span class="c1"># Skip if window too small to matter</span>
+
+    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">window_size</span><span class="p">)</span> <span class="o">/</span> <span class="n">window_size</span>  <span class="c1"># Create a normalized averaging kernel</span>
+    <span class="n">smoothed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">ranges</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>  <span class="c1"># Convolve while preserving array size</span>
+
+    <span class="k">return</span> <span class="n">smoothed</span>
+</pre></div>
+</div>
+<p>✅ This function automatically smooths your LiDAR data across a sliding window.</p>
+</div>
+<div class="section" id="how-smoothing-fits-into-preprocessing">
+<h3>How Smoothing Fits into Preprocessing<a class="headerlink" href="#how-smoothing-fits-into-preprocessing" title="Permalink to this headline">¶</a></h3>
+<p>You would call smoothing <strong>after</strong>:</p>
+<ol class="arabic simple">
+<li><p>Replacing NaN values</p></li>
+<li><p>Replacing infinite values</p></li>
+<li><p>Clipping maximum and minimum distances</p></li>
+</ol>
+<p>Example inside <code class="docutils literal notranslate"><span class="pre">preprocess_lidar</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">proc_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">smooth_lidar</span><span class="p">(</span><span class="n">proc_ranges</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="why-convolution">
+<h3>Why Convolution?<a class="headerlink" href="#why-convolution" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Manual Loop</p></th>
+<th class="head"><p>Convolution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Slower, more code</p></td>
+<td><p>Faster, very clean</p></td>
+</tr>
+<tr class="row-odd"><td><p>Harder to debug</p></td>
+<td><p>Optimized and easy</p></td>
+</tr>
+<tr class="row-even"><td><p>Not used in real systems</p></td>
+<td><p>Common professional method</p></td>
+</tr>
+</tbody>
+</table>
+<p>✅ <strong>Convolution</strong> is the professional way to smooth sensor data efficiently!</p>
+</div>
+<div class="section" id="tip-choosing-window-size">
+<h3>Tip: Choosing Window Size<a class="headerlink" href="#tip-choosing-window-size" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Window Size</p></th>
+<th class="head"><p>Behavior</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Light smoothing</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Good balance (recommended)</p></td>
+</tr>
+<tr class="row-even"><td><p>7+</p></td>
+<td><p>Heavy smoothing (may blur obstacles)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>For most robots</strong>, a window size of <strong>5</strong> works well.
+Only increase if your sensor is extremely noisy!</p>
+</div>
+</div>
+<div class="section" id="before-vs-after-example">
+<h3>Before vs After Example<a class="headerlink" href="#before-vs-after-example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Raw Scan:
+[1.0, 2.0, 100.0, 2.0, 1.0]
+
+After Smoothing:
+[1.0, 34.3, 34.7, 34.3, 1.0]
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Sharp spikes are smoothed out.</p></li>
+<li><p>Obstacle shapes are preserved!</p></li>
+</ul>
+<p>✅ Now your robot can operate on <strong>clean, reliable</strong> LiDAR data — and your algorithms will work much better!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="obstacle_masking.html" class="btn btn-neutral float-right" title="Obstacle Masking: Creating a Safety Bubble" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gap_follow_package.html" class="btn btn-neutral float-left" title="Create Gap Following Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

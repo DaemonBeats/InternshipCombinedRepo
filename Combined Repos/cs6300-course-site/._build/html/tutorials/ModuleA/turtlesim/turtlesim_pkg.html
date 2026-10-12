@@ -1,0 +1,553 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Create Turtlesim Controller Package &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial 2 - Automatic Emergency Braking" href="../aeb/index.html" />
+    <link rel="prev" title="Create turtlesim_ws Workspace" href="turtlesim_ws.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="turtlesim_install.html">Turtlesim Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turtlesim_ws.html">Create <code class="docutils literal notranslate"><span class="pre">turtlesim_ws</span></code> Workspace</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Create Turtlesim Controller Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">1️⃣ Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigate-to-your-workspace">2️⃣ Navigate to Your Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-package">3️⃣ Create the Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understand-the-generated-files">4️⃣ Understand the Generated Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-dependencies">5️⃣ Add Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#colcon-build">6️⃣ Colcon Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#write-the-python-node-code">7️⃣ Write the Python Node Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-setup-py">8️⃣ Update setup.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-package">9️⃣ Build the Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-the-workspace">🔟 Source the Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-the-my-turtlesim-controller-node">⏸️ Test the my_turtlesim_controller Node</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a> &raquo;</li>
+        
+      <li>Create Turtlesim Controller Package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/turtlesim/turtlesim_pkg.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-turtlesim-controller-package">
+<span id="doc-tutorials-turtlesim-pkg"></span><h1>Create Turtlesim Controller Package<a class="headerlink" href="#create-turtlesim-controller-package" title="Permalink to this headline">¶</a></h1>
+<p>This guide walks you through creating a custom ROS 2 package containing a controller node for the turtlesim simulator.</p>
+<div class="section" id="overview">
+<h2>1️⃣ Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, you will create a ROS 2 <strong>package</strong> called <code class="docutils literal notranslate"><span class="pre">my_turtlesim_controller</span></code> containing a <strong>node</strong> called <code class="docutils literal notranslate"><span class="pre">node_turtle_controller.py</span></code> that publishes velocity commands to control the turtle’s movement.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Key Terminology:</strong></p>
+<ul class="simple">
+<li><p><strong>Package</strong> (<code class="docutils literal notranslate"><span class="pre">my_turtlesim_controller</span></code>): The organizational unit that contains all related files, dependencies, and nodes</p></li>
+<li><p><strong>Node</strong> (<code class="docutils literal notranslate"><span class="pre">node_turtle_controller.py</span></code>): The executable Python script that performs the actual work (subscribing, publishing, processing data)</p></li>
+</ul>
+</div>
+<p>This package will demonstrate the basic structure of a ROS 2 Python package and how nodes communicate via topics.</p>
+</div>
+<div class="section" id="navigate-to-your-workspace">
+<h2>2️⃣ Navigate to Your Workspace<a class="headerlink" href="#navigate-to-your-workspace" title="Permalink to this headline">¶</a></h2>
+<p>Ensure you are in the workspace where you want to create the package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/turtlesim_ws/src
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-the-package">
+<h2>3️⃣ Create the Package<a class="headerlink" href="#create-the-package" title="Permalink to this headline">¶</a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">pkg</span> <span class="pre">create</span></code> command to create the <code class="docutils literal notranslate"><span class="pre">my_turtlesim_controller</span></code> package:</p>
+<img alt="ros2 pkg create" class="align-center" src="../../../_images/ros2_pkg_create.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 pkg create my_turtlesim_controller --build-type ament_python --dependencies rclpy
+</pre></div>
+</div>
+<img alt="pkg create" class="align-center" src="../../../_images/pkg_create.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="understand-the-generated-files">
+<h2>4️⃣ Understand the Generated Files<a class="headerlink" href="#understand-the-generated-files" title="Permalink to this headline">¶</a></h2>
+<p>The command creates the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my_turtlesim_controller/
+├── CMakeLists.txt          # CMake build file (not used for Python packages)
+├── package.xml             # Defines package metadata and dependencies
+├── resource/               # Stores package-specific resources
+│   └── my_turtlesim_controller  # Empty marker file for ament resource index
+├── setup.py                # Python build script
+└── my_turtlesim_controller/ # Directory for Python scripts
+</pre></div>
+</div>
+<p>Open up the src in Visual Studio Code to view:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/turtlesim_ws/src
+code .
+</pre></div>
+</div>
+<img alt="file structure" class="align-center" src="../../../_images/code_structure.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="add-dependencies">
+<h2>5️⃣ Add Dependencies<a class="headerlink" href="#add-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> to declare the package dependencies. For controlling turtlesim, include <code class="docutils literal notranslate"><span class="pre">rclpy</span></code> and <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;depend&gt;</span>turtlesim<span class="nt">&lt;/depend&gt;</span>
+</pre></div>
+</div>
+<img alt="package.xml dependency" class="align-center" src="../../../_images/depend.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Add your email to the maintainer email line in <code class="docutils literal notranslate"><span class="pre">package.xml</span></code>:</p>
+<img alt="maintainer email" class="align-center" src="../../../_images/email.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="colcon-build">
+<h2>6️⃣ Colcon Build<a class="headerlink" href="#colcon-build" title="Permalink to this headline">¶</a></h2>
+<p>Navigate back to the turtlesim_ws directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/turtlesim_ws
+</pre></div>
+</div>
+<p>Use colcon build to build the new package. Note and explanation:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> command:</p>
+<ul class="simple">
+<li><p>Identifies the packages in the <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory based on the presence of <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> files.</p></li>
+<li><p>Resolves dependencies, determines build order, and invokes the appropriate build system (e.g., CMake for C++ or setuptools for Python).</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>colcon build
+</pre></div>
+</div>
+<p>If you get the setup tools error, follow the instructions below:</p>
+<img alt="setup tools error" class="align-center" src="../../../_images/error_setup_tools.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install <span class="nv">setuptools</span><span class="o">==</span><span class="m">58</span>.2.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="write-the-python-node-code">
+<h2>7️⃣ Write the Python Node Code<a class="headerlink" href="#write-the-python-node-code" title="Permalink to this headline">¶</a></h2>
+<p>Create a Python script for the turtle controller node. In the terminal navigate to the package’s python directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/turtlesim_ws/src/my_turtlesim_controller/my_turtlesim_controller
+</pre></div>
+</div>
+<p>Create a file called <code class="docutils literal notranslate"><span class="pre">node_turtle_controller.py</span></code>:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We prefix the filename with <code class="docutils literal notranslate"><span class="pre">node_</span></code> to clearly indicate this is a ROS 2 node (an executable component) rather than a package or library module. This naming convention helps distinguish between:</p>
+<ul class="simple">
+<li><p><strong>Package</strong>: <code class="docutils literal notranslate"><span class="pre">my_turtlesim_controller</span></code> (the container/directory)</p></li>
+<li><p><strong>Node</strong>: <code class="docutils literal notranslate"><span class="pre">node_turtle_controller.py</span></code> (the executable script that runs)</p></li>
+</ul>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>touch node_turtle_controller.py
+</pre></div>
+</div>
+<p>Make the file executable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod +x node_turtle_controller.py
+</pre></div>
+</div>
+<p>Go back to src and open it in vscode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../..
+code .
+</pre></div>
+</div>
+<p>Install the ROS extension in vscode:</p>
+<img alt="ros extension" class="align-center" src="../../../_images/ros_extension.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This is an example Python node (save as <code class="docutils literal notranslate"><span class="pre">node_turtle_controller.py</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">rclpy</span>  <span class="c1"># Import the ROS 2 Python client library</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>  <span class="c1"># Import the Node base class for creating ROS 2 nodes</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>  <span class="c1"># Import the Twist message type for velocity commands</span>
+
+<span class="k">class</span> <span class="nc">TurtleController</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ROS 2 Node to control the turtle in turtlesim by publishing velocity commands.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Initialize the Node with the name &#39;turtle_controller&#39;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;turtle_controller&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Create a publisher to the &#39;/turtle1/cmd_vel&#39; topic</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;/turtle1/cmd_vel&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># set up a timer that calls the move_turtle method every 0.5 seconds</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">move_turtle</span><span class="p">)</span>
+
+        <span class="c1"># Log a message indicating the node has been started</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Turtle Controller Node has started.&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">move_turtle</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Publishes a velocity command to make the turtle move.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">twist</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span>
+        <span class="n">twist</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">2.0</span>
+        <span class="n">twist</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">1.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">twist</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Published velocity command.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">TurtleController</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">move_turtle</span><span class="p">()</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-setup-py">
+<h2>8️⃣ Update setup.py<a class="headerlink" href="#update-setup-py" title="Permalink to this headline">¶</a></h2>
+<p>Update the <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> file to add an entry point so the script is runnable as a console script:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;turtle_controller = my_turtlesim_controller.node_turtle_controller:main&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="build-the-package">
+<h2>9️⃣ Build the Package<a class="headerlink" href="#build-the-package" title="Permalink to this headline">¶</a></h2>
+<p>Navigate back to the root of the workspace and build your package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/turtlesim_ws
+colcon build --packages-select my_turtlesim_controller
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you use <code class="docutils literal notranslate"><span class="pre">--symlink-install</span></code> when developing Python packages, you won’t need to re-run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> after every code change.</p>
+</div>
+</div>
+<div class="section" id="source-the-workspace">
+<h2>🔟 Source the Workspace<a class="headerlink" href="#source-the-workspace" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/turtlesim_ws/install/setup.bash
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you added the source line to your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, you can instead run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> to load the workspace.</p>
+</div>
+</div>
+<div class="section" id="test-the-my-turtlesim-controller-node">
+<h2>⏸️ Test the my_turtlesim_controller Node<a class="headerlink" href="#test-the-my-turtlesim-controller-node" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run turtlesim turtlesim_node
+</pre></div>
+</div>
+<p>In another terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run my_turtlesim_controller turtle_controller
+</pre></div>
+</div>
+<p>In another terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> /turtle1/cmd_vel
+</pre></div>
+</div>
+<p>In another terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rqt_graph
+</pre></div>
+</div>
+<p>The turtle should move in a circular motion based on the linear and angular velocities you defined.</p>
+<div class="section" id="summary">
+<h3>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<p>You have successfully created a custom ROS 2 package that controls the turtlesim simulator. This demonstrates the fundamental concepts of ROS 2 package creation, node development, and topic-based communication.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../aeb/index.html" class="btn btn-neutral float-right" title="Tutorial 2 - Automatic Emergency Braking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="turtlesim_ws.html" class="btn btn-neutral float-left" title="Create turtlesim_ws Workspace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

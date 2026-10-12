@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quality of Service (QoS) in ROS 2 &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Speed Adjustment Using PID Control for TTC" href="PID.html" />
+    <link rel="prev" title="AEB Drive Example" href="drive.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 2 - Automatic Emergency Braking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">AEB Theory of Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html">LaserScan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html">AEB Scan Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html">AEB Drive Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Quality of Service (QoS) in ROS 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qos-for-sensor-data">QoS for Sensor Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-qos-profiles-in-ros-2">Common QoS Profiles in ROS 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#considerations-when-using-qos">Considerations When Using QoS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 2 - Automatic Emergency Braking</a> &raquo;</li>
+        
+      <li>Quality of Service (QoS) in ROS 2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/qos.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quality-of-service-qos-in-ros-2">
+<span id="doc-tutorials-aeb-qos"></span><h1>Quality of Service (QoS) in ROS 2<a class="headerlink" href="#quality-of-service-qos-in-ros-2" title="Permalink to this headline">¶</a></h1>
+<p>Quality of Service (QoS) settings in ROS 2 determine how data flows between publishers and subscribers, especially crucial for sensor data streams such as LiDAR scans. Proper QoS configuration helps ensure reliability and timeliness of data, significantly impacting the performance of robotic applications.</p>
+<div class="section" id="qos-for-sensor-data">
+<h2>QoS for Sensor Data<a class="headerlink" href="#qos-for-sensor-data" title="Permalink to this headline">¶</a></h2>
+<p>When working with sensor data, such as LiDAR scans from an RPLidar, ROS 2 provides a predefined QoS profile specifically for sensor data called <code class="docutils literal notranslate"><span class="pre">qos_profile_sensor_data</span></code>. This profile helps manage high-frequency data efficiently by:</p>
+<ul class="simple">
+<li><p><strong>Reliability:</strong> Set to “best effort” to prioritize the latest available data rather than guaranteeing the delivery of every single message.</p></li>
+<li><p><strong>Durability:</strong> Set to “volatile” since only recent data matters for sensors.</p></li>
+<li><p><strong>History Depth:</strong> Ensures the subscriber buffer holds recent messages to reduce the chance of missing important data.</p></li>
+</ul>
+<div class="section" id="using-sensor-qos-in-python">
+<h3>Using Sensor QoS in Python<a class="headerlink" href="#using-sensor-qos-in-python" title="Permalink to this headline">¶</a></h3>
+<p>Here’s how to apply the <code class="docutils literal notranslate"><span class="pre">qos_profile_sensor_data</span></code> to your subscriber:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">rclpy.qos</span> <span class="kn">import</span> <span class="n">qos_profile_sensor_data</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">scan_subscriber</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+    <span class="n">LaserScan</span><span class="p">,</span>
+    <span class="s1">&#39;/scan&#39;</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">scan_callback</span><span class="p">,</span>
+    <span class="n">qos_profile_sensor_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="common-qos-profiles-in-ros-2">
+<h2>Common QoS Profiles in ROS 2<a class="headerlink" href="#common-qos-profiles-in-ros-2" title="Permalink to this headline">¶</a></h2>
+<p>ROS 2 provides several predefined QoS profiles, each tailored to specific types of communication:</p>
+<ul class="simple">
+<li><p><strong>Default QoS (qos_profile_default)</strong>: General-purpose profile.</p></li>
+<li><p><strong>Sensor Data QoS (qos_profile_sensor_data)</strong>: Best suited for high-frequency sensor streams.</p></li>
+<li><p><strong>System Default QoS (qos_profile_system_default)</strong>: Matches the default behavior of underlying middleware.</p></li>
+<li><p><strong>Parameters QoS (qos_profile_parameters)</strong>: Used for parameters and dynamic configurations.</p></li>
+</ul>
+</div>
+<div class="section" id="considerations-when-using-qos">
+<h2>Considerations When Using QoS<a class="headerlink" href="#considerations-when-using-qos" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Always match QoS profiles between publishers and subscribers to avoid communication issues.</p></li>
+<li><p>High-frequency data streams (e.g., LiDAR, IMU) benefit significantly from sensor-specific QoS settings.</p></li>
+<li><p>For reliable message exchange (commands or state updates), consider using “reliable” QoS settings.</p></li>
+</ul>
+<p>Properly choosing and configuring QoS settings in ROS 2 will help ensure your robotic system functions efficiently and reliably.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="PID.html" class="btn btn-neutral float-right" title="Speed Adjustment Using PID Control for TTC" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="drive.html" class="btn btn-neutral float-left" title="AEB Drive Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

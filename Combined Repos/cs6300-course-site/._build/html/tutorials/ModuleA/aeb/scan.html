@@ -1,0 +1,527 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>LaserScan Data &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AEB Package Creation" href="aeb_package.html" />
+    <link rel="prev" title="AEB Theory of Operation" href="theory.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 2 - Automatic Emergency Braking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">AEB Theory of Operation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LaserScan Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#finding-the-scan-topic">Finding the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> Topic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checking-the-message-type">Checking the Message Type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inspecting-the-laserscan-message-definition">Inspecting the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> Message Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#echoing-live-scan-data">Echoing Live Scan Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-scan-output-laserscan">Understanding <code class="docutils literal notranslate"><span class="pre">/scan</span></code> Output (LaserScan)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scan-timing-and-health">Scan Timing and Health</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#confirming-frame-information">Confirming Frame Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-hokuyo-ust-10lx-lidar">Hardware: Hokuyo UST-10LX LiDAR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html">AEB Scan Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html">AEB Drive Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 2 - Automatic Emergency Braking</a> &raquo;</li>
+        
+      <li>LaserScan Data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/scan.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="laserscan-data">
+<span id="doc-tutorials-aeb-scan"></span><h1>LaserScan Data<a class="headerlink" href="#laserscan-data" title="Permalink to this headline">¶</a></h1>
+<p>Before writing any code, it is important to understand what scan data is available and how it is structured. The following ROS 2 commands allow you to discover the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic, inspect its message type, and explore the data used for Automatic Emergency Braking (AEB).</p>
+<div class="section" id="finding-the-scan-topic">
+<h2>Finding the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> Topic<a class="headerlink" href="#finding-the-scan-topic" title="Permalink to this headline">¶</a></h2>
+<p>First, confirm that the lidar scan topic exists.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic list
+ros2 topic list <span class="p">|</span> grep scan
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">/scan</span></code> appears in the list, the lidar is publishing data and you are ready to proceed.</p>
+</div>
+<div class="section" id="checking-the-message-type">
+<h2>Checking the Message Type<a class="headerlink" href="#checking-the-message-type" title="Permalink to this headline">¶</a></h2>
+<p>Next, verify the type of message being published on <code class="docutils literal notranslate"><span class="pre">/scan</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic info /scan
+</pre></div>
+</div>
+<p>You should see output similar to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Type:</span> <span class="pre">sensor_msgs/msg/LaserScan</span></code></p></li>
+</ul>
+<p>This tells us that scan data is published using the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> message.</p>
+</div>
+<div class="section" id="inspecting-the-laserscan-message-definition">
+<h2>Inspecting the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> Message Definition<a class="headerlink" href="#inspecting-the-laserscan-message-definition" title="Permalink to this headline">¶</a></h2>
+<p>To see what information is contained in each scan message:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 interface show sensor_msgs/msg/LaserScan
+</pre></div>
+</div>
+<p>This is one of the most important steps. It shows all available fields, including:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> – distance measurements in meters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_min</span></code>, <code class="docutils literal notranslate"><span class="pre">angle_max</span></code>, <code class="docutils literal notranslate"><span class="pre">angle_increment</span></code> – used to map array indices to angles</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range_min</span></code>, <code class="docutils literal notranslate"><span class="pre">range_max</span></code> – valid sensor distance limits</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header.frame_id</span></code> – the coordinate frame of the scan data</p></li>
+</ul>
+</div>
+<div class="section" id="echoing-live-scan-data">
+<h2>Echoing Live Scan Data<a class="headerlink" href="#echoing-live-scan-data" title="Permalink to this headline">¶</a></h2>
+<p>To view raw scan data as it is published:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> /scan
+</pre></div>
+</div>
+<p>This produces a large amount of output. More student-friendly options include:</p>
+<p>Show only a single scan message:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> /scan --once
+</pre></div>
+</div>
+<p>Show a compact portion of the message:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> /scan --once <span class="p">|</span> head -n <span class="m">60</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="understanding-scan-output-laserscan">
+<h2>Understanding <code class="docutils literal notranslate"><span class="pre">/scan</span></code> Output (LaserScan)<a class="headerlink" href="#understanding-scan-output-laserscan" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic publishes lidar data using the <code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/LaserScan</span></code> message. The most important field for Automatic Emergency Braking (AEB) is <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> — an array of distance measurements (in meters) taken at evenly spaced angles across the lidar’s field of view.</p>
+<div class="section" id="what-ranges-means">
+<h3>What <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> Means<a class="headerlink" href="#what-ranges-means" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> is an array of distance readings in <strong>meters</strong>.</p></li>
+<li><p>Each element corresponds to one laser ray at a specific angle.</p></li>
+<li><p>The scan spans from <code class="docutils literal notranslate"><span class="pre">angle_min</span></code> to <code class="docutils literal notranslate"><span class="pre">angle_max</span></code> in steps of <code class="docutils literal notranslate"><span class="pre">angle_increment</span></code>.</p></li>
+</ul>
+<p>From the example output:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_min</span> <span class="pre">=</span> <span class="pre">-2.356</span> <span class="pre">rad</span></code>  (≈ <strong>-135°</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_max</span> <span class="pre">=</span>&#160; <span class="pre">2.356</span> <span class="pre">rad</span></code>  (≈ <strong>+135°</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_increment</span> <span class="pre">=</span> <span class="pre">0.004363</span> <span class="pre">rad</span></code> (≈ <strong>0.25° per sample</strong>)</p></li>
+</ul>
+<p>This results in approximately a <strong>270° field of view</strong>.</p>
+</div>
+<div class="section" id="how-many-samples-are-in-one-scan">
+<h3>How Many Samples Are in One Scan?<a class="headerlink" href="#how-many-samples-are-in-one-scan" title="Permalink to this headline">¶</a></h3>
+<p>The number of samples in <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> is approximately:</p>
+<div class="math notranslate nohighlight">
+\[N \approx \frac{\text{angle\_max} - \text{angle\_min}}{\text{angle\_increment}} + 1\]</div>
+<p>With the values above, this scan contains roughly <strong>1081 distance measurements</strong>.</p>
+</div>
+<div class="section" id="mapping-an-index-to-an-angle">
+<h3>Mapping an Index to an Angle<a class="headerlink" href="#mapping-an-index-to-an-angle" title="Permalink to this headline">¶</a></h3>
+<p>Each index in <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> maps to an angle using:</p>
+<div class="math notranslate nohighlight">
+\[\text{angle}(i) = \text{angle\_min} + i \cdot \text{angle\_increment}\]</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ranges[0]</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">angle_min</span></code> (far left)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ranges[last]</span></code> corresponds to <code class="docutils literal notranslate"><span class="pre">angle_max</span></code> (far right)</p></li>
+</ul>
+</div>
+<div class="section" id="straight-ahead-index">
+<h3>“Straight Ahead” Index<a class="headerlink" href="#straight-ahead-index" title="Permalink to this headline">¶</a></h3>
+<p>The index closest to straight ahead (0 radians) can be estimated by:</p>
+<div class="math notranslate nohighlight">
+\[i_{\text{forward}} \approx \frac{0 - \text{angle\_min}}{\text{angle\_increment}}\]</div>
+<p>For this scan, the forward-facing index is approximately <strong>540</strong>, near the center of the array.</p>
+</div>
+<div class="section" id="interpreting-range-values">
+<h3>Interpreting Range Values<a class="headerlink" href="#interpreting-range-values" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Values below <strong>1 meter</strong> indicate very close obstacles.</p></li>
+<li><p>Values between <strong>1–3 meters</strong> represent nearby objects.</p></li>
+<li><p>Readings of <code class="docutils literal notranslate"><span class="pre">inf</span></code> or values greater than <code class="docutils literal notranslate"><span class="pre">range_max</span></code> indicate no valid return.</p></li>
+</ul>
+<p>In the example output, a value such as <code class="docutils literal notranslate"><span class="pre">65.53</span></code> exceeds <code class="docutils literal notranslate"><span class="pre">range_max</span> <span class="pre">=</span> <span class="pre">30.0</span></code> and should be treated as <strong>invalid</strong> for AEB calculations.</p>
+</div>
+</div>
+<div class="section" id="scan-timing-and-health">
+<h2>Scan Timing and Health<a class="headerlink" href="#scan-timing-and-health" title="Permalink to this headline">¶</a></h2>
+<p>You can check how often scans are published:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic hz /scan
+</pre></div>
+</div>
+<p>A higher scan rate allows faster reaction times for braking decisions.</p>
+<p>You can also inspect bandwidth usage:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic bw /scan
+</pre></div>
+</div>
+<p>This helps explain why <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> contains a large amount of data.</p>
+</div>
+<div class="section" id="confirming-frame-information">
+<h2>Confirming Frame Information<a class="headerlink" href="#confirming-frame-information" title="Permalink to this headline">¶</a></h2>
+<p>If you are working with angles or transforming scan data, it is important to know the coordinate frame.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> /scan --once <span class="p">|</span> grep frame_id
+</pre></div>
+</div>
+<p>This confirms the frame in which the scan data is reported and how it relates to the rest of the robot.</p>
+</div>
+<div class="section" id="hardware-hokuyo-ust-10lx-lidar">
+<h2>Hardware: Hokuyo UST-10LX LiDAR<a class="headerlink" href="#hardware-hokuyo-ust-10lx-lidar" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">/scan</span></code> data you’re working with comes from the <strong>Hokuyo UST-10LX 2D LiDAR</strong> sensor mounted on the RoboRacer vehicle. Understanding the hardware specifications helps you interpret the scan data and design effective safety systems.</p>
+<a class="reference internal image-reference" href="../../../_images/10XL.PNG"><img alt="Hokuyo UST-10LX LiDAR" class="align-center" src="../../../_images/10XL.PNG" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Manufacturer Information</strong></p>
+<p>Full specifications available at: <a class="reference external" href="https://hokuyo-usa.com/products/lidar-obstacle-detection/ust-10lx">Hokuyo UST-10LX Product Page</a></p>
+</div>
+<div class="section" id="key-specifications">
+<h3>Key Specifications<a class="headerlink" href="#key-specifications" title="Permalink to this headline">¶</a></h3>
+<p><strong>Measurement Range</strong></p>
+<ul class="simple">
+<li><p><strong>Maximum Range</strong>: 10 meters</p></li>
+<li><p><strong>Minimum Range</strong>: 0.06 meters (60 mm)</p></li>
+<li><p>Values beyond these limits in <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> should be treated as invalid</p></li>
+</ul>
+<p><strong>Field of View</strong></p>
+<ul class="simple">
+<li><p><strong>270° coverage</strong> (approximately -135° to +135°)</p></li>
+<li><p>This wide field of view allows detection of obstacles to the sides as well as front</p></li>
+<li><p>Corresponds to the <code class="docutils literal notranslate"><span class="pre">angle_min</span></code> to <code class="docutils literal notranslate"><span class="pre">angle_max</span></code> values you see in the scan message</p></li>
+</ul>
+<p><strong>Angular Resolution</strong></p>
+<ul class="simple">
+<li><p><strong>0.25° per measurement</strong> (0.004363 radians)</p></li>
+<li><p>This is the <code class="docutils literal notranslate"><span class="pre">angle_increment</span></code> value</p></li>
+<li><p>Results in approximately <strong>1081 distance measurements</strong> per scan</p></li>
+</ul>
+<p><strong>Scan Rate</strong></p>
+<ul class="simple">
+<li><p><strong>40 Hz</strong> scanning frequency</p></li>
+<li><p>Provides scan updates 40 times per second</p></li>
+<li><p>Critical for real-time obstacle detection and emergency braking</p></li>
+</ul>
+<p><strong>Accuracy</strong></p>
+<ul class="simple">
+<li><p><strong>±30 mm</strong> under standard conditions</p></li>
+<li><p>Important when calculating precise time-to-collision values</p></li>
+<li><p>Range measurements are reliable within this tolerance</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/10XL_specs.PNG"><img alt="Hokuyo UST-10LX Specifications" class="align-center" src="../../../_images/10XL_specs.PNG" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="physical-characteristics">
+<h3>Physical Characteristics<a class="headerlink" href="#physical-characteristics" title="Permalink to this headline">¶</a></h3>
+<p><strong>Compact and Lightweight</strong></p>
+<ul class="simple">
+<li><p><strong>Dimensions</strong>: 62 × 62 × 87 mm</p></li>
+<li><p><strong>Weight</strong>: 130 g</p></li>
+<li><p>Minimal impact on vehicle dynamics</p></li>
+</ul>
+<p><strong>Environmental Protection</strong></p>
+<ul class="simple">
+<li><p><strong>IP65-rated</strong> enclosure</p></li>
+<li><p>Dustproof and water-resistant</p></li>
+<li><p>Suitable for indoor robotics environments</p></li>
+</ul>
+<p><strong>Power and Communication</strong></p>
+<ul class="simple">
+<li><p><strong>12V DC</strong> operation (~8W power consumption)</p></li>
+<li><p><strong>Ethernet interface</strong> for high-speed data transfer to ROS 2</p></li>
+<li><p>Ensures low-latency scan data delivery</p></li>
+</ul>
+</div>
+<div class="section" id="connecting-hardware-to-software">
+<h3>Connecting Hardware to Software<a class="headerlink" href="#connecting-hardware-to-software" title="Permalink to this headline">¶</a></h3>
+<p>When you subscribe to <code class="docutils literal notranslate"><span class="pre">/scan</span></code>, you’re receiving data that reflects these hardware characteristics:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> array length (~1081 elements) comes from the 270° FoV divided by 0.25° resolution</p></li>
+<li><p>The 40 Hz scan rate determines how quickly your AEB system can react</p></li>
+<li><p>The 10-meter max range defines the maximum detection distance for obstacles</p></li>
+<li><p>The ±30 mm accuracy affects the precision of your TTC calculations</p></li>
+</ul>
+<p>Understanding these specifications helps you make informed decisions about:</p>
+<ul class="simple">
+<li><p><strong>Threshold values</strong> for collision detection</p></li>
+<li><p><strong>Update rates</strong> for your safety node</p></li>
+<li><p><strong>Valid range filtering</strong> to exclude sensor noise or invalid readings</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aeb_package.html" class="btn btn-neutral float-right" title="AEB Package Creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="theory.html" class="btn btn-neutral float-left" title="AEB Theory of Operation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

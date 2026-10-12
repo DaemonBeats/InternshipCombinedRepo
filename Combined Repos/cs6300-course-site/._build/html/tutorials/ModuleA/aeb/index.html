@@ -1,0 +1,429 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 2 - Automatic Emergency Braking &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="AEB Theory of Operation" href="theory.html" />
+    <link rel="prev" title="Create Turtlesim Controller Package" href="../turtlesim/turtlesim_pkg.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial 2 - Automatic Emergency Braking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theory.html">AEB Theory of Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html">LaserScan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html">AEB Scan Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html">AEB Drive Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial 2 - Automatic Emergency Braking</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-2-automatic-emergency-braking">
+<span id="doc-tutorials-aeb"></span><h1>Tutorial 2 - Automatic Emergency Braking<a class="headerlink" href="#tutorial-2-automatic-emergency-braking" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="sec-aeb">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="theory.html">AEB Theory of Operation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#learning-goals">1️⃣ Learning Goals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#overview">2️⃣ Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#the-laserscan-message">The <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#the-odometry-message">The <code class="docutils literal notranslate"><span class="pre">Odometry</span></code> Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#the-ackermanndrivestamped-message">The <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> Message</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#time-to-collision-ttc-vs-distance-based-braking">3️⃣ Time-to-Collision (TTC) vs. Distance-Based Braking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#distance-based-braking-threshold-approach">Distance-Based Braking (Threshold Approach)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#time-to-collision-ttc-a-smarter-alternative">Time-to-Collision (TTC) - A Smarter Alternative</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#example-comparing-both-approaches">Example: Comparing Both Approaches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#key-takeaways">Key Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#understanding-time-to-collision-ttc">4️⃣ Understanding Time to Collision (TTC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#basic-ttc-concept">Basic TTC Concept</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#example-why-ttc-matters">Example: Why TTC Matters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#time-to-collision-using-laser-scan-data">5️⃣ Time to Collision Using Laser Scan Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#what-data-the-vehicle-uses">What Data the Vehicle Uses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#range-rate-closing-speed-along-a-beam">Range Rate: Closing Speed Along a Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#calculating-range-rate-recommended-method">Calculating Range Rate (Recommended Method)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#computing-ttc-per-beam">Computing TTC Per Beam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#why-the-sign-matters">Why the Sign Matters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory.html#using-ttc-for-aeb-decisions">Using TTC for AEB Decisions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html#automatic-emergency-braking-with-ttc">6️⃣ Automatic Emergency Braking with TTC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scan.html">LaserScan Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#finding-the-scan-topic">Finding the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> Topic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#checking-the-message-type">Checking the Message Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#inspecting-the-laserscan-message-definition">Inspecting the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> Message Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#echoing-live-scan-data">Echoing Live Scan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#understanding-scan-output-laserscan">Understanding <code class="docutils literal notranslate"><span class="pre">/scan</span></code> Output (LaserScan)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#what-ranges-means">What <code class="docutils literal notranslate"><span class="pre">ranges[]</span></code> Means</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#how-many-samples-are-in-one-scan">How Many Samples Are in One Scan?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#mapping-an-index-to-an-angle">Mapping an Index to an Angle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#straight-ahead-index">“Straight Ahead” Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#interpreting-range-values">Interpreting Range Values</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#scan-timing-and-health">Scan Timing and Health</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#confirming-frame-information">Confirming Frame Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html#hardware-hokuyo-ust-10lx-lidar">Hardware: Hokuyo UST-10LX LiDAR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#key-specifications">Key Specifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#physical-characteristics">Physical Characteristics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html#connecting-hardware-to-software">Connecting Hardware to Software</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html#create-the-safety-package">1️⃣ Create the Safety Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html#modify-package-xml">2️⃣ Modify package.xml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html#modify-cmakelists-txt-if-using-c">3️⃣ Modify CMakeLists.txt (If Using C++)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aeb_package.html#install-dependencies-using-rosdep">4️⃣ Install Dependencies Using rosdep</a></li>
+<li class="toctree-l3"><a class="reference internal" href="aeb_package.html#implement-the-safety-node">5️⃣ Implement the Safety Node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html#make-it-executable">6️⃣ Make It Executable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aeb_package.html#build-run">7️⃣ Build &amp; Run</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scan_example.html">AEB Scan Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html#how-safety-node-py-identifies-front-readings-from-lidar">🚀 How safety_node.py Identifies Front Readings from LiDAR</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#problem-before-fix">🔹 Problem Before Fix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#fix-filter-only-front-readings">✅ Fix: Filter Only Front Readings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#understanding-lidar-data">1️⃣ Understanding LiDAR Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#extracting-front-readings">2️⃣ Extracting Front Readings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#explanation-of-code">📌 Explanation of Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#why-this-fix-works">3️⃣ Why This Fix Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#summary">4️⃣ Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan_example.html#full-code-example">5️⃣ Full Code Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="drive.html">AEB Drive Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="drive.html#code-explanation-driveforwardnode">Code Explanation: DriveForwardNode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#shebang-imports">1️⃣ Shebang &amp; Imports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#class-definition-driveforwardnode">2️⃣ Class Definition: DriveForwardNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#node-initialization-init">3️⃣ Node Initialization (__init__)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#creating-a-publisher">4️⃣ Creating a Publisher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#creating-a-timer">5️⃣ Creating a Timer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#logging-node-startup">6️⃣ Logging Node Startup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#drive-command-callback-drive-callback">7️⃣ Drive Command Callback (drive_callback)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#main-function">8️⃣ Main Function</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#running-the-script">9️⃣ Running the Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drive.html#summary">💡 Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html#full-code">Full Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="qos.html#qos-for-sensor-data">QoS for Sensor Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="qos.html#using-sensor-qos-in-python">Using Sensor QoS in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html#common-qos-profiles-in-ros-2">Common QoS Profiles in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html#considerations-when-using-qos">Considerations When Using QoS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#why-use-pid-control-for-speed-adjustment">1️⃣ Why Use PID Control for Speed Adjustment?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#pid-control-formula-for-speed-adjustment">2️⃣ PID Control Formula for Speed Adjustment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#how-the-derivative-term-helps">3️⃣ How the Derivative Term Helps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#example-pid-based-speed-control">4️⃣ Example: PID-Based Speed Control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="PID.html#scenario-adjusting-speed-based-on-ttc">Scenario: Adjusting Speed Based on TTC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#considerations-tuning">5️⃣ Considerations &amp; Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html#summary">6️⃣ Summary</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="theory.html" class="btn btn-neutral float-right" title="AEB Theory of Operation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../turtlesim/turtlesim_pkg.html" class="btn btn-neutral float-left" title="Create Turtlesim Controller Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

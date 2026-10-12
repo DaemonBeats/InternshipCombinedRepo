@@ -1,0 +1,378 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 6 - Nav2 Navigation &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Nav2 Setup" href="nav2_setup.html" />
+    <link rel="prev" title="Saving the Map" href="../slam/slam_map.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial 6 - Nav2 Navigation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nav2_setup.html">Nav2 Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html">Setup — Particle Filter (Updating Other Robots)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_goal_pose.html">2D Goal Pose Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_waypoint_nav.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html">Programmatic Waypoint Navigation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial 6 - Nav2 Navigation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleC/nav2/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-6-nav2-navigation">
+<span id="doc-tutorials-nav2"></span><h1>Tutorial 6 - Nav2 Navigation<a class="headerlink" href="#tutorial-6-nav2-navigation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="sec-nav2">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="nav2_setup.html">Nav2 Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nav2_setup.html#how-it-works">How It Works</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nav2_setup.html#what-is-amcl">What is AMCL?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_setup.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_setup.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nav2_setup.html#start-bringup-terminal-1">1️⃣ Start Bringup (Terminal 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_setup.html#launch-nav2-terminal-2">2️⃣ Launch Nav2 (Terminal 2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_setup.html#verify-nav2-is-running-terminal-3">3️⃣ Verify Nav2 is Running (Terminal 3)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_particle_filter_setup.html">Setup — Particle Filter (Updating Other Robots)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html#step-1-back-up-student-maps">Step 1 — Back Up Student Maps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html#step-2-pull-the-latest-code-and-initialize-submodules">Step 2 — Pull the Latest Code and Initialize Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html#step-3-remove-the-old-standalone-directories">Step 3 — Remove the Old Standalone Directories</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html#step-4-clean-build">Step 4 — Clean Build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html#step-5-reinstall-range-libc-python-extension">Step 5 — Reinstall range_libc Python Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html#step-6-restore-any-student-maps">Step 6 — Restore Any Student Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_goal_pose.html">2D Goal Pose Navigation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nav2_goal_pose.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#start-bringup-terminal-1">1️⃣ Start Bringup (Terminal 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#launch-nav2-terminal-2">2️⃣ Launch Nav2 (Terminal 2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#open-rviz2">3️⃣ Open RViz2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#set-initial-pose">4️⃣ Set Initial Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#add-visualization-displays">5️⃣ Add Visualization Displays</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#send-a-2d-goal-pose">6️⃣ Send a 2D Goal Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_goal_pose.html#watch-the-car-navigate">7️⃣ Watch the Car Navigate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_goal_pose.html#topics">Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_waypoint_nav.html">Navigate Through Poses</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nav2_waypoint_nav.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#start-bringup-terminal-1">1️⃣ Start Bringup (Terminal 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#launch-nav2-terminal-2">2️⃣ Launch Nav2 (Terminal 2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#open-rviz2">3️⃣ Open RViz2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#set-initial-pose">4️⃣ Set Initial Pose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#add-path-visualization">5️⃣ Add Path Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#add-the-nav2-panel">6️⃣ Add the Nav2 Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#add-the-nav2-goal-tool">7️⃣ Add the Nav2 Goal Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#enable-waypoint-mode">8️⃣ Enable Waypoint Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#set-waypoints">9️⃣ Set Waypoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#start-navigation">🔟 Start Navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_waypoint_nav.html#watch-the-car-navigate">1️⃣1️⃣ Watch the Car Navigate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_waypoint_nav.html#topics">Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nav2_programmatic_waypoints.html">Programmatic Waypoint Navigation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html#what-is-an-action-client">What is an Action Client?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html#how-to-get-waypoint-coordinates">How to Get Waypoint Coordinates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html#steps">Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#create-the-package">1️⃣ Create the Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#create-the-python-node">2️⃣ Create the Python Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#update-setup-py">3️⃣ Update setup.py</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#build-and-source">4️⃣ Build and Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#start-bringup-terminal-1">5️⃣ Start Bringup (Terminal 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#launch-nav2-terminal-2">6️⃣ Launch Nav2 (Terminal 2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#open-rviz2-and-set-initial-pose-terminal-3">7️⃣ Open RViz2 and Set Initial Pose (Terminal 3)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#run-the-waypoint-navigation-client-terminal-4">8️⃣ Run the Waypoint Navigation Client (Terminal 4)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nav2_programmatic_waypoints.html#watch-the-car-navigate">9️⃣ Watch the Car Navigate</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html#topics-and-actions">Topics and Actions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nav2_setup.html" class="btn btn-neutral float-right" title="Nav2 Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../slam/slam_map.html" class="btn btn-neutral float-left" title="Saving the Map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

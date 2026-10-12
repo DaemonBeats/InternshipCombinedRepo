@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Particle Filter Localization &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Understanding the Particle Filter Code" href="particle_filter_code.html" />
+    <link rel="prev" title="Tutorial 7 - Particle Filter Localization" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 7 - Particle Filter Localization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Particle Filter Localization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#where-this-fits">Where This Fits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-a-standalone-particle-filter">Why a Standalone Particle Filter?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-it-works">How It Works</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#topics">Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-steps">Run Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-parameters">Key Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_code.html">Understanding the Particle Filter Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_config.html">Tuning the Particle Filter (localize.yaml)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_launch.html">Understanding the Launch File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 7 - Particle Filter Localization</a> &raquo;</li>
+        
+      <li>Particle Filter Localization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleD/particle_filter/particle_filter.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="particle-filter-localization">
+<span id="doc-tutorials-particle-filter"></span><h1>Particle Filter Localization<a class="headerlink" href="#particle-filter-localization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="where-this-fits">
+<h2>Where This Fits<a class="headerlink" href="#where-this-fits" title="Permalink to this headline">¶</a></h2>
+<p>The particle filter is the <strong>localization</strong> component of the autonomous driving pipeline. It answers <em>“Where am I on this map?”</em> so that other nodes can make decisions about where to go.</p>
+<a class="reference internal image-reference" href="../../../_images/localization_pipeline.svg"><img alt="Pipeline showing localization (particle filter) feeding into path planning (waypoint logger and path follower)" class="align-center" src="../../../_images/localization_pipeline.svg" width="100%" /></a>
+<p>The left side (<strong>Localization</strong>) is what this tutorial covers — taking LiDAR and odometry data, comparing it against a saved map, and producing a localized pose. The right side (<strong>Path Planning &amp; Control</strong>) uses that pose to record waypoints (Lab 6a) and follow them autonomously (Lab 6b).</p>
+</div>
+<div class="section" id="why-a-standalone-particle-filter">
+<h2>Why a Standalone Particle Filter?<a class="headerlink" href="#why-a-standalone-particle-filter" title="Permalink to this headline">¶</a></h2>
+<p>In the Nav2 tutorials you used <strong>AMCL</strong> — Nav2’s built-in particle filter — for localization. AMCL is tightly integrated with Nav2’s planner, controller, and behavior tree, making it ideal for point-and-click navigation.</p>
+<p>This tutorial introduces the <strong>f1tenth/particle_filter</strong>, a standalone localization package. Both AMCL and this particle filter solve the same problem — <em>“where am I on this map?”</em> — using the same core algorithm (Monte Carlo Localization). The difference is how they’re used:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Nav2 AMCL</p></th>
+<th class="head"><p>f1tenth/particle_filter</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Integration</strong></p></td>
+<td><p>Part of the Nav2 stack (lifecycle managed)</p></td>
+<td><p>Standalone node (runs independently)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TF published</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">odom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">base_link</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Use case</strong></p></td>
+<td><p>Nav2 navigation (planner + controller)</p></td>
+<td><p>Custom controllers (pure pursuit, follow the gap, etc.)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ray casting</strong></p></td>
+<td><p>Standard CPU</p></td>
+<td><p>RangeLibc with GPU acceleration (CUDA on Jetson)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why learn both?</strong> Nav2 handles the full navigation pipeline for you — but in robotics and racing, you often need direct control over the car’s behavior. A standalone particle filter gives you localized pose data that you can feed into your own algorithms (pure pursuit, MPC, custom raceline followers) without the overhead of Nav2’s planner and controller. This is how competitive F1TENTH teams operate: lightweight localization + custom control for maximum speed.</p>
+<p>Once you have a saved map, you can use a <strong>particle filter</strong> (Monte Carlo Localization) to localize the vehicle within that map in real time. This tutorial uses the <a class="reference external" href="https://github.com/f1tenth/particle_filter">f1tenth/particle_filter</a> package with <strong>RangeLibc</strong> for fast ray casting.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>RangeLibc</strong> is a compiled Python library — it is imported automatically by the particle filter node at startup. You do not need to run it separately. As long as it was built correctly (see <a class="reference internal" href="../../ModuleC/slam/slam_toolbox.html#doc-tutorials-slamtoolbox"><span class="std std-ref">SLAM Toolbox</span></a> for the fix script), it will work transparently in the background.</p>
+</div>
+</div>
+<div class="section" id="how-it-works">
+<h2>How It Works<a class="headerlink" href="#how-it-works" title="Permalink to this headline">¶</a></h2>
+<p>The particle filter maintains a set of hypotheses (particles) about where the car might be on the map. Each particle represents a possible pose (x, y, heading). On each LiDAR scan, the filter:</p>
+<ol class="arabic simple">
+<li><p><strong>Resamples</strong> — particles with higher weights are duplicated; poor matches are discarded.</p></li>
+<li><p><strong>Predicts</strong> new particle positions using wheel odometry (with added noise).</p></li>
+<li><p><strong>Weights</strong> each particle by how well its simulated LiDAR scan matches the real scan.</p></li>
+<li><p><strong>Normalizes</strong> — adjusts weights so they sum to 1.0 (applies squash factor to prevent particle collapse).</p></li>
+</ol>
+<p>Over time the particles converge on the vehicle’s true location.</p>
+<div class="section" id="publishing">
+<h3>Publishing<a class="headerlink" href="#publishing" title="Permalink to this headline">¶</a></h3>
+<p>After each MCL cycle completes, the filter computes the <strong>weighted average</strong> of all particles — this becomes the best estimated pose. It then publishes that pose and several visualization outputs so that other nodes and RViz2 can use the result:</p>
+<ul class="simple">
+<li><p><strong>Localized Pose</strong> (<code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code>) — the primary output. Your pure pursuit node, waypoint logger, or any other node that needs to know where the car is subscribes to this topic.</p></li>
+<li><p><strong>TF Transform</strong> (<code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code>) — tells ROS where the car is relative to the map so that LiDAR scans and the map align in RViz2.</p></li>
+<li><p><strong>Particle Cloud</strong> (<code class="docutils literal notranslate"><span class="pre">/pf/viz/particles</span></code>) — all particle hypotheses displayed as arrows in RViz2 for debugging.</p></li>
+<li><p><strong>Best Pose</strong> (<code class="docutils literal notranslate"><span class="pre">/pf/viz/inferred_pose</span></code>) — a single arrow in RViz2 showing the estimated pose.</p></li>
+</ul>
+<p>Publishing happens every cycle (~30-40 Hz), giving downstream nodes a continuous stream of localization data.</p>
+<a class="reference internal image-reference" href="../../../_images/mcl_simple.svg"><img alt="Simplified particle filter cycle: Predict, Weight, Resample, Publish" class="align-center" src="../../../_images/mcl_simple.svg" width="100%" /></a>
+<p>For a deeper look at each step with code examples, see <a class="reference internal" href="particle_filter_code.html#doc-tutorials-particle-filter-code"><span class="std std-ref">Understanding the Particle Filter Code</span></a>.</p>
+</div>
+</div>
+<div class="section" id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<h4 style="color: #2563eb;">Subscribed (Inputs)</h4><p><strong style="color: #2563eb;">/scan</strong> — <code>sensor_msgs/LaserScan</code></p><blockquote>
+<div><p>LiDAR scan data. Downsampled by <code class="docutils literal notranslate"><span class="pre">angle_step</span></code> before use in the Weight step.</p>
+</div></blockquote>
+<p><strong style="color: #2563eb;">/vesc/odom</strong> — <code>nav_msgs/Odometry</code></p><blockquote>
+<div><p>Wheel odometry from the VESC. Used in the Predict step to move particles.</p>
+</div></blockquote>
+<p><strong style="color: #2563eb;">/initialpose</strong> — <code>geometry_msgs/PoseWithCovarianceStamped</code></p><blockquote>
+<div><p>Initial pose set via RViz2’s “2D Pose Estimate” button. A one-time action
+that scatters particles around the clicked location.</p>
+</div></blockquote>
+<p><strong style="color: #2563eb;">/map</strong> — <code>nav_msgs/OccupancyGrid</code></p><blockquote>
+<div><p>Saved map loaded into RangeLibc at startup for ray casting. Fetched via
+service call from the map server.</p>
+</div></blockquote>
+<p>Each input feeds a specific step of the MCL cycle:</p>
+<a class="reference internal image-reference" href="../../../_images/mcl_inputs.svg"><img alt="MCL cycle with inputs showing which data feeds each step" class="align-center" src="../../../_images/mcl_inputs.svg" width="100%" /></a>
+<h4 style="color: #7c3aed;">Published (Outputs)</h4><p><strong style="color: #7c3aed;">/pf/pose/odom</strong> — <code>nav_msgs/Odometry</code> (<strong>Localized Pose</strong>)</p><blockquote>
+<div><p>The filter’s best estimate of where the car is on the map. This is what
+your pure pursuit node or waypoint logger subscribes to. Includes
+position (x, y), heading, speed, and a covariance matrix indicating
+confidence.</p>
+</div></blockquote>
+<p><strong style="color: #7c3aed;">TF: map → laser</strong> (<strong>TF Transform</strong>)</p><blockquote>
+<div><p>Tells ROS the car’s position on the map by publishing a transform
+directly from <code class="docutils literal notranslate"><span class="pre">map</span></code> to <code class="docutils literal notranslate"><span class="pre">laser</span></code>. This is a shortcut — a standard
+ROS TF tree would go <code class="docutils literal notranslate"><span class="pre">map</span></code> → <code class="docutils literal notranslate"><span class="pre">odom</span></code> → <code class="docutils literal notranslate"><span class="pre">base_link</span></code> → <code class="docutils literal notranslate"><span class="pre">laser</span></code>,
+but this particle filter skips the intermediate frames. Without this
+transform, the map and LiDAR scans would not align in RViz2.</p>
+</div></blockquote>
+<p><strong style="color: #7c3aed;">/pf/viz/particles</strong> — <code>geometry_msgs/PoseArray</code> (<strong>Particle Cloud</strong>)</p><blockquote>
+<div><p>The current set of particle hypotheses, displayed as arrows in RViz2.
+A tight cluster means the filter is confident. A spread-out cloud means
+it is still searching. Useful for diagnosing localization issues.</p>
+</div></blockquote>
+<p><strong style="color: #7c3aed;">/pf/viz/inferred_pose</strong> — <code>geometry_msgs/PoseStamped</code> (<strong>Best Pose</strong>)</p><blockquote>
+<div><p>A single arrow in RViz2 showing the weighted average pose. This is the
+same value published on <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> but as a simpler message type
+for easy visualization.</p>
+</div></blockquote>
+<p>The full picture — inputs feeding the MCL cycle, and outputs published after each cycle:</p>
+<a class="reference internal image-reference" href="../../../_images/mcl_overview.svg"><img alt="Full MCL diagram with inputs, cycle steps, and published outputs" class="align-center" src="../../../_images/mcl_overview.svg" width="100%" /></a>
+</div>
+<div class="section" id="run-steps">
+<h2>Run Steps<a class="headerlink" href="#run-steps" title="Permalink to this headline">¶</a></h2>
+<p>The particle filter ships with a default map (<code class="docutils literal notranslate"><span class="pre">lab_map_clean</span></code>) already configured. If this is your map, <strong>no action is needed</strong> — skip to Step 2.</p>
+<a class="reference internal image-reference" href="../../../_images/lab_map_clean.png"><img alt="Default lab_map_clean occupancy grid map" class="align-center" src="../../../_images/lab_map_clean.png" style="width: 80%;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Using a different map?</strong> If you need to point the particle filter at a different map, expand the steps below.</p>
+<ol class="arabic">
+<li><p>Copy your map file into the package’s <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/my_map.pgm <span class="se">\</span>
+   ~/f1tenth_ws/src/f1tenth_system/particle_filter/maps/
+</pre></div>
+</div>
+</li>
+<li><p>Create a YAML metadata file based on the existing template:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp ~/f1tenth_ws/src/f1tenth_system/particle_filter/maps/lab_map_clean.yaml <span class="se">\</span>
+   ~/f1tenth_ws/src/f1tenth_system/particle_filter/maps/my_map.yaml
+</pre></div>
+</div>
+</li>
+<li><p>Edit <code class="docutils literal notranslate"><span class="pre">my_map.yaml</span></code> to match your map:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_map.pgm</span>
+<span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="nt">origin</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="nv">-19.8</span><span class="p p-Indicator">,</span> <span class="nv">-36.1</span><span class="p p-Indicator">,</span> <span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="nt">negate</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">occupied_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.65</span>
+<span class="nt">free_thresh</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+</pre></div>
+</div>
+</li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code> to use your map name:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/particle_filter/config/localize.yaml
+</pre></div>
+</div>
+<p>Find the <code class="docutils literal notranslate"><span class="pre">map_server</span></code> section and change the map name:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">map_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">map</span><span class="p">:</span> <span class="s">&#39;my_map&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Rebuild the package so the map files are installed to the share directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select particle_filter
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<p>Start the car stack as usual:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+bringup
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+ros2 launch particle_filter localize_launch.py
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">localize_launch.py</span></code> handles the map server and lifecycle transitions internally — you do not need to run <code class="docutils literal notranslate"><span class="pre">nav2_map_server</span></code> separately.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+rviz2 -d ~/f1tenth_ws/install/particle_filter/share/particle_filter/rviz/pf.rviz
+</pre></div>
+</div>
+<p>This loads a pre-configured RViz2 layout with the map, particle cloud, and inferred pose displays already set up. No manual configuration needed.</p>
+<p>The particle filter starts with particles spread randomly across the map. You must tell it roughly where the car is to begin localization:</p>
+<ul class="simple">
+<li><p>In RViz2, click <strong>2D Pose Estimate</strong> in the toolbar</p></li>
+<li><p>Click on the map where the car is located</p></li>
+<li><p>Drag in the direction the car is facing, then release</p></li>
+</ul>
+<p>The particles will converge around your selected location.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The more accurately you set the initial pose, the faster the filter will converge. If the particles do not converge, try setting the pose again from a clearer location on the map.</p>
+</div>
+<p>Drive the car using the PlayStation controller. As the car moves, the particle cloud will tighten and track the vehicle’s position on the map. The best estimated pose is published on <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code>.</p>
+</div>
+<div class="section" id="key-parameters">
+<h2>Key Parameters<a class="headerlink" href="#key-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Tune the particle filter by editing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/particle_filter/config/localize.yaml
+</pre></div>
+</div>
+<p>The key parameters are:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 15%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_particles</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4000</span></code></p></td>
+<td><p>Number of particles — more particles = more accuracy but higher CPU cost</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">angle_step</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">18</span></code></p></td>
+<td><p>LiDAR downsample factor — higher = faster but less accurate</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">range_method</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rmgpu</span></code></p></td>
+<td><p>Ray casting method (see below)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.25</span></code></p></td>
+<td><p>Heading noise — increase if filter diverges at speed</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="range-method-options">
+<h3><code class="docutils literal notranslate"><span class="pre">range_method</span></code> Options<a class="headerlink" href="#range-method-options" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Performance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rmgpu</span></code></p></td>
+<td><p>Fastest</p></td>
+<td><p>Requires RangeLibc compiled with CUDA — use on Jetson Orin</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cddt</span></code></p></td>
+<td><p>Fast</p></td>
+<td><p>CPU only — recommended fallback if no CUDA</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pcddt</span></code></p></td>
+<td><p>Fast</p></td>
+<td><p>Pruned variant of cddt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rm</span></code></p></td>
+<td><p>Moderate</p></td>
+<td><p>CPU only, no precomputation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bl</span></code></p></td>
+<td><p>Slowest</p></td>
+<td><p>Brute force — use only for debugging</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you built RangeLibc using the <code class="docutils literal notranslate"><span class="pre">fix_range_libc.sh</span></code> script on the Jetson Orin, <code class="docutils literal notranslate"><span class="pre">rmgpu</span></code> should work. If you see CUDA errors at runtime, fall back to <code class="docutils literal notranslate"><span class="pre">cddt</span></code> by editing <code class="docutils literal notranslate"><span class="pre">range_method</span></code> in <code class="docutils literal notranslate"><span class="pre">~/f1tenth_ws/src/f1tenth_system/particle_filter/config/localize.yaml</span></code> and setting <code class="docutils literal notranslate"><span class="pre">rangelib_variant</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Problem</p></th>
+<th class="head"><p>Solution</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Particles spread across the whole map</p></td>
+<td><p>Set the initial pose again using 2D Pose Estimate in RViz2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Filter diverges while driving</p></td>
+<td><p>Increase <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code>; slow down; re-set pose</p></td>
+</tr>
+<tr class="row-even"><td><p>CUDA errors on launch</p></td>
+<td><p>Change <code class="docutils literal notranslate"><span class="pre">range_method</span></code> to <code class="docutils literal notranslate"><span class="pre">cddt</span></code> and <code class="docutils literal notranslate"><span class="pre">rangelib_variant</span></code> to <code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/map</span></code> not available</p></td>
+<td><p>Ensure map_server is running and the map path is correct</p></td>
+</tr>
+<tr class="row-even"><td><p>Particles not moving</p></td>
+<td><p>Confirm <code class="docutils literal notranslate"><span class="pre">/vesc/odom</span></code> is publishing; check odometry topic name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="particle_filter_code.html" class="btn btn-neutral float-right" title="Understanding the Particle Filter Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial 7 - Particle Filter Localization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

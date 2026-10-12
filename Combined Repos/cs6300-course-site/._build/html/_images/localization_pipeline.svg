@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#666"/>
+    </marker>
+  </defs>
+
+  <!-- Region labels -->
+  <!-- Localization region -->
+  <rect x="10" y="10" width="330" height="400" rx="12" fill="#EBF5FB" stroke="#2980B9" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="175" y="36" text-anchor="middle" font-size="13" font-weight="bold" fill="#2471A3">LOCALIZATION</text>
+  <text x="175" y="52" text-anchor="middle" font-size="10" fill="#5DADE2">"Where am I on this map?"</text>
+
+  <!-- Path Planning region -->
+  <rect x="360" y="10" width="330" height="400" rx="12" fill="#FDEDEC" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="525" y="36" text-anchor="middle" font-size="13" font-weight="bold" fill="#A93226">PATH PLANNING &amp; CONTROL</text>
+  <text x="525" y="52" text-anchor="middle" font-size="10" fill="#E74C3C">"Where should I go and how?"</text>
+
+  <!-- ===== LOCALIZATION SIDE ===== -->
+
+  <!-- LiDAR + Odometry inputs -->
+  <rect x="30" y="75" width="130" height="55" rx="8" fill="#4A90D9" stroke="#2C5F8A" stroke-width="2"/>
+  <text x="95" y="98" text-anchor="middle" fill="white" font-size="12" font-weight="bold">LiDAR + Odom</text>
+  <text x="95" y="115" text-anchor="middle" fill="#D4E6F9" font-size="10">/scan  /vesc/odom</text>
+
+  <!-- Saved Map -->
+  <rect x="190" y="75" width="130" height="55" rx="8" fill="#4A90D9" stroke="#2C5F8A" stroke-width="2"/>
+  <text x="255" y="98" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Saved Map</text>
+  <text x="255" y="115" text-anchor="middle" fill="#D4E6F9" font-size="10">.pgm + .yaml</text>
+
+  <!-- Particle Filter -->
+  <rect x="55" y="170" width="240" height="80" rx="10" fill="#2980B9" stroke="#1A5276" stroke-width="2"/>
+  <text x="175" y="198" text-anchor="middle" fill="white" font-size="15" font-weight="bold">Particle Filter</text>
+  <text x="175" y="218" text-anchor="middle" fill="#D4E6F9" font-size="11">Monte Carlo Localization</text>
+  <text x="175" y="236" text-anchor="middle" fill="#D4E6F9" font-size="11">publishes /pf/pose/odom</text>
+
+  <!-- Arrows: inputs → particle filter -->
+  <line x1="95" y1="130" x2="145" y2="168" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="255" y1="130" x2="210" y2="168" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Localized Pose output -->
+  <rect x="90" y="295" width="170" height="55" rx="8" fill="#1ABC9C" stroke="#148F77" stroke-width="2"/>
+  <text x="175" y="318" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Localized Pose</text>
+  <text x="175" y="335" text-anchor="middle" fill="#D5F5E3" font-size="10">(x, y, θ) on the map</text>
+
+  <!-- Arrow: particle filter → localized pose -->
+  <line x1="175" y1="250" x2="175" y2="293" stroke="#666" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ===== PATH PLANNING SIDE ===== -->
+
+  <!-- Waypoint Logger -->
+  <rect x="400" y="75" width="200" height="70" rx="10" fill="#5CB85C" stroke="#3D8B3D" stroke-width="2"/>
+  <text x="500" y="100" text-anchor="middle" fill="white" font-size="13" font-weight="bold">Waypoint Logger</text>
+  <text x="500" y="118" text-anchor="middle" fill="#D4F0D4" font-size="10">Records poses while you drive</text>
+  <text x="500" y="133" text-anchor="middle" fill="#D4F0D4" font-size="10">(Lab 6a)</text>
+
+  <!-- waypoints.csv -->
+  <rect x="430" y="185" width="140" height="55" rx="8" fill="#F0AD4E" stroke="#C78D3E" stroke-width="2"/>
+  <text x="500" y="208" text-anchor="middle" fill="white" font-size="13" font-weight="bold">waypoints.csv</text>
+  <text x="500" y="225" text-anchor="middle" fill="#FDE8C8" font-size="10">x, y, z, w per row</text>
+
+  <!-- Path Follower -->
+  <rect x="400" y="275" width="200" height="85" rx="10" fill="#D9534F" stroke="#A94442" stroke-width="2"/>
+  <text x="500" y="298" text-anchor="middle" fill="white" font-size="13" font-weight="bold">Path Follower</text>
+  <text x="500" y="316" text-anchor="middle" fill="#F2DEDE" font-size="10">Pure Pursuit (Lab 6b)</text>
+  <text x="500" y="331" text-anchor="middle" fill="#F2DEDE" font-size="10">RRT (future)</text>
+  <text x="500" y="350" text-anchor="middle" fill="#F2DEDE" font-size="10">publishes /drive</text>
+
+  <!-- Arrow: Waypoint Logger → CSV -->
+  <line x1="500" y1="145" x2="500" y2="183" stroke="#666" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="510" y="152" width="82" height="22" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="551" y="167" text-anchor="middle" fill="#555" font-size="10" font-weight="bold">writes CSV</text>
+
+  <!-- Arrow: CSV → Path Follower -->
+  <line x1="500" y1="240" x2="500" y2="273" stroke="#666" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="510" y="247" width="82" height="22" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="551" y="262" text-anchor="middle" fill="#555" font-size="10" font-weight="bold">reads CSV</text>
+
+  <!-- ===== CROSS-REGION ARROWS ===== -->
+
+  <!-- Localized Pose → Waypoint Logger (pose data for recording) -->
+  <path d="M 260,320 Q 340,320 340,110 L 398,110" fill="none" stroke="#1ABC9C" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="298" y="196" width="82" height="22" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="339" y="211" text-anchor="middle" fill="#555" font-size="10" font-weight="bold">subscribes</text>
+
+  <!-- Localized Pose → Path Follower (real-time pose for steering) -->
+  <path d="M 260,330 Q 360,370 398,325" fill="none" stroke="#1ABC9C" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <rect x="280" y="358" width="100" height="22" rx="5" fill="#E8E8E8" stroke="#CCC" stroke-width="1"/>
+  <text x="330" y="373" text-anchor="middle" fill="#555" font-size="10" font-weight="bold">real-time pose</text>
+</svg>

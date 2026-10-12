@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 500" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="500" rx="8" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="410" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e293b">particle_filter.py — Code Architecture</text>
+  <text x="410" y="46" text-anchor="middle" font-size="10" fill="#64748b">How the code sections relate to each other</text>
+
+  <!-- ===== STARTUP (left column) ===== -->
+  <rect x="15" y="65" width="240" height="310" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="135" y="85" text-anchor="middle" font-size="12" font-weight="bold" fill="#2563eb">STARTUP (runs once)</text>
+
+  <!-- __init__ -->
+  <rect x="30" y="100" width="210" height="45" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="135" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">__init__()</text>
+  <text x="135" y="133" text-anchor="middle" font-size="9" fill="#78716c">Declare params, create pubs/subs</text>
+
+  <!-- get_omap -->
+  <rect x="30" y="160" width="210" height="55" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="135" y="178" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">get_omap()</text>
+  <text x="135" y="193" text-anchor="middle" font-size="9" fill="#78716c">Fetch map from map_server</text>
+  <text x="135" y="205" text-anchor="middle" font-size="9" fill="#78716c">Initialize RangeLibc ray caster</text>
+
+  <!-- precompute_sensor_model -->
+  <rect x="30" y="230" width="210" height="55" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="135" y="248" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">precompute_sensor_model()</text>
+  <text x="135" y="263" text-anchor="middle" font-size="9" fill="#78716c">Build probability lookup table</text>
+  <text x="135" y="275" text-anchor="middle" font-size="9" fill="#78716c">(z_hit, z_short, z_max, z_rand)</text>
+
+  <!-- initialize_global -->
+  <rect x="30" y="300" width="210" height="45" rx="6" fill="#fff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="135" y="318" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">initialize_global()</text>
+  <text x="135" y="333" text-anchor="middle" font-size="9" fill="#78716c">Spread particles across map</text>
+
+  <!-- Startup arrows -->
+  <line x1="135" y1="145" x2="135" y2="157" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="135" y1="215" x2="135" y2="227" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="135" y1="285" x2="135" y2="297" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- ===== RUNTIME (right area) ===== -->
+  <rect x="280" y="65" width="525" height="380" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="542" y="85" text-anchor="middle" font-size="12" font-weight="bold" fill="#16a34a">RUNTIME (every odometry message)</text>
+
+  <!-- Callbacks row -->
+  <!-- odomCB -->
+  <rect x="300" y="100" width="140" height="50" rx="6" fill="#fff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="370" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">odomCB()</text>
+  <text x="370" y="133" text-anchor="middle" font-size="9" fill="#78716c">Compute odometry delta</text>
+  <text x="370" y="143" text-anchor="middle" font-size="9" fill="#78716c">→ calls update()</text>
+
+  <!-- lidarCB -->
+  <rect x="460" y="100" width="140" height="50" rx="6" fill="#fff" stroke="#64748b" stroke-width="1.5"/>
+  <text x="530" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#334155">lidarCB()</text>
+  <text x="530" y="133" text-anchor="middle" font-size="9" fill="#78716c">Store downsampled</text>
+  <text x="530" y="143" text-anchor="middle" font-size="9" fill="#78716c">LiDAR ranges</text>
+
+  <!-- clicked_pose -->
+  <rect x="620" y="100" width="170" height="50" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="705" y="118" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">clicked_pose()</text>
+  <text x="705" y="133" text-anchor="middle" font-size="9" fill="#78716c">initialize_particles_pose()</text>
+  <text x="705" y="143" text-anchor="middle" font-size="9" fill="#78716c">Resets particles (one-time)</text>
+
+  <!-- update() -->
+  <rect x="350" y="175" width="180" height="40" rx="6" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="440" y="193" text-anchor="middle" font-size="11" font-weight="bold" fill="#15803d">update()</text>
+  <text x="440" y="207" text-anchor="middle" font-size="9" fill="#78716c">Check init flags → run MCL</text>
+
+  <!-- Arrow odomCB → update -->
+  <line x1="370" y1="150" x2="410" y2="173" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- MCL() box -->
+  <rect x="300" y="235" width="490" height="130" rx="10" fill="#fff" stroke="#16a34a" stroke-width="2"/>
+  <text x="545" y="255" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803d">MCL(action, observation)</text>
+
+  <!-- 4 steps inside MCL -->
+  <rect x="315" y="265" width="105" height="35" rx="5" fill="#fff7ed" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="367" y="280" text-anchor="middle" font-size="9" font-weight="bold" fill="#b45309">1. Resample</text>
+  <text x="367" y="292" text-anchor="middle" font-size="8" fill="#78716c">np.random.choice</text>
+
+  <rect x="430" y="265" width="105" height="35" rx="5" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="482" y="280" text-anchor="middle" font-size="9" font-weight="bold" fill="#6d28d9">2. Predict</text>
+  <text x="482" y="292" text-anchor="middle" font-size="8" fill="#78716c">motion_model()</text>
+
+  <rect x="545" y="265" width="105" height="35" rx="5" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="597" y="280" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">3. Weight</text>
+  <text x="597" y="292" text-anchor="middle" font-size="8" fill="#78716c">sensor_model()</text>
+
+  <rect x="660" y="265" width="105" height="35" rx="5" fill="#ecfeff" stroke="#0ea5e9" stroke-width="1.5"/>
+  <text x="712" y="280" text-anchor="middle" font-size="9" font-weight="bold" fill="#0369a1">4. Normalize</text>
+  <text x="712" y="292" text-anchor="middle" font-size="8" fill="#78716c">weights /= sum</text>
+
+  <!-- Step arrows inside MCL -->
+  <line x1="420" y1="282" x2="427" y2="282" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="535" y1="282" x2="542" y2="282" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="650" y1="282" x2="657" y2="282" stroke="#555" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- Annotation: startup data used at runtime -->
+  <text x="545" y="355" text-anchor="middle" font-size="9" fill="#64748b" font-style="italic">Predict calls motion_model()  ·  Weight calls sensor_model()</text>
+
+  <!-- Arrow update → MCL -->
+  <line x1="440" y1="215" x2="440" y2="232" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Post-MCL: expected_pose + publish -->
+  <rect x="300" y="385" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="375" y="403" text-anchor="middle" font-size="10" font-weight="bold" fill="#15803d">expected_pose()</text>
+  <text x="375" y="416" text-anchor="middle" font-size="8" fill="#78716c">Weighted average</text>
+
+  <rect x="470" y="385" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="545" y="403" text-anchor="middle" font-size="10" font-weight="bold" fill="#15803d">publish_tf()</text>
+  <text x="545" y="416" text-anchor="middle" font-size="8" fill="#78716c">Pose + TF + odom</text>
+
+  <rect x="640" y="385" width="150" height="40" rx="6" fill="#ecfdf5" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="715" y="403" text-anchor="middle" font-size="10" font-weight="bold" fill="#15803d">visualize()</text>
+  <text x="715" y="416" text-anchor="middle" font-size="8" fill="#78716c">Particles + inferred pose</text>
+
+  <!-- Arrows MCL → post-MCL -->
+  <line x1="440" y1="365" x2="375" y2="383" stroke="#16a34a" stroke-width="1" marker-end="url(#arrow-green)"/>
+  <line x1="500" y1="365" x2="545" y2="383" stroke="#16a34a" stroke-width="1" marker-end="url(#arrow-green)"/>
+  <line x1="560" y1="365" x2="715" y2="383" stroke="#16a34a" stroke-width="1" marker-end="url(#arrow-green)"/>
+
+  <!-- Connection: precompute_sensor_model → Weight step -->
+  <path d="M 240,257 L 275,257 L 275,282 L 542,282" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="370" y="273" text-anchor="middle" font-size="8" fill="#2563eb">precomputed table → used by sensor_model()</text>
+
+  <!-- Legend -->
+  <rect x="30" y="460" width="14" height="10" rx="3" fill="#eff6ff" stroke="#2563eb" stroke-width="1"/>
+  <text x="50" y="469" font-size="9" fill="#64748b">Runs once at startup</text>
+
+  <rect x="200" y="460" width="14" height="10" rx="3" fill="#f0fdf4" stroke="#16a34a" stroke-width="1"/>
+  <text x="220" y="469" font-size="9" fill="#64748b">Runs every cycle (~30-40 Hz)</text>
+
+  <rect x="420" y="460" width="14" height="10" rx="3" fill="#fef3c7" stroke="#d97706" stroke-width="1"/>
+  <text x="440" y="469" font-size="9" fill="#64748b">One-time user action</text>
+
+  <line x1="600" y1="465" x2="620" y2="465" stroke="#2563eb" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="627" y="469" font-size="9" fill="#64748b">Data prepared at startup, used at runtime</text>
+</svg>

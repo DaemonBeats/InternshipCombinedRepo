@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AEB Theory of Operation &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="LaserScan Data" href="scan.html" />
+    <link rel="prev" title="Tutorial 2 - Automatic Emergency Braking" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 2 - Automatic Emergency Braking</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AEB Theory of Operation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#learning-goals">1️⃣ Learning Goals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview">2️⃣ Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-to-collision-ttc-vs-distance-based-braking">3️⃣ Time-to-Collision (TTC) vs. Distance-Based Braking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-time-to-collision-ttc">4️⃣ Understanding Time to Collision (TTC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-to-collision-using-laser-scan-data">5️⃣ Time to Collision Using Laser Scan Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-emergency-braking-with-ttc">6️⃣ Automatic Emergency Braking with TTC</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html">LaserScan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html">AEB Scan Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="drive.html">AEB Drive Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 2 - Automatic Emergency Braking</a> &raquo;</li>
+        
+      <li>AEB Theory of Operation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/theory.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aeb-theory-of-operation">
+<span id="doc-tutorials-aeb-theory"></span><h1>AEB Theory of Operation<a class="headerlink" href="#aeb-theory-of-operation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="learning-goals">
+<h2>1️⃣ Learning Goals<a class="headerlink" href="#learning-goals" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> message in ROS 2</p></li>
+<li><p>Time to Collision (TTC)</p></li>
+<li><p>Safety critical systems</p></li>
+</ul>
+</div>
+<div class="section" id="overview">
+<h2>2️⃣ Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The goal of this lab is to develop a safety node for the race cars that will stop the car from collision when travelling at higher velocities. We will implement Time to Collision (TTC) using the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> message in the simulator.</p>
+<p>For different commonly used ROS 2 messages you can use <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">interface</span> <span class="pre">show</span> <span class="pre">&lt;msg_name&gt;</span></code> to see the definition of messages. Note for messages that are not installed by default by the distro, you’ll have to first install it for this to work.</p>
+<div class="section" id="the-laserscan-message">
+<h3>The <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> Message<a class="headerlink" href="#the-laserscan-message" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/LaserScan.html">LaserScan</a> message contains several fields that will be useful to us. You can see detailed descriptions of what each field contains in the API. The one we’ll be using the most is the <code class="docutils literal notranslate"><span class="pre">ranges</span></code> field. This is an array that contains all range measurements from the LiDAR radially ordered. You’ll need to subscribe to the <code class="docutils literal notranslate"><span class="pre">/scan</span></code> topic and calculate TTC with the LaserScan messages.</p>
+</div>
+<div class="section" id="the-odometry-message">
+<h3>The <code class="docutils literal notranslate"><span class="pre">Odometry</span></code> Message<a class="headerlink" href="#the-odometry-message" title="Permalink to this headline">¶</a></h3>
+<p>Both the simulator node and the car itself publish <a class="reference external" href="http://docs.ros.org/en/noetic/api/nav_msgs/html/msg/Odometry.html">Odometry</a> messages. Within its several fields, the message includes the cars position, orientation, and velocity. You’ll need to explore this message type in this lab.</p>
+</div>
+<div class="section" id="the-ackermanndrivestamped-message">
+<h3>The <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> Message<a class="headerlink" href="#the-ackermanndrivestamped-message" title="Permalink to this headline">¶</a></h3>
+<p>You’ve already used <a class="reference external" href="http://docs.ros.org/en/jade/api/ackermann_msgs/html/msg/AckermannDriveStamped.html">AckermannDriveStamped</a> in the previous lab. It will be the message type that we’ll use throughout the course to send driving commands to the simulator and the car. In the simulator, you can stop the car by sending an <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> message with the <code class="docutils literal notranslate"><span class="pre">speed</span></code> field set to 0.0.</p>
+</div>
+</div>
+<div class="section" id="time-to-collision-ttc-vs-distance-based-braking">
+<h2>3️⃣ Time-to-Collision (TTC) vs. Distance-Based Braking<a class="headerlink" href="#time-to-collision-ttc-vs-distance-based-braking" title="Permalink to this headline">¶</a></h2>
+<p>When designing an autonomous braking system, you have two main approaches:</p>
+<ol class="arabic simple">
+<li><p>Braking based on <strong>Distance to Object</strong></p></li>
+<li><p>Braking based on <strong>Time-to-Collision (TTC)</strong></p></li>
+</ol>
+<p>Both methods aim to prevent collisions, but TTC is usually the superior choice. Let’s break it down.</p>
+<div class="section" id="distance-based-braking-threshold-approach">
+<h3>Distance-Based Braking (Threshold Approach)<a class="headerlink" href="#distance-based-braking-threshold-approach" title="Permalink to this headline">¶</a></h3>
+<p>This method triggers braking when an obstacle is closer than a set distance.</p>
+<p><strong>How It Works</strong></p>
+<ul class="simple">
+<li><p>If an object is detected closer than X meters, apply brakes</p></li>
+<li><p>If the object is beyond X meters, continue driving</p></li>
+</ul>
+<p><strong>Why This Can Be a Problem</strong></p>
+<p>❌ <strong>Speed Ignorance:</strong></p>
+<ul class="simple">
+<li><p>A slow-moving car at 2 m/s needs far less stopping distance than a car at 10 m/s</p></li>
+<li><p>A fixed threshold (e.g., “brake if object &lt; 2m”) doesn’t scale with speed</p></li>
+</ul>
+<p>❌ <strong>Late Reactions at High Speed:</strong></p>
+<ul class="simple">
+<li><p>If a vehicle is moving fast, it may not have enough distance left to safely stop when the threshold is reached</p></li>
+</ul>
+<p>❌ <strong>Unnecessary Braking at Low Speed:</strong></p>
+<ul class="simple">
+<li><p>If a vehicle is moving very slowly, braking at the same fixed distance may be overly cautious, leading to unnecessary stops</p></li>
+</ul>
+</div>
+<div class="section" id="time-to-collision-ttc-a-smarter-alternative">
+<h3>Time-to-Collision (TTC) - A Smarter Alternative<a class="headerlink" href="#time-to-collision-ttc-a-smarter-alternative" title="Permalink to this headline">¶</a></h3>
+<p>TTC predicts how long until a collision happens if both objects maintain their current speeds.</p>
+<p><strong>How It Works</strong></p>
+<p>The Time-to-Collision (TTC) is calculated as:</p>
+<a class="reference internal image-reference" href="../../../_images/TTC_Calculation.jpg"><img alt="TTC Formula" class="align-center" src="../../../_images/TTC_Calculation.jpg" style="width: 60%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>If TTC drops below a safe threshold (e.g., 0.5s), apply brakes</p></li>
+<li><p>If TTC is above a release threshold (e.g., 1.5s), allow normal driving</p></li>
+</ul>
+<p><strong>Why TTC is Better</strong></p>
+<p>✅ <strong>Speed Awareness:</strong></p>
+<ul class="simple">
+<li><p>A vehicle at 2 m/s and a vehicle at 10 m/s will have different stopping distances, and TTC adapts braking accordingly</p></li>
+</ul>
+<p>✅ <strong>Smooth &amp; Early Braking:</strong></p>
+<ul class="simple">
+<li><p>If an object is far but closing quickly, TTC detects the risk earlier than distance-based braking</p></li>
+</ul>
+<p>✅ <strong>No Unnecessary Stops:</strong></p>
+<ul class="simple">
+<li><p>If an object is close but not a threat (e.g., a parked car not moving into the path), TTC won’t trigger braking unnecessarily</p></li>
+</ul>
+</div>
+<div class="section" id="example-comparing-both-approaches">
+<h3>Example: Comparing Both Approaches<a class="headerlink" href="#example-comparing-both-approaches" title="Permalink to this headline">¶</a></h3>
+<p>Imagine a car moving at 10 m/s with an object 5 meters ahead.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Stopping Decision</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Distance-based braking (Threshold = 3m)</p></td>
+<td><p>🚗💥 Car doesn’t brake until too late, leading to collision</p></td>
+</tr>
+<tr class="row-odd"><td><p>TTC-based braking (Threshold = 0.5s)</p></td>
+<td><p>🚗🛑 Car detects high closing speed and brakes early to avoid impact</p></td>
+</tr>
+</tbody>
+</table>
+<p>Now, imagine the same scenario at 2 m/s:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Stopping Decision</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Distance-based braking (Threshold = 3m)</p></td>
+<td><p>🚗🛑 Unnecessary stop, because 3m is plenty of room at low speed</p></td>
+</tr>
+<tr class="row-odd"><td><p>TTC-based braking (Threshold = 0.5s)</p></td>
+<td><p>🚗✅ Car recognizes the slow approach and continues safely</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="key-takeaways">
+<h3>Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Distance-based braking ignores speed</strong> , which can cause late stops at high speeds or unnecessary stops at low speeds</p></li>
+<li><p><strong>TTC accounts for speed &amp; closing rate</strong> , making braking decisions more adaptive</p></li>
+<li><p><strong>TTC allows smoother driving</strong>  because it avoids the jerky “brake-go-brake” behavior of fixed-distance thresholds</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’re designing an autonomous emergency braking system, TTC is the way to go! 🚀</p>
+</div>
+</div>
+</div>
+<div class="section" id="understanding-time-to-collision-ttc">
+<h2>4️⃣ Understanding Time to Collision (TTC)<a class="headerlink" href="#understanding-time-to-collision-ttc" title="Permalink to this headline">¶</a></h2>
+<p><strong>Time to Collision (TTC)</strong> answers a very practical question:</p>
+<p>&gt; <em>If nothing changes, how long until we hit something?</em></p>
+<p>In Automatic Emergency Braking (AEB), TTC is used to decide <strong>when braking must begin</strong> to avoid or reduce a collision.</p>
+<p>Rather than predicting the future perfectly, TTC assumes:
+- Constant speed
+- Straight-line motion</p>
+<p>That assumption is intentional—it allows the system to react <strong>quickly and conservatively</strong>.</p>
+<p>—</p>
+<div class="section" id="basic-ttc-concept">
+<h3>Basic TTC Concept<a class="headerlink" href="#basic-ttc-concept" title="Permalink to this headline">¶</a></h3>
+<p>At its core, TTC is calculated as:</p>
+<a class="reference internal image-reference" href="../../../_images/TTC_Calculation.jpg"><img alt="TTC Formula" class="align-center" src="../../../_images/TTC_Calculation.jpg" style="width: 60%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Where:
+- <strong>Distance</strong> is how far away the obstacle is <em>right now</em>
+- <strong>Relative Velocity (Δv)</strong> is how quickly that distance is shrinking</p>
+<p>In practice:
+- If the distance is getting smaller → TTC decreases
+- If TTC reaches a critical threshold → <strong>brake</strong></p>
+<p>—</p>
+</div>
+<div class="section" id="example-why-ttc-matters">
+<h3>Example: Why TTC Matters<a class="headerlink" href="#example-why-ttc-matters" title="Permalink to this headline">¶</a></h3>
+<p>Consider this real-world scenario:</p>
+<ul class="simple">
+<li><p>Your vehicle is moving at <strong>20 m/s</strong></p></li>
+<li><p>An obstacle is <strong>100 meters ahead</strong></p></li>
+<li><p>The obstacle is stationary</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/ttc_example.jpg"><img alt="TTC Example Calculation" class="align-center" src="../../../_images/ttc_example.jpg" style="width: 50%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>This produces a TTC of <strong>5 seconds</strong>.</p>
+<p>From an AEB standpoint, this means:
+- At <strong>5 s</strong> → no action
+- At <strong>2 s</strong> → warning
+- At <strong>1 s</strong> → <strong>automatic braking</strong></p>
+<p>The exact thresholds vary by system, but the <em>decision logic</em> is the same.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TTC does not try to model driver intent or future steering—it exists to answer <em>“Do we need to act now?”</em></p>
+</div>
+<p>—</p>
+</div>
+</div>
+<div class="section" id="time-to-collision-using-laser-scan-data">
+<h2>5️⃣ Time to Collision Using Laser Scan Data<a class="headerlink" href="#time-to-collision-using-laser-scan-data" title="Permalink to this headline">¶</a></h2>
+<p>When working with LiDAR, we don’t evaluate just one distance. Instead, we evaluate <strong>many possible collision paths at once</strong>, one for each scan beam.</p>
+<p>Each beam answers the question:</p>
+<p>&gt; <em>If the vehicle continues moving forward, how soon would I collide with an object along this direction?</em></p>
+<p>TTC is computed <strong>per beam</strong>, and the <strong>most dangerous (smallest) TTC</strong> drives the braking decision.</p>
+<p>—</p>
+<div class="section" id="what-data-the-vehicle-uses">
+<h3>What Data the Vehicle Uses<a class="headerlink" href="#what-data-the-vehicle-uses" title="Permalink to this headline">¶</a></h3>
+<p>For each LiDAR scan beam, the system knows:</p>
+<ul class="simple">
+<li><p><strong>R</strong> – Distance to the obstacle (from <code class="docutils literal notranslate"><span class="pre">LaserScan.ranges[]</span></code>)</p></li>
+<li><p><strong>θ</strong> – Angle of the beam relative to the vehicle’s forward direction</p></li>
+<li><p><strong>vₓ</strong> – Vehicle forward velocity (from <code class="docutils literal notranslate"><span class="pre">Odometry</span></code>)</p></li>
+</ul>
+<p>The key problem to solve is:</p>
+<p>&gt; <em>How fast is the distance along this beam shrinking?</em></p>
+<p>—</p>
+</div>
+<div class="section" id="range-rate-closing-speed-along-a-beam">
+<h3>Range Rate: Closing Speed Along a Beam<a class="headerlink" href="#range-rate-closing-speed-along-a-beam" title="Permalink to this headline">¶</a></h3>
+<p>Only the <strong>forward component</strong> of the vehicle’s velocity reduces the distance to an obstacle.</p>
+<p>That component is called the <strong>range rate</strong>.</p>
+<a class="reference internal image-reference" href="../../../_images/range-rate.png"><img alt="TTC Range Rate Formula" class="align-center" src="../../../_images/range-rate.png" style="width: 40%;" /></a>
+<ul class="simple">
+<li><p>Obstacles straight ahead → large closing speed</p></li>
+<li><p>Obstacles off to the side → small or zero closing speed</p></li>
+<li><p>Obstacles behind → ignored</p></li>
+</ul>
+<p>This naturally filters out objects that do not pose an immediate collision risk.</p>
+<p>—</p>
+</div>
+<div class="section" id="calculating-range-rate-recommended-method">
+<h3>Calculating Range Rate (Recommended Method)<a class="headerlink" href="#calculating-range-rate-recommended-method" title="Permalink to this headline">¶</a></h3>
+<p>For AEB, range rate is best computed using velocity projection:</p>
+<p><strong>ṙ = − vₓ · cos(θᵢ)</strong></p>
+<p>Where:
+- <strong>vₓ</strong> is the vehicle’s forward speed
+- <strong>θᵢ</strong> is the LiDAR beam angle</p>
+<p>Why this works well:
+- Stable
+- Independent of LiDAR noise
+- Matches real automotive AEB behavior</p>
+<p>A <strong>negative ṙ</strong> means the vehicle is approaching the obstacle.</p>
+<p>—</p>
+</div>
+<div class="section" id="computing-ttc-per-beam">
+<h3>Computing TTC Per Beam<a class="headerlink" href="#computing-ttc-per-beam" title="Permalink to this headline">¶</a></h3>
+<p>Once range rate is known, TTC is computed as:</p>
+<p><strong>TTC = R / (−ṙ)</strong></p>
+<p>With two important rules:</p>
+<ul class="simple">
+<li><p>If <strong>−ṙ ≤ 0</strong>, the vehicle is not approaching → <strong>ignore</strong></p></li>
+<li><p>If <strong>R</strong> is invalid (<code class="docutils literal notranslate"><span class="pre">inf</span></code> or <code class="docutils literal notranslate"><span class="pre">nan</span></code>) → <strong>ignore</strong></p></li>
+</ul>
+<p>This ensures TTC is only calculated when a collision is physically possible.</p>
+<p>—</p>
+</div>
+<div class="section" id="why-the-sign-matters">
+<h3>Why the Sign Matters<a class="headerlink" href="#why-the-sign-matters" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Approaching obstacle → ṙ &lt; 0 → TTC is positive</p></li>
+<li><p>Moving away or parallel → ṙ ≥ 0 → TTC is ignored</p></li>
+</ul>
+<p>This prevents false braking from:
+- Side walls
+- Objects behind the vehicle
+- Sensor noise</p>
+<p>—</p>
+</div>
+<div class="section" id="using-ttc-for-aeb-decisions">
+<h3>Using TTC for AEB Decisions<a class="headerlink" href="#using-ttc-for-aeb-decisions" title="Permalink to this headline">¶</a></h3>
+<p>After TTC is computed for all beams:</p>
+<ol class="arabic simple">
+<li><p>Discard invalid TTC values</p></li>
+<li><p>Find the <strong>minimum TTC</strong></p></li>
+<li><p>Compare it to system thresholds:
+- <strong>Warning threshold</strong>
+- <strong>Braking threshold</strong></p></li>
+</ol>
+<p>If the minimum TTC drops below the braking threshold, the vehicle <strong>must brake immediately</strong>.</p>
+<p>This method allows the system to respond to:
+- Narrow obstacles
+- Partial overlaps
+- Objects not centered in front of the vehicle</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Always guard against <code class="docutils literal notranslate"><span class="pre">inf</span></code> and <code class="docutils literal notranslate"><span class="pre">nan</span></code> values when working with LiDAR data. These commonly occur when:
+- No object is detected within sensor range
+- Division by zero occurs
+- The vehicle is moving away from obstacles</p>
+</div>
+<p>—</p>
+</div>
+</div>
+<div class="section" id="automatic-emergency-braking-with-ttc">
+<h2>6️⃣ Automatic Emergency Braking with TTC<a class="headerlink" href="#automatic-emergency-braking-with-ttc" title="Permalink to this headline">¶</a></h2>
+<p>For this lab, you will make a Safety Node that should halt the car before it collides with obstacles. To do this, you will make a ROS 2 node that subscribes to the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> and <code class="docutils literal notranslate"><span class="pre">Odometry</span></code> messages. It should analyze the <code class="docutils literal notranslate"><span class="pre">LaserScan</span></code> data and, if necessary, publish an <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> with the <code class="docutils literal notranslate"><span class="pre">speed</span></code> field set to 0.0 m/s to brake.</p>
+<p>After you’ve calculated the array of TTCs, you should decide how to proceed with this information. You’ll have to decide how to threshold, and how to best remove false positives (braking when collision isn’t imminent). Don’t forget to deal with <a href="#id1"><span class="problematic" id="id2">``</span></a>inf``s or <a href="#id3"><span class="problematic" id="id4">``</span></a>nan``s in your arrays.</p>
+<p><strong>Topic Names</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LaserScan</span></code>: <code class="docutils literal notranslate"><span class="pre">/scan</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Odometry</span></code>: <code class="docutils literal notranslate"><span class="pre">/odom</span></code> (specifically, the longitudinal velocity can be found in <code class="docutils literal notranslate"><span class="pre">twist.twist.linear.x</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code>: <code class="docutils literal notranslate"><span class="pre">/drive</span></code></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="scan.html" class="btn btn-neutral float-right" title="LaserScan Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial 2 - Automatic Emergency Braking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

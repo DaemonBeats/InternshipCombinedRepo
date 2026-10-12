@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 590" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrow-out" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="590" rx="8" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="410" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e293b">Monte Carlo Localization (MCL) — Particle Filter Overview</text>
+
+  <!-- ===== MCL LOOP (center) ===== -->
+  <rect x="120" y="55" width="580" height="260" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="410" y="80" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803d">MCL Update Cycle (every odometry message)</text>
+
+  <!-- Step 1: Resample — top-left -->
+  <rect x="145" y="100" width="180" height="65" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="235" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#b45309">1. Resample</text>
+  <text x="235" y="143" text-anchor="middle" font-size="10" fill="#78716c">Keep good particles</text>
+  <text x="235" y="155" text-anchor="middle" font-size="10" fill="#78716c">discard bad ones</text>
+
+  <!-- Step 2: Predict — top-right -->
+  <rect x="495" y="100" width="180" height="65" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="585" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#6d28d9">2. Predict</text>
+  <text x="585" y="143" text-anchor="middle" font-size="10" fill="#78716c">Apply odometry + noise</text>
+  <text x="585" y="155" text-anchor="middle" font-size="10" fill="#78716c">(motion model)</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="325" y1="132" x2="492" y2="132" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Weight — bottom-right -->
+  <rect x="495" y="200" width="180" height="65" rx="8" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <text x="585" y="225" text-anchor="middle" font-size="14" font-weight="bold" fill="#dc2626">3. Weight</text>
+  <text x="585" y="243" text-anchor="middle" font-size="10" fill="#78716c">Score vs real LiDAR scan</text>
+  <text x="585" y="255" text-anchor="middle" font-size="10" fill="#78716c">(sensor model + RangeLibc)</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="585" y1="165" x2="585" y2="197" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Normalize — bottom-left -->
+  <rect x="145" y="200" width="180" height="65" rx="8" fill="#fff" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="235" y="225" text-anchor="middle" font-size="14" font-weight="bold" fill="#0369a1">4. Normalize</text>
+  <text x="235" y="243" text-anchor="middle" font-size="10" fill="#78716c">Weights sum to 1.0</text>
+  <text x="235" y="255" text-anchor="middle" font-size="10" fill="#78716c">+ squash factor</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="492" y1="232" x2="328" y2="232" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Loop arrow 4→1 (straight up from Normalize to Resample) -->
+  <line x1="235" y1="200" x2="235" y2="168" stroke="#16a34a" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="255" y="188" text-anchor="start" font-size="10" font-weight="bold" fill="#16a34a">loop</text>
+
+  <!-- Particles label -->
+  <text x="410" y="295" text-anchor="middle" font-size="10" fill="#64748b" font-style="italic">4000 particles × [x, y, θ] updated every cycle</text>
+
+  <!-- ===== INPUTS (blue boxes, positioned near targets) ===== -->
+
+  <!-- Odometry → Predict -->
+  <rect x="710" y="108" width="100" height="45" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="760" y="128" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Odometry</text>
+  <text x="760" y="143" text-anchor="middle" font-size="9" fill="#3b82f6">/vesc/odom</text>
+  <path d="M 707,132 L 678,132" fill="none" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- LiDAR → Weight -->
+  <rect x="710" y="210" width="100" height="45" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="760" y="230" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">LiDAR</text>
+  <text x="760" y="245" text-anchor="middle" font-size="9" fill="#3b82f6">/scan (downsampled)</text>
+  <path d="M 707,232 L 678,232" fill="none" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- Map → Weight (loaded into RangeLibc at startup for ray casting) -->
+  <rect x="700" y="275" width="115" height="55" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="757" y="295" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e40af">Map</text>
+  <text x="757" y="308" text-anchor="middle" font-size="8" fill="#3b82f6">/map (via service)</text>
+  <text x="757" y="321" text-anchor="middle" font-size="8" fill="#3b82f6">loaded into RangeLibc</text>
+  <path d="M 697,300 L 660,300 L 660,268" fill="none" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arrow-blue)"/>
+
+  <!-- Initial Pose → Publish -->
+  <rect x="10" y="370" width="110" height="45" rx="6" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="65" y="390" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Initial Pose</text>
+  <text x="65" y="405" text-anchor="middle" font-size="9" fill="#b45309">2D Pose Estimate</text>
+  <path d="M 120,392 L 182,392" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+  <text x="150" y="383" font-size="8" fill="#d97706">one-time</text>
+
+  <!-- ===== PUBLISH (below MCL loop) ===== -->
+  <line x1="410" y1="315" x2="410" y2="355" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="455" y="340" text-anchor="start" font-size="10" fill="#64748b">after each cycle</text>
+
+  <rect x="185" y="355" width="450" height="65" rx="8" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+  <text x="410" y="376" text-anchor="middle" font-size="14" font-weight="bold" fill="#15803d">Publish</text>
+  <text x="410" y="394" text-anchor="middle" font-size="10" fill="#78716c">Localized Pose · TF Transform · Particle Cloud · Best Pose</text>
+  <text x="410" y="410" text-anchor="middle" font-size="10" fill="#78716c">Weighted average of all particles → /pf/pose/odom + map → laser</text>
+
+  <!-- ===== OUTPUTS (purple boxes, horizontal below Publish) ===== -->
+
+  <!-- Trunk: Publish drops down, then branches left and right -->
+  <line x1="410" y1="413" x2="410" y2="435" stroke="#7c3aed" stroke-width="2"/>
+  <line x1="110" y1="435" x2="710" y2="435" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="410" cy="435" r="3" fill="#7c3aed"/>
+  <circle cx="110" cy="435" r="2.5" fill="#7c3aed"/>
+  <circle cx="310" cy="435" r="2.5" fill="#7c3aed"/>
+  <circle cx="510" cy="435" r="2.5" fill="#7c3aed"/>
+  <circle cx="710" cy="435" r="2.5" fill="#7c3aed"/>
+
+  <!-- Output 1: Localized Pose -->
+  <line x1="110" y1="435" x2="110" y2="453" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrow-out)"/>
+  <rect x="40" y="455" width="140" height="40" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="110" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b21b6">Localized Pose</text>
+  <text x="110" y="487" text-anchor="middle" font-size="8" fill="#7c3aed">/pf/pose/odom</text>
+
+  <!-- Output 2: TF Transform -->
+  <line x1="310" y1="435" x2="310" y2="453" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrow-out)"/>
+  <rect x="240" y="455" width="140" height="40" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="310" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b21b6">TF Transform</text>
+  <text x="310" y="487" text-anchor="middle" font-size="8" fill="#7c3aed">map → laser</text>
+
+  <!-- Output 3: Particle Cloud -->
+  <line x1="510" y1="435" x2="510" y2="453" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrow-out)"/>
+  <rect x="440" y="455" width="140" height="40" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="510" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b21b6">Particle Cloud</text>
+  <text x="510" y="487" text-anchor="middle" font-size="8" fill="#7c3aed">/pf/viz/particles</text>
+
+  <!-- Output 4: Best Pose -->
+  <line x1="710" y1="435" x2="710" y2="453" stroke="#7c3aed" stroke-width="1.5" marker-end="url(#arrow-out)"/>
+  <rect x="640" y="455" width="140" height="40" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="710" y="473" text-anchor="middle" font-size="10" font-weight="bold" fill="#5b21b6">Best Pose</text>
+  <text x="710" y="487" text-anchor="middle" font-size="8" fill="#7c3aed">/pf/viz/inferred_pose</text>
+
+  <!-- ===== LEGEND ===== -->
+  <!-- Input indicator -->
+  <rect x="40" y="530" width="16" height="12" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1"/>
+  <text x="62" y="540" font-size="10" fill="#64748b">Input (data into MCL)</text>
+
+  <!-- Output indicator -->
+  <rect x="220" y="530" width="16" height="12" rx="3" fill="#ede9fe" stroke="#7c3aed" stroke-width="1"/>
+  <text x="242" y="540" font-size="10" fill="#64748b">Output (published by MCL)</text>
+
+  <!-- One-time -->
+  <line x1="430" y1="536" x2="460" y2="536" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="465" y="540" font-size="10" fill="#64748b">One-time (user action)</text>
+
+  <!-- Cycle arrow -->
+  <line x1="620" y1="536" x2="640" y2="536" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="648" y="540" font-size="10" fill="#64748b">MCL cycle step</text>
+
+  <!-- Footer -->
+  <text x="410" y="575" text-anchor="middle" font-size="9" fill="#cbd5e1">Based on f1tenth/particle_filter by Hongrui Zheng &amp; Corey Walsh</text>
+</svg>

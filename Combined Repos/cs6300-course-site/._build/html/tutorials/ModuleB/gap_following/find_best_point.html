@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Finding the Best Point: Naive Selection &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Finding the Best Point: Disparity Selection" href="find_best_point_disparity.html" />
+    <link rel="prev" title="Gap Detection" href="gap_detection.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 4 - Follow the Gap</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">Follow the Gap Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_follow_package.html">Create Gap Following Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_preprocess_lidar.html">Preprocessing LiDAR Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="obstacle_masking.html">Obstacle Masking: Creating a Safety Bubble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gap_detection.html">Gap Detection</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Finding the Best Point: Naive Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-this-approach">Why This Approach?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-by-step-breakdown">Step-by-Step Breakdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python-implementation">Python Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-index-to-steering-angle">Converting Index to Steering Angle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strengths-of-naive-selection">Strengths of Naive Selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weaknesses-and-limitations">Weaknesses and Limitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-to-use-this-method">When to Use This Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="find_best_point_disparity.html">Finding the Best Point: Disparity Selection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 4 - Follow the Gap</a> &raquo;</li>
+        
+      <li>Finding the Best Point: Naive Selection</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleB/gap_following/find_best_point.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="finding-the-best-point-naive-selection">
+<span id="doc-tutorials-find-best-point"></span><h1>Finding the Best Point: Naive Selection<a class="headerlink" href="#finding-the-best-point-naive-selection" title="Permalink to this headline">¶</a></h1>
+<p>After detecting the maximum gap, we need to <strong>pick a specific point</strong> within that gap to steer toward.</p>
+<p>The simplest approach is the <strong>Naive Selection</strong> method — picking the <strong>farthest point closest to the center</strong> of the gap.</p>
+<div class="section" id="why-this-approach">
+<h2>Why This Approach?<a class="headerlink" href="#why-this-approach" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The <strong>farthest point</strong> in the gap gives the robot the most room to maneuver.</p></li>
+<li><p>Picking the <strong>center</strong> of the gap avoids steering too close to either side of obstacles.</p></li>
+<li><p>Simple and computationally efficient — no complex prediction or planning needed.</p></li>
+</ul>
+</div>
+<div class="section" id="step-by-step-breakdown">
+<h2>Step-by-Step Breakdown<a class="headerlink" href="#step-by-step-breakdown" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>1️⃣ <strong>Extract the Gap</strong></dt><dd><p>After finding the start and end indices of the maximum gap, we isolate just that portion of the LiDAR scan.</p>
+</dd>
+<dt>2️⃣ <strong>Find the Farthest Point</strong></dt><dd><p>Within the gap, find the point with the <strong>maximum distance</strong> — this is the safest direction.</p>
+</dd>
+<dt>3️⃣ <strong>Convert to Steering Angle</strong></dt><dd><p>Convert the LiDAR index of the farthest point into a steering angle using the angle increment.</p>
+</dd>
+<dt>4️⃣ <strong>Publish Drive Command</strong></dt><dd><p>Send the steering angle to the vehicle’s Ackermann drive controller.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="python-implementation">
+<h2>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_best_point</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ranges</span><span class="p">,</span> <span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Select the best point within the largest gap to aim toward.</span>
+
+<span class="sd">    Strategy: Pick the point with the maximum distance (farthest point)</span>
+<span class="sd">    within the gap, ideally close to the center.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        ranges (np.array): Processed LiDAR data</span>
+<span class="sd">        start_idx (int): Starting index of the gap</span>
+<span class="sd">        end_idx (int): Ending index of the gap</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        best_point_idx (int): Index of the selected steering point</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Extract the subset of ranges within the gap</span>
+    <span class="n">gap_ranges</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="n">start_idx</span><span class="p">:</span><span class="n">end_idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># Find the index of the farthest point within the gap</span>
+    <span class="n">best_point_relative_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">gap_ranges</span><span class="p">)</span>
+
+    <span class="c1"># Adjust to the actual index in the full LiDAR scan</span>
+    <span class="n">best_point_idx</span> <span class="o">=</span> <span class="n">start_idx</span> <span class="o">+</span> <span class="n">best_point_relative_idx</span>
+
+    <span class="k">return</span> <span class="n">best_point_idx</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="converting-index-to-steering-angle">
+<h2>Converting Index to Steering Angle<a class="headerlink" href="#converting-index-to-steering-angle" title="Permalink to this headline">¶</a></h2>
+<p>Once we have the best point index, we convert it to a steering angle:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scan_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">LaserScan</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Full callback integrating gap detection and steering.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ranges</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ranges</span>
+    <span class="n">angle_increment</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">angle_increment</span>
+
+    <span class="c1"># Step 1: Preprocess</span>
+    <span class="n">proc_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">preprocess_lidar</span><span class="p">(</span><span class="n">ranges</span><span class="p">)</span>
+
+    <span class="c1"># Step 2: Apply safety bubble</span>
+    <span class="n">proc_ranges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_safety_bubble</span><span class="p">(</span><span class="n">proc_ranges</span><span class="p">)</span>
+
+    <span class="c1"># Step 3: Find maximum gap</span>
+    <span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_max_gap</span><span class="p">(</span><span class="n">proc_ranges</span><span class="p">)</span>
+
+    <span class="c1"># Step 4: Find best point</span>
+    <span class="n">best_point_idx</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_best_point</span><span class="p">(</span><span class="n">proc_ranges</span><span class="p">,</span> <span class="n">start_idx</span><span class="p">,</span> <span class="n">end_idx</span><span class="p">)</span>
+
+    <span class="c1"># Step 5: Calculate steering angle</span>
+    <span class="c1"># The angle is calculated relative to the center of the scan</span>
+    <span class="n">center_idx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ranges</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">steering_angle</span> <span class="o">=</span> <span class="p">(</span><span class="n">best_point_idx</span> <span class="o">-</span> <span class="n">center_idx</span><span class="p">)</span> <span class="o">*</span> <span class="n">angle_increment</span>
+
+    <span class="c1"># Step 6: Publish drive command</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">publish_drive_command</span><span class="p">(</span><span class="n">steering_angle</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Hokuyo Scan Is Flipped!</strong></p>
+<p>The Hokuyo UST-10LX LiDAR scan is <strong>reversed</strong> (index 0 is on the <strong>right</strong> side of the vehicle).</p>
+<p>This means we need to <strong>negate the steering angle</strong> to correct for the flip:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">steering_angle</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="p">(</span><span class="n">best_point_idx</span> <span class="o">-</span> <span class="n">center_idx</span><span class="p">)</span> <span class="o">*</span> <span class="n">angle_increment</span>
+</pre></div>
+</div>
+<p>Without this correction, the vehicle will steer in the <strong>opposite direction</strong>!</p>
+</div>
+</div>
+<div class="section" id="strengths-of-naive-selection">
+<h2>Strengths of Naive Selection<a class="headerlink" href="#strengths-of-naive-selection" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>✅ Strengths</p></th>
+<th class="head"><p>❌ Weaknesses</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Simple and fast</p></td>
+<td><p>Tunnel vision (only looks at current scan)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Works well in open environments</p></td>
+<td><p>No prediction or planning</p></td>
+</tr>
+<tr class="row-even"><td><p>Easy to debug</p></td>
+<td><p>Sensitive to noise</p></td>
+</tr>
+<tr class="row-odd"><td><p>Low computational cost</p></td>
+<td><p>Can cause hard turns in tight spaces</p></td>
+</tr>
+<tr class="row-even"><td><p>Good for educational purposes</p></td>
+<td><p>Doesn’t handle dynamic obstacles</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="weaknesses-and-limitations">
+<h2>Weaknesses and Limitations<a class="headerlink" href="#weaknesses-and-limitations" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>1️⃣ <strong>Tunnel Vision</strong></dt><dd><p>The algorithm only considers the <strong>current LiDAR scan</strong> and doesn’t look ahead or predict future obstacles.</p>
+</dd>
+<dt>2️⃣ <strong>No Prediction</strong></dt><dd><p>The robot doesn’t anticipate how the environment will change as it moves forward.</p>
+</dd>
+<dt>3️⃣ <strong>Noise Sensitivity</strong></dt><dd><p>A single noisy LiDAR reading could cause the robot to steer toward a false opening.</p>
+</dd>
+<dt>4️⃣ <strong>Hard Turns</strong></dt><dd><p>In tight spaces, the robot might make aggressive steering corrections instead of smooth paths.</p>
+</dd>
+<dt>5️⃣ <strong>No Dynamic Obstacle Handling</strong></dt><dd><p>Moving obstacles are not tracked or predicted — the robot only reacts to their current position.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="when-to-use-this-method">
+<h2>When to Use This Method<a class="headerlink" href="#when-to-use-this-method" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Naive Selection</strong> method works well for:</p>
+<ul class="simple">
+<li><p>Learning and understanding the basics of Follow-The-Gap</p></li>
+<li><p>Open race tracks with wide corridors</p></li>
+<li><p>Environments with mostly static obstacles</p></li>
+<li><p>Initial prototyping before implementing advanced methods</p></li>
+</ul>
+<p>For more sophisticated navigation, consider:</p>
+<ul class="simple">
+<li><p><strong>Weighted selection</strong> (favoring forward direction)</p></li>
+<li><p><strong>Trajectory prediction</strong> (simulating future positions)</p></li>
+<li><p><strong>Dynamic window approach</strong> (considering vehicle dynamics)</p></li>
+<li><p><strong>Model predictive control</strong> (optimizing over a horizon)</p></li>
+</ul>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Implement the <code class="docutils literal notranslate"><span class="pre">find_best_point()</span></code> function in your gap_follow_node.</p></li>
+<li><p>Test the naive selection method in simulation.</p></li>
+<li><p>Tune the bubble radius and speed parameters for smooth navigation.</p></li>
+<li><p>Experiment with alternative selection strategies for improved performance.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="find_best_point_disparity.html" class="btn btn-neutral float-right" title="Finding the Best Point: Disparity Selection" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gap_detection.html" class="btn btn-neutral float-left" title="Gap Detection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

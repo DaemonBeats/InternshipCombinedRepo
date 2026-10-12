@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 470" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#555"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="820" height="470" rx="8" fill="#fafafa" stroke="#ddd" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="410" y="28" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e293b">Which Parameters Affect Which Step?</text>
+  <text x="410" y="46" text-anchor="middle" font-size="10" fill="#64748b">localize.yaml parameters mapped to the MCL cycle</text>
+
+  <!-- ===== MCL LOOP ===== -->
+  <rect x="120" y="58" width="580" height="250" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="410" y="78" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803d">MCL Update Cycle</text>
+
+  <!-- Step 1: Resample — top-left -->
+  <rect x="145" y="92" width="180" height="60" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="2"/>
+  <text x="235" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#b45309">1. Resample</text>
+  <text x="235" y="132" text-anchor="middle" font-size="10" fill="#78716c">Keep good particles</text>
+  <text x="235" y="144" text-anchor="middle" font-size="10" fill="#78716c">discard bad ones</text>
+
+  <!-- Resample params (left side) -->
+  <rect x="5" y="85" width="110" height="50" rx="5" fill="#fff7ed" stroke="#f59e0b" stroke-width="1"/>
+  <text x="60" y="100" text-anchor="middle" font-size="9" font-weight="bold" fill="#b45309">max_particles</text>
+  <text x="60" y="113" text-anchor="middle" font-size="8" fill="#78716c">How many particles</text>
+  <text x="60" y="125" text-anchor="middle" font-size="9" font-weight="bold" fill="#b45309">squash_factor</text>
+  <line x1="115" y1="110" x2="142" y2="115" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Step 2: Predict — top-right -->
+  <rect x="495" y="92" width="180" height="60" rx="8" fill="#fff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="585" y="115" text-anchor="middle" font-size="13" font-weight="bold" fill="#6d28d9">2. Predict</text>
+  <text x="585" y="132" text-anchor="middle" font-size="10" fill="#78716c">Apply odometry + noise</text>
+  <text x="585" y="144" text-anchor="middle" font-size="10" fill="#78716c">(motion model)</text>
+
+  <!-- Predict params (right side) -->
+  <rect x="700" y="70" width="115" height="75" rx="5" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="757" y="86" text-anchor="middle" font-size="9" font-weight="bold" fill="#6d28d9">motion_dispersion_x</text>
+  <text x="757" y="99" text-anchor="middle" font-size="9" font-weight="bold" fill="#6d28d9">motion_dispersion_y</text>
+  <text x="757" y="112" text-anchor="middle" font-size="9" font-weight="bold" fill="#6d28d9">motion_dispersion_theta</text>
+  <text x="757" y="126" text-anchor="middle" font-size="8" fill="#78716c">Noise added to particles</text>
+  <text x="757" y="138" text-anchor="middle" font-size="8" fill="#78716c">(most important to tune)</text>
+  <line x1="700" y1="110" x2="678" y2="120" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Arrow 1→2 -->
+  <line x1="325" y1="122" x2="492" y2="122" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Weight — bottom-right -->
+  <rect x="495" y="190" width="180" height="60" rx="8" fill="#fff" stroke="#ef4444" stroke-width="2"/>
+  <text x="585" y="213" text-anchor="middle" font-size="13" font-weight="bold" fill="#dc2626">3. Weight</text>
+  <text x="585" y="230" text-anchor="middle" font-size="10" fill="#78716c">Score vs real LiDAR scan</text>
+  <text x="585" y="242" text-anchor="middle" font-size="10" fill="#78716c">(sensor model + RangeLibc)</text>
+
+  <!-- Weight params (right side) -->
+  <rect x="700" y="170" width="115" height="105" rx="5" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+  <text x="757" y="186" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">z_hit, z_short</text>
+  <text x="757" y="199" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">z_max, z_rand</text>
+  <text x="757" y="212" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">sigma_hit</text>
+  <text x="757" y="228" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">range_method</text>
+  <text x="757" y="241" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">rangelib_variant</text>
+  <text x="757" y="254" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">angle_step</text>
+  <text x="757" y="268" text-anchor="middle" font-size="8" fill="#78716c">Sensor model + ray casting</text>
+  <line x1="700" y1="220" x2="678" y2="220" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Arrow 2→3 -->
+  <line x1="585" y1="152" x2="585" y2="187" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Normalize — bottom-left -->
+  <rect x="145" y="190" width="180" height="60" rx="8" fill="#fff" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="235" y="213" text-anchor="middle" font-size="13" font-weight="bold" fill="#0369a1">4. Normalize</text>
+  <text x="235" y="230" text-anchor="middle" font-size="10" fill="#78716c">Weights sum to 1.0</text>
+  <text x="235" y="242" text-anchor="middle" font-size="10" fill="#78716c">+ squash factor</text>
+
+  <!-- Normalize params (left side) -->
+  <rect x="5" y="195" width="110" height="35" rx="5" fill="#ecfeff" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="60" y="210" text-anchor="middle" font-size="9" font-weight="bold" fill="#0369a1">squash_factor</text>
+  <text x="60" y="222" text-anchor="middle" font-size="8" fill="#78716c">Prevents collapse</text>
+  <line x1="115" y1="212" x2="142" y2="215" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Arrow 3→4 -->
+  <line x1="492" y1="220" x2="328" y2="220" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Loop arrow (straight up, dashed green) -->
+  <line x1="235" y1="190" x2="235" y2="155" stroke="#16a34a" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow)"/>
+  <text x="255" y="177" text-anchor="start" font-size="10" font-weight="bold" fill="#16a34a">loop</text>
+
+  <!-- ===== PUBLISH ===== -->
+  <line x1="410" y1="308" x2="410" y2="338" stroke="#16a34a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="450" y="328" text-anchor="start" font-size="9" fill="#64748b">after each cycle</text>
+
+  <rect x="185" y="340" width="450" height="55" rx="8" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+  <text x="410" y="362" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803d">Publish</text>
+  <text x="410" y="378" text-anchor="middle" font-size="9" fill="#78716c">Localized Pose · TF Transform · Particle Cloud · Best Pose</text>
+  <text x="410" y="390" text-anchor="middle" font-size="9" fill="#78716c">Weighted average of all particles → /pf/pose/odom + map → laser</text>
+
+  <!-- Publish params (left side) -->
+  <rect x="5" y="345" width="110" height="50" rx="5" fill="#ecfdf5" stroke="#16a34a" stroke-width="1"/>
+  <text x="60" y="360" text-anchor="middle" font-size="9" font-weight="bold" fill="#15803d">publish_odom</text>
+  <text x="60" y="373" text-anchor="middle" font-size="9" font-weight="bold" fill="#15803d">viz</text>
+  <text x="60" y="386" text-anchor="middle" font-size="9" font-weight="bold" fill="#15803d">max_viz_particles</text>
+  <line x1="115" y1="370" x2="182" y2="370" stroke="#16a34a" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- ===== INPUTS ===== -->
+
+  <!-- Odometry → Predict label -->
+  <text x="585" y="88" text-anchor="middle" font-size="8" fill="#3b82f6">← /vesc/odom (odometry_topic)</text>
+
+  <!-- LiDAR → Weight label -->
+  <text x="585" y="186" text-anchor="middle" font-size="8" fill="#3b82f6">← /scan (scan_topic, angle_step)</text>
+
+  <!-- Legend -->
+  <rect x="40" y="420" width="14" height="10" rx="3" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1"/>
+  <text x="60" y="429" font-size="9" fill="#64748b">Parameters affecting that step</text>
+
+  <line x1="280" y1="425" x2="310" y2="425" stroke="#555" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="317" y="429" font-size="9" fill="#64748b">MCL cycle step</text>
+
+  <line x1="450" y1="425" x2="470" y2="425" stroke="#16a34a" stroke-width="2" stroke-dasharray="5,3"/>
+  <text x="477" y="429" font-size="9" fill="#64748b">Loop (repeat cycle)</text>
+
+  <text x="620" y="429" font-size="9" fill="#64748b">Dashed lines connect params to their step</text>
+</svg>

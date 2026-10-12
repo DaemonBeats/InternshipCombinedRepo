@@ -1,0 +1,829 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SETUP - Nav2 &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gym_Ros Setup" href="gym_ros_setup.html" />
+    <link rel="prev" title="SETUP - SLAM" href="slam.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SETUP - Nav2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install-nav2-navigation-stack">Install Nav2 (Navigation Stack)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-parameters-file">Create the Parameters File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-velocity-converter">Create the Velocity Converter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-launch-file">Create the Launch File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#applying-these-changes-to-other-robots">Applying These Changes to Other Robots</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>SETUP - Nav2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/setup/nav2.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setup-nav2">
+<span id="doc-setup-nav2"></span><h1>SETUP - Nav2<a class="headerlink" href="#setup-nav2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="install-nav2-navigation-stack">
+<h2>Install Nav2 (Navigation Stack)<a class="headerlink" href="#install-nav2-navigation-stack" title="Permalink to this headline">¶</a></h2>
+<p>1️⃣ <strong>Install the Nav2 packages</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<span class="go">sudo apt install ros-humble-navigation2 ros-humble-nav2-bringup</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ros-humble-navigation2</span></code> provides the core Nav2 nodes (planner, controller, bt_navigator) and <code class="docutils literal notranslate"><span class="pre">ros-humble-nav2-bringup</span></code> provides the launch files.</p>
+</div>
+<div class="section" id="create-the-parameters-file">
+<h2>Create the Parameters File<a class="headerlink" href="#create-the-parameters-file" title="Permalink to this headline">¶</a></h2>
+<p>Nav2 requires a parameters file that configures the planner, controller, and costmaps for the F1TENTH Ackermann platform.</p>
+<p>2️⃣ <strong>Create the file on the robot</strong></p>
+<p>Open the file in VS Code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/nav2_params.yaml
+</pre></div>
+</div>
+<p>Paste the following contents and save (<code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># =============================================================================</span>
+<span class="c1"># Nav2 Parameters — F1TENTH RoboRacer</span>
+<span class="c1"># =============================================================================</span>
+<span class="c1"># Minimal configuration tuned for the F1TENTH Ackermann platform.</span>
+<span class="c1"># Place this file at:</span>
+<span class="c1">#   ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/nav2_params.yaml</span>
+<span class="c1"># =============================================================================</span>
+
+<span class="nt">map_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">yaml_filename</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+
+<span class="nt">amcl</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">alpha1</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">alpha2</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">alpha3</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">alpha4</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">alpha5</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">base_frame_id</span><span class="p">:</span> <span class="s">&quot;base_link&quot;</span>
+    <span class="nt">global_frame_id</span><span class="p">:</span> <span class="s">&quot;map&quot;</span>
+    <span class="nt">odom_frame_id</span><span class="p">:</span> <span class="s">&quot;odom&quot;</span>
+    <span class="nt">robot_model_type</span><span class="p">:</span> <span class="s">&quot;nav2_amcl::DifferentialMotionModel&quot;</span>
+    <span class="nt">scan_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
+    <span class="nt">max_particles</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2000</span>
+    <span class="nt">min_particles</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">500</span>
+    <span class="nt">laser_model_type</span><span class="p">:</span> <span class="s">&quot;likelihood_field&quot;</span>
+    <span class="nt">laser_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+    <span class="nt">laser_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">-1.0</span>
+    <span class="nt">max_beams</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
+    <span class="nt">z_hit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+    <span class="nt">z_rand</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+    <span class="nt">z_short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+    <span class="nt">z_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+    <span class="nt">sigma_hit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">lambda_short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+    <span class="nt">laser_likelihood_max_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+    <span class="nt">update_min_d</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+    <span class="nt">update_min_a</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.2</span>
+    <span class="nt">resample_interval</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+    <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+    <span class="nt">recovery_alpha_fast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+    <span class="nt">recovery_alpha_slow</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+    <span class="nt">tf_broadcast</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="nt">set_initial_pose</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">bt_navigator</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+    <span class="nt">odom_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/odom</span>
+    <span class="nt">bt_loop_duration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+    <span class="nt">default_server_timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20</span>
+    <span class="nt">navigators</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;navigate_to_pose&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;navigate_through_poses&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">navigate_to_pose</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_bt_navigator/NavigateToPoseNavigator&quot;</span>
+    <span class="nt">navigate_through_poses</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_bt_navigator/NavigateThroughPosesNavigator&quot;</span>
+
+<span class="nt">controller_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">controller_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
+    <span class="nt">min_x_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+    <span class="nt">min_y_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+    <span class="nt">min_theta_velocity_threshold</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.001</span>
+    <span class="nt">progress_checker_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;progress_checker&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">goal_checker_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;general_goal_checker&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">controller_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;FollowPath&quot;</span><span class="p p-Indicator">]</span>
+
+    <span class="nt">progress_checker</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleProgressChecker&quot;</span>
+      <span class="nt">required_movement_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+      <span class="nt">movement_time_allowance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+
+    <span class="nt">general_goal_checker</span><span class="p">:</span>
+      <span class="nt">stateful</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_controller::SimpleGoalChecker&quot;</span>
+      <span class="nt">xy_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+      <span class="nt">yaw_goal_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+
+    <span class="nt">FollowPath</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController&quot;</span>
+      <span class="nt">desired_linear_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">min_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+      <span class="nt">max_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+      <span class="nt">lookahead_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.5</span>
+      <span class="nt">rotate_to_heading_angular_vel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">transform_tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1</span>
+      <span class="nt">use_velocity_scaled_lookahead_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">min_approach_linear_velocity</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
+      <span class="nt">approach_velocity_scaling_dist</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">use_collision_detection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">max_allowed_time_to_collision_up_to_carrot</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">use_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">use_cost_regulated_linear_velocity_scaling</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+      <span class="nt">regulated_linear_scaling_min_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.9</span>
+      <span class="nt">regulated_linear_scaling_min_speed</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.3</span>
+      <span class="nt">max_angular_accel</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.2</span>
+      <span class="nt">allow_reversing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+<span class="nt">planner_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">expected_planner_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">20.0</span>
+    <span class="nt">planner_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;GridBased&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">GridBased</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_navfn_planner/NavfnPlanner&quot;</span>
+      <span class="nt">tolerance</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.5</span>
+      <span class="nt">use_astar</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">allow_unknown</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="nt">local_costmap</span><span class="p">:</span>
+  <span class="nt">local_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+      <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5.0</span>
+      <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+      <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">odom</span>
+      <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+      <span class="nt">rolling_window</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">width</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+      <span class="nt">height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3</span>
+      <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+      <span class="nt">robot_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.18</span>
+      <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">obstacle_layer</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
+        <span class="nt">scan</span><span class="p">:</span>
+          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
+          <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+          <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;LaserScan&quot;</span>
+          <span class="nt">raytrace_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+          <span class="nt">raytrace_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+          <span class="nt">obstacle_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8.0</span>
+          <span class="nt">obstacle_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">inflation_layer</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
+        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.30</span>
+
+<span class="nt">global_costmap</span><span class="p">:</span>
+  <span class="nt">global_costmap</span><span class="p">:</span>
+    <span class="nt">ros__parameters</span><span class="p">:</span>
+      <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+      <span class="nt">update_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">publish_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1.0</span>
+      <span class="nt">global_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+      <span class="nt">robot_base_frame</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">base_link</span>
+      <span class="nt">robot_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.18</span>
+      <span class="nt">resolution</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+      <span class="nt">track_unknown_space</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;static_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;obstacle_layer&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;inflation_layer&quot;</span><span class="p p-Indicator">]</span>
+      <span class="nt">static_layer</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::StaticLayer&quot;</span>
+        <span class="nt">map_subscribe_transient_local</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+      <span class="nt">obstacle_layer</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::ObstacleLayer&quot;</span>
+        <span class="nt">enabled</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+        <span class="nt">observation_sources</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">scan</span>
+        <span class="nt">scan</span><span class="p">:</span>
+          <span class="nt">topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/scan</span>
+          <span class="nt">max_obstacle_height</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.0</span>
+          <span class="nt">clearing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">marking</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+          <span class="nt">data_type</span><span class="p">:</span> <span class="s">&quot;LaserScan&quot;</span>
+          <span class="nt">raytrace_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+          <span class="nt">raytrace_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+          <span class="nt">obstacle_max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8.0</span>
+          <span class="nt">obstacle_min_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.0</span>
+      <span class="nt">inflation_layer</span><span class="p">:</span>
+        <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_costmap_2d::InflationLayer&quot;</span>
+        <span class="nt">cost_scaling_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">3.0</span>
+        <span class="nt">inflation_radius</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.30</span>
+
+<span class="nt">behavior_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">costmap_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local_costmap/costmap_raw</span>
+    <span class="nt">footprint_topic</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">local_costmap/published_footprint</span>
+    <span class="nt">cycle_frequency</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.0</span>
+    <span class="nt">behavior_plugins</span><span class="p">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;spin&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;backup&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;wait&quot;</span><span class="p p-Indicator">]</span>
+    <span class="nt">spin</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_behaviors/Spin&quot;</span>
+    <span class="nt">backup</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_behaviors/BackUp&quot;</span>
+    <span class="nt">wait</span><span class="p">:</span>
+      <span class="nt">plugin</span><span class="p">:</span> <span class="s">&quot;nav2_behaviors/Wait&quot;</span>
+
+<span class="nt">lifecycle_manager</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">use_sim_time</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="nt">autostart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="nt">node_names</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">map_server</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">amcl</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">controller_server</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">planner_server</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">behavior_server</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bt_navigator</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-the-velocity-converter">
+<h2>Create the Velocity Converter<a class="headerlink" href="#create-the-velocity-converter" title="Permalink to this headline">¶</a></h2>
+<p>Nav2’s controller publishes <code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code> on <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code>, but the F1TENTH’s ackermann mux expects <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> on the <code class="docutils literal notranslate"><span class="pre">/drive</span></code> topic. A converter node bridges this gap.</p>
+<p>3️⃣ <strong>Create the converter node</strong></p>
+<p>Open the file in VS Code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/f1tenth_stack/cmd_vel_to_ackermann.py
+</pre></div>
+</div>
+<p>Paste the following contents and save (<code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDriveStamped</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">class</span> <span class="nc">CmdVelToAckermann</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;cmd_vel_to_ackermann&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;wheelbase&#39;</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wheelbase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;wheelbase&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span><span class="n">Twist</span><span class="p">,</span> <span class="s1">&#39;/cmd_vel&#39;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">callback</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="s1">&#39;/drive&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+        <span class="n">ack</span> <span class="o">=</span> <span class="n">AckermannDriveStamped</span><span class="p">()</span>
+        <span class="n">ack</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+        <span class="n">ack</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span>
+
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.01</span><span class="p">:</span>
+            <span class="n">ack</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">steering_angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">wheelbase</span> <span class="o">*</span> <span class="n">msg</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">/</span> <span class="n">msg</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ack</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">steering_angle</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">ack</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">CmdVelToAckermann</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>4️⃣ <strong>Replace setup.py</strong></p>
+<p>Replace the contents of <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> with the following (adds the maps data file and converter entry point).</p>
+<p>Open the file in VS Code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/setup.py
+</pre></div>
+</div>
+<p>Replace all contents with the following and save (<code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">setuptools</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="n">package_name</span> <span class="o">=</span> <span class="s1">&#39;f1tenth_stack&#39;</span>
+
+<span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="n">package_name</span><span class="p">,</span>
+    <span class="n">version</span><span class="o">=</span><span class="s1">&#39;0.0.1&#39;</span><span class="p">,</span>
+    <span class="n">packages</span><span class="o">=</span><span class="p">[</span><span class="n">package_name</span><span class="p">],</span>
+    <span class="n">data_files</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">(</span><span class="s1">&#39;share/ament_index/resource_index/packages&#39;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s1">&#39;resource/&#39;</span> <span class="o">+</span> <span class="n">package_name</span><span class="p">]),</span>
+        <span class="p">(</span><span class="s1">&#39;share/&#39;</span> <span class="o">+</span> <span class="n">package_name</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;package.xml&#39;</span><span class="p">]),</span>
+        <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;launch&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;launch/*.py&#39;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;config/*.yaml&#39;</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;share&#39;</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="s1">&#39;maps&#39;</span><span class="p">),</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;maps/*&#39;</span><span class="p">)),</span>
+    <span class="p">],</span>
+    <span class="n">install_requires</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;setuptools&#39;</span><span class="p">],</span>
+    <span class="n">zip_safe</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">maintainer</span><span class="o">=</span><span class="s1">&#39;Hongrui Zheng&#39;</span><span class="p">,</span>
+    <span class="n">maintainer_email</span><span class="o">=</span><span class="s1">&#39;billyzheng.bz@gmail.com&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Onboard drivers for vesc and sensors for F1TENTH vehicles.&#39;</span><span class="p">,</span>
+    <span class="n">license</span><span class="o">=</span><span class="s1">&#39;MIT&#39;</span><span class="p">,</span>
+    <span class="n">tests_require</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pytest&#39;</span><span class="p">],</span>
+    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;throttle_interpolator = f1tenth_stack.throttle_interpolator:main&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;tf_publisher = f1tenth_stack.tf_publisher:main&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;cmd_vel_to_ackermann = f1tenth_stack.cmd_vel_to_ackermann:main&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>5️⃣ <strong>Add the Nav2 dependency to package.xml</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack
+sed -i <span class="s1">&#39;/&lt;depend&gt;std_msgs&lt;\/depend&gt;/a\  &lt;depend&gt;nav2_bringup&lt;\/depend&gt;&#39;</span> package.xml
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-the-launch-file">
+<h2>Create the Launch File<a class="headerlink" href="#create-the-launch-file" title="Permalink to this headline">¶</a></h2>
+<p>The Nav2 launch file wraps <code class="docutils literal notranslate"><span class="pre">nav2_bringup</span></code> with the correct map, parameters, and the velocity converter for the F1TENTH.</p>
+<p>6️⃣ <strong>Create the launch file</strong></p>
+<p>Open the file in VS Code:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/launch/nav2_launch.py
+</pre></div>
+</div>
+<p>Paste the following contents and save (<code class="docutils literal notranslate"><span class="pre">Ctrl+S</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MIT License</span>
+
+<span class="c1"># Copyright (c) 2025 WSU F1TENTH</span>
+
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span><span class="p">,</span> <span class="n">IncludeLaunchDescription</span>
+<span class="kn">from</span> <span class="nn">launch.launch_description_sources</span> <span class="kn">import</span> <span class="n">PythonLaunchDescriptionSource</span>
+<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span><span class="p">,</span> <span class="n">PathJoinSubstitution</span>
+<span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">launch_ros.substitutions</span> <span class="kn">import</span> <span class="n">FindPackageShare</span>
+<span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="n">f1tenth_stack_dir</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;f1tenth_stack&#39;</span><span class="p">)</span>
+    <span class="n">nav2_bringup_dir</span> <span class="o">=</span> <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;nav2_bringup&#39;</span><span class="p">)</span>
+
+    <span class="n">map_name_arg</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s1">&#39;map_name&#39;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="s1">&#39;lab_map&#39;</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Map name (without extension) in f1tenth_stack/maps/&#39;</span>
+    <span class="p">)</span>
+
+    <span class="n">nav2_params</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f1tenth_stack_dir</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">,</span> <span class="s1">&#39;nav2_params.yaml&#39;</span><span class="p">)</span>
+    <span class="n">map_file</span> <span class="o">=</span> <span class="n">PathJoinSubstitution</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">FindPackageShare</span><span class="p">(</span><span class="s1">&#39;f1tenth_stack&#39;</span><span class="p">),</span> <span class="s1">&#39;maps&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;map_name&#39;</span><span class="p">),</span> <span class="s1">&#39;.yaml&#39;</span><span class="p">]]</span>
+    <span class="p">)</span>
+
+    <span class="n">nav2_bringup</span> <span class="o">=</span> <span class="n">IncludeLaunchDescription</span><span class="p">(</span>
+        <span class="n">PythonLaunchDescriptionSource</span><span class="p">(</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">nav2_bringup_dir</span><span class="p">,</span> <span class="s1">&#39;launch&#39;</span><span class="p">,</span> <span class="s1">&#39;bringup_launch.py&#39;</span><span class="p">)</span>
+        <span class="p">),</span>
+        <span class="n">launch_arguments</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;map&#39;</span><span class="p">:</span> <span class="n">map_file</span><span class="p">,</span>
+            <span class="s1">&#39;params_file&#39;</span><span class="p">:</span> <span class="n">nav2_params</span><span class="p">,</span>
+            <span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;slam&#39;</span><span class="p">:</span> <span class="s1">&#39;False&#39;</span><span class="p">,</span>     <span class="c1"># use AMCL for localization, not slam_toolbox</span>
+            <span class="s1">&#39;autostart&#39;</span><span class="p">:</span> <span class="s1">&#39;True&#39;</span><span class="p">,</span>
+        <span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Converts nav2 cmd_vel (Twist) → drive (AckermannDriveStamped) for the mux</span>
+    <span class="n">cmd_vel_to_ackermann_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;f1tenth_stack&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;cmd_vel_to_ackermann&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;cmd_vel_to_ackermann&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;wheelbase&#39;</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}]</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span><span class="n">map_name_arg</span><span class="p">,</span> <span class="n">nav2_bringup</span><span class="p">,</span> <span class="n">cmd_vel_to_ackermann_node</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>7️⃣ <strong>Rebuild the workspace</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select f1tenth_stack
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+<p>8️⃣ <strong>Verify the files exist</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/nav2_params.yaml
+ls ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/f1tenth_stack/cmd_vel_to_ackermann.py
+ls ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/launch/nav2_launch.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="applying-these-changes-to-other-robots">
+<h2>Applying These Changes to Other Robots<a class="headerlink" href="#applying-these-changes-to-other-robots" title="Permalink to this headline">¶</a></h2>
+<p>The Nav2 setup lives in two files within the git-tracked workspace. The fastest way to set up additional robots is to copy and paste the file contents directly.</p>
+<p><strong>nav2_launch.py</strong></p>
+<p>On the other robot, open the launch file and paste the code from Step 6️⃣ above:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/launch/nav2_launch.py
+</pre></div>
+</div>
+<p><strong>localize_launch.py</strong> (particle filter fix)</p>
+<p>On the other robot, open the particle filter launch file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/particle_filter/launch/localize_launch.py
+</pre></div>
+</div>
+<p>Replace the entire contents with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># MIT License</span>
+
+<span class="c1"># Copyright (c) 2020 Hongrui Zheng</span>
+
+<span class="c1"># Permission is hereby granted, free of charge, to any person obtaining a copy</span>
+<span class="c1"># of this software and associated documentation files (the &quot;Software&quot;), to deal</span>
+<span class="c1"># in the Software without restriction, including without limitation the rights</span>
+<span class="c1"># to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span>
+<span class="c1"># copies of the Software, and to permit persons to whom the Software is</span>
+<span class="c1"># furnished to do so, subject to the following conditions:</span>
+
+<span class="c1"># The above copyright notice and this permission notice shall be included in all</span>
+<span class="c1"># copies or substantial portions of the Software.</span>
+
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span>
+<span class="c1"># IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span>
+<span class="c1"># FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span>
+<span class="c1"># AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span>
+<span class="c1"># LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span>
+<span class="c1"># OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE</span>
+<span class="c1"># SOFTWARE.</span>
+
+<span class="kn">from</span> <span class="nn">launch</span> <span class="kn">import</span> <span class="n">LaunchDescription</span>
+<span class="kn">from</span> <span class="nn">launch_ros.actions</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">launch.substitutions</span> <span class="kn">import</span> <span class="n">LaunchConfiguration</span><span class="p">,</span> <span class="n">PathJoinSubstitution</span>
+<span class="kn">from</span> <span class="nn">launch.actions</span> <span class="kn">import</span> <span class="n">DeclareLaunchArgument</span>
+<span class="kn">from</span> <span class="nn">launch_ros.substitutions</span> <span class="kn">import</span> <span class="n">FindPackageShare</span>
+<span class="kn">from</span> <span class="nn">ament_index_python.packages</span> <span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+
+<span class="k">def</span> <span class="nf">generate_launch_description</span><span class="p">():</span>
+    <span class="c1"># config and args</span>
+    <span class="n">localize_config</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">),</span>
+        <span class="s1">&#39;config&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;localize.yaml&#39;</span>
+    <span class="p">)</span>
+    <span class="n">localize_config_dict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">localize_config</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">))</span>
+    <span class="n">map_name</span> <span class="o">=</span> <span class="n">localize_config_dict</span><span class="p">[</span><span class="s1">&#39;map_server&#39;</span><span class="p">][</span><span class="s1">&#39;ros__parameters&#39;</span><span class="p">][</span><span class="s1">&#39;map&#39;</span><span class="p">]</span>
+    <span class="n">localize_la</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s1">&#39;localize_config&#39;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="n">localize_config</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Localization configs&#39;</span><span class="p">)</span>
+    <span class="n">map_name_la</span> <span class="o">=</span> <span class="n">DeclareLaunchArgument</span><span class="p">(</span>
+        <span class="s1">&#39;map_name&#39;</span><span class="p">,</span>
+        <span class="n">default_value</span><span class="o">=</span><span class="n">map_name</span><span class="p">,</span>
+        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Map name (without extension) in particle_filter/maps/&#39;</span><span class="p">)</span>
+    <span class="n">ld</span> <span class="o">=</span> <span class="n">LaunchDescription</span><span class="p">([</span><span class="n">localize_la</span><span class="p">,</span> <span class="n">map_name_la</span><span class="p">])</span>
+
+    <span class="c1"># nodes</span>
+    <span class="n">pf_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;localize_config&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="n">map_server_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_map_server&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;map_server&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;map_server&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;yaml_filename&#39;</span><span class="p">:</span> <span class="n">PathJoinSubstitution</span><span class="p">(</span>
+                         <span class="p">[</span><span class="n">FindPackageShare</span><span class="p">(</span><span class="s1">&#39;particle_filter&#39;</span><span class="p">),</span> <span class="s1">&#39;maps&#39;</span><span class="p">,</span>
+                          <span class="p">[</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="s1">&#39;map_name&#39;</span><span class="p">),</span> <span class="s1">&#39;.yaml&#39;</span><span class="p">]])},</span>
+                    <span class="p">{</span><span class="s1">&#39;topic&#39;</span><span class="p">:</span> <span class="s1">&#39;map&#39;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;frame_id&#39;</span><span class="p">:</span> <span class="s1">&#39;map&#39;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;output&#39;</span><span class="p">:</span> <span class="s1">&#39;screen&#39;</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}]</span>
+    <span class="p">)</span>
+    <span class="n">nav_lifecycle_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span>
+        <span class="n">package</span><span class="o">=</span><span class="s1">&#39;nav2_lifecycle_manager&#39;</span><span class="p">,</span>
+        <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;lifecycle_manager&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;lifecycle_manager_localization&#39;</span><span class="p">,</span>
+        <span class="n">output</span><span class="o">=</span><span class="s1">&#39;screen&#39;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;use_sim_time&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;autostart&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+                    <span class="p">{</span><span class="s1">&#39;node_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;map_server&#39;</span><span class="p">]}]</span>
+    <span class="p">)</span>
+
+    <span class="c1"># finalize</span>
+    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">nav_lifecycle_node</span><span class="p">)</span>
+    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">map_server_node</span><span class="p">)</span>
+    <span class="n">ld</span><span class="o">.</span><span class="n">add_action</span><span class="p">(</span><span class="n">pf_node</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ld</span>
+</pre></div>
+</div>
+<p><strong>Rebuild and source</strong></p>
+<p>After pasting both files, rebuild and source the workspace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select f1tenth_stack particle_filter
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gym_ros_setup.html" class="btn btn-neutral float-right" title="Gym_Ros Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="slam.html" class="btn btn-neutral float-left" title="SETUP - SLAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

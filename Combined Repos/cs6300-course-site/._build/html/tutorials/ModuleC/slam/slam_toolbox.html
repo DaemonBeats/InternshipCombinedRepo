@@ -1,0 +1,472 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SLAM Toolbox &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Saving the Map" href="slam_map.html" />
+    <link rel="prev" title="Tutorial 5 - SLAM" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 5 - SLAM</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SLAM Toolbox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#video-walkthrough">🎥 Video Walkthrough</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-steps">Run Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-rviz2">Configure RViz2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-checks">Common Checks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html">Saving the Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 5 - SLAM</a> &raquo;</li>
+        
+      <li>SLAM Toolbox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleC/slam/slam_toolbox.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="slam-toolbox">
+<span id="doc-tutorials-slamtoolbox"></span><h1>SLAM Toolbox<a class="headerlink" href="#slam-toolbox" title="Permalink to this headline">¶</a></h1>
+<p>This page shows how to run SLAM Toolbox on the RoboRacer and visualize the map in RViz2.</p>
+<div class="section" id="video-walkthrough">
+<h2>🎥 Video Walkthrough<a class="headerlink" href="#video-walkthrough" title="Permalink to this headline">¶</a></h2>
+<iframe width="560" height="315"
+  src="https://www.youtube.com/embed/RanGbHii2m8"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen></iframe><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You must have the <strong>controller powered on and connected</strong> before starting SLAM.
+If the controller is not connected, the vehicle will not publish drive data and SLAM will not begin building a map.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run the <code class="docutils literal notranslate"><span class="pre">slam</span></code> alias to start SLAM Toolbox:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>slam
+</pre></div>
+</div>
+<p><strong>What</strong> <code class="docutils literal notranslate"><span class="pre">slam</span></code> <strong>runs:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch slam_toolbox online_async_launch.py <span class="se">\</span>
+  params_file:<span class="o">=</span>/home/nvidia/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/f1tenth_online_async.yaml
+</pre></div>
+</div>
+<p>If your RoboRacer name is <code class="docutils literal notranslate"><span class="pre">f1-wsu-1</span></code>, your path would look like:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch slam_toolbox online_async_launch.py <span class="se">\</span>
+  params_file:<span class="o">=</span>/home/f1-wsu-1/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/f1tenth_online_async.yaml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="run-steps">
+<h2>Run Steps<a class="headerlink" href="#run-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bringup-terminal-1">
+<h3>1️⃣ Bringup (Terminal 1)<a class="headerlink" href="#bringup-terminal-1" title="Permalink to this headline">¶</a></h3>
+<p>Start the car stack (sensors + drivers + base nodes).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+
+bringup
+</pre></div>
+</div>
+</div>
+<div class="section" id="turn-on-and-connect-controller">
+<h3>2️⃣ Turn On and Connect Controller<a class="headerlink" href="#turn-on-and-connect-controller" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Power on the transmitter</p></li>
+<li><p>Confirm it is bound to the vehicle</p></li>
+<li><p>Verify you have steering and throttle response</p></li>
+</ul>
+<p>SLAM will not build a map unless the car is moving.</p>
+</div>
+<div class="section" id="start-slam-toolbox-terminal-2">
+<h3>3️⃣ Start SLAM Toolbox (Terminal 2)<a class="headerlink" href="#start-slam-toolbox-terminal-2" title="Permalink to this headline">¶</a></h3>
+<p>Open a <strong>separate terminal</strong> and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+
+slam
+</pre></div>
+</div>
+</div>
+<div class="section" id="open-rviz2-terminal-3">
+<h3>4️⃣ Open RViz2 (Terminal 3)<a class="headerlink" href="#open-rviz2-terminal-3" title="Permalink to this headline">¶</a></h3>
+<p>Open another terminal (often on your laptop) and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/humble/setup.bash
+rviz2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configure-rviz2">
+<h2>Configure RViz2<a class="headerlink" href="#configure-rviz2" title="Permalink to this headline">¶</a></h2>
+<p>After RViz2 opens:</p>
+<div class="section" id="set-the-fixed-frame">
+<h3>1️⃣ Set the Fixed Frame<a class="headerlink" href="#set-the-fixed-frame" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Top left → <strong>Global Options</strong></p></li>
+<li><p>Set <strong>Fixed Frame</strong> to:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">map</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../../_images/fixed_frame_map.png"><img alt="Configure Map display settings in RViz2" class="align-center" src="../../../_images/fixed_frame_map.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="add-map-display">
+<h3>2️⃣ Add Map Display<a class="headerlink" href="#add-map-display" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Click <strong>Add</strong></p></li>
+<li><p>Select <strong>Map</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/add_map_display.png"><img alt="Configure Map display settings in RViz2" class="align-center" src="../../../_images/add_map_display.png" style="width: 80%;" /></a>
+<p>Then configure the Map display:</p>
+<ul class="simple">
+<li><p><strong>Topic</strong> → make sure it is:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="nb">map</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Topic → History Policy</strong> → <code class="docutils literal notranslate"><span class="pre">Keep</span> <span class="pre">All</span></code></p></li>
+<li><p><strong>Topic → Durability Policy</strong> → <code class="docutils literal notranslate"><span class="pre">Transient</span> <span class="pre">Local</span></code></p></li>
+<li><p><strong>Update Topic → Durability Policy</strong> → <code class="docutils literal notranslate"><span class="pre">Transient</span> <span class="pre">Local</span></code></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/configure_map.png"><img alt="Configure Map display settings in RViz2" class="align-center" src="../../../_images/configure_map.png" style="width: 80%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="add-graphvisualization">
+<h3>3️⃣ Add GraphVisualization<a class="headerlink" href="#add-graphvisualization" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Click <strong>Add</strong></p></li>
+<li><p>Select <strong>GraphVisualization</strong></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/add_graph_visualization.png"><img alt="Configure Map display settings in RViz2" class="align-center" src="../../../_images/add_graph_visualization.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="add-slam-toolbox-panel">
+<h3>4️⃣ Add SLAM Toolbox Panel<a class="headerlink" href="#add-slam-toolbox-panel" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Top left → <strong>Panels</strong></p></li>
+<li><p>Select <strong>Add New Panel</strong></p></li>
+<li><p>Choose:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SlamToolBoxPlugin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="drive-the-car-to-build-the-map">
+<h3>5️⃣ Drive the Car to Build the Map<a class="headerlink" href="#drive-the-car-to-build-the-map" title="Permalink to this headline">¶</a></h3>
+<p>With SLAM Toolbox running and RViz2 open, use the <strong>PlayStation controller</strong> to drive the car around the course. As you drive, you will see the map build in real time in RViz2.</p>
+<p><strong>Tips for a good map:</strong></p>
+<ul class="simple">
+<li><p>Drive <strong>slowly and smoothly</strong> to give the LiDAR time to capture accurate scans.</p></li>
+<li><p>Cover the <strong>entire course</strong> — drive every section of the track at least once.</p></li>
+<li><p>It is perfectly fine to <strong>drive back over paths you have already mapped</strong> — this helps SLAM close loops and improve accuracy.</p></li>
+<li><p>Try to avoid crashing, as sudden movements can introduce scan errors.</p></li>
+<li><p>You may notice <strong>stray scan lines</strong> that appear to extend outside the track boundaries — this is normal and expected. They will not affect navigation.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/map_made.png"><img alt="Example map built using SLAM Toolbox while driving the course" class="align-center" src="../../../_images/map_made.png" style="width: 80%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>Example map created while driving the RoboRacer around the course. Stray scans outside the boundary are normal.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you are satisfied that the map covers the full course, proceed to the next page to save the map.</p>
+</div>
+</div>
+</div>
+<div class="section" id="common-checks">
+<h2>Common Checks<a class="headerlink" href="#common-checks" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Confirm <code class="docutils literal notranslate"><span class="pre">/scan</span></code> is publishing.</p></li>
+<li><p>Confirm controller is connected.</p></li>
+<li><p>Confirm Fixed Frame is <code class="docutils literal notranslate"><span class="pre">map</span></code>.</p></li>
+<li><p>Confirm Map topic is <code class="docutils literal notranslate"><span class="pre">/map</span></code>.</p></li>
+<li><p>Confirm Durability is set to <code class="docutils literal notranslate"><span class="pre">Transient</span> <span class="pre">Local</span></code>.</p></li>
+<li><p>Confirm both machines use the same <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code>.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="slam_map.html" class="btn btn-neutral float-right" title="Saving the Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial 5 - SLAM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

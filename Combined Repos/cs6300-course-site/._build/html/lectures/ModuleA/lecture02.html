@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lecture 2 - Automatic Emergency Braking &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Tutorial 2 - Introduction to RoboRacer Simulator" href="tutorial2.html" />
+    <link rel="prev" title="Tutorial 1: Introduction to ROS2" href="tutorial1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lecture01.html">Lecture 1 - Introduction to Autonomous Driving: Perception, Planning Control</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lecture 2 - Automatic Emergency Braking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial2.html">Tutorial 2 - Introduction to RoboRacer Simulator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-emergency-braking-aeb">Automatic Emergency Braking (AEB)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ntsb-report-summary-uber-autonomous-vehicle-crash-in-tempe-arizona">NTSB Report Summary: Uber Autonomous Vehicle Crash in Tempe, Arizona</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#euclidean-distance-vs-time-to-collision">Euclidean Distance vs Time to Collision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-to-collision-ttc">Time to Collision (TTC)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-to-collision-using-laser-data">Time to Collision using laser data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planar-lidar">Planar Lidar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hokuyo-ust-10lx-2d-lidar">Hokuyo UST-10LX 2D LiDAR</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lecture03.html">Lecture 3 - Rigid Body Transformation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a> &raquo;</li>
+        
+      <li>Lecture 2 - Automatic Emergency Braking</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/lectures/ModuleA/lecture02.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lecture-2-automatic-emergency-braking">
+<span id="doc-lecture02"></span><h1>Lecture 2 - Automatic Emergency Braking<a class="headerlink" href="#lecture-2-automatic-emergency-braking" title="Permalink to this headline">¶</a></h1>
+<dl>
+<dt><strong>Overview:</strong></dt><dd><p>This lecture goes over the importance of safety when working with autonomous systems. When is a system “safe enough” to deploy? In this lecture, you will learn about how Automatic Emergency Braking (AEB) works in today’s vehicle as well as methods for gathering information about the outside world in order for the vehicle to respond to it appropriately. Once the vehicle has acquired real world data and reacts to its situation accordingly, how do we measure how “safe” the reaction is?</p>
+</dd>
+<dt><strong>Topics Covered:</strong></dt><dd><ul class="simple">
+<li><p>Autonomatic Emergency Braking (AEB)</p></li>
+<li><p>Range Sensors for Autonomous Vehicles</p></li>
+<li><p>Working with Laser Scan Data</p></li>
+<li><p>Notions of Correctness</p></li>
+</ul>
+</dd>
+<dt><strong>Associated Tutorial:</strong></dt><dd><div class="toctree-wrapper compound" id="sec-tutorial2">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2 - Introduction to RoboRacer Simulator</a></li>
+</ul>
+</div>
+</dd>
+<dt><strong>Associated Assignment:</strong></dt><dd><ul class="simple">
+<li><p><a class="reference internal" href="../../assignments/labs/lab2.html#doc-lab2"><span class="std std-ref">Lab 2: Automatic Emergency Braking</span></a></p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Slides:</strong></p>
+<blockquote>
+<div><iframe width="700" height="500" src="https://docs.google.com/presentation/d/1HQSLPLE-fZ3EN-9PyqMd7-ti7JSLKL7qlrouGFEprU0/embed?start=false&loop=false&delayms=60000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe></div></blockquote>
+<p><strong>Video:</strong></p>
+<blockquote>
+<div><iframe width="700" height="500" src="https://www.youtube.com/embed/k4FQ-dZ0Lp8" title="RoboRacer L02 - Automatic Emergency Braking" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></blockquote>
+<hr class="docutils" />
+<div class="section" id="automatic-emergency-braking-aeb">
+<h2>Automatic Emergency Braking (AEB)<a class="headerlink" href="#automatic-emergency-braking-aeb" title="Permalink to this headline">¶</a></h2>
+<p>Automatic Emergency Braking (AEB) is a safety feature available in many modern vehicles. It’s designed to detect an impending collision and, if necessary, apply the brakes to prevent or reduce the severity of a crash.</p>
+<div class="section" id="how-does-it-work">
+<h3>How does it work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h3>
+<p>AEB systems use sensors, cameras, radar, and lidar technology to monitor the vehicle’s surroundings and detect potential obstacles. When the system determines that a collision is imminent:</p>
+<ol class="arabic simple">
+<li><p>It alerts the driver with audible and visual warnings.</p></li>
+<li><p>If the driver doesn’t take action promptly, the system can automatically apply the brakes.</p></li>
+</ol>
+</div>
+<div class="section" id="nissan-aeb">
+<h3>Nissan AEB<a class="headerlink" href="#nissan-aeb" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://youtu.be/OyfPrEnAwdg"><img alt="Watch the Nissan AEB video" src="https://img.youtube.com/vi/OyfPrEnAwdg/sddefault.jpg" /></a>
+</div>
+<div class="section" id="benefits">
+<h3>Benefits<a class="headerlink" href="#benefits" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Safety</strong>: AEB can help prevent accidents or reduce their severity, thus protecting passengers, drivers, and pedestrians.</p></li>
+<li><p><strong>Reduced Driver Stress</strong>: It serves as an extra set of eyes, providing an additional layer of security.</p></li>
+<li><p><strong>Potential Insurance Savings</strong>: Some insurance companies offer discounts for vehicles equipped with AEB.</p></li>
+</ul>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/radar_vision.jpg"><img alt="radar vision" src="lectures\ModuleA\media/radar_vision.jpg" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Radar Calibrated Vision Pipeline - Binary Classifier</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Sensor Limitations</strong>: AEB might not detect obstacles if the sensors are dirty or covered.</p></li>
+<li><p><strong>Weather Conditions</strong>: Heavy rain, fog, or snow can reduce the system’s effectiveness.</p></li>
+<li><p><strong>No Replacement for Driver Vigilance</strong>: AEB is a supplemental system, and drivers should always be attentive and ready to take control.</p></li>
+</ul>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/truth_table.jpg"><img alt="Truth Table" src="lectures\ModuleA\media/truth_table.jpg" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Classifications</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="future-of-aeb">
+<h3>Future of AEB<a class="headerlink" href="#future-of-aeb" title="Permalink to this headline">¶</a></h3>
+<p>With advancements in AI and sensor technology, the efficiency and reliability of AEB systems are expected to improve. They may also integrate with other vehicle systems for a more holistic safety approach, such as connecting with vehicle-to-vehicle (V2V) communication systems.</p>
+</div>
+<div class="section" id="aeb-videos">
+<h3>AEB Videos<a class="headerlink" href="#aeb-videos" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://youtu.be/815fsWXerIg"><img alt="Watch AEB video 1" src="https://img.youtube.com/vi/815fsWXerIg/sddefault.jpg" /></a>
+<a class="reference external image-reference" href="https://youtu.be/bUhFfunT2ds"><img alt="Watch AEB video 2" src="https://img.youtube.com/vi/bUhFfunT2ds/sddefault.jpg" /></a>
+</div>
+<div class="section" id="tesla-crash-in-china">
+<h3>Tesla Crash in China<a class="headerlink" href="#tesla-crash-in-china" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://youtu.be/fc0yYJ8-Dyo"><img alt="Watch Tesla crash video" src="https://img.youtube.com/vi/fc0yYJ8-Dyo/sddefault.jpg" /></a>
+</div>
+<div class="section" id="uber-self-driving-car-crash">
+<h3>Uber Self Driving Car Crash<a class="headerlink" href="#uber-self-driving-car-crash" title="Permalink to this headline">¶</a></h3>
+<a class="reference external image-reference" href="https://youtu.be/NJeQ0Dj4jAE"><img alt="Watch Uber self-driving crash video" src="https://img.youtube.com/vi/NJeQ0Dj4jAE/sddefault.jpg" /></a>
+</div>
+</div>
+<div class="section" id="ntsb-report-summary-uber-autonomous-vehicle-crash-in-tempe-arizona">
+<h2>NTSB Report Summary: Uber Autonomous Vehicle Crash in Tempe, Arizona<a class="headerlink" href="#ntsb-report-summary-uber-autonomous-vehicle-crash-in-tempe-arizona" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Date:</strong> March 18, 2018</p></li>
+<li><p><strong>Location:</strong> Tempe, Arizona</p></li>
+<li><p><strong>Incident:</strong> An autonomous test vehicle operated by Uber struck and killed a pedestrian.</p></li>
+</ul>
+</div>
+<div class="section" id="key-findings">
+<h3>Key Findings<a class="headerlink" href="#key-findings" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Vehicle’s Perception System:</strong></p>
+<ul class="simple">
+<li><p>The vehicle’s radar and LIDAR sensors detected the pedestrian 6 seconds before the impact.</p></li>
+<li><p>However, the system did not classify her as a pedestrian, because she was crossing a street at a location without a crosswalk.</p></li>
+<li><p>The system struggled to predict her path, considering her as an unknown object, a vehicle, and then as a bicycle, leading to delays in the decision-making process.</p></li>
+</ul>
+</li>
+<li><p><strong>Emergency Braking:</strong></p>
+<ul class="simple">
+<li><p>The self-driving system was designed not to initiate emergency braking on its own.</p></li>
+<li><p>It relied on the human backup driver to intervene. However, the system did not alert the driver to do so.</p></li>
+</ul>
+</li>
+<li><p><strong>Backup Driver:</strong></p>
+<ul class="simple">
+<li><p>The driver was found to be distracted and not watching the road.</p></li>
+<li><p>The interior camera showed the driver was looking down at a personal device multiple times before the crash.</p></li>
+<li><p>The NTSB highlighted the inadequacy of Uber’s oversight in ensuring drivers followed company policies on attentiveness.</p></li>
+</ul>
+</li>
+<li><p><strong>Pedestrian Behavior:</strong></p>
+<ul class="simple">
+<li><p>The pedestrian was found to have methamphetamine and marijuana in her system, which could have impaired her ability to judge the distance and speed of the oncoming vehicle.</p></li>
+<li><p>She did not look in the direction of the vehicle until just before impact.</p></li>
+</ul>
+</li>
+<li><p><strong>Recommendations:</strong></p>
+<ul class="simple">
+<li><p>Stronger guidelines for the testing of autonomous vehicles on public roads.</p></li>
+<li><p>Better oversight of backup drivers to ensure attentiveness.</p></li>
+<li><p>Enhanced safety systems that can initiate emergency braking when needed, without relying solely on human intervention.</p></li>
+</ul>
+</li>
+</ol>
+<img alt="side view stopping" src="lectures\ModuleA\media/vehicle_stop_distance_side.png" />
+<img alt="vehicle view stopping" src="lectures\ModuleA\media/vehicle_stop_distance_front.png" />
+</div>
+</div>
+<div class="section" id="euclidean-distance-vs-time-to-collision">
+<h2>Euclidean Distance vs Time to Collision<a class="headerlink" href="#euclidean-distance-vs-time-to-collision" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Euclidean Distance:</strong>
+Euclidean distance is the straight-line distance between two points in Euclidean space. It’s the most common way to calculate the “ordinary” distance between two points.</p></li>
+<li><p><strong>Time to Collision (TTC):</strong>
+TTC is a measure of time. Specifically, it estimates the amount of time it will take for two objects to collide if they continue on their current trajectories at their current speeds. The formula for TTC can be based on the range-rate, which is the rate at which the distance between the two objects is changing.</p></li>
+</ol>
+<div class="section" id="comparison">
+<h3>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="nature">
+<h4>Nature<a class="headerlink" href="#nature" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Euclidean distance is a spatial metric that quantifies the “separation” between two points in space.</p></li>
+<li><p>TTC is a temporal metric that quantifies the “separation” in time before a potential collision.</p></li>
+</ul>
+</div>
+<div class="section" id="units">
+<h4>Units<a class="headerlink" href="#units" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Euclidean distance is typically measured in spatial units like meters, kilometers, etc.</p></li>
+<li><p>TTC is measured in time units like seconds.</p></li>
+</ul>
+</div>
+<div class="section" id="application">
+<h4>Application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Euclidean distance is commonly used in geometry, computer graphics, machine learning (for clustering, classification, etc.), and many other fields.</p></li>
+<li><p>TTC is specifically used in safety-critical applications like collision avoidance systems in vehicles, drones, and other moving platforms.</p></li>
+</ul>
+</div>
+<div class="section" id="interdependence">
+<h4>Interdependence<a class="headerlink" href="#interdependence" title="Permalink to this headline">¶</a></h4>
+<p>While they are distinct concepts, they can be related. For example, if you know the Euclidean distance between two moving objects and their relative velocity, you can compute the TTC. Conversely, if you know the TTC and the relative velocity, you can infer the Euclidean distance at which the objects will collide if no actions are taken.</p>
+<p>In summary, while both Euclidean distance and TTC can provide insights into the relationship between two entities (points or objects), one is spatial, and the other is temporal. They are used in different contexts but can be interconnected in applications like collision avoidance.</p>
+</div>
+</div>
+</div>
+<div class="section" id="time-to-collision-ttc">
+<h2>Time to Collision (TTC)<a class="headerlink" href="#time-to-collision-ttc" title="Permalink to this headline">¶</a></h2>
+<p>“Time to Collision” (TTC) is a measure used in traffic safety to estimate the time it will take for two objects (usually vehicles) to collide if they continue on their current paths at their current speeds. It’s a useful metric, especially for driver assistance systems and autonomous vehicles, to evaluate the safety of a given traffic scenario.</p>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/TTC_Calculation.jpg"><img alt="TTC" src="lectures\ModuleA\media/TTC_Calculation.jpg" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Time To Collision (TTC)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>If the two objects are moving directly towards each other, <span class="math notranslate nohighlight">\(\Delta v\)</span> is simply the sum of their velocities. If they are moving in the same direction, <span class="math notranslate nohighlight">\(\Delta v\)</span> is the difference in their velocities.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Consider two cars:</p>
+<ul class="simple">
+<li><p>Car A is stationary.</p></li>
+<li><p>Car B is moving towards Car A at a speed of 20 m/s.</p></li>
+<li><p>The distance between them is 100 meters.</p></li>
+</ul>
+<p>Given the scenario, the TTC is:</p>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/ttc_example.jpg"><img alt="TTC Example" src="lectures\ModuleA\media/ttc_example.jpg" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Time To Collision (TTC) Example</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>It means that if Car B continues at its current speed without slowing down or changing its path, it will collide with Car A in 5 seconds.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The above calculation assumes constant speeds and straight-line paths. In real-world scenarios where speeds and directions can change, the calculation becomes more complex. Advanced driver assistance systems and autonomous vehicles use sophisticated algorithms and sensors to estimate TTC in dynamic environments.</p>
+</div>
+</div>
+</div>
+<div class="section" id="time-to-collision-using-laser-data">
+<h2>Time to Collision using laser data<a class="headerlink" href="#time-to-collision-using-laser-data" title="Permalink to this headline">¶</a></h2>
+<p>Let’s break it down:</p>
+<ol class="arabic simple">
+<li><p>Suppose you have two objects: Object A (e.g., your vehicle) and Object B (e.g., another vehicle or obstacle).</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(V\)</span> be the relative velocity of Object A with respect to Object B.</p></li>
+<li><p>Let <span class="math notranslate nohighlight">\(\theta\)</span> be the angle between the direction of <span class="math notranslate nohighlight">\(V\)</span> and the line-of-sight (direct path) between Object A and Object B.</p></li>
+</ol>
+<p>The component of <span class="math notranslate nohighlight">\(V\)</span> that is directly along the line-of-sight is given by <span class="math notranslate nohighlight">\(V\cos(\theta)\)</span>. This component is called the <strong>range-rate</strong>, and it represents how fast the distance between the two objects is changing.</p>
+<div class="section" id="time-to-collision-ttc-using-v-cos-theta">
+<h3>Time to Collision (TTC) using <span class="math notranslate nohighlight">\(V\cos(\theta)\)</span><a class="headerlink" href="#time-to-collision-ttc-using-v-cos-theta" title="Permalink to this headline">¶</a></h3>
+<p>Given:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span>: Current distance between Object A and Object B.</p></li>
+<li><p>Range-rate: <span class="math notranslate nohighlight">\(\dot{R} = V\cos(\theta)\)</span></p></li>
+</ul>
+<p>The TTC can be calculated as:</p>
+<div class="figure align-center" id="id6">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/range-rate.png"><img alt="range rate" src="lectures\ModuleA\media/range-rate.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Time To Collision (TTC) Range Rate</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This formula allows you to compute the time it will take for Object A to reach Object B (or vice versa) based on their relative velocity and the angle of approach. Again, it assumes that both objects continue on their current paths at their current speeds without any changes.</p>
+</div>
+</div>
+</div>
+<div class="section" id="planar-lidar">
+<h2>Planar Lidar<a class="headerlink" href="#planar-lidar" title="Permalink to this headline">¶</a></h2>
+<p>A planar LiDAR (Light Detection and Ranging) is a device that uses laser light to measure distances to objects in a 2-dimensional plane. It operates by sending out laser beams and then measuring the time it takes for the light to be reflected back to the sensor.</p>
+<p>Here’s a breakdown of how a planar LiDAR is used to detect the distance to an object:</p>
+<ol class="arabic">
+<li><p><strong>Emission of Laser Beams:</strong></p>
+<ul class="simple">
+<li><p>The LiDAR emits a laser beam in a specific direction.</p></li>
+<li><p>The beam travels outward until it encounters an obstacle or object and gets reflected back.</p></li>
+</ul>
+<div class="figure align-center" id="id7">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/planarlidar.png"><img alt="planarlidar" src="lectures\ModuleA\media/planarlidar.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Planar Lidar (RPILidar laserscan)</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+</li>
+<li><p><strong>Detection of Reflected Light:</strong></p>
+<ul class="simple">
+<li><p>A detector in the LiDAR system captures the reflected light.</p></li>
+<li><p>The time between the emission of the laser pulse and the detection of the reflected light is recorded.</p></li>
+</ul>
+</li>
+<li><p><strong>Distance Calculation:</strong></p>
+<p>The speed of light is constant. Given this, the distance to the object can be determined using the formula:</p>
+<div class="figure align-center" id="id8">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/distance_calc.png"><img alt="distance calc" src="lectures\ModuleA\media/distance_calc.png" style="width: 20%;" /></a>
+<p class="caption"><span class="caption-text">Distance to Object Calculation</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(c\)</span> = speed of light (approximately <span class="math notranslate nohighlight">\(3 \times 10^8\)</span> meters per second)</p></li>
+<li><p><span class="math notranslate nohighlight">\(t\)</span> = time taken for the laser beam to travel to the object and back</p></li>
+<li><p>The division by 2 accounts for the round-trip distance (to the object and back).</p></li>
+</ul>
+</li>
+<li><p><strong>Scanning Mechanism:</strong></p>
+<ul class="simple">
+<li><p>While the basic principle described above gets the distance to a single point, a planar LiDAR typically has a mechanism to rotate or oscillate the laser emitter and detector assembly.</p></li>
+<li><p>This allows the LiDAR to scan its surroundings in a planar fashion, generating a 2D “map” of distances at various angles.</p></li>
+<li><p>The result is typically called a “scan” or “profile”, which is a set of distance values corresponding to various angles around the LiDAR.</p></li>
+</ul>
+</li>
+<li><p><strong>Data Interpretation:</strong></p>
+<ul class="simple">
+<li><p>The raw data from the LiDAR can be processed to detect objects, measure their distance, and determine their shape (at least in the plane of the LiDAR’s scan).</p></li>
+<li><p>Algorithms can be applied to segment this data, distinguishing between different objects, and even estimating the size or orientation of detected objects.</p></li>
+</ul>
+<div class="figure align-center" id="id9">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/lidar_measurements.png"><img alt="lidar measurements" src="lectures\ModuleA\media/lidar_measurements.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">This image shows the different variables stored in the Turtlebot4 LaserScan messages</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/interface_scan.png"><img alt="interface scan" src="lectures\ModuleA\media/interface_scan.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Stored values for LaserScan message for Turtlebot4</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p><strong>Key Data:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_min</span></code>: radians</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_max</span></code>: radians</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angle_increment</span></code>: radians</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ranges</span></code>: meters</p></li>
+</ul>
+<div class="figure align-center" id="id11">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/info_scan.png"><img alt="info scan" src="lectures\ModuleA\media/info_scan.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Example scan message fields</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id12">
+<a class="reference internal image-reference" href="lectures\ModuleA\media/echoscan.png"><img alt="echo scan" src="lectures\ModuleA\media/echoscan.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Example scan message output</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Example: angle increment <span class="math notranslate nohighlight">\(0.000184629\)</span> radians = ~ 0.5 degrees</p></li>
+</ul>
+</li>
+</ol>
+<div class="section" id="applications">
+<h3>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Planar LiDARs are commonly used in robotics for obstacle detection and navigation.</p></li>
+<li><p>They’re also used in certain autonomous vehicle systems, especially in scenarios where 2D profiling is adequate.</p></li>
+<li><p>Industries utilize planar LiDARs for safety systems, ensuring that machinery or automated platforms do not collide with obstacles.</p></li>
+</ul>
+</div>
+<div class="section" id="advantages-and-limitations">
+<h3>Advantages and Limitations<a class="headerlink" href="#advantages-and-limitations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Advantages</strong>: Planar LiDARs are typically simpler and less expensive than their 3D counterparts. They provide accurate distance measurements and can work in a variety of lighting conditions, including darkness.</p></li>
+<li><p><strong>Limitations</strong>: They only capture data in a single plane, so they might miss obstacles that lie above or below this plane. For a more comprehensive understanding of the environment, 3D LiDAR systems or multiple planar LiDARs at different orientations might be required.</p></li>
+</ul>
+<p>In summary, a planar LiDAR is a powerful tool for distance measurement and object detection in a 2D plane, with applications ranging from robotics to industrial safety systems.</p>
+</div>
+</div>
+<div class="section" id="hokuyo-ust-10lx-2d-lidar">
+<h2>Hokuyo UST-10LX 2D LiDAR<a class="headerlink" href="#hokuyo-ust-10lx-2d-lidar" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://hokuyo-usa.com/products/lidar-obstacle-detection/ust-10lx">Manufacturer website</a></p>
+<div class="figure align-center" id="id13">
+<img alt="UST-10LX" src="lectures\ModuleA\media/10XL.PNG" />
+<p class="caption"><span class="caption-text">UST-10LX</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="hokuyo-ust-10lx-key-features">
+<h3>Hokuyo UST-10LX Key Features<a class="headerlink" href="#hokuyo-ust-10lx-key-features" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="measurement-range">
+<h4>1. Measurement Range<a class="headerlink" href="#measurement-range" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Maximum Range</strong>: 10 meters</p></li>
+<li><p><strong>Minimum Range</strong>: 0.06 meters (60 mm)</p></li>
+</ul>
+</div>
+<div class="section" id="field-of-view-fov">
+<h4>2. Field of View (FoV)<a class="headerlink" href="#field-of-view-fov" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>270° field of view</strong>, ideal for wide-angle scanning.</p></li>
+</ul>
+</div>
+<div class="section" id="accuracy">
+<h4>3. Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>±30 mm</strong> accuracy under standard conditions.</p></li>
+</ul>
+</div>
+<div class="section" id="angular-resolution">
+<h4>4. Angular Resolution<a class="headerlink" href="#angular-resolution" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>0.25°</strong> resolution for precise measurement.</p></li>
+</ul>
+</div>
+<div class="section" id="scanning-frequency">
+<h4>5. Scanning Frequency<a class="headerlink" href="#scanning-frequency" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>40 Hz</strong> scanning speed for fast updates.</p></li>
+</ul>
+</div>
+<div class="section" id="light-resistance">
+<h4>6. Light Resistance<a class="headerlink" href="#light-resistance" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Operates in environments with <strong>ambient light up to 100,000 lux</strong>.</p></li>
+</ul>
+</div>
+<div class="section" id="communication">
+<h4>7. Communication<a class="headerlink" href="#communication" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Ethernet interface</strong> for high-speed data transfer.</p></li>
+</ul>
+</div>
+<div class="section" id="power-requirements">
+<h4>8. Power Requirements<a class="headerlink" href="#power-requirements" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Operates on <strong>12V DC</strong>.</p></li>
+<li><p><strong>Typical Power Consumption</strong>: ~8W.</p></li>
+</ul>
+</div>
+<div class="section" id="size-and-weight">
+<h4>9. Size and Weight<a class="headerlink" href="#size-and-weight" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Compact and lightweight</strong>:</p>
+<ul>
+<li><p>Dimensions: <strong>62 × 62 × 87 mm</strong></p></li>
+<li><p>Weight: <strong>130 g</strong></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="environmental-durability">
+<h4>10. Environmental Durability<a class="headerlink" href="#environmental-durability" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>IP65-rated</strong> enclosure for dustproof and water-resistant operation.</p></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h4>11. Applications<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Perfect for:</p>
+<ul>
+<li><p>Indoor robotics and navigation</p></li>
+<li><p>Warehouse automation</p></li>
+<li><p>SLAM-based mapping systems</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial2.html" class="btn btn-neutral float-right" title="Tutorial 2 - Introduction to RoboRacer Simulator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial1.html" class="btn btn-neutral float-left" title="Tutorial 1: Introduction to ROS2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

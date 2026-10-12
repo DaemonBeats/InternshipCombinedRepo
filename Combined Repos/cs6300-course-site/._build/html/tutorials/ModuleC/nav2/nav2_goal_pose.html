@@ -1,0 +1,480 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2D Goal Pose Navigation &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Navigate Through Poses" href="nav2_waypoint_nav.html" />
+    <link rel="prev" title="Setup — Particle Filter (Updating Other Robots)" href="nav2_particle_filter_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 6 - Nav2 Navigation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nav2_setup.html">Nav2 Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_particle_filter_setup.html">Setup — Particle Filter (Updating Other Robots)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2D Goal Pose Navigation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#steps">Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#topics">Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_waypoint_nav.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html">Programmatic Waypoint Navigation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 6 - Nav2 Navigation</a> &raquo;</li>
+        
+      <li>2D Goal Pose Navigation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleC/nav2/nav2_goal_pose.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="d-goal-pose-navigation">
+<span id="doc-tutorials-nav2-goal-pose"></span><h1>2D Goal Pose Navigation<a class="headerlink" href="#d-goal-pose-navigation" title="Permalink to this headline">¶</a></h1>
+<p>Send the car to any point on the map using the 2D Goal Pose tool in RViz2.</p>
+<p>Before starting, make sure all previous terminals (SLAM, map server, old RViz2) are closed. This tutorial launches everything fresh so the map is loaded cleanly by Nav2.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="start-bringup-terminal-1">
+<h3>1️⃣ Start Bringup (Terminal 1)<a class="headerlink" href="#start-bringup-terminal-1" title="Permalink to this headline">¶</a></h3>
+<p>Make sure the PlayStation controller is connected to the car, then open a terminal on the robot and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bringup
+</pre></div>
+</div>
+<p>This calls <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">f1tenth_stack</span> <span class="pre">bringup_launch.py</span></code>, which starts the car’s sensors and drivers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Nav2 later reports <code class="docutils literal notranslate"><span class="pre">Timed</span> <span class="pre">out</span> <span class="pre">waiting</span> <span class="pre">for</span> <span class="pre">transform</span> <span class="pre">from</span> <span class="pre">base_link</span> <span class="pre">to</span> <span class="pre">odom</span></code>, the PlayStation controller is likely not connected. The VESC driver requires the joystick to fully initialize, and without it the <code class="docutils literal notranslate"><span class="pre">odom</span></code> frame is never published.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Hold R1 for autonomous mode.</strong> By default the joystick continuously publishes zero-speed commands at high priority, blocking Nav2. Hold <strong>R1</strong> (button 5) on the PlayStation controller to enable autonomous mode — this lets Nav2’s drive commands through. Releasing R1 returns to manual joystick control.</p>
+</div>
+<p>Leave this terminal running.</p>
+</div>
+<div class="section" id="launch-nav2-terminal-2">
+<h3>2️⃣ Launch Nav2 (Terminal 2)<a class="headerlink" href="#launch-nav2-terminal-2" title="Permalink to this headline">¶</a></h3>
+<p>Open a <strong>new</strong> terminal and source the workspace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+<p>Launch the full Nav2 stack. If you saved your map as <code class="docutils literal notranslate"><span class="pre">lab_map</span></code>, you can use the default:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch f1tenth_stack nav2_launch.py
+</pre></div>
+</div>
+<p>To load a different map, pass the <code class="docutils literal notranslate"><span class="pre">map_name</span></code> argument:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 launch f1tenth_stack nav2_launch.py map_name:<span class="o">=</span>hallway_map
+</pre></div>
+</div>
+<p>Leave this terminal running.</p>
+</div>
+<div class="section" id="open-rviz2">
+<h3>3️⃣ Open RViz2<a class="headerlink" href="#open-rviz2" title="Permalink to this headline">¶</a></h3>
+<p>Open a new terminal on the RoboRacer and launch RViz2:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/humble/setup.bash
+rviz2
+</pre></div>
+</div>
+<p>Add a <strong>Map</strong> display (Topic: <code class="docutils literal notranslate"><span class="pre">/map</span></code>, Durability Policy: <code class="docutils literal notranslate"><span class="pre">Transient</span> <span class="pre">Local</span></code>) to confirm the map is visible.</p>
+</div>
+<div class="section" id="set-initial-pose">
+<h3>4️⃣ Set Initial Pose<a class="headerlink" href="#set-initial-pose" title="Permalink to this headline">¶</a></h3>
+<p>Before Nav2 can navigate, AMCL needs to know where the car is on the map.</p>
+<ul class="simple">
+<li><p>In the RViz2 toolbar, click <strong>2D Pose Estimate</strong></p></li>
+<li><p>Click on the map at the car’s approximate location</p></li>
+<li><p>Drag to set the car’s heading, then release</p></li>
+</ul>
+<p>You should see the robot’s position update on the map. AMCL will refine the estimate as the car moves.</p>
+</div>
+<div class="section" id="add-visualization-displays">
+<h3>5️⃣ Add Visualization Displays<a class="headerlink" href="#add-visualization-displays" title="Permalink to this headline">¶</a></h3>
+<p>In RViz2, add the following displays to visualize Nav2’s planning, localization, and obstacle avoidance.</p>
+<p><strong>AMCL Particle Cloud</strong> (localization confidence):</p>
+<ul class="simple">
+<li><p>Click <strong>Add</strong> → <strong>By topic</strong> → expand <code class="docutils literal notranslate"><span class="pre">/particle_cloud</span></code> → select <strong>ParticleCloud</strong> (under <code class="docutils literal notranslate"><span class="pre">nav2_rviz_plugins</span></code>)</p></li>
+<li><p>Set <strong>Reliability Policy</strong> to <code class="docutils literal notranslate"><span class="pre">Best</span> <span class="pre">Effort</span></code></p></li>
+<li><p>Set Topic to <code class="docutils literal notranslate"><span class="pre">/particle_cloud</span></code></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/particle_cloud_setup.png"><img alt="ParticleCloud display settings in RViz2 showing topic and Reliability Policy set to Best Effort" class="align-center" src="../../../_images/particle_cloud_setup.png" style="width: 50%;" /></a>
+<p>The particle cloud only appears after you set the <strong>2D Pose Estimate</strong> (step 4️⃣). Initially the arrows will be spread out across the map — this means AMCL is still uncertain about the car’s position.</p>
+<a class="reference internal image-reference" href="../../../_images/particle_cloud.png"><img alt="AMCL particle cloud spread out after initial 2D Pose Estimate before the car has moved" class="align-center" src="../../../_images/particle_cloud.png" style="width: 80%;" /></a>
+<p>As the car moves, AMCL refines its estimate and the arrows converge into a tight cluster around the car’s true position.</p>
+<a class="reference internal image-reference" href="../../../_images/particle_cloud_tighter.png"><img alt="AMCL particle cloud converging to a tight cluster after the car has moved" class="align-center" src="../../../_images/particle_cloud_tighter.png" style="width: 80%;" /></a>
+<p><strong>Global Costmap</strong> (obstacle avoidance zones):</p>
+<ul class="simple">
+<li><p>Click <strong>Add</strong> → select <strong>Map</strong></p></li>
+<li><p>Set Topic to <code class="docutils literal notranslate"><span class="pre">/global_costmap/costmap</span></code></p></li>
+<li><p>Change <strong>Color Scheme</strong> to <code class="docutils literal notranslate"><span class="pre">costmap</span></code> (this uses a gradient that highlights inflation zones)</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/cost_map.png"><img alt="Global costmap display settings in RViz2 with Color Scheme set to costmap" class="align-center" src="../../../_images/cost_map.png" style="width: 50%;" /></a>
+<p>The costmap is Nav2’s view of the world for planning purposes. It takes your saved map and <strong>inflates obstacles outward</strong> — creating purple/blue “danger zones” around walls and objects. The planner avoids these zones so the car never plans a path too close to a wall. The local costmap (<code class="docutils literal notranslate"><span class="pre">/local_costmap/costmap</span></code>) also incorporates <strong>live LiDAR data</strong>, allowing Nav2 to detect and avoid obstacles that weren’t in the original map (e.g., a person standing in the hallway).</p>
+<a class="reference internal image-reference" href="../../../_images/cost_map_image.png"><img alt="RViz2 showing the global costmap overlaid on the map with purple inflation zones around walls" class="align-center" src="../../../_images/cost_map_image.png" style="width: 80%;" /></a>
+<p><strong>Global Costmap Polygon</strong> (robot footprint):</p>
+<ul class="simple">
+<li><p>Click <strong>Add</strong> → <strong>By topic</strong> → expand <code class="docutils literal notranslate"><span class="pre">/global_costmap</span></code> → expand <code class="docutils literal notranslate"><span class="pre">/global_costmap/published_footprint</span></code> → select <strong>Polygon</strong></p></li>
+<li><p>The topic is set automatically</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../../_images/global_costmap_polygon_setup.png"><img alt="Adding Global Costmap Polygon display in RViz2" class="align-center" src="../../../_images/global_costmap_polygon_setup.png" style="width: 50%;" /></a>
+<p>The polygon shows the robot’s footprint on the costmap — this is the outline Nav2 uses to determine whether the car fits through a gap or will collide with an inflated obstacle.</p>
+<a class="reference internal image-reference" href="../../../_images/global_costmap_polygon.png"><img alt="Robot footprint polygon displayed on the global costmap in RViz2" class="align-center" src="../../../_images/global_costmap_polygon.png" style="width: 80%;" /></a>
+<p><strong>Global Plan</strong> (the planned route from start to goal):</p>
+<ul class="simple">
+<li><p>Click <strong>Add</strong> → select <strong>Path</strong></p></li>
+<li><p>Set Topic to <code class="docutils literal notranslate"><span class="pre">/plan</span></code></p></li>
+</ul>
+<p><strong>Local Plan</strong> (the path the controller is currently following):</p>
+<ul class="simple">
+<li><p>Click <strong>Add</strong> → select <strong>Path</strong></p></li>
+<li><p>Set Topic to <code class="docutils literal notranslate"><span class="pre">/local_plan</span></code></p></li>
+</ul>
+<p><strong>Waypoint Markers</strong> (Nav2 internal markers):</p>
+<ul class="simple">
+<li><p>Click <strong>Add</strong> → select <strong>MarkerArray</strong></p></li>
+<li><p>Set Topic to <code class="docutils literal notranslate"><span class="pre">/waypoints</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="send-a-2d-goal-pose">
+<h3>6️⃣ Send a 2D Goal Pose<a class="headerlink" href="#send-a-2d-goal-pose" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>In the RViz2 toolbar, click <strong>2D Goal Pose</strong></p></li>
+<li><p>Click on the map at the destination</p></li>
+<li><p>Drag to set the desired heading, then release</p></li>
+</ul>
+<p>The planned path will appear on the map and the car will begin driving toward the goal.</p>
+</div>
+<div class="section" id="watch-the-car-navigate">
+<h3>7️⃣ Watch the Car Navigate<a class="headerlink" href="#watch-the-car-navigate" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The global planner computes a path from the car’s current pose to the goal</p></li>
+<li><p>The controller follows that path in real time — watch the <code class="docutils literal notranslate"><span class="pre">/local_plan</span></code> display to see the controller’s tracking path</p></li>
+<li><p>The car will stop when it reaches the goal</p></li>
+</ul>
+<img alt="Setting the initial pose and sending a 2D Goal Pose in RViz2" src="../../../_images/2d_pose_estimate.gif" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the car does not move after setting a goal, confirm that:</p>
+<ul class="simple">
+<li><p>You set the initial pose with <strong>2D Pose Estimate</strong> (step 4️⃣)</p></li>
+<li><p>You are holding <strong>R1</strong> (button 5) on the PlayStation controller to enable autonomous mode</p></li>
+<li><p>Nav2 lifecycle nodes are all active (check <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code>)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">/goal_pose</span></code> topic is being published (check <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">echo</span> <span class="pre">/goal_pose</span></code>)</p></li>
+<li><p>The map is visible in RViz2 (set Durability Policy to <code class="docutils literal notranslate"><span class="pre">Transient</span> <span class="pre">Local</span></code>)</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="topics">
+<h2>Topics<a class="headerlink" href="#topics" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 30%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/goal_pose</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseStamped</span></code></p></td>
+<td><p>Published by RViz2 when you click 2D Goal Pose</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/plan</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code></p></td>
+<td><p>Global path planned by Nav2</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/local_plan</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nav_msgs/Path</span></code></p></td>
+<td><p>Local path the controller is currently following</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/waypoints</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">visualization_msgs/MarkerArray</span></code></p></td>
+<td><p>Nav2 internal waypoint markers</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code></p></td>
+<td><p>Velocity commands sent to the car by the controller</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nav2_waypoint_nav.html" class="btn btn-neutral float-right" title="Navigate Through Poses" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nav2_particle_filter_setup.html" class="btn btn-neutral float-left" title="Setup — Particle Filter (Updating Other Robots)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Calibrate Odom &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NoMachine" href="nomachine.html" />
+    <link rel="prev" title="RoboRacer Driver Stack" href="roboracer_stack.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calibrate Odom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#calibrating-the-odometry">Calibrating the Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#required-equipment">Required Equipment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calibrating-the-steering-and-odometry">Calibrating the Steering and Odometry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-for-calibration">Preparing for Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-motor-rotation-direction">Checking Motor Rotation Direction</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Calibrate Odom</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/setup/calibrate.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="calibrate-odom">
+<span id="doc-calibrate"></span><h1>Calibrate Odom<a class="headerlink" href="#calibrate-odom" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="calibrating-the-odometry">
+<h2>Calibrating the Odometry<a class="headerlink" href="#calibrating-the-odometry" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section assumes that you have already completed
+<span class="xref std std-ref">doc_build_car</span>,
+<span class="xref std std-ref">doc_software_setup</span>,
+<span class="xref std std-ref">doc_build_car_firmware</span>,
+and <span class="xref std std-ref">drive_manualcontrol</span>.</p>
+</div>
+<p>One final step that is crucial to get an accurate estimate of the car’s
+current velocity, and accurate localization and mapping later on, is to
+calibrate the odometry estimation. On the RoboRacer vehicle, the odometry
+is estimated from the motor’s ERPM and the current angle of the servo.</p>
+</div>
+<div class="section" id="required-equipment">
+<h2>Required Equipment<a class="headerlink" href="#required-equipment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Fully built RoboRacer vehicle</p></li>
+<li><p>Pit/Host computer</p></li>
+<li><p>Joystick</p></li>
+<li><p>Tape measure</p></li>
+<li><p>Tape</p></li>
+</ul>
+</div>
+<div class="section" id="calibrating-the-steering-and-odometry">
+<h2>Calibrating the Steering and Odometry<a class="headerlink" href="#calibrating-the-steering-and-odometry" title="Permalink to this headline">¶</a></h2>
+<p>Now that everything is built, configured, and installed, the odometry of
+the vehicle needs to be calibrated. The VESC receives input velocities in
+m/s and steering angles in radians. However, the motor and servo require
+commands in revolutions per minute (RPM) and servo positions. The
+conversion parameters will need to be tuned to your specific car.</p>
+<ol class="arabic">
+<li><p>The parameters in <code class="docutils literal notranslate"><span class="pre">vesc.yaml</span></code> need to be calibrated. This YAML file
+is located at:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$HOME</span>/f1tenth_ws/src/f1tenth_system/f1tenth_stack/config/vesc.yaml
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="preparing-for-calibration">
+<h2>Preparing for Calibration<a class="headerlink" href="#preparing-for-calibration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before starting, ensure you’ve <strong>lifted the car up with a pit stand or a
+box</strong> so the wheels can spin freely.</p>
+</div>
+</div>
+<div class="section" id="checking-motor-rotation-direction">
+<h2>Checking Motor Rotation Direction<a class="headerlink" href="#checking-motor-rotation-direction" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p><strong>Verify Motor Rotation</strong></p>
+<p>If, when given a <strong>positive velocity</strong> (or moving forward with the
+joystick), the motor spins in the reverse direction, <strong>swap 2 of the 3
+connections</strong> from the VESC to the BLDC motor.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before doing this, <strong>disconnect the battery</strong> from the VESC.</p>
+</div>
+</li>
+<li><p><strong>Check VESC Driver Interpretation</strong></p>
+<p>After launching teleop with the bringup launch, echo the <code class="docutils literal notranslate"><span class="pre">/odom</span></code>
+topic in a new bash window inside the container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> --no-arr /odom
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nomachine.html" class="btn btn-neutral float-right" title="NoMachine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="roboracer_stack.html" class="btn btn-neutral float-left" title="RoboRacer Driver Stack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

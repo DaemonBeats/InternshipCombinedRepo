@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial 5 - SLAM &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="SLAM Toolbox" href="slam_toolbox.html" />
+    <link rel="prev" title="Finding the Best Point: Disparity Selection" href="../../ModuleB/gap_following/find_best_point_disparity.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial 5 - SLAM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slam_toolbox.html">SLAM Toolbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html">Saving the Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Tutorial 5 - SLAM</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleC/slam/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial-5-slam">
+<span id="doc-tutorials-slam"></span><h1>Tutorial 5 - SLAM<a class="headerlink" href="#tutorial-5-slam" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound" id="sec-slam">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slam_toolbox.html">SLAM Toolbox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slam_toolbox.html#video-walkthrough">🎥 Video Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slam_toolbox.html#run-steps">Run Steps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#bringup-terminal-1">1️⃣ Bringup (Terminal 1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#turn-on-and-connect-controller">2️⃣ Turn On and Connect Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#start-slam-toolbox-terminal-2">3️⃣ Start SLAM Toolbox (Terminal 2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#open-rviz2-terminal-3">4️⃣ Open RViz2 (Terminal 3)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slam_toolbox.html#configure-rviz2">Configure RViz2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#set-the-fixed-frame">1️⃣ Set the Fixed Frame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#add-map-display">2️⃣ Add Map Display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#add-graphvisualization">3️⃣ Add GraphVisualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#add-slam-toolbox-panel">4️⃣ Add SLAM Toolbox Panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_toolbox.html#drive-the-car-to-build-the-map">5️⃣ Drive the Car to Build the Map</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slam_toolbox.html#common-checks">Common Checks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slam_map.html">Saving the Map</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html#video-walkthrough">🎥 Video Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html#important">⚠️ Important</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html#steps-to-save-the-map">Steps to Save the Map</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#finish-driving-the-map">1️⃣ Finish Driving the Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#open-a-new-terminal">2️⃣ Open a New Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#save-the-map">3️⃣ Save the Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#verify-the-map-was-saved">4️⃣ Verify the Map Was Saved</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#rebuild-the-workspace">5️⃣ Rebuild the Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#understanding-the-yaml-thresholds">Understanding the YAML Thresholds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#viewing-pgm-files-in-vs-code">Viewing <code class="docutils literal notranslate"><span class="pre">.pgm</span></code> Files in VS Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#stop-slam-and-bringup">6️⃣ Stop SLAM and Bringup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#load-the-map">7️⃣ Load the Map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#verify-the-map-in-rviz2">8️⃣ Verify the Map in RViz2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="slam_map.html#close-everything">9️⃣ Close Everything</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html#common-mistakes">Common Mistakes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slam_map.html#next-step">Next Step</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="slam_toolbox.html" class="btn btn-neutral float-right" title="SLAM Toolbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../../ModuleB/gap_following/find_best_point_disparity.html" class="btn btn-neutral float-left" title="Finding the Best Point: Disparity Selection" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

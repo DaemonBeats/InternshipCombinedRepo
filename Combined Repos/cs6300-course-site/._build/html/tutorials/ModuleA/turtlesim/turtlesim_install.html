@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Turtlesim Installation &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Create turtlesim_ws Workspace" href="turtlesim_ws.html" />
+    <link rel="prev" title="Tutorial 1 - ROS 2 Intro and Turtlesim" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Turtlesim Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">1️⃣ Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">2️⃣ Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-turtlesim">3️⃣ Use Turtlesim</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-rqt">4️⃣ Install rqt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-rqt">5️⃣ Use rqt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remapping">6️⃣ Remapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#close-turtlesim">7️⃣ Close turtlesim</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="turtlesim_ws.html">Create <code class="docutils literal notranslate"><span class="pre">turtlesim_ws</span></code> Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="turtlesim_pkg.html">Create Turtlesim Controller Package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a> &raquo;</li>
+        
+      <li>Turtlesim Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/turtlesim/turtlesim_install.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="turtlesim-installation">
+<span id="doc-tutorials-turtlesim-install"></span><h1>Turtlesim Installation<a class="headerlink" href="#turtlesim-installation" title="Permalink to this headline">¶</a></h1>
+<p>This guide walks you through installing and setting up turtlesim, a lightweight simulator for learning ROS 2 concepts.</p>
+<div class="section" id="overview">
+<h2>1️⃣ Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Turtlesim is a simple 2D simulator that comes with ROS 2. It provides a visual tool for learning ROS 2 concepts such as nodes, topics, services, and actions. The turtle can be controlled through various ROS 2 commands and is perfect for understanding the basics of robot control.</p>
+</div>
+<div class="section" id="installation">
+<h2>2️⃣ Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="install-turtlesim-using-apt">
+<h3>Install turtlesim using apt<a class="headerlink" href="#install-turtlesim-using-apt" title="Permalink to this headline">¶</a></h3>
+<p>For ROS 2 Humble (or your specific ROS 2 distribution), install turtlesim with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
+sudo apt install ros-humble-turtlesim
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Replace <code class="docutils literal notranslate"><span class="pre">humble</span></code> with your ROS 2 distribution name if you’re using a different version (e.g., <code class="docutils literal notranslate"><span class="pre">foxy</span></code>, <code class="docutils literal notranslate"><span class="pre">galactic</span></code>).</p>
+</div>
+</div>
+<div class="section" id="verify-installation">
+<h3>Verify Installation<a class="headerlink" href="#verify-installation" title="Permalink to this headline">¶</a></h3>
+<p>After installation, verify that turtlesim is available:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 pkg list <span class="p">|</span> grep turtlesim
+</pre></div>
+</div>
+<p>You should see <code class="docutils literal notranslate"><span class="pre">turtlesim</span></code> listed in the output.</p>
+</div>
+</div>
+<div class="section" id="use-turtlesim">
+<h2>3️⃣ Use Turtlesim<a class="headerlink" href="#use-turtlesim" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="start-turtlesim">
+<h3>Start turtlesim<a class="headerlink" href="#start-turtlesim" title="Permalink to this headline">¶</a></h3>
+<p>To start the turtlesim simulator, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/humble/setup.bash
+ros2 run turtlesim turtlesim_node
+</pre></div>
+</div>
+<p>The simulator window should appear, with a random turtle in the center.</p>
+<a class="reference internal image-reference" href="../../../_images/turtlesim.png"><img alt="TurtleSim Window" class="align-center" src="../../../_images/turtlesim.png" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In the terminal, under the command, you will see messages from the node:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>turtlesim<span class="o">]</span>: Starting turtlesim with node name /turtlesim
+<span class="o">[</span>INFO<span class="o">]</span> <span class="o">[</span>turtlesim<span class="o">]</span>: Spawning turtle <span class="o">[</span>turtle1<span class="o">]</span> at <span class="nv">x</span><span class="o">=[</span><span class="m">5</span>.544445<span class="o">]</span>, <span class="nv">y</span><span class="o">=[</span><span class="m">5</span>.544445<span class="o">]</span>, <span class="nv">theta</span><span class="o">=[</span><span class="m">0</span>.000000<span class="o">]</span>
+</pre></div>
+</div>
+<p>There you can see the default turtle’s name and the coordinates where it spawns.</p>
+</div>
+<div class="section" id="control-the-turtle">
+<h3>Control the Turtle<a class="headerlink" href="#control-the-turtle" title="Permalink to this headline">¶</a></h3>
+<p>Open a new terminal and source ROS 2 again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/ros/humble/setup.bash
+</pre></div>
+</div>
+<p>Now you will run a new node to control the turtle in the first node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run turtlesim turtle_teleop_key
+</pre></div>
+</div>
+<p>At this point you should have three windows open: a terminal running <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code>, a terminal running <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> and the <code class="docutils literal notranslate"><span class="pre">turtlesim</span> <span class="pre">window</span></code>.</p>
+<p>Arrange these windows so that you can see the turtlesim window, but also have the terminal running <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> active so that you can control the turtle in turtlesim.</p>
+<p>Use the arrow keys on your keyboard to control the turtle. It will move around the screen, using its attached “pen” to draw the path it followed so far.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pressing an arrow key will only cause the turtle to move a short distance and then stop. This is because, realistically, you wouldn’t want a robot to continue carrying on an instruction if, for example, the operator lost the connection to the robot.</p>
+</div>
+</div>
+<div class="section" id="explore-ros-2-commands">
+<h3>Explore ROS 2 Commands<a class="headerlink" href="#explore-ros-2-commands" title="Permalink to this headline">¶</a></h3>
+<p>You can see the nodes, and their associated topics, services, and actions, using the list subcommands of the respective commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 node list
+ros2 topic list
+ros2 service list
+ros2 action list
+</pre></div>
+</div>
+<p>You will learn more about these concepts in the coming tutorials. Since the goal of this tutorial is only to get a general overview of turtlesim, you will use rqt to call some of the turtlesim services and interact with <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code>.</p>
+</div>
+</div>
+<div class="section" id="install-rqt">
+<h2>4️⃣ Install rqt<a class="headerlink" href="#install-rqt" title="Permalink to this headline">¶</a></h2>
+<p>Open a new terminal to install <code class="docutils literal notranslate"><span class="pre">rqt</span></code> and its plugins:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt update
+sudo apt install ~nros-humble-rqt*
+</pre></div>
+</div>
+<p>To run rqt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rqt
+</pre></div>
+</div>
+</div>
+<div class="section" id="use-rqt">
+<h2>5️⃣ Use rqt<a class="headerlink" href="#use-rqt" title="Permalink to this headline">¶</a></h2>
+<p>When running rqt for the first time, the window will be blank. No worries; just select <strong>Plugins &gt; Services &gt; Service Caller</strong> from the menu bar at the top.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take some time for rqt to locate all the plugins. If you click on Plugins but don’t see Services or any other options, you should close rqt and enter the command <code class="docutils literal notranslate"><span class="pre">rqt</span> <span class="pre">--force-discover</span></code> in your terminal.</p>
+</div>
+<a class="reference internal image-reference" href="../../../_images/rqt.png"><img alt="rqt window" class="align-center" src="../../../_images/rqt.png" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Use the refresh button to the left of the Service dropdown list to ensure all the services of your turtlesim node are available.</p>
+<p>Click on the Service dropdown list to see turtlesim’s services, and select the <code class="docutils literal notranslate"><span class="pre">/spawn</span></code> service.</p>
+<div class="section" id="try-the-spawn-service">
+<h3>Try the spawn service<a class="headerlink" href="#try-the-spawn-service" title="Permalink to this headline">¶</a></h3>
+<p>Let’s use rqt to call the <code class="docutils literal notranslate"><span class="pre">/spawn</span></code> service. You can guess from its name that <code class="docutils literal notranslate"><span class="pre">/spawn</span></code> will create another turtle in the turtlesim window.</p>
+<p>Give the new turtle a unique name, like <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>, by double-clicking between the empty single quotes in the <strong>Expression</strong> column. You can see that this expression corresponds to the value of <strong>name</strong> and is of type <strong>string</strong>.</p>
+<p>Next enter some valid coordinates at which to spawn the new turtle, like <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">1.0</span></code>.</p>
+<a class="reference internal image-reference" href="../../../_images/spawn.png"><img alt="spawn window" class="align-center" src="../../../_images/spawn.png" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you try to spawn a new turtle with the same name as an existing turtle, like the default <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>, you will get an error message in the terminal running <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code>:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[ERROR]</span> <span class="pre">[turtlesim]:</span> <span class="pre">A</span> <span class="pre">turtle</span> <span class="pre">named</span> <span class="pre">[turtle1]</span> <span class="pre">already</span> <span class="pre">exists</span></code></p>
+</div>
+<p>To spawn <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>, you then need to call the service by clicking the <strong>Call</strong> button on the upper right side of the rqt window.</p>
+<p>If the service call was successful, you should see a new turtle (again with a random design) spawn at the coordinates you input for <strong>x</strong> and <strong>y</strong>.</p>
+<p>If you refresh the service list in rqt, you will also see that now there are services related to the new turtle, <code class="docutils literal notranslate"><span class="pre">/turtle2/...</span></code>, in addition to <code class="docutils literal notranslate"><span class="pre">/turtle1/...</span></code>.</p>
+</div>
+<div class="section" id="try-the-set-pen-service">
+<h3>Try the set_pen service<a class="headerlink" href="#try-the-set-pen-service" title="Permalink to this headline">¶</a></h3>
+<p>Now let’s give <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> a unique pen using the <code class="docutils literal notranslate"><span class="pre">/set_pen</span></code> service:</p>
+<a class="reference internal image-reference" href="../../../_images/set_pen.png"><img alt="set pen window" class="align-center" src="../../../_images/set_pen.png" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The values for <strong>r</strong>, <strong>g</strong> and <strong>b</strong>, which are between 0 and 255, set the color of the pen <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> draws with, and <strong>width</strong> sets the thickness of the line.</p>
+<p>To have <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> draw with a distinct red line, change the value of <strong>r</strong> to 255, and the value of <strong>width</strong> to 5. Don’t forget to call the service after updating the values.</p>
+<p>If you return to the terminal where <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> is running and press the arrow keys, you will see <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>’s pen has changed.</p>
+<a class="reference internal image-reference" href="../../../_images/new_pen.png"><img alt="new pen window" class="align-center" src="../../../_images/new_pen.png" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You’ve probably also noticed that there’s no way to move <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>. That’s because there is no teleop node for <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>.</p>
+</div>
+</div>
+<div class="section" id="remapping">
+<h2>6️⃣ Remapping<a class="headerlink" href="#remapping" title="Permalink to this headline">¶</a></h2>
+<p>You need a second teleop node in order to control <code class="docutils literal notranslate"><span class="pre">turtle2</span></code>. However, if you try to run the same command as before, you will notice that this one also controls <code class="docutils literal notranslate"><span class="pre">turtle1</span></code>. The way to change this behavior is by remapping the <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic.</p>
+<p>In a new terminal, source ROS 2, and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run turtlesim turtle_teleop_key --ros-args --remap turtle1/cmd_vel:<span class="o">=</span>turtle2/cmd_vel
+</pre></div>
+</div>
+<p>Now, you can move <code class="docutils literal notranslate"><span class="pre">turtle2</span></code> when this terminal is active, and <code class="docutils literal notranslate"><span class="pre">turtle1</span></code> when the other terminal running <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> is active.</p>
+<a class="reference internal image-reference" href="../../../_images/remap.png"><img alt="remap window" class="align-center" src="../../../_images/remap.png" style="width: 70%;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="close-turtlesim">
+<h2>7️⃣ Close turtlesim<a class="headerlink" href="#close-turtlesim" title="Permalink to this headline">¶</a></h2>
+<p>To stop the simulation, you can enter <code class="docutils literal notranslate"><span class="pre">Ctrl</span> <span class="pre">+</span> <span class="pre">C</span></code> in the <code class="docutils literal notranslate"><span class="pre">turtlesim_node</span></code> terminal, and <code class="docutils literal notranslate"><span class="pre">q</span></code> in the <code class="docutils literal notranslate"><span class="pre">turtle_teleop_key</span></code> terminals.</p>
+<p>Using turtlesim and rqt is a great way to learn the core concepts of ROS 2.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="turtlesim_ws.html" class="btn btn-neutral float-right" title="Create turtlesim_ws Workspace" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial 1 - ROS 2 Intro and Turtlesim" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

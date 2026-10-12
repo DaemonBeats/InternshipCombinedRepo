@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AEB Drive Example &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Quality of Service (QoS) in ROS 2" href="qos.html" />
+    <link rel="prev" title="AEB Scan Example" href="scan_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 2 - Automatic Emergency Braking</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">AEB Theory of Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan.html">LaserScan Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aeb_package.html">AEB Package Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scan_example.html">AEB Scan Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">AEB Drive Example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#code-explanation-driveforwardnode">Code Explanation: DriveForwardNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-code">Full Code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qos.html">Quality of Service (QoS) in ROS 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PID.html">Speed Adjustment Using PID Control for TTC</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 2 - Automatic Emergency Braking</a> &raquo;</li>
+        
+      <li>AEB Drive Example</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleA/aeb/drive.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="aeb-drive-example">
+<span id="doc-tutorials-aeb-drive"></span><h1>AEB Drive Example<a class="headerlink" href="#aeb-drive-example" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="code-explanation-driveforwardnode">
+<h2>Code Explanation: DriveForwardNode<a class="headerlink" href="#code-explanation-driveforwardnode" title="Permalink to this headline">¶</a></h2>
+<p>This Python script is a <strong>ROS 2 node</strong> that continuously commands a vehicle to drive forward using the <strong>AckermannDriveStamped</strong> message.</p>
+<div class="section" id="shebang-imports">
+<h3>1️⃣ Shebang &amp; Imports<a class="headerlink" href="#shebang-imports" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDriveStamped</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">#!/usr/bin/env</span> <span class="pre">python3</span></code> → Specifies that this script should be executed using Python 3</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">rclpy</span></code> → Imports the ROS 2 Python client library</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">rclpy.node</span> <span class="pre">import</span> <span class="pre">Node</span></code> → Imports the <code class="docutils literal notranslate"><span class="pre">Node</span></code> class, which is the base class for all ROS 2 nodes</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">ackermann_msgs.msg</span> <span class="pre">import</span> <span class="pre">AckermannDriveStamped</span></code> → Imports the <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> message type, which is used to control vehicles with <strong>Ackermann steering (used in cars)</strong></p></li>
+</ul>
+</div>
+<div class="section" id="class-definition-driveforwardnode">
+<h3>2️⃣ Class Definition: DriveForwardNode<a class="headerlink" href="#class-definition-driveforwardnode" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DriveForwardNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>This defines a ROS 2 <strong>node</strong> called <code class="docutils literal notranslate"><span class="pre">DriveForwardNode</span></code></p></li>
+<li><p>It inherits from <code class="docutils literal notranslate"><span class="pre">Node</span></code>, meaning it has ROS 2 functionalities like <strong>publishing, subscribing, and logging</strong></p></li>
+</ul>
+</div>
+<div class="section" id="node-initialization-init">
+<h3>3️⃣ Node Initialization (__init__)<a class="headerlink" href="#node-initialization-init" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;drive_forward_node&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Calls the parent <code class="docutils literal notranslate"><span class="pre">Node</span></code> constructor and <strong>names the node</strong> as <code class="docutils literal notranslate"><span class="pre">&quot;drive_forward_node&quot;</span></code></p></li>
+<li><p>This <strong>registers the node</strong> in the ROS 2 system</p></li>
+</ul>
+</div>
+<div class="section" id="creating-a-publisher">
+<h3>4️⃣ Creating a Publisher<a class="headerlink" href="#creating-a-publisher" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">drive_publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="s2">&quot;/drive&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Creates a <strong>ROS 2 publisher</strong> that sends messages of type <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code> to the <code class="docutils literal notranslate"><span class="pre">/drive</span></code> topic</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">10</span></code> is the <strong>queue size</strong>, meaning up to 10 messages will be buffered if the subscriber is slow</p></li>
+</ul>
+</div>
+<div class="section" id="creating-a-timer">
+<h3>5️⃣ Creating a Timer<a class="headerlink" href="#creating-a-timer" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">drive_timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drive_callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Creates a <strong>ROS 2 timer</strong> that calls <code class="docutils literal notranslate"><span class="pre">self.drive_callback</span></code> <strong>every 0.1 seconds (10Hz)</strong></p></li>
+<li><p>This ensures that the car keeps receiving <strong>drive commands</strong> continuously</p></li>
+</ul>
+</div>
+<div class="section" id="logging-node-startup">
+<h3>6️⃣ Logging Node Startup<a class="headerlink" href="#logging-node-startup" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;✅ Drive Forward Node Started! Sending drive commands...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Logs a message indicating that the node has started</p></li>
+</ul>
+</div>
+<div class="section" id="drive-command-callback-drive-callback">
+<h3>7️⃣ Drive Command Callback (drive_callback)<a class="headerlink" href="#drive-command-callback-drive-callback" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">drive_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Publishes a drive command to move forward.&quot;&quot;&quot;</span>
+    <span class="n">drive_msg</span> <span class="o">=</span> <span class="n">AckermannDriveStamped</span><span class="p">()</span>
+    <span class="n">drive_msg</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Move forward at 1.0 m/s</span>
+    <span class="n">drive_msg</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">steering_angle</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Keep wheels straight</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">drive_publisher_</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">drive_msg</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;🚗 Driving Forward: speed 1.0 m/s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Creates</strong> a <code class="docutils literal notranslate"><span class="pre">drive_msg</span></code> of type <code class="docutils literal notranslate"><span class="pre">AckermannDriveStamped</span></code></p></li>
+<li><p><strong>Sets speed</strong> to <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">m/s</span></code> (moves forward)</p></li>
+<li><p><strong>Sets steering angle</strong> to <code class="docutils literal notranslate"><span class="pre">0.0</span></code> (keeps the car straight)</p></li>
+<li><p><strong>Publishes the message</strong> to <code class="docutils literal notranslate"><span class="pre">/drive</span></code>, commanding the car to move forward</p></li>
+<li><p><strong>Logs the action</strong> for debugging</p></li>
+</ul>
+</div>
+<div class="section" id="main-function">
+<h3>8️⃣ Main Function<a class="headerlink" href="#main-function" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>  <span class="c1"># Initialize ROS 2</span>
+    <span class="n">drive_node</span> <span class="o">=</span> <span class="n">DriveForwardNode</span><span class="p">()</span>  <span class="c1"># Create node instance</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">drive_node</span><span class="p">)</span>  <span class="c1"># Keep node running</span>
+    <span class="n">drive_node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>  <span class="c1"># Cleanup on shutdown</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>  <span class="c1"># Shutdown ROS 2</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rclpy.init(args=args)</span></code> → Initializes ROS 2</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drive_node</span> <span class="pre">=</span> <span class="pre">DriveForwardNode()</span></code> → Instantiates the <code class="docutils literal notranslate"><span class="pre">DriveForwardNode</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rclpy.spin(drive_node)</span></code> → Keeps the node <strong>running indefinitely</strong> (until stopped)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drive_node.destroy_node()</span></code> → Cleans up the node before shutdown</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rclpy.shutdown()</span></code> → Shuts down ROS 2</p></li>
+</ul>
+</div>
+<div class="section" id="running-the-script">
+<h3>9️⃣ Running the Script<a class="headerlink" href="#running-the-script" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Ensures that the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function <strong>only runs</strong> if the script is executed directly (not imported as a module)</p></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h3>💡 Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">create_publisher()</span></code></p></td>
+<td><p>Sends drive commands to <code class="docutils literal notranslate"><span class="pre">/drive</span></code> topic</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">create_timer(0.1,</span> <span class="pre">self.drive_callback)</span></code></p></td>
+<td><p>Calls <code class="docutils literal notranslate"><span class="pre">drive_callback()</span></code> every 0.1s (10Hz)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">drive_callback()</span></code></p></td>
+<td><p>Publishes a forward motion command</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rclpy.spin(drive_node)</span></code></p></td>
+<td><p>Keeps the node running indefinitely</p></td>
+</tr>
+</tbody>
+</table>
+<p>This node <strong>continuously</strong> commands a car to drive <strong>forward at 1.0 m/s</strong>. 🚗💨</p>
+</div>
+</div>
+<div class="section" id="full-code">
+<h2>Full Code<a class="headerlink" href="#full-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="kn">import</span> <span class="nn">rclpy</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="kn">from</span> <span class="nn">ackermann_msgs.msg</span> <span class="kn">import</span> <span class="n">AckermannDriveStamped</span>
+
+<span class="k">class</span> <span class="nc">DriveForwardNode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ROS 2 node that continuously commands the vehicle to drive forward.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;drive_forward_node&#39;</span><span class="p">)</span>
+
+        <span class="c1"># ✅ Publisher for drive commands</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drive_publisher_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span>
+            <span class="n">AckermannDriveStamped</span><span class="p">,</span> <span class="s2">&quot;/drive&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+        <span class="c1"># ✅ Timer to continuously send drive commands (at 10Hz)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">drive_timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">drive_callback</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;✅ Drive Forward Node Started! Sending drive commands...&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">drive_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Publishes a drive command to move forward.&quot;&quot;&quot;</span>
+        <span class="n">drive_msg</span> <span class="o">=</span> <span class="n">AckermannDriveStamped</span><span class="p">()</span>
+        <span class="n">drive_msg</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Move forward at 1.0 m/s</span>
+        <span class="n">drive_msg</span><span class="o">.</span><span class="n">drive</span><span class="o">.</span><span class="n">steering_angle</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># Keep wheels straight</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">drive_publisher_</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">drive_msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;🚗 Driving Forward: speed 1.0 m/s&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">drive_node</span> <span class="o">=</span> <span class="n">DriveForwardNode</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">drive_node</span><span class="p">)</span>
+    <span class="n">drive_node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qos.html" class="btn btn-neutral float-right" title="Quality of Service (QoS) in ROS 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="scan_example.html" class="btn btn-neutral float-left" title="AEB Scan Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

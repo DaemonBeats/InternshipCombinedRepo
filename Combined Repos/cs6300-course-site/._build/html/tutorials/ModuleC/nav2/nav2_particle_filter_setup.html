@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Setup — Particle Filter (Updating Other Robots) &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="2D Goal Pose Navigation" href="nav2_goal_pose.html" />
+    <link rel="prev" title="Nav2 Setup" href="nav2_setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 6 - Nav2 Navigation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="nav2_setup.html">Nav2 Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Setup — Particle Filter (Updating Other Robots)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-back-up-student-maps">Step 1 — Back Up Student Maps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-pull-the-latest-code-and-initialize-submodules">Step 2 — Pull the Latest Code and Initialize Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-remove-the-old-standalone-directories">Step 3 — Remove the Old Standalone Directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-clean-build">Step 4 — Clean Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-reinstall-range-libc-python-extension">Step 5 — Reinstall range_libc Python Extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-restore-any-student-maps">Step 6 — Restore Any Student Maps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_goal_pose.html">2D Goal Pose Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_waypoint_nav.html">Navigate Through Poses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nav2_programmatic_waypoints.html">Programmatic Waypoint Navigation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 6 - Nav2 Navigation</a> &raquo;</li>
+        
+      <li>Setup — Particle Filter (Updating Other Robots)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleC/nav2/nav2_particle_filter_setup.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="setup-particle-filter-updating-other-robots">
+<span id="doc-tutorials-nav2-particle-filter-setup"></span><h1>Setup — Particle Filter (Updating Other Robots)<a class="headerlink" href="#setup-particle-filter-updating-other-robots" title="Permalink to this headline">¶</a></h1>
+<p>If you have configured Nav2 and the particle filter on one robot, follow these steps to apply the same setup to your other robots. This moves the <code class="docutils literal notranslate"><span class="pre">particle_filter</span></code> and <code class="docutils literal notranslate"><span class="pre">range_libc</span></code> packages into the <code class="docutils literal notranslate"><span class="pre">f1tenth_system</span></code> directory so they are tracked by git.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>These steps delete the standalone <code class="docutils literal notranslate"><span class="pre">particle_filter</span></code> and <code class="docutils literal notranslate"><span class="pre">range_libc</span></code> directories and wipe <code class="docutils literal notranslate"><span class="pre">build/</span></code> and <code class="docutils literal notranslate"><span class="pre">install/</span></code> for a clean rebuild. Make sure you have backed up any student maps before proceeding.</p>
+</div>
+<div class="section" id="step-1-back-up-student-maps">
+<h2>Step 1 — Back Up Student Maps<a class="headerlink" href="#step-1-back-up-student-maps" title="Permalink to this headline">¶</a></h2>
+<p>Before making any changes, back up your saved maps:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps ~/maps_backup
+ls ~/maps_backup
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-pull-the-latest-code-and-initialize-submodules">
+<h2>Step 2 — Pull the Latest Code and Initialize Submodules<a class="headerlink" href="#step-2-pull-the-latest-code-and-initialize-submodules" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws/src/f1tenth_system
+git pull origin humble-devel
+git submodule update --init --recursive
+</pre></div>
+</div>
+<p>If there are merge conflicts in <code class="docutils literal notranslate"><span class="pre">f1tenth_stack/maps/</span></code>, resolve by keeping both versions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout --theirs f1tenth_stack/maps/   <span class="c1"># take the remote version</span>
+cp ~/maps_backup/*.pgm ~/maps_backup/*.yaml f1tenth_stack/maps/  <span class="c1"># restore student maps on top</span>
+git add f1tenth_stack/maps/
+git merge --continue
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-3-remove-the-old-standalone-directories">
+<h2>Step 3 — Remove the Old Standalone Directories<a class="headerlink" href="#step-3-remove-the-old-standalone-directories" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf ~/f1tenth_ws/src/particle_filter
+sudo rm -rf ~/f1tenth_ws/src/range_libc   <span class="c1"># needs sudo — build artifacts are root-owned</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-clean-build">
+<h2>Step 4 — Clean Build<a class="headerlink" href="#step-4-clean-build" title="Permalink to this headline">¶</a></h2>
+<p>Wipe the stale <code class="docutils literal notranslate"><span class="pre">build/</span></code> and <code class="docutils literal notranslate"><span class="pre">install/</span></code> directories and rebuild everything from scratch. This avoids stale cache issues from the old package locations:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+rm -rf build/ install/
+colcon build --symlink-install
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-5-reinstall-range-libc-python-extension">
+<h2>Step 5 — Reinstall range_libc Python Extension<a class="headerlink" href="#step-5-reinstall-range-libc-python-extension" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">range_libc</span></code> Python extension was previously built from the old standalone path. Reinstall it from the new location inside <code class="docutils literal notranslate"><span class="pre">f1tenth_system</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws/src/f1tenth_system/range_libc/pywrapper
+sudo env <span class="nv">WITH_CUDA</span><span class="o">=</span>ON python3 setup.py install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fix_range_libc.sh</span></code> script is no longer needed since those fixes are now baked into the repo.</p>
+</div>
+</div>
+<div class="section" id="step-6-restore-any-student-maps">
+<h2>Step 6 — Restore Any Student Maps<a class="headerlink" href="#step-6-restore-any-student-maps" title="Permalink to this headline">¶</a></h2>
+<p>Compare what is in your backup versus the current maps directory and copy anything missing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls ~/maps_backup/
+ls ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/
+</pre></div>
+</div>
+<p>Copy any missing student map files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace STUDENT_MAP with your actual map name</span>
+cp ~/maps_backup/STUDENT_MAP.pgm ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/
+cp ~/maps_backup/STUDENT_MAP.yaml ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="nav2_goal_pose.html" class="btn btn-neutral float-right" title="2D Goal Pose Navigation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="nav2_setup.html" class="btn btn-neutral float-left" title="Nav2 Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

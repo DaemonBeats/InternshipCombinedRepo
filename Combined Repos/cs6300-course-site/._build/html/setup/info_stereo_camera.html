@@ -1,0 +1,483 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>INFO - Stereo Cameras &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>INFO - Stereo Cameras</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/setup/info_stereo_camera.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="info-stereo-cameras">
+<h1>INFO - Stereo Cameras<a class="headerlink" href="#info-stereo-cameras" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Stereo cameras are an integral part of perception systems in autonomous
+vehicles. Unlike single-lens cameras, stereo cameras capture two or more
+2D images of a scene from different angles. The images are then combined
+to form a 3D representation, providing depth perception, which is crucial
+for applications such as obstacle detection, lane tracking, and mapping.</p>
+</div>
+<div class="section" id="why-3-lenses">
+<h2>Why 3 Lenses?<a class="headerlink" href="#why-3-lenses" title="Permalink to this headline">¶</a></h2>
+<p>You may encounter stereo cameras with three lenses. These are called
+<em>trinocular</em> setups and offer several advantages:</p>
+<ol class="arabic simple">
+<li><p><strong>Depth Accuracy</strong>
+An additional lens allows the system to compare more than one pair of
+images for depth estimation, improving accuracy.</p></li>
+<li><p><strong>Field of View</strong>
+Each lens can be optimized for a different field of view (FoV),
+providing a more complete representation of the environment.</p></li>
+<li><p><strong>Redundancy</strong>
+If one lens is obstructed or fails, the third lens can provide backup.</p></li>
+</ol>
+<div class="section" id="trifocal-lenses">
+<h3>Trifocal Lenses<a class="headerlink" href="#trifocal-lenses" title="Permalink to this headline">¶</a></h3>
+<p>A trifocal setup typically includes three lenses aligned horizontally.
+Trifocal lenses enable:</p>
+<ol class="arabic simple">
+<li><p><strong>More Matched Points</strong>
+The trifocal tensor allows simultaneous matching of points across
+three views, providing richer depth information.</p></li>
+<li><p><strong>Improved Confidence</strong>
+Additional viewpoints help disambiguate complex scenes, increasing
+confidence in depth estimates.</p></li>
+<li><p><strong>Enhanced Redundancy</strong>
+Redundancy is further improved if one lens becomes unavailable.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="strengths-and-weaknesses">
+<h2>Strengths and Weaknesses<a class="headerlink" href="#strengths-and-weaknesses" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="strengths">
+<h3>Strengths<a class="headerlink" href="#strengths" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Cost-Effective</strong>
+Generally less expensive than LiDAR systems.</p></li>
+<li><p><strong>High Resolution</strong>
+Capable of capturing high-detail 2D images.</p></li>
+<li><p><strong>Versatility</strong>
+Can operate in a wide range of lighting conditions.</p></li>
+</ol>
+</div>
+<div class="section" id="weaknesses">
+<h3>Weaknesses<a class="headerlink" href="#weaknesses" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Computational Overhead</strong>
+Depth estimation requires significant processing power.</p></li>
+<li><p><strong>Limited Range</strong>
+Typically shorter effective range compared to LiDAR.</p></li>
+<li><p><strong>Sensitivity to Lighting</strong>
+Sudden lighting changes can degrade performance.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="comparison-to-lidar">
+<h2>Comparison to LiDAR<a class="headerlink" href="#comparison-to-lidar" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Sensing Capabilities</strong></p>
+<ul class="simple">
+<li><p>LiDAR provides highly accurate depth measurements but at lower
+spatial resolution.</p></li>
+<li><p>Cameras capture color and texture, which are valuable for object
+recognition.</p></li>
+</ul>
+</li>
+<li><p><strong>Computational Needs</strong></p>
+<ul class="simple">
+<li><p>Stereo cameras require more computation for real-time depth mapping.</p></li>
+<li><p>LiDAR point clouds are generally faster and simpler to process for
+depth.</p></li>
+</ul>
+</li>
+<li><p><strong>Cost</strong></p>
+<ul class="simple">
+<li><p>Stereo cameras are more cost-effective.</p></li>
+<li><p>LiDAR systems are more expensive but typically more robust.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="section" id="tesla-s-forward-facing-camera">
+<h2>Tesla’s Forward-Facing Camera<a class="headerlink" href="#tesla-s-forward-facing-camera" title="Permalink to this headline">¶</a></h2>
+<p>Tesla uses a multi-lens forward-facing camera system. Each lens is tuned
+for specific tasks or viewing ranges. Tesla traditionally uses:</p>
+<ul class="simple">
+<li><p>A <strong>main lens</strong> (up to ~150 meters)</p></li>
+<li><p>A <strong>wide-angle lens</strong> (intersections and tight curves)</p></li>
+<li><p>A <strong>telephoto lens</strong> (up to ~250 meters)</p></li>
+</ul>
+<p>Some recent vehicles may use fewer cameras according to several
+reliable sources.</p>
+<a class="reference internal image-reference" href="../_images/ModelYCameras.jpg"><img alt="Model Y cameras" class="align-center" src="../_images/ModelYCameras.jpg" style="width: 70%;" /></a>
+<p>Model Y Cameras – Tesla Owners Manual
+<a class="reference external" href="https://www.tesla.com/ownersmanual/modely/en_us/GUID-682FF4A7-D083-4C95-925A-5EE3752F4865.html">https://www.tesla.com/ownersmanual/modely/en_us/GUID-682FF4A7-D083-4C95-925A-5EE3752F4865.html</a></p>
+<p>Key advantages of Tesla’s approach include:</p>
+<ol class="arabic simple">
+<li><p><strong>Diverse Fields of View</strong>
+Multiple lenses provide wide, medium, and narrow perspectives.</p></li>
+<li><p><strong>Redundancy</strong>
+Multiple cameras provide resilience against sensor failure.</p></li>
+<li><p><strong>Software-Driven Perception</strong>
+Advanced machine learning fuses camera data to infer depth and scene
+understanding.</p></li>
+</ol>
+</div>
+<div class="section" id="other-pertinent-information">
+<h2>Other Pertinent Information<a class="headerlink" href="#other-pertinent-information" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Calibration</strong>
+Stereo cameras must be carefully calibrated for accurate depth
+estimation.</p></li>
+<li><p><strong>Sensor Fusion</strong>
+Often combined with LiDAR and radar to improve robustness.</p></li>
+</ol>
+</div>
+<div class="section" id="oak-d-camera">
+<h2>OAK-D Camera<a class="headerlink" href="#oak-d-camera" title="Permalink to this headline">¶</a></h2>
+<p>OAK-D cameras are part of the DepthAI ecosystem and are capable of
+performing computer vision and machine learning directly on-device.</p>
+<p>OAK-D Documentation:
+<a class="reference external" href="https://docs.luxonis.com/projects/hardware/en/latest/pages/DM9098pro/">https://docs.luxonis.com/projects/hardware/en/latest/pages/DM9098pro/</a></p>
+<a class="reference internal image-reference" href="../_images/oakd.png"><img alt="OAK-D Pro Camera" class="align-center" src="../_images/oakd.png" style="width: 80%;" /></a>
+</div>
+<div class="section" id="depthai-platform-overview">
+<h2>DepthAI Platform Overview<a class="headerlink" href="#depthai-platform-overview" title="Permalink to this headline">¶</a></h2>
+<p>The DepthAI platform supports OAK (OpenCV AI Kit) cameras, enabling
+real-time vision processing on-device. It is commonly used in robotics,
+drones, IoT systems, and interactive installations.</p>
+</div>
+<div class="section" id="installation-steps">
+<h2>Installation Steps<a class="headerlink" href="#installation-steps" title="Permalink to this headline">¶</a></h2>
+<p>Install DepthAI on Linux systems by running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo wget -qO- https://docs.luxonis.com/install_depthai.sh <span class="p">|</span> bash
+</pre></div>
+</div>
+<p>Plug the OAK-D Pro camera into the host computer and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>depthai-viewer
+</pre></div>
+</div>
+<p>Select the camera from the menu in the top-right corner.</p>
+<img alt="DepthAI Viewer" class="align-center" src="../_images/depthai_viewer.png" />
+</div>
+<div class="section" id="depthai-installation-manual">
+<h2>DepthAI Installation Manual<a class="headerlink" href="#depthai-installation-manual" title="Permalink to this headline">¶</a></h2>
+<p>Full installation instructions are available here:
+<a class="reference external" href="https://docs.luxonis.com/en/latest/pages/tutorials/first_steps/#first-steps-with-depthai">https://docs.luxonis.com/en/latest/pages/tutorials/first_steps/#first-steps-with-depthai</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to use a <strong>USB 3 cable</strong>, as this is a very common cause of
+OAK connectivity issues. If you are not using USB 3, see
+<span class="xref std std-ref">Forcing USB2 Communication</span>.</p>
+</div>
+<a class="reference internal image-reference" href="../_images/usb3.png"><img alt="USB 3 cable" class="align-center" src="../_images/usb3.png" style="width: 40%;" /></a>
+</div>
+<div class="section" id="install-the-depthai-repository">
+<h2>Install the DepthAI Repository<a class="headerlink" href="#install-the-depthai-repository" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --recursive https://github.com/luxonis/depthai.git
+</pre></div>
+</div>
+<p>Install related submodules:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> depthai
+git pull --recurse-submodules
+</pre></div>
+</div>
+<p>Install DepthAI dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo wget -qO- https://docs.luxonis.com/install_depthai.sh <span class="p">|</span> bash
+</pre></div>
+</div>
+<p>Install Python dependencies:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 install_requirements.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-depthai-demo">
+<h2>Run the DepthAI Demo<a class="headerlink" href="#run-the-depthai-demo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 depthai_demo.py
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../_images/python3_demo.png"><img alt="DepthAI demo" class="align-center" src="../_images/python3_demo.png" style="width: 60%;" /></a>
+</div>
+<div class="section" id="select-a-cnn-model">
+<h2>Select a CNN Model<a class="headerlink" href="#select-a-cnn-model" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/deeplab_person.gif"><img alt="DeepLabV3 demo" class="align-center" src="../_images/deeplab_person.gif" style="width: 60%;" /></a>
+<p>Deep dive on DeepLabV3:
+<a class="reference external" href="https://learnopencv.com/deeplabv3-ultimate-guide/">https://learnopencv.com/deeplabv3-ultimate-guide/</a></p>
+</div>
+<div class="section" id="additional-depthai-resources">
+<h2>Additional DepthAI Resources<a class="headerlink" href="#additional-depthai-resources" title="Permalink to this headline">¶</a></h2>
+<p>DepthAI Demo Documentation:
+<a class="reference external" href="https://docs.luxonis.com/en/latest/pages/tutorials/depthai_demo/#depthai-demo">https://docs.luxonis.com/en/latest/pages/tutorials/depthai_demo/#depthai-demo</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

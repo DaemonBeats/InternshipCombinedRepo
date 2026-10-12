@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Steering Adjustment Using PID &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Tutorial 4 - Follow the Gap" href="../gap_following/index.html" />
+    <link rel="prev" title="Create Wall Following Package" href="wall_follow_package.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 3 - Wall Following</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="theory.html">Wall Following Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wall_follow_package.html">Create Wall Following Package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Steering Adjustment Using PID</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-use-pid-control-for-steering">1️⃣ Why Use PID Control for Steering?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pid-control-formula-for-steering-adjustment">2️⃣ PID Control Formula for Steering Adjustment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-each-term-contributes">3️⃣ How Each Term Contributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-pid-based-steering-control">4️⃣ Example: PID-Based Steering Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-curves-and-corners">5️⃣ Handling Curves and Corners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#considerations-tuning">6️⃣ Considerations &amp; Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integrating-speed-control">7️⃣ Integrating Speed Control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">8️⃣ Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleD/pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 3 - Wall Following</a> &raquo;</li>
+        
+      <li>Steering Adjustment Using PID</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleB/wall_following/pid_steering.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="steering-adjustment-using-pid">
+<span id="doc-tutorials-wall-follow-pid-steering"></span><h1>Steering Adjustment Using PID<a class="headerlink" href="#steering-adjustment-using-pid" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>In <strong>autonomous wall following</strong>, maintaining a consistent distance from the wall requires smooth and responsive steering control. Instead of using simple proportional control that can cause oscillations, a <strong>Proportional-Integral-Derivative (PID) controller</strong> provides <strong>precise steering adjustments</strong> based on distance error and its rate of change.</p>
+<p>This approach ensures <strong>stable wall tracking</strong> with minimal oscillations, improving both navigation accuracy and vehicle stability.</p>
+</div>
+<div class="section" id="why-use-pid-control-for-steering">
+<h2>1️⃣ Why Use PID Control for Steering?<a class="headerlink" href="#why-use-pid-control-for-steering" title="Permalink to this headline">¶</a></h2>
+<p>Simple proportional control (steering angle = K × error) may cause:</p>
+<ul class="simple">
+<li><p><strong>Oscillations</strong>, where the car weaves back and forth along the wall.</p></li>
+<li><p><strong>Overshooting</strong>, where corrections are too aggressive.</p></li>
+<li><p><strong>Steady-state error</strong>, where the car never quite reaches the desired distance.</p></li>
+<li><p><strong>Poor response to curves</strong>, causing the car to hit walls on turns.</p></li>
+</ul>
+<p>A <strong>PID controller</strong> provides:</p>
+<p>✅ <strong>Smooth steering adjustments</strong> based on distance error.</p>
+<p>✅ <strong>Predictive control</strong>, adjusting before the car drifts too far.</p>
+<p>✅ <strong>Elimination of steady-state error</strong> through integral action.</p>
+<p>✅ <strong>Stable tracking</strong>, minimizing oscillations and overshooting.</p>
+</div>
+<div class="section" id="pid-control-formula-for-steering-adjustment">
+<h2>2️⃣ PID Control Formula for Steering Adjustment<a class="headerlink" href="#pid-control-formula-for-steering-adjustment" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>error</strong> is defined as the difference between desired and actual distance to the wall:</p>
+<div class="math notranslate nohighlight">
+\[e(t) = D_{\text{desired}} - D_{\text{actual}}\]</div>
+<p>The <strong>steering angle</strong> output is calculated using:</p>
+<div class="math notranslate nohighlight">
+\[\theta = K_p e(t) + K_i \int e(t) dt + K_d \frac{de(t)}{dt}\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span> = Steering angle (positive = turn away from wall, negative = turn toward wall).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_p\)</span> = Proportional gain (reacts to the distance error).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_i\)</span> = Integral gain (corrects accumulated distance errors).</p></li>
+<li><p><span class="math notranslate nohighlight">\(K_d\)</span> = Derivative gain (predicts future distance changes).</p></li>
+<li><p><span class="math notranslate nohighlight">\(e(t)\)</span> = Distance error.</p></li>
+</ul>
+</div>
+<div class="section" id="how-each-term-contributes">
+<h2>3️⃣ How Each Term Contributes<a class="headerlink" href="#how-each-term-contributes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="proportional-term-p">
+<h3>Proportional Term (P)<a class="headerlink" href="#proportional-term-p" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>proportional term</strong> provides immediate response to distance error:</p>
+<p><strong>If car is too close to wall</strong> → Steer <strong>away from wall</strong> proportionally.</p>
+<p><strong>If car is too far from wall</strong> → Steer <strong>toward wall</strong> proportionally.</p>
+<p><strong>If car is at desired distance</strong> → <strong>No steering correction</strong> needed.</p>
+</div>
+<div class="section" id="integral-term-i">
+<h3>Integral Term (I)<a class="headerlink" href="#integral-term-i" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>integral term</strong> eliminates steady-state error by accumulating past errors:</p>
+<p><strong>Persistent error on one side</strong> → <strong>Gradually increase steering</strong> to correct.</p>
+<p><strong>Helps maintain exact desired distance</strong> over long periods.</p>
+<p><strong>Prevents drift</strong> on straight walls.</p>
+</div>
+<div class="section" id="derivative-term-d">
+<h3>Derivative Term (D)<a class="headerlink" href="#derivative-term-d" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>derivative term</strong> predicts future errors by monitoring rate of change:</p>
+<p><strong>If drifting away from wall rapidly</strong> → <strong>Steer aggressively</strong> toward wall.</p>
+<p><strong>If approaching wall rapidly</strong> → <strong>Steer aggressively</strong> away from wall.</p>
+<p><strong>If distance is stable</strong> → <strong>Minimal derivative correction</strong> (avoid jittery steering).</p>
+<p><strong>Reduces overshoot</strong> and dampens oscillations.</p>
+</div>
+</div>
+<div class="section" id="example-pid-based-steering-control">
+<h2>4️⃣ Example: PID-Based Steering Control<a class="headerlink" href="#example-pid-based-steering-control" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="scenario-maintaining-distance-while-wall-following">
+<h3>Scenario: Maintaining Distance While Wall Following<a class="headerlink" href="#scenario-maintaining-distance-while-wall-following" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>Desired Distance</strong> = <strong>0.5 meters</strong></p></li>
+<li><p><strong>Actual Distance</strong> = <strong>0.7 meters</strong> (too far from wall)</p></li>
+<li><p><strong>Proportional Gain</strong> = <span class="math notranslate nohighlight">\(K_p\)</span> = 1.5</p></li>
+<li><p><strong>Integral Gain</strong> = <span class="math notranslate nohighlight">\(K_i\)</span> = 0.05</p></li>
+<li><p><strong>Derivative Gain</strong> = <span class="math notranslate nohighlight">\(K_d\)</span> = 0.8</p></li>
+<li><p><strong>Distance is increasing at</strong> 0.1 m/s (drifting away)</p></li>
+</ul>
+<p><strong>Step 1: Compute the Error</strong></p>
+<div class="math notranslate nohighlight">
+\[e(t) = 0.5 - 0.7 = -0.2 \text{ meters}\]</div>
+<p>(Negative error means too far from wall)</p>
+<p><strong>Step 2: Compute Steering Angle</strong></p>
+<div class="math notranslate nohighlight">
+\[\theta = (1.5 \times -0.2) + (0.05 \times \int -0.2 dt) + (0.8 \times -0.1)\]</div>
+<p>If the accumulated <strong>integral error</strong> over time is <strong>-1.0</strong>, then:</p>
+<div class="math notranslate nohighlight">
+\[\theta = (1.5 \times -0.2) + (0.05 \times -1.0) + (0.8 \times -0.1)\]</div>
+<div class="math notranslate nohighlight">
+\[\theta = -0.3 + (-0.05) + (-0.08) = -0.43 \text{ radians}\]</div>
+<p>Thus, the vehicle will <strong>steer toward the wall by 0.43 radians (≈ 24.6°)</strong>, bringing it back to the desired distance.</p>
+</div>
+</div>
+<div class="section" id="handling-curves-and-corners">
+<h2>5️⃣ Handling Curves and Corners<a class="headerlink" href="#handling-curves-and-corners" title="Permalink to this headline">¶</a></h2>
+<p>Wall following becomes challenging in curves. The <strong>lookahead distance</strong> <span class="math notranslate nohighlight">\(D_{t+1}\)</span> helps predict future distance:</p>
+<div class="math notranslate nohighlight">
+\[D_{t+1} = D_t + L\sin(\alpha)\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(D_t\)</span> = Current distance to wall</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> = Lookahead distance (typically 1-2 meters)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> = Angle between car’s heading and wall</p></li>
+</ul>
+<p>Using <span class="math notranslate nohighlight">\(D_{t+1}\)</span> instead of <span class="math notranslate nohighlight">\(D_t\)</span> in the PID error calculation allows:</p>
+<p>✅ <strong>Early correction</strong> before entering a curve.</p>
+<p>✅ <strong>Smoother navigation</strong> through corners.</p>
+<p>✅ <strong>Prevention of wall collisions</strong> on tight turns.</p>
+</div>
+<div class="section" id="considerations-tuning">
+<h2>6️⃣ Considerations &amp; Tuning<a class="headerlink" href="#considerations-tuning" title="Permalink to this headline">¶</a></h2>
+<p>🛠 <strong>Tuning Kp (Proportional Gain)</strong></p>
+<ul class="simple">
+<li><p><strong>Kp too high</strong> → Aggressive steering, oscillations, instability.</p></li>
+<li><p><strong>Kp too low</strong> → Slow response, poor tracking, drifts off course.</p></li>
+<li><p><strong>Start with:</strong> <span class="math notranslate nohighlight">\(K_p\)</span> = 1.0 to 2.0</p></li>
+</ul>
+<p>🛠 <strong>Tuning Ki (Integral Gain)</strong></p>
+<ul class="simple">
+<li><p><strong>Ki too high</strong> → Overshoot, slow settling time.</p></li>
+<li><p><strong>Ki too low</strong> → Steady-state error remains.</p></li>
+<li><p><strong>Start with:</strong> <span class="math notranslate nohighlight">\(K_i\)</span> = 0.01 to 0.1</p></li>
+</ul>
+<p>🛠 <strong>Tuning Kd (Derivative Gain)</strong></p>
+<ul class="simple">
+<li><p><strong>Kd too high</strong> → Sensitive to noise, jittery steering.</p></li>
+<li><p><strong>Kd too low</strong> → Overshooting, slow damping.</p></li>
+<li><p><strong>Start with:</strong> <span class="math notranslate nohighlight">\(K_d\)</span> = 0.5 to 1.0</p></li>
+</ul>
+<p>🚗 <strong>Tuning Strategy</strong></p>
+<ol class="arabic simple">
+<li><p>Set <span class="math notranslate nohighlight">\(K_i = 0\)</span> and <span class="math notranslate nohighlight">\(K_d = 0\)</span>, tune <span class="math notranslate nohighlight">\(K_p\)</span> until response is reasonable but oscillatory.</p></li>
+<li><p>Add <span class="math notranslate nohighlight">\(K_d\)</span> to <strong>dampen oscillations</strong> and improve stability.</p></li>
+<li><p>Add <span class="math notranslate nohighlight">\(K_i\)</span> to <strong>eliminate steady-state error</strong> if car consistently stays too close or too far.</p></li>
+<li><p><strong>Test on curves</strong> and adjust gains for smooth corner navigation.</p></li>
+</ol>
+</div>
+<div class="section" id="integrating-speed-control">
+<h2>7️⃣ Integrating Speed Control<a class="headerlink" href="#integrating-speed-control" title="Permalink to this headline">¶</a></h2>
+<p>For optimal performance, <strong>adjust speed based on steering angle</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">steering_angle</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.174</span><span class="p">:</span>  <span class="c1"># &lt; 10 degrees</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="mf">1.5</span>  <span class="c1"># m/s (straight sections)</span>
+<span class="k">elif</span> <span class="nb">abs</span><span class="p">(</span><span class="n">steering_angle</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.349</span><span class="p">:</span>  <span class="c1"># &lt; 20 degrees</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># m/s (gentle curves)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">speed</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># m/s (sharp turns)</span>
+</pre></div>
+</div>
+<p>This prevents:</p>
+<ul class="simple">
+<li><p><strong>Loss of control</strong> in sharp turns at high speed.</p></li>
+<li><p><strong>Wall collisions</strong> when steering aggressively.</p></li>
+<li><p><strong>Inefficient slow driving</strong> on straight sections.</p></li>
+</ul>
+</div>
+<div class="section" id="summary">
+<h2>8️⃣ Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>✅ <strong>PID steering control provides smooth and stable wall following</strong>.</p>
+<p>✅ <strong>The derivative term predicts and prevents oscillations</strong>.</p>
+<p>✅ <strong>The integral term eliminates steady-state distance errors</strong>.</p>
+<p>✅ <strong>Lookahead distance helps navigate curves safely</strong>.</p>
+<p>✅ <strong>Speed adjustment based on steering angle improves safety</strong>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gap_following/index.html" class="btn btn-neutral float-right" title="Tutorial 4 - Follow the Gap" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="wall_follow_package.html" class="btn btn-neutral float-left" title="Create Wall Following Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

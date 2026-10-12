@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tuning the Particle Filter (localize.yaml) &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Understanding the Launch File" href="particle_filter_launch.html" />
+    <link rel="prev" title="Understanding the Particle Filter Code" href="particle_filter_code.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 7 - Particle Filter Localization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="particle_filter.html">Particle Filter Localization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_code.html">Understanding the Particle Filter Code</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tuning the Particle Filter (localize.yaml)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#topic-names">Topic Names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#particle-count">Particle Count</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lidar-downsampling">LiDAR Downsampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#motion-model-dispersion">Motion Model Dispersion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensor-model-weights">Sensor Model Weights</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#squash-factor">Squash Factor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ray-casting-method">Ray Casting Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-settings">Other Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#map-server-section">Map Server Section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-starting-points-for-tuning">Recommended Starting Points for Tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="particle_filter_launch.html">Understanding the Launch File</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pure_pursuit/index.html">Tutorial 8 - Pure Pursuit</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 7 - Particle Filter Localization</a> &raquo;</li>
+        
+      <li>Tuning the Particle Filter (localize.yaml)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleD/particle_filter/particle_filter_config.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tuning-the-particle-filter-localize-yaml">
+<span id="doc-tutorials-particle-filter-config"></span><h1>Tuning the Particle Filter (localize.yaml)<a class="headerlink" href="#tuning-the-particle-filter-localize-yaml" title="Permalink to this headline">¶</a></h1>
+<p>The particle filter’s behavior is controlled entirely by <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code>. This page explains every parameter and highlights which ones you should tune to improve localization quality.</p>
+<a class="reference internal image-reference" href="../../../_images/mcl_tuning.svg"><img alt="MCL cycle with localize.yaml parameters mapped to each step" class="align-center" src="../../../_images/mcl_tuning.svg" width="100%" /></a>
+<p>To edit the config:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code ~/f1tenth_ws/src/f1tenth_system/particle_filter/config/localize.yaml
+</pre></div>
+</div>
+<p>After making changes, rebuild and re-source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select particle_filter
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+<div class="section" id="topic-names">
+<h2>Topic Names<a class="headerlink" href="#topic-names" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">scan_topic</span><span class="p">:</span> <span class="s">&#39;/scan&#39;</span>
+<span class="nt">odometry_topic</span><span class="p">:</span> <span class="s">&#39;/odom&#39;</span>
+</pre></div>
+</div>
+<p>These must match the topics your robot publishes. On the standard F1TENTH stack:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/scan</span></code> — LiDAR data from the Hokuyo or RPLiDAR</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/odom</span></code> — wheel odometry from the VESC</p></li>
+</ul>
+<p>You should not need to change these unless your robot uses different topic names.</p>
+</div>
+<div class="section" id="particle-count">
+<h2>Particle Count<a class="headerlink" href="#particle-count" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">max_particles</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4000</span>
+</pre></div>
+</div>
+<p>The number of pose hypotheses the filter maintains. More particles means better accuracy but higher CPU cost.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Pros</p></th>
+<th class="head"><p>Cons</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1000</p></td>
+<td><p>Very fast, low CPU</p></td>
+<td><p>May lose track in complex environments</p></td>
+</tr>
+<tr class="row-odd"><td><p>4000 (default)</p></td>
+<td><p>Good balance for Jetson Orin</p></td>
+<td><p>Moderate CPU usage</p></td>
+</tr>
+<tr class="row-even"><td><p>8000+</p></td>
+<td><p>Very robust localization</p></td>
+<td><p>High CPU, may slow down update rate</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to change:</strong> If the filter frequently loses track (particles spread out and don’t converge), try increasing this. If CPU usage is too high and localization is already stable, try decreasing it.</p>
+</div>
+<div class="section" id="lidar-downsampling">
+<h2>LiDAR Downsampling<a class="headerlink" href="#lidar-downsampling" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">angle_step</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">18</span>
+</pre></div>
+</div>
+<p>Takes every Nth LiDAR ray instead of using all ~1080. At <code class="docutils literal notranslate"><span class="pre">angle_step:</span> <span class="pre">18</span></code>, the filter uses about 60 rays per scan.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>~180 rays — more accurate but significantly slower</p></td>
+</tr>
+<tr class="row-odd"><td><p>18 (default)</p></td>
+<td><p>~60 rays — good balance</p></td>
+</tr>
+<tr class="row-even"><td><p>36</p></td>
+<td><p>~30 rays — very fast but less accurate in complex environments</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>When to change:</strong> If the filter is slow (low iterations per second), increase <code class="docutils literal notranslate"><span class="pre">angle_step</span></code>. If the environment has many narrow features (doorways, pillars), decrease it for finer angular resolution.</p>
+</div>
+<div class="section" id="motion-model-dispersion">
+<h2>Motion Model Dispersion<a class="headerlink" href="#motion-model-dispersion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">motion_dispersion_x</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
+<span class="nt">motion_dispersion_y</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.025</span>
+<span class="nt">motion_dispersion_theta</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.25</span>
+</pre></div>
+</div>
+<p>These control how much random noise is added to each particle after applying odometry. They represent the standard deviation of Gaussian noise in meters (x, y) and radians (theta).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If the particle filter is not performing well, start here. <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code> is the parameter you will adjust most often:</p>
+</div>
+<ul class="simple">
+<li><p><strong>Too low</strong> — particles stay tightly clustered but can’t recover from heading errors. The filter “locks on” to a wrong heading and diverges.</p></li>
+<li><p><strong>Too high</strong> — particles spread too far, the cloud is always diffuse, and the pose estimate is noisy.</p></li>
+</ul>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Symptom</p></th>
+<th class="head"><p>Adjustment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Filter diverges at speed</p></td>
+<td><p>Increase <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code> (try 0.35–0.5)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Filter diverges in turns</p></td>
+<td><p>Increase <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Pose estimate is jittery</p></td>
+<td><p>Decrease <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code> (try 0.15–0.2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Filter drifts sideways</p></td>
+<td><p>Increase <code class="docutils literal notranslate"><span class="pre">motion_dispersion_y</span></code> (try 0.05)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sensor-model-weights">
+<h2>Sensor Model Weights<a class="headerlink" href="#sensor-model-weights" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">z_short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.01</span>
+<span class="nt">z_max</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.07</span>
+<span class="nt">z_rand</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.12</span>
+<span class="nt">z_hit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.75</span>
+<span class="nt">sigma_hit</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8.0</span>
+</pre></div>
+</div>
+<p>These four <code class="docutils literal notranslate"><span class="pre">z_</span></code> values control how the filter interprets differences between expected and actual LiDAR readings. They must sum to approximately 1.0 (they are normalized internally).</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 45%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>What It Models</p></th>
+<th class="head"><p>When to Adjust</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_hit</span></code></p></td>
+<td><p>Measurement matches expected range (Gaussian)</p></td>
+<td><p>Rarely — this should stay dominant (0.7–0.8)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z_short</span></code></p></td>
+<td><p>Something blocked the beam early (person, furniture)</p></td>
+<td><p>Increase in environments with many dynamic obstacles</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">z_max</span></code></p></td>
+<td><p>LiDAR returned max range (no return)</p></td>
+<td><p>Increase if your environment has glass or dark surfaces</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">z_rand</span></code></p></td>
+<td><p>Random noise / multipath reflections</p></td>
+<td><p>Increase in noisy or reflective environments</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">sigma_hit</span></code> controls the width of the Gaussian for <code class="docutils literal notranslate"><span class="pre">z_hit</span></code>. A larger value is more tolerant of small map inaccuracies but less precise. The default of 8.0 works well for most indoor environments.</p>
+<p>The defaults work well for most indoor environments. Only adjust these if you have a specific problem like many dynamic obstacles or a very reflective environment.</p>
+</div>
+<div class="section" id="squash-factor">
+<h2>Squash Factor<a class="headerlink" href="#squash-factor" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">squash_factor</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2.2</span>
+</pre></div>
+</div>
+<p>This prevents particle collapse — where one particle gets an astronomically high weight and all others are discarded. The weight of each particle is raised to the power of <code class="docutils literal notranslate"><span class="pre">1/squash_factor</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Higher values</strong> (3.0+) — more diversity, filter is more exploratory but slower to converge</p></li>
+<li><p><strong>Lower values</strong> (1.5) — less diversity, converges faster but more fragile</p></li>
+<li><p><strong>1.0</strong> — no squashing (not recommended — filter will collapse)</p></li>
+</ul>
+<p><strong>When to change:</strong> If particles converge too aggressively and the filter “snaps” to wrong positions, increase this. If the particle cloud never tightens, decrease it.</p>
+</div>
+<div class="section" id="ray-casting-method">
+<h2>Ray Casting Method<a class="headerlink" href="#ray-casting-method" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">range_method</span><span class="p">:</span> <span class="s">&#39;rmgpu&#39;</span>
+<span class="nt">rangelib_variant</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="nt">theta_discretization</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">112</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">range_method</span></code> selects the RangeLibc algorithm for simulating LiDAR:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Speed</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">rmgpu</span></code></p></td>
+<td><p>Fastest</p></td>
+<td><p>GPU ray marching — use on Jetson Orin (requires CUDA)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cddt</span></code></p></td>
+<td><p>Fast</p></td>
+<td><p>CPU-only — best fallback if no CUDA</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pcddt</span></code></p></td>
+<td><p>Fast</p></td>
+<td><p>Pruned CDDT variant</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">rm</span></code></p></td>
+<td><p>Moderate</p></td>
+<td><p>CPU ray marching, no precomputation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bl</span></code></p></td>
+<td><p>Slowest</p></td>
+<td><p>Bresenham’s line — use only for debugging</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">rangelib_variant</span></code> selects the evaluation strategy:</p>
+<ul class="simple">
+<li><p><strong>2</strong> — <code class="docutils literal notranslate"><span class="pre">VAR_REPEAT_ANGLES_EVAL_SENSOR</span></code> — best for <code class="docutils literal notranslate"><span class="pre">rmgpu</span></code> (default)</p></li>
+<li><p><strong>3</strong> — <code class="docutils literal notranslate"><span class="pre">VAR_REPEAT_ANGLES_EVAL_SENSOR_ONE_SHOT</span></code> — does NOT work with <code class="docutils literal notranslate"><span class="pre">rmgpu</span></code></p></li>
+<li><p><strong>4</strong> — <code class="docutils literal notranslate"><span class="pre">VAR_RADIAL_CDDT_OPTIMIZATIONS</span></code> — only works with <code class="docutils literal notranslate"><span class="pre">cddt</span></code>/<code class="docutils literal notranslate"><span class="pre">pcddt</span></code></p></li>
+</ul>
+<p><strong>For the Jetson Orin, use</strong> <code class="docutils literal notranslate"><span class="pre">rmgpu</span></code> <strong>with</strong> <code class="docutils literal notranslate"><span class="pre">rangelib_variant:</span> <span class="pre">2</span></code>. If you see CUDA errors, switch to <code class="docutils literal notranslate"><span class="pre">cddt</span></code> with <code class="docutils literal notranslate"><span class="pre">rangelib_variant:</span> <span class="pre">4</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">theta_discretization</span></code> controls angular resolution for methods that precompute angles. The default of 112 works well and rarely needs changing.</p>
+</div>
+<div class="section" id="other-settings">
+<h2>Other Settings<a class="headerlink" href="#other-settings" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">max_range</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="nt">viz</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">max_viz_particles</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">60</span>
+<span class="nt">fine_timing</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">publish_odom</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_range</span></code></p></td>
+<td><p>Maximum LiDAR range in meters. Readings beyond this are clipped. Match your LiDAR’s spec.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">viz</span></code></p></td>
+<td><p>Enable (1) or disable (0) visualization topics. Disable for maximum performance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">max_viz_particles</span></code></p></td>
+<td><p>Number of particles sent to RViz2. Lower = less network overhead. Does not affect accuracy.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fine_timing</span></code></p></td>
+<td><p>Enable (1) to print per-step timing breakdowns. Useful for profiling, noisy in normal use.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">publish_odom</span></code></p></td>
+<td><p>Enable (1) to publish <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code>. Must be 1 for pure pursuit or any node reading the pose.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="map-server-section">
+<h2>Map Server Section<a class="headerlink" href="#map-server-section" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">map_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">map</span><span class="p">:</span> <span class="s">&#39;lab_map_clean&#39;</span>
+</pre></div>
+</div>
+<p>This tells the launch file which map to load. The value is the map name <strong>without the file extension</strong> — it looks for <code class="docutils literal notranslate"><span class="pre">&lt;map_name&gt;.yaml</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;map_name&gt;.pgm</span></code> in the particle filter’s own <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/f1tenth_ws/src/f1tenth_system/particle_filter/maps/
+</pre></div>
+</div>
+<p>The default map <code class="docutils literal notranslate"><span class="pre">lab_map_clean</span></code> is a pre-made map of the CAE lab that is ready to use. If this matches your environment, no changes are needed.</p>
+<p><strong>Using your own map:</strong> If you created a map with SLAM (see the SLAM tutorial), that map is stored in the <strong>f1tenth_stack</strong> maps directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/
+</pre></div>
+</div>
+<p>The particle filter cannot access maps from <code class="docutils literal notranslate"><span class="pre">f1tenth_stack</span></code> — you need to copy both the <code class="docutils literal notranslate"><span class="pre">.pgm</span></code> and <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> files into the particle filter’s <code class="docutils literal notranslate"><span class="pre">maps/</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/hallway_map.pgm <span class="se">\</span>
+   ~/f1tenth_ws/src/f1tenth_system/particle_filter/maps/
+
+cp ~/f1tenth_ws/src/f1tenth_system/f1tenth_stack/maps/hallway_map.yaml <span class="se">\</span>
+   ~/f1tenth_ws/src/f1tenth_system/particle_filter/maps/
+</pre></div>
+</div>
+<p>Then update <code class="docutils literal notranslate"><span class="pre">localize.yaml</span></code> to point to your map:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">map_server</span><span class="p">:</span>
+  <span class="nt">ros__parameters</span><span class="p">:</span>
+    <span class="nt">map</span><span class="p">:</span> <span class="s">&#39;hallway_map&#39;</span>
+</pre></div>
+</div>
+<p>After changing the map, rebuild so the new files are installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select particle_filter
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+</div>
+<div class="section" id="recommended-starting-points-for-tuning">
+<h2>Recommended Starting Points for Tuning<a class="headerlink" href="#recommended-starting-points-for-tuning" title="Permalink to this headline">¶</a></h2>
+<p>If you are having trouble with localization, try these changes in order:</p>
+<ol class="arabic simple">
+<li><p><strong>Re-set the initial pose</strong> — click 2D Pose Estimate accurately in RViz2</p></li>
+<li><p><strong>Increase</strong> <code class="docutils literal notranslate"><span class="pre">motion_dispersion_theta</span></code> — try 0.35, then 0.5</p></li>
+<li><p><strong>Increase</strong> <code class="docutils literal notranslate"><span class="pre">max_particles</span></code> — try 6000 or 8000</p></li>
+<li><p><strong>Decrease</strong> <code class="docutils literal notranslate"><span class="pre">angle_step</span></code> — try 12 for more LiDAR rays</p></li>
+<li><p><strong>Check</strong> <code class="docutils literal notranslate"><span class="pre">odometry_topic</span></code> — make sure it matches your robot’s odometry topic name</p></li>
+</ol>
+<p>After each change, rebuild with <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--packages-select</span> <span class="pre">particle_filter</span></code> and relaunch.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="particle_filter_launch.html" class="btn btn-neutral float-right" title="Understanding the Launch File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="particle_filter_code.html" class="btn btn-neutral float-left" title="Understanding the Particle Filter Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

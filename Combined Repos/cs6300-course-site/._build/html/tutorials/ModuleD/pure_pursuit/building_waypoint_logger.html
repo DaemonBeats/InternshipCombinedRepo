@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Building the Waypoint Logger &mdash; RoboRacer - Learn latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Recording Waypoints" href="waypoint_recording.html" />
+    <link rel="prev" title="Tutorial 8 - Pure Pursuit" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> RoboRacer - Learn
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Start Here!</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/syllabus.html">Syllabus</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Setup</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/vesc_setup.html">VESC setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/lidar_setup.html">Lidar Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/roboracer_stack.html">RoboRacer Driver Stack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/calibrate.html">Calibrate Odom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nomachine.html">NoMachine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/info_realsense_d435i.html">INSTALL - Realsense D435i</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/opencv.html">SETUP - OpenCV</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/realsense_ros.html">SETUP - Realsense ROS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/slam.html">SETUP - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/nav2.html">SETUP - Nav2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../setup/gym_ros_setup.html">Gym_Ros Setup</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleA/index.html">Module A: Introduction to ROS, RoboRacer &amp; the Simulator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleB/index.html">Module B: Reactive Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleC/index.html">Module C: Mapping &amp; Localization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleD/index.html">Module D: Planning &amp; Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleE/index.html">Module E: Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleF/index.html">Module F: Special Topics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/ModuleG/index.html">Module G: RoboRacer Grand Prix!!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lectures/index.html">Material Downloads</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module A - Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/turtlesim/index.html">Tutorial 1 - ROS 2 Intro and Turtlesim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleA/aeb/index.html">Tutorial 2 - Automatic Emergency Braking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module B - Reactive Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/wall_following/index.html">Tutorial 3 - Wall Following</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleB/gap_following/index.html">Tutorial 4 - Follow the Gap</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module C - Mapping &amp; Localization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/slam/index.html">Tutorial 5 - SLAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ModuleC/nav2/index.html">Tutorial 6 - Nav2 Navigation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Module D - Planning &amp; Control</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../particle_filter/index.html">Tutorial 7 - Particle Filter Localization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorial 8 - Pure Pursuit</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building the Waypoint Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-a-waypoint-logger">Why a Waypoint Logger?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-the-package">Step 1 — Create the Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-understand-the-data-source">Step 2 — Understand the Data Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-write-the-node">Step 3 — Write the Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-register-the-entry-point">Step 4 — Register the Entry Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-build-and-verify">Step 5 — Build and Verify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-concepts-recap">Key Concepts Recap</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="waypoint_recording.html">Recording Waypoints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building_pure_pursuit_node.html">Building the Pure Pursuit Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pure_pursuit_node.html">Running Pure Pursuit</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Weber Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../weber_assignments/labs/index.html">Labs</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Assignments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/labs/index.html">Labs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/races/index.html">Races</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/final_project.html">Final Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../assignments/grading.html">Grading Rubrics</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Support</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support/acknowledgment.html">Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">RoboRacer - Learn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Tutorial 8 - Pure Pursuit</a> &raquo;</li>
+        
+      <li>Building the Waypoint Logger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/f1tenth/f1tenth_coursekit/blob/master/tutorials/ModuleD/pure_pursuit/building_waypoint_logger.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="building-the-waypoint-logger">
+<span id="doc-tutorials-building-waypoint-logger"></span><h1>Building the Waypoint Logger<a class="headerlink" href="#building-the-waypoint-logger" title="Permalink to this headline">¶</a></h1>
+<p>Before you can record waypoints, you need to create the <code class="docutils literal notranslate"><span class="pre">pure_pursuit</span></code> package and write the <code class="docutils literal notranslate"><span class="pre">waypoint_logger</span></code> node. This tutorial walks through the code step by step.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Update your robot first</strong> — the <code class="docutils literal notranslate"><span class="pre">waypoint_viz</span></code> package and updated <code class="docutils literal notranslate"><span class="pre">pf.rviz</span></code> must be installed before starting this lab:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Pull and update submodules</span>
+<span class="nb">cd</span> ~/f1tenth_ws/src/f1tenth_system
+git pull origin humble-devel
+git submodule update --init --recursive
+
+<span class="c1"># 2. Remove old standalone dirs (if they still exist)</span>
+rm -rf ~/f1tenth_ws/src/particle_filter
+sudo rm -rf ~/f1tenth_ws/src/range_libc
+
+<span class="c1"># 3. Clean build (stale caches point to old paths)</span>
+<span class="nb">cd</span> ~/f1tenth_ws
+rm -rf build/ install/
+colcon build --symlink-install
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial covers the concepts behind the code. For the graded assignment with deliverables, see <strong>Lab 6 - Waypoint Logger for Pure Pursuit</strong> in the Weber Assignments.</p>
+</div>
+<div class="section" id="why-a-waypoint-logger">
+<h2>Why a Waypoint Logger?<a class="headerlink" href="#why-a-waypoint-logger" title="Permalink to this headline">¶</a></h2>
+<p>Pure Pursuit needs a pre-recorded path to follow. That path is a CSV file of poses (x, y, heading) captured while you manually drive the car around the track. The waypoint logger subscribes to the particle filter’s pose output and writes each pose to a file as you drive.</p>
+<p>The pipeline looks like this:</p>
+<a class="reference internal image-reference" href="../../../_images/waypoint_pipeline.svg"><img alt="Pipeline: Particle Filter publishes poses to the Waypoint Logger, which writes waypoints.csv, which Pure Pursuit reads" class="align-center" src="../../../_images/waypoint_pipeline.svg" width="80%" /></a>
+<p>The particle filter publishes the car’s estimated map-relative position at ~30-40 Hz. Your logger captures those poses so the Pure Pursuit node can replay the path later.</p>
+</div>
+<div class="section" id="step-1-create-the-package">
+<h2>Step 1 — Create the Package<a class="headerlink" href="#step-1-create-the-package" title="Permalink to this headline">¶</a></h2>
+<p>On the robot, create a new ROS 2 Python package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws/src
+ros2 pkg create pure_pursuit --build-type ament_python --dependencies rclpy nav_msgs geometry_msgs visualization_msgs std_msgs
+</pre></div>
+</div>
+<p>This generates the standard <code class="docutils literal notranslate"><span class="pre">ament_python</span></code> package structure:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>pure_pursuit/
+    package.xml
+    setup.py
+    setup.cfg
+    pure_pursuit/
+        __init__.py
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--dependencies</span></code> flag adds <code class="docutils literal notranslate"><span class="pre">rclpy</span></code>, <code class="docutils literal notranslate"><span class="pre">nav_msgs</span></code>, and <code class="docutils literal notranslate"><span class="pre">geometry_msgs</span></code> to <code class="docutils literal notranslate"><span class="pre">package.xml</span></code> automatically. These are the packages your node will import.</p>
+<p>Create a directory to store waypoint CSV files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p ~/f1tenth_ws/src/pure_pursuit/maps
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-2-understand-the-data-source">
+<h2>Step 2 — Understand the Data Source<a class="headerlink" href="#step-2-understand-the-data-source" title="Permalink to this headline">¶</a></h2>
+<p>The particle filter publishes on <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> using the <code class="docutils literal notranslate"><span class="pre">nav_msgs/msg/Odometry</span></code> message type. The fields you care about are nested inside the message:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Odometry
+    pose
+        pose
+            position
+                x       &lt;-- map x coordinate
+                y       &lt;-- map y coordinate
+            orientation
+                z       &lt;-- quaternion z (encodes heading)
+                w       &lt;-- quaternion w (encodes heading)
+</pre></div>
+</div>
+<p>You can inspect a live message yourself to see exactly what the particle filter publishes. You need bringup and the particle filter running first:</p>
+<ol class="arabic">
+<li><p>Start <strong>bringup</strong> (Terminal 1)</p></li>
+<li><p>Launch the <strong>particle filter</strong> (Terminal 2):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+ros2 launch particle_filter localize_launch.py
+</pre></div>
+</div>
+</li>
+<li><p>Open <strong>RViz2</strong> with the particle filter config (Terminal 3):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+<span class="nb">source</span> /opt/ros/humble/setup.bash
+<span class="nb">source</span> install/setup.bash
+rviz2 -d ~/f1tenth_ws/install/particle_filter/share/particle_filter/rviz/pf.rviz
+</pre></div>
+</div>
+<p>Set the <strong>2D Pose Estimate</strong> so the particle filter is localized.</p>
+</li>
+<li><p>Echo the topic (Terminal 4):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 topic <span class="nb">echo</span> /pf/pose/odom --once
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This prints a single Odometry message showing all the fields:</p>
+<a class="reference internal image-reference" href="../../../_images/particle_filter_odom.png"><img alt="Terminal output of ros2 topic echo /pf/pose/odom showing the full Odometry message" class="align-center" src="../../../_images/particle_filter_odom.png" style="width: 80%;" /></a>
+<p>Most of this message is not needed. Your logger only extracts four values from the <code class="docutils literal notranslate"><span class="pre">pose.pose</span></code> section:</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Units</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">position.x</span></code></p></td>
+<td><p>meters</p></td>
+<td><p>Car’s horizontal position on the map</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">position.y</span></code></p></td>
+<td><p>meters</p></td>
+<td><p>Car’s vertical position on the map</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">orientation.z</span></code></p></td>
+<td><p>unitless (-1 to 1)</p></td>
+<td><p>Quaternion z — encodes heading (rotation around vertical axis)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">orientation.w</span></code></p></td>
+<td><p>unitless (-1 to 1)</p></td>
+<td><p>Quaternion w — scalar part; with z, gives heading: <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">atan2(z,</span> <span class="pre">w)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Why quaternions instead of an angle?</strong> ROS 2 uses quaternions to represent orientation because they avoid gimbal lock and singularities. For a car driving on a flat surface, only <code class="docutils literal notranslate"><span class="pre">z</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> matter (<code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are zero). You don’t need to convert to an angle for storage — just save the raw <code class="docutils literal notranslate"><span class="pre">z</span></code> and <code class="docutils literal notranslate"><span class="pre">w</span></code> values. The Pure Pursuit node will convert them when it needs the heading.</p>
+</div>
+</div>
+<div class="section" id="step-3-write-the-node">
+<h2>Step 3 — Write the Node<a class="headerlink" href="#step-3-write-the-node" title="Permalink to this headline">¶</a></h2>
+<p>Create <code class="docutils literal notranslate"><span class="pre">pure_pursuit/pure_pursuit/waypoint_logger.py</span></code>. The node has three responsibilities:</p>
+<ol class="arabic simple">
+<li><p><strong>Open a CSV file</strong> when it starts</p></li>
+<li><p><strong>Subscribe</strong> to <code class="docutils literal notranslate"><span class="pre">/pf/pose/odom</span></code> and write each pose to the file</p></li>
+<li><p><strong>Close the file</strong> cleanly on shutdown</p></li>
+</ol>
+<div class="section" id="subscription-and-callback">
+<h3>Subscription and Callback<a class="headerlink" href="#subscription-and-callback" title="Permalink to this headline">¶</a></h3>
+<p>The core of a ROS 2 subscriber node is the callback. Every time the particle filter publishes a new pose, your callback fires and receives the <code class="docutils literal notranslate"><span class="pre">Odometry</span></code> message:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">subscription</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
+    <span class="n">Odometry</span><span class="p">,</span>
+    <span class="s1">&#39;/pf/pose/odom&#39;</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">pose_callback</span><span class="p">,</span>
+    <span class="mi">10</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">10</span></code> is the QoS queue depth — it buffers up to 10 messages if the callback is slow. For a simple CSV writer this is more than enough.</p>
+</div>
+<div class="section" id="extracting-pose-data">
+<h3>Extracting Pose Data<a class="headerlink" href="#extracting-pose-data" title="Permalink to this headline">¶</a></h3>
+<p>Inside the callback, pull out the four values you need:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pose_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span>
+</pre></div>
+</div>
+<p>These four numbers fully describe where the car is and which direction it is facing.</p>
+</div>
+<div class="section" id="writing-to-csv">
+<h3>Writing to CSV<a class="headerlink" href="#writing-to-csv" title="Permalink to this headline">¶</a></h3>
+<p>Use Python’s built-in <code class="docutils literal notranslate"><span class="pre">csv</span></code> module or simply write comma-separated strings. The CSV should have <strong>no header row</strong> — just four values per line:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>1.234, 5.678, 0.123, 0.992
+1.245, 5.690, 0.125, 0.992
+...
+</pre></div>
+</div>
+<p>Open the file when the node initializes and write in the callback:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/path/to/waypoints.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># In the callback:</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="clean-shutdown">
+<h3>Clean Shutdown<a class="headerlink" href="#clean-shutdown" title="Permalink to this headline">¶</a></h3>
+<p>When you press Ctrl+C, ROS 2 shuts down the node. You need to make sure the CSV file is closed properly so no data is lost. Two common approaches:</p>
+<ol class="arabic">
+<li><p><strong>try/finally</strong> in <code class="docutils literal notranslate"><span class="pre">main()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">WaypointLogger</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Override</strong> <code class="docutils literal notranslate"><span class="pre">destroy_node()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">destroy_node</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Either approach works. The key is that the file gets closed so the OS flushes all buffered writes to disk.</p>
+</div>
+<div class="section" id="recording-quality-minimum-distance-filter">
+<h3>Recording Quality — Minimum Distance Filter<a class="headerlink" href="#recording-quality-minimum-distance-filter" title="Permalink to this headline">¶</a></h3>
+<p>Recording at full 30-40 Hz frequency produces problems when the car is stationary, slow, or jerky — hundreds of waypoints cluster at the same map location, and pure pursuit oscillates trying to track them. The fix is to only write a waypoint when the car has moved a minimum distance from the last recorded point:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># In __init__:</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">last_x</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">last_y</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">min_distance</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># meters between waypoints</span>
+
+<span class="c1"># In pose_callback, before writing to CSV:</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_distance</span><span class="p">:</span>
+        <span class="k">return</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">last_x</span> <span class="o">=</span> <span class="n">x</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">last_y</span> <span class="o">=</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>This produces evenly-spaced waypoints regardless of how fast or slow the car moves. Tune <code class="docutils literal notranslate"><span class="pre">min_distance</span></code> up (0.2 m) for sparser paths on large tracks, or down (0.05 m) for tighter paths with sharp corners.</p>
+<p>If you have an existing recording without this filter, you can thin it after the fact:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;NR % 5 == 0&#39;</span> waypoints.csv &gt; waypoints_clean.csv
+</pre></div>
+</div>
+</div>
+<div class="section" id="terminal-feedback">
+<h3>Terminal Feedback<a class="headerlink" href="#terminal-feedback" title="Permalink to this headline">¶</a></h3>
+<p>At ~30-40 Hz, printing every pose would flood the terminal. Instead, print a confirmation periodically (e.g., every 50th pose):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">pose_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">):</span>
+    <span class="c1"># ... write to CSV ...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Recorded </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">count</span><span class="si">}</span><span class="s1"> waypoints&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This gives you visual feedback that the logger is working without overwhelming the output.</p>
+</div>
+<div class="section" id="live-visualization-in-rviz2">
+<h3>Live Visualization in RViz2<a class="headerlink" href="#live-visualization-in-rviz2" title="Permalink to this headline">¶</a></h3>
+<p>Your waypoint logger can publish markers to RViz2 so you can see the recorded path growing in real time as you drive. The <code class="docutils literal notranslate"><span class="pre">pf.rviz</span></code> layout already has these displays configured — no RViz2 setup needed.</p>
+<p>Add these imports:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">PoseStamped</span>
+<span class="kn">from</span> <span class="nn">visualization_msgs.msg</span> <span class="kn">import</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">MarkerArray</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">ColorRGBA</span>
+<span class="kn">from</span> <span class="nn">rclpy.qos</span> <span class="kn">import</span> <span class="n">QoSProfile</span><span class="p">,</span> <span class="n">QoSDurabilityPolicy</span><span class="p">,</span> <span class="n">QoSReliabilityPolicy</span><span class="p">,</span> <span class="n">QoSHistoryPolicy</span>
+</pre></div>
+</div>
+<p>Add this to <code class="docutils literal notranslate"><span class="pre">__init__</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">latched_qos</span> <span class="o">=</span> <span class="n">QoSProfile</span><span class="p">(</span>
+    <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">durability</span><span class="o">=</span><span class="n">QoSDurabilityPolicy</span><span class="o">.</span><span class="n">TRANSIENT_LOCAL</span><span class="p">,</span>
+    <span class="n">reliability</span><span class="o">=</span><span class="n">QoSReliabilityPolicy</span><span class="o">.</span><span class="n">RELIABLE</span><span class="p">,</span>
+    <span class="n">history</span><span class="o">=</span><span class="n">QoSHistoryPolicy</span><span class="o">.</span><span class="n">KEEP_LAST</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">marker_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">MarkerArray</span><span class="p">,</span> <span class="s1">&#39;/waypoint_viz/waypoints&#39;</span><span class="p">,</span> <span class="n">latched_qos</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">path_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Path</span><span class="p">,</span> <span class="s1">&#39;/waypoint_viz/path&#39;</span><span class="p">,</span> <span class="n">latched_qos</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">path_msg</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">path_msg</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;map&#39;</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">marker_array</span> <span class="o">=</span> <span class="n">MarkerArray</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Add this method to your class — call it in the callback after writing to the CSV:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">publish_waypoint_viz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Publishes the current list of waypoints to RViz for live visualization.&quot;&quot;&quot;</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">Marker</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;map&#39;</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">ns</span> <span class="o">=</span> <span class="s1">&#39;waypoints&#39;</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker_array</span><span class="o">.</span><span class="n">markers</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">Marker</span><span class="o">.</span><span class="n">SPHERE</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">Marker</span><span class="o">.</span><span class="n">ADD</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">scale</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">ColorRGBA</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">marker_array</span><span class="o">.</span><span class="n">markers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">marker_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">marker_array</span><span class="p">)</span>
+
+    <span class="n">ps</span> <span class="o">=</span> <span class="n">PoseStamped</span><span class="p">()</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s1">&#39;map&#39;</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">z</span>
+    <span class="n">ps</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">w</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">path_msg</span><span class="o">.</span><span class="n">poses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ps</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">path_msg</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">stamp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">to_msg</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">path_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">path_msg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the callback, after writing to the CSV and updating the distance tracker, call <code class="docutils literal notranslate"><span class="pre">self.publish_waypoint_viz(x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">w)</span></code>. You should see yellow dots and an orange path building in RViz2 as you drive.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This publishes on <code class="docutils literal notranslate"><span class="pre">/waypoint_viz/waypoints</span></code> and <code class="docutils literal notranslate"><span class="pre">/waypoint_viz/path</span></code> — the same topics used by the <code class="docutils literal notranslate"><span class="pre">waypoint_viz</span></code> package during pure pursuit. During recording, your logger node handles the visualization directly. During pure pursuit, a separate <code class="docutils literal notranslate"><span class="pre">waypoint_viz</span></code> node reads the saved CSV and shows the path plus a green lookahead marker.</p>
+</div>
+</div>
+</div>
+<div class="section" id="step-4-register-the-entry-point">
+<h2>Step 4 — Register the Entry Point<a class="headerlink" href="#step-4-register-the-entry-point" title="Permalink to this headline">¶</a></h2>
+<p>ROS 2 Python packages use <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> entry points to define executable node names. Edit <code class="docutils literal notranslate"><span class="pre">setup.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">pure_pursuit</span></code> package and add your node to <code class="docutils literal notranslate"><span class="pre">console_scripts</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;waypoint_logger = pure_pursuit.waypoint_logger:main&#39;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">},</span>
+</pre></div>
+</div>
+<p>This maps the command <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">pure_pursuit</span> <span class="pre">waypoint_logger</span></code> to the <code class="docutils literal notranslate"><span class="pre">main()</span></code> function in your <code class="docutils literal notranslate"><span class="pre">waypoint_logger.py</span></code> file.</p>
+</div>
+<div class="section" id="step-5-build-and-verify">
+<h2>Step 5 — Build and Verify<a class="headerlink" href="#step-5-build-and-verify" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/f1tenth_ws
+colcon build --packages-select pure_pursuit
+<span class="nb">source</span> install/setup.bash
+</pre></div>
+</div>
+<p>Verify the node is registered:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run pure_pursuit waypoint_logger --help
+</pre></div>
+</div>
+<p>If it launches without import errors, the package is built correctly. You can now proceed to <a class="reference internal" href="waypoint_recording.html#doc-tutorials-waypoint-recording"><span class="std std-ref">Recording Waypoints</span></a> to record a lap of waypoints on the actual robot.</p>
+</div>
+<div class="section" id="key-concepts-recap">
+<h2>Key Concepts Recap<a class="headerlink" href="#key-concepts-recap" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Concept</p></th>
+<th class="head"><p>What You Learned</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ament_python</span></code> package</p></td>
+<td><p>ROS 2 Python package structure with <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>, entry points, and dependencies</p></td>
+</tr>
+<tr class="row-odd"><td><p>Subscriptions</p></td>
+<td><p>How to subscribe to a topic and process messages in a callback</p></td>
+</tr>
+<tr class="row-even"><td><p>Odometry message</p></td>
+<td><p>How pose data is structured inside <code class="docutils literal notranslate"><span class="pre">nav_msgs/msg/Odometry</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>CSV file I/O</p></td>
+<td><p>Writing real-time data to a file with clean shutdown handling</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="waypoint_recording.html" class="btn btn-neutral float-right" title="Recording Waypoints" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tutorial 8 - Pure Pursuit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2025, Weber State University. Based on RoboRacer (CC-BY-NC-SA 4.0)
+      <span class="lastupdated">
+        Last updated on Sep 28, 2026.
+      </span>
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
