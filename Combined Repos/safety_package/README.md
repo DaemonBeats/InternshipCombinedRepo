@@ -48,14 +48,14 @@ ros2 run safety_package safety_node
 ros2 run safety_package safety_node_cpp
 ```
 
-The car will not move until messages are arriving on both `/scan` and `/odom`.
-Until then the node holds the brake and prints a warning naming the missing
-topic.
+The car will not move until messages are arriving on both the configured
+`scan_topic` and `odom_topic`. Until then the node holds the brake and prints a
+warning naming the missing topic.
 
 ### Running in the simulator
 
-The F1TENTH simulator publishes odometry on `/ego_racecar/odom` instead of
-`/odom`, so remap the topic:
+The F1TENTH simulator publishes odometry on `/ego_racecar/odom` instead of the
+real-car default `/odom`, so either remap or set `odom_topic`:
 
 ```bash
 ros2 run safety_package safety_node --ros-args -r /odom:=/ego_racecar/odom
@@ -66,9 +66,9 @@ ros2 run safety_package safety_node_cpp --ros-args -r /odom:=/ego_racecar/odom
 
 | Topic    | Type                                    | Direction |
 | -------- | --------------------------------------- | --------- |
-| `/scan`  | `sensor_msgs/msg/LaserScan`             | Subscribe |
-| `/odom`  | `nav_msgs/msg/Odometry`                 | Subscribe |
-| `/drive` | `ackermann_msgs/msg/AckermannDriveStamped` | Publish |
+| `/scan`  | `sensor_msgs/msg/LaserScan`                | Subscribe |
+| `/odom`  | `nav_msgs/msg/Odometry`                    | Subscribe |
+| `/drive` | `ackermann_msgs/msg/AckermannDriveStamped` | Publish   |
 
 ## Parameters
 
@@ -81,6 +81,9 @@ Both implementations accept the same parameters.
 | `release_cone_angle` | 20.0    | deg  | Half-width of the front cone checked for release.             |
 | `sensor_timeout`     | 0.25    | s    | Brake if `/scan` or `/odom` is older than this.               |
 | `cruise_speed`       | 1.0     | m/s  | Speed commanded while the path is clear.                      |
+| `scan_topic`         | `/scan` | —    | LiDAR topic to subscribe to.                                  |
+| `odom_topic`         | `/odom` | —    | Odometry topic to subscribe to.                               |
+| `drive_topic`        | `/drive`| —    | Drive command topic to publish.                               |
 
 Set them on the command line with `-p`. Values must be written as decimals
 (`2.0`, not `2`):
@@ -89,6 +92,38 @@ Set them on the command line with `-p`. Values must be written as decimals
 ros2 run safety_package safety_node --ros-args -p ttc_threshold:=0.8 -p cruise_speed:=2.0
 ros2 run safety_package safety_node_cpp --ros-args -p ttc_threshold:=0.8 -p cruise_speed:=2.0
 ```
+
+## Real car vs simulator (what to change)
+
+The same node works for both targets. The only required difference is the
+odometry topic name.
+
+- **Real car:** `/odom`
+- **f1tenth_gym_ros simulator:** `/ego_racecar/odom`
+
+Two parameter profiles are included:
+
+- `config/real_car.yaml`
+- `config/simulator.yaml`
+
+Run with the profile that matches your target.
+
+### Python node
+
+```bash
+ros2 run safety_package safety_node --ros-args --params-file src/safety_package/config/real_car.yaml
+ros2 run safety_package safety_node --ros-args --params-file src/safety_package/config/simulator.yaml
+```
+
+### C++ node
+
+```bash
+ros2 run safety_package safety_node_cpp --ros-args --params-file src/safety_package/config/real_car.yaml
+ros2 run safety_package safety_node_cpp --ros-args --params-file src/safety_package/config/simulator.yaml
+```
+
+If your instructor gives you a skeleton package, update only `odom_topic` in
+the selected config file to switch between real car and simulator.
 
 ## How it works
 

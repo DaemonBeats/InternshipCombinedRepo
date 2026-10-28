@@ -49,24 +49,31 @@ class SafetyNode(Node):
         self.declare_parameter('release_cone_angle', 20.0)  # Half-width of the front cone checked for release (deg)
         self.declare_parameter('sensor_timeout', 0.25)  # Brake if /scan or /odom is older than this (s)
         self.declare_parameter('cruise_speed', 1.0)  # Speed commanded while the path is clear (m/s)
+        self.declare_parameter('scan_topic', '/scan')
+        self.declare_parameter('odom_topic', '/odom')
+        self.declare_parameter('drive_topic', '/drive')
+
+        scan_topic = self.get_parameter('scan_topic').value
+        odom_topic = self.get_parameter('odom_topic').value
+        drive_topic = self.get_parameter('drive_topic').value
 
         # ✅ Subscribers
         self.odom_subscriber_ = self.create_subscription(
             Odometry,
-            "/odom",
+            odom_topic,
             self.odom_callback,
             qos_profile_sensor_data)
 
         self.scan_subscriber_ = self.create_subscription(
             LaserScan,
-            "/scan",
+            scan_topic,
             self.scan_callback,
             qos_profile_sensor_data)
 
         # ✅ Publisher
         self.drive_publisher_ = self.create_publisher(
             AckermannDriveStamped,
-            "/drive",
+            drive_topic,
             10)
 
         # ✅ Timer (50Hz publishing)

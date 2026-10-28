@@ -125,7 +125,7 @@ If that's what you see last, you're good to open your browser and go to this lin
 
 If prompted by your browser to allow foxglove to interact with other apps, click "Allow". You should see a page that says "foxglove studio" and prompts you to sign in. Sign in with the account you created earlier.
 
-The sim should now be running in your browser. Go to the ``Simulator Window Setup`` section of this page to find the steps to ensure the sim windows are set up properly.
+The sim should now be running in your browser. Go to the ``Simulator View Window Setup`` section of this page to find the steps to ensure the sim windows are set up properly.
 
 To control the simulator, open a second terminal and navigate to the f1tenth_gym_ros directory. Then run the following command:
 
@@ -292,7 +292,7 @@ If the above is what you see last, you're good to open your browser and go to th
 
    https://app.foxglove.dev/?ds=foxglove-websocket&ds.url=ws://localhost:8765
 
-The sim should appear as running. If foxglove asks you to allow it to do stuff, do so. Go to the ``Simulator Window Setup`` section of this page to find the steps to ensure the sim windows are set up properly.
+The sim should appear as running. If foxglove asks you to allow it to do stuff, do so. Go to the ``Simulator View Window Setup`` section of this page to find the steps to ensure the sim windows are set up properly.
 
 To control the simulator, open a second terminal and navigate to the f1tenth_gym_ros directory. Then run the following command:
 
@@ -305,8 +305,98 @@ A guide should appear in the terminal with the keys to use to control the sim. Y
 MacOS setup
 -----------
 
+Here is the setup video to follow along with, or you can just follow along with the text commands. Note that some commands may take longer to resolve than in the video the first time you run them:
 
-Simulator Window Setup
+.. raw:: html
+
+   <div style="text-align: center; margin-bottom: 1.5em;">
+      <iframe
+         width="600"
+         height="315"
+         src="https://www.youtube.com/embed/r5A3BQrK6tI?si=aC71iZm06El4Qzb3"
+         title="Linux gym_ros setup video"
+         frameborder="0"
+         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+         allowfullscreen>
+      </iframe>
+   </div>
+
+1️⃣ **Install Docker**
+
+We will begin by installing Docker. On mac, you can do so at this link: https://docs.docker.com/desktop/install/mac-install/
+
+You will have the choice to install Docker Desktop for Apple silicon or Intel chip. Be sure to choose the correct one that matches your computer's chip.
+
+Once installed, open it and make sure it's running before continuing onward.
+
+2️⃣ **Clone the repo**
+
+We will next clone the repo and swap to the dev-humble branch. Open a terminal and navigate to the directory where you want the repository to be cloned to. Then run the following commands:
+
+.. code-block:: bash
+   git clone https://github.com/f1tenth/f1tenth_gym_ros.git
+   cd f1tenth_gym_ros
+   git checkout dev-humble
+   git status
+
+Git status should return that you are on the dev-humble branch. If not, make sure to swap to it before continuing.
+
+3️⃣ **Finish the Docker setup in the terminal**
+
+In the f1tenth_gym_ros directory, run the following command:
+
+.. code-block:: bash
+   docker compose up -d --build
+
+.. note::
+
+    You will have to run this command every time you start your computer, otherwise the docker won't be running and the following steps won't work.
+
+It may take a few minutes to complete the above command the first time you run it on a device, but at the end of the output, you should see something like this:
+
+.. code-block:: text
+  ✔ Image f1tenth_gym_ros               Built		    2.2s
+  ✔ Container f1tenth_gym_ros-sim-1     Started    	    4.0s
+
+4️⃣ **Launch the gym_ros environment**
+
+Once you see the above output, enter the docker container by running the following commands:
+
+.. code-block:: bash
+   docker exec -it f1tenth_gym_ros-sim-1 /bin/bash
+   echo $ROS_DISTRO
+   ls /opt/ros
+
+After the first command above, your filepath should change to something like ``root@(numbers and letters):/sim_ws#``. The second and third commands should both return "humble". If not, use the command "exit" and swap to the dev-humble branch, then follow the steps from section 3 again.
+
+We now launch the gym_ros environment with this command:
+
+.. code-block:: bash
+   ros2 launch f1tenth_gym_ros gym_bridge_launch.py open_foxglove:=false
+
+After that's done, you should see output that ends with something like this:
+
+.. code-block:: text
+   Advertising new channel ## for topic "/cmd_vel"
+
+If that's the case, you can now open your browser and go to this link, keeping the terminal open:
+
+.. code-block:: text
+   https://app.foxglove.dev/?ds=foxglove-websocket&ds.url=ws://localhost:8765
+
+You should see the sim running in your browser. If foxglove asks you to allow it to do stuff, do so. Go to the ``Simulator View Window Setup`` section of this page to find the steps to ensure the sim windows are set up properly.
+
+To control the simulator, open a second terminal and navigate to the f1tenth_gym_ros directory. Then run the following command:
+
+.. code-block:: bash
+    docker exec -it f1tenth_gym_ros-sim-1 /bin/bash
+    ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+The first command will enter the docker container, once again changing your filepath to something like ``root@(numbers and letters):/sim_ws#``. The second command will run the teleop_twist_keyboard package, which allows you to control the sim with your keyboard. You will have to have this terminal focused in order to control the sim, so ensure that your sim window and terminal are set up in a way that allows you to view the sim and terminal at the same time.
+
+A guide should appear in the terminal with the keys to use to control the sim. You can now use the keyboard to control the sim from this new terminal, and you should visually see the changes in the foxglove studio window.
+
+Simulator View Window Setup
 ----------------------
 
 This section will show you how to set up the simulator windows so that they are easy to view and use. The steps are the same for all OSes.

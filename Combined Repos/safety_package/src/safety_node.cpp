@@ -59,21 +59,28 @@ public:
     declare_parameter("release_cone_angle", 20.0);  // Half-width of the release cone (deg)
     declare_parameter("sensor_timeout", 0.25);      // Brake if /scan or /odom is older (s)
     declare_parameter("cruise_speed", 1.0);         // Speed commanded while path is clear (m/s)
+    declare_parameter("scan_topic", "/scan");
+    declare_parameter("odom_topic", "/odom");
+    declare_parameter("drive_topic", "/drive");
+
+    const std::string scan_topic = get_parameter("scan_topic").as_string();
+    const std::string odom_topic = get_parameter("odom_topic").as_string();
+    const std::string drive_topic = get_parameter("drive_topic").as_string();
 
     // Subscribers
     odom_subscriber_ = create_subscription<nav_msgs::msg::Odometry>(
-      "/odom",
+      odom_topic,
       rclcpp::SensorDataQoS(),
       std::bind(&SafetyNode::odom_callback, this, std::placeholders::_1));
 
     scan_subscriber_ = create_subscription<sensor_msgs::msg::LaserScan>(
-      "/scan",
+      scan_topic,
       rclcpp::SensorDataQoS(),
       std::bind(&SafetyNode::scan_callback, this, std::placeholders::_1));
 
     // Publisher
     drive_publisher_ = create_publisher<ackermann_msgs::msg::AckermannDriveStamped>(
-      "/drive",
+      drive_topic,
       10);
 
     // Timer (50Hz publishing)

@@ -1,0 +1,5 @@
+/**:
+  ros__parameters:
+    scan_topic: /scan
+    odom_topic: /ego_racecar/odom
+    drive_topic: /drive
