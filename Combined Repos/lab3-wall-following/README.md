@@ -64,6 +64,27 @@ Test in the [f1tenth_gym_ros](https://github.com/f1tenth/f1tenth_gym_ros/tree/de
 
 Your node must subscribe to `/scan` and publish `AckermannDriveStamped` on `/drive`, and it must work when started with a plain `ros2 run wall_follow <executable>`: it is graded with no parameter file, so bake your tuned gains, desired distance and speeds into the node's defaults.
 
+### Running on simulator vs real car
+
+The package now supports configurable topic names via ROS parameters:
+
+- `scan_topic` (default `/scan`)
+- `drive_topic` (default `/drive`)
+
+Two parameter profiles are included:
+
+- `wall_follow/config/simulator.yaml`
+- `wall_follow/config/real_car.yaml`
+
+Run examples:
+
+```bash
+ros2 run wall_follow wall_follow_node --ros-args --params-file src/wall_follow/config/simulator.yaml
+ros2 run wall_follow wall_follow_node --ros-args --params-file src/wall_follow/config/real_car.yaml
+```
+
+For lab grading, `ros2 run wall_follow <executable>` without a params file still works because defaults remain `/scan` and `/drive`.
+
 ## V. Getting Started
 
 This lab is done individually.

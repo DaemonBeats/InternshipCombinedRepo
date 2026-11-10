@@ -3,3 +3,9 @@
 **/install/
 **/log/
 .vscode/
+
+# Copilot local/cache/log files
+.copilot/
+.copilot-chat/
+copilot*.log
+*.copilotlog

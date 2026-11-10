@@ -313,7 +313,7 @@ Here is the setup video to follow along with, or you can just follow along with 
       <iframe
          width="600"
          height="315"
-         src="https://www.youtube.com/embed/r5A3BQrK6tI?si=aC71iZm06El4Qzb3"
+         src="https://www.youtube.com/embed/gqF3tkilBFM?si=WPWBO_M7jj0GcD6_"
          title="Linux gym_ros setup video"
          frameborder="0"
          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -328,6 +328,11 @@ We will begin by installing Docker. On mac, you can do so at this link: https://
 You will have the choice to install Docker Desktop for Apple silicon or Intel chip. Be sure to choose the correct one that matches your computer's chip.
 
 Once installed, open it and make sure it's running before continuing onward.
+
+Also ensure that git is installed with the following command:
+
+.. code-block:: bash
+   xcode-select --install
 
 2️⃣ **Clone the repo**
 
